@@ -25,9 +25,15 @@ module.exports = {
       purple:colors.violet,
       pink:colors.pink,
       primary: {
-        light: `#F7EFE5`,
-        dark: `#`
+        light: `#F9FAFB`,
+        dark: `#1E1E21`
+      },
+      secondary: {
+        light: `#C1554E`
       }
+    },
+    fontFamily: {
+      primary: ['Montserrat']
     },
     extend: {
       backgroundImage: {
