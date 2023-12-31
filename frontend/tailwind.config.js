@@ -30,8 +30,15 @@ module.exports = {
         dark: `#1E1E21`,
         purple: "#9260BE",
       },
-      secondary: {
-        light: `#C1554E`,
+      dark: {
+        background: "#151517",
+      },
+      socials: {
+        discord: "#7289d9",
+        linkedin: "#0077B5",
+        twitter: "#00ACEE",
+        github: "#24292e",
+        devpost: "#003c51",
       },
     },
     fontFamily: {

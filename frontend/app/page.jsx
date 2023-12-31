@@ -17,9 +17,8 @@ const store = configureStore({
 });
 /*
 TODO:
-- create a scenes folder to make this file more readable
-- start adding light / dark mode features using redux
-- add light / dark mode button in navbar
+- create the sidebar for socials
+- on small screens, create the sidebar navbar
 - finish navbar
 */
 

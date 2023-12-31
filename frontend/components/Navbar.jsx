@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={` relative w-full p-0 m-0 relative ${
+      className={` relative w-full p-0 m-0 relative z-2 ${
         dark ? "dark-border " : "light-border"
       }`}
     >
@@ -35,9 +35,7 @@ const Navbar = () => {
 
           {/* NAVBAR LINKS */}
           <div
-            className={`p-0 m-0 z-1 relative flex sm:flex-row items-center gap-8 flex-wrap hidden md:flex ${
-              dark ? "dark-links-background" : "light-links-background"
-            }`}
+            className={`p-0 m-0 z-1 relative flex sm:flex-row items-center gap-8 flex-wrap hidden md:flex`}
           >
             {links.map((link, index) => (
               <p
@@ -53,7 +51,7 @@ const Navbar = () => {
         </div>
         {/* NAVBAR WIDGETS */}
         {/* VOLUME BUTTON */}
-        <div className="flex justify-end items-center gap-3">
+        <div className="flex justify-end items-center gap-3 z-10">
           <div
             className={`flex text-2xl cursor-pointer p-2 m-0 rounded-lg ${
               dark ? "bg-purple-600" : "bg-purple-500"
@@ -67,34 +65,16 @@ const Navbar = () => {
             onMouseEnter={() => setIsHoveringToggle(true)}
             onMouseLeave={() => setIsHoveringToggle(false)}
             onClick={() => toggle(dark, dispatch)}
-            className={`relative m-0 text-2xl bg-blue-400 rounded-lg p-2 cursor-pointer transition-all duration-300 ${
+            className={`shadow-xl relative m-0 text-2xl bg-blue-400 rounded-lg p-2 cursor-pointer transition-all duration-300 ${
               dark ? " bg-blue-600 hover:bg-white" : "hover:bg-black"
             }`}
           >
             {dark ? <LuSunDim /> : <GoMoon className="hover:text-white" />}
-
-            {/*
-              <div
-              className={`transition duration-400 p-1 absolute right-50 flex flex-row left-0 whitespace-nowrap rounded-lg ${
-                dark
-                  ? "toggle-light-mode bg-white"
-                  : "toggle-dark-mode bg-black text-gray-200"
-              } ${isHoveringToggle ? "block" : "hidden"}`}
-            >
-              <p
-                className={`italic tracking-3 text-sm font-medium ${
-                  dark ? "" : ""
-                }`}
-              >
-                {dark ? "Toggle Light Mode" : "Toggle Dark Mode"}
-              </p>
-            </div>
-            */}
           </div>
 
           {/* SIDEBAR TOGGLE */}
           <div
-            className={`text-bold cursor-pointer p-0 m-0 text-2xl block md:hidden rounded-lg p-2  ${
+            className={`text-bold cursor-pointer p-0 m-0 text-2xl block md:hidden  p-2  ${
               dark ? "dark-text dark-background " : "bg-gray-300 "
             }`}
           >
