@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  dark: JSON.parse(localStorage.getItem("dark-mode")) === "true",
+  dark: JSON.parse(localStorage.getItem("dark-mode")) === true,
 };
 
 export const authSlice = createSlice({
