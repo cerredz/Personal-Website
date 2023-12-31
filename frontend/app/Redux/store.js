@@ -1,24 +1,21 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    dark: true
-}
+  dark: JSON.parse(localStorage.getItem("dark-mode")) === "true",
+};
 
 export const authSlice = createSlice({
-    name: "auth",
-    initialState,
-    reducers: {
-        setLightMode: (state, action) => {
-            state.dark = false;
-        },
-        setDarkMode: (state, action) => {
-            state.dark = true;
-        }
-    }
-})
+  name: "auth",
+  initialState,
+  reducers: {
+    setLightMode: (state, action) => {
+      state.dark = false;
+    },
+    setDarkMode: (state, action) => {
+      state.dark = true;
+    },
+  },
+});
 
-export const {
-    setLightMode,
-    setDarkMode
-} = authSlice.actions;
+export const { setLightMode, setDarkMode } = authSlice.actions;
 export default authSlice.reducer;
