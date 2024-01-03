@@ -10,13 +10,21 @@ import { toggle } from "@/utils/Navbar";
 import { useDispatch } from "react-redux";
 import { LuSunDim } from "react-icons/lu";
 import { BsVolumeUpFill, BsVolumeOffFill } from "react-icons/bs";
+import { clickSound } from "@/utils/Sound";
+import volumeBackground from "../public/images/volume.png";
+import { Canvas } from "@react-three/fiber";
+import BackgroundBlob from "@/Widgets/BackgroundBlob";
+import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
+import { easeInOut, motion } from "framer-motion";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
-  const [volume, setVolume] = useState(true);
+  const [mute, setMute] = useState(true);
   const [isHoveringToggle, setIsHoveringToggle] = useState(false);
+  const [isHoveringVolume, setIsHoveringVolume] = useState(false);
   const dispatch = useDispatch();
   const dark = useSelector((state) => state.auth.dark);
+  const volume = useSelector((state) => state.auth.volume);
 
   // load the links upon render
   useEffect(() => {
@@ -25,11 +33,11 @@ const Navbar = () => {
 
   return (
     <nav
-      className={` relative w-full p-0 m-0 relative z-2 ${
+      className={`z-20 fixed w-full p-0 m-0 ${
         dark ? "dark-border " : "light-border"
       }`}
     >
-      <div className="w-full flex flex-col sm:flex-row justify-between align-center p-3 sm:p-5 md:p-7 lg:p-9">
+      <div className="w-full flex flex-row justify-between align-center p-3 sm:p-5 md:p-7 lg:p-9">
         <div className="flex p-6 sm:p-0 gap-4 w-full align-center justify-start">
           <Image src="/logo.png" width={45} height={100} alt="logo"></Image>
 
@@ -50,31 +58,100 @@ const Navbar = () => {
           </div>
         </div>
         {/* NAVBAR WIDGETS */}
-        {/* VOLUME BUTTON */}
-        <div className="flex justify-end items-center gap-3 z-10">
-          <div
-            className={`flex text-2xl cursor-pointer p-2 m-0 rounded-lg ${
-              dark ? "bg-purple-600" : "bg-purple-500"
-            }`}
+
+        <div className="flex justify-end items-center gap-3 z-10 relative">
+          {/* VOLUME BUTTON */}
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
+            exit={{ opacity: 0 }}
+            whileTap={{ scale: 0.8 }}
+            whileHover={{ scale: 1.1 }}
+            onMouseEnter={() => setIsHoveringVolume(true)}
+            onMouseLeave={() => setIsHoveringVolume(false)}
+            onClick={() => clickSound(volume)}
+            className={`z-25 flex relative text-2xl cursor-pointer p-2 mr-4 rounded-lg`}
           >
-            {volume ? <BsVolumeUpFill /> : <BsVolumeOffFill />}
-          </div>
+            <div className="z-1 absolute left-[-10px] top-[-7px] w-14 h-14">
+              <BackgroundBlob
+                dark="#E26EE5"
+                light="#FF90BC"
+                distort=".44"
+                speed="1.9"
+              />
+            </div>
+
+            {volume ? (
+              <BsVolumeUpFill className="z-20" />
+            ) : (
+              <BsVolumeOffFill className="z-20" />
+            )}
+
+            {!isHoveringVolume && (
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.5, ease: "easeInOut" },
+                }}
+                className="absolute flex items-center justify-center flex-col left-0 bottom-[-35px] bg-red-400 pt-3"
+              >
+                <div className="flex flex-row">
+                  <label>1</label>
+                  <input
+                    type="range"
+                    id="volume-slider"
+                    min={1}
+                    max={100}
+                  ></input>
+                  <label>100</label>
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
 
           {/* LIGHT / DARK MODE */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.8 }}
             onMouseEnter={() => setIsHoveringToggle(true)}
             onMouseLeave={() => setIsHoveringToggle(false)}
-            onClick={() => toggle(dark, dispatch)}
-            className={`shadow-xl relative m-0 text-2xl bg-blue-400 rounded-lg p-2 cursor-pointer transition-all duration-300 ${
-              dark ? " bg-blue-600 hover:bg-white" : "hover:bg-black"
-            }`}
+            onClick={() => toggle(dark, dispatch, volume)}
+            className={`z-25 flex items-center justify-center relative text-2xl cursor-pointer p-2 mr-4 rounded-lg`}
           >
-            {dark ? <LuSunDim /> : <GoMoon className="hover:text-white" />}
-          </div>
+            <div className="z-1 absolute left-[-20px] top-[-20px] w-14 h-14">
+              <BackgroundBlob
+                light="#040D12"
+                dark="#F3F8FF"
+                distort=".35"
+                speed="2.6"
+              />
+            </div>
+            {dark ? (
+              <div className="absolute z-25">
+                <LuSunDim className={`z-2 text-black`} />
+              </div>
+            ) : (
+              <div className="absolute z-25">
+                <GoMoon className="z-25 text-white" />
+              </div>
+            )}
+          </motion.div>
 
           {/* SIDEBAR TOGGLE */}
           <div
-            className={`text-bold cursor-pointer p-0 m-0 text-2xl block md:hidden  p-2  ${
+            className={`z-20 text-bold cursor-pointer p-0 m-0 text-2xl block md:hidden  p-2  ${
               dark ? "dark-text dark-background " : "bg-gray-300 "
             }`}
           >

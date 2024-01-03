@@ -17,9 +17,12 @@ const store = configureStore({
 });
 /*
 TODO:
-- create the sidebar for socials
-- on small screens, create the sidebar navbar
-- finish navbar
+- create the content for our homepage
+- play aroung with threejs and add moving shapes
+- add particles with 
+- volume, 3d or gradient logos
+- framer motion
+- 
 */
 
 export default function Home() {
