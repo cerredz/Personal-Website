@@ -8,6 +8,10 @@
   color: rgba(255, 255, 255, 0.3);
 }
 
+.dark-background {
+  background: rgba(255, 255, 255, 0.3);
+}
+
 .hide-background {
   background-color: unset;
   background: unset;

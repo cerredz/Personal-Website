@@ -11,25 +11,34 @@ import { useDispatch } from "react-redux";
 import { LuSunDim } from "react-icons/lu";
 import { BsVolumeUpFill, BsVolumeOffFill } from "react-icons/bs";
 import { clickSound } from "@/utils/Sound";
-import volumeBackground from "../public/images/volume.png";
-import { Canvas } from "@react-three/fiber";
 import BackgroundBlob from "@/Widgets/BackgroundBlob";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { easeInOut, motion } from "framer-motion";
+import { musicTypes } from "@/data";
+import { adjustVolume } from "@/utils/Navbar";
+import { setVolume } from "@/app/Redux/store";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
+  const [musicData, setMusicData] = useState([]);
   const [mute, setMute] = useState(true);
+  const [musicVolume, setMusicVolume] = useState(0);
   const [isHoveringToggle, setIsHoveringToggle] = useState(false);
   const [isHoveringVolume, setIsHoveringVolume] = useState(false);
   const dispatch = useDispatch();
   const dark = useSelector((state) => state.auth.dark);
   const volume = useSelector((state) => state.auth.volume);
 
-  // load the links upon render
+  // load the links / music data upon render
   useEffect(() => {
     setLinks(NavbarLinks);
+    setMusicData(musicTypes);
+    setMusicVolume(volume);
   }, []);
+
+  const handleVolumeSliderChange = (event) => {
+    adjustVolume(event, dispatch);
+    setMusicVolume(parseFloat(event.target.value / 100));
+  };
 
   return (
     <nav
@@ -61,59 +70,84 @@ const Navbar = () => {
 
         <div className="flex justify-end items-center gap-3 z-10 relative">
           {/* VOLUME BUTTON */}
-          <motion.div
-            initial={{ opacity: 0, y: -100 }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              transition: { duration: 0.5, ease: "easeInOut" },
-            }}
-            exit={{ opacity: 0 }}
-            whileTap={{ scale: 0.8 }}
-            whileHover={{ scale: 1.1 }}
-            onMouseEnter={() => setIsHoveringVolume(true)}
-            onMouseLeave={() => setIsHoveringVolume(false)}
-            onClick={() => clickSound(volume)}
-            className={`z-25 flex relative text-2xl cursor-pointer p-2 mr-4 rounded-lg`}
-          >
-            <div className="z-1 absolute left-[-10px] top-[-7px] w-14 h-14">
-              <BackgroundBlob
-                dark="#E26EE5"
-                light="#FF90BC"
-                distort=".44"
-                speed="1.9"
-              />
-            </div>
+          <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.5, ease: "easeInOut" },
+              }}
+              exit={{ opacity: 0 }}
+              whileTap={{ scale: 0.8 }}
+              whileHover={{ scale: 1.1 }}
+              onMouseEnter={() => setIsHoveringVolume(true)}
+              onMouseLeave={() => setIsHoveringVolume(false)}
+              onClick={() => clickSound(volume)}
+              className={`z-25 flex relative text-2xl cursor-pointer p-2 mr-4 rounded-lg after:absolute after: z-1 
+                after:content-[''] after:top-[25px] after:left-0 after:w-full after:h-full `}
+            >
+              <div className="z-1 absolute left-[-10px] top-[-7px] w-14 h-14">
+                <BackgroundBlob
+                  dark="#E26EE5"
+                  light="#FF90BC"
+                  distort=".44"
+                  speed="1.9"
+                />
+              </div>
 
-            {volume ? (
-              <BsVolumeUpFill className="z-20" />
-            ) : (
-              <BsVolumeOffFill className="z-20" />
-            )}
+              {volume ? (
+                <BsVolumeUpFill className="z-20" />
+              ) : (
+                <BsVolumeOffFill className="z-20" />
+              )}
+            </motion.div>
 
-            {!isHoveringVolume && (
+            {isHoveringVolume && (
               <motion.div
-                initial={{ y: 100, opacity: 0 }}
+                initial={{ y: 150, opacity: 0 }}
                 animate={{
-                  y: 0,
+                  y: 15,
                   opacity: 1,
                   transition: { duration: 0.5, ease: "easeInOut" },
                 }}
-                className="absolute flex items-center justify-center flex-col left-0 bottom-[-35px] bg-red-400 pt-3"
+                className={`absolute z-2 flex-col left-[-50px] top-100 rounded-lg p-4
+                backdrop-blur-lg border border-solid after:bg-red-400
+                ${
+                  dark
+                    ? "border-dark-pink text dark-text"
+                    : "border-light-pink text-black"
+                }
+                `}
+                onMouseEnter={() => setIsHoveringVolume(true)}
+                onMouseLeave={() => setIsHoveringVolume(false)}
               >
-                <div className="flex flex-row">
-                  <label>1</label>
+                <div className="flex flex-row items-center justify-center gap-2 ">
+                  <label className="text-md font-normal tracking-wide">0</label>
                   <input
                     type="range"
                     id="volume-slider"
-                    min={1}
+                    min={0}
                     max={100}
-                  ></input>
-                  <label>100</label>
+                    value={parseInt(musicVolume * 100)}
+                    onChange={() => handleVolumeSliderChange(event)}
+                    className="appearance-none w-[100px] h-[2px] rounded-full dark-background"
+                  />
+                  <label className="text-md font-normal tracking-wide">
+                    100
+                  </label>
+                </div>
+                <div className="flex flex-col gap-1">
+                  {musicData.map((type, index) => (
+                    <div key={index}>
+                      <p>{type.type}</p>
+                      <hr></hr>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             )}
-          </motion.div>
+          </div>
 
           {/* LIGHT / DARK MODE */}
           <motion.div

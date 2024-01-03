@@ -19,8 +19,11 @@ export const authSlice = createSlice({
     setDarkMode: (state, action) => {
       state.dark = true;
     },
+    setVolume: (state, action) => {
+      state.volume = action.amount;
+    },
   },
 });
 
-export const { setLightMode, setDarkMode } = authSlice.actions;
+export const { setLightMode, setDarkMode, setVolume } = authSlice.actions;
 export default authSlice.reducer;

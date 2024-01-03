@@ -32,6 +32,10 @@ module.exports = {
       },
       dark: {
         background: "#151517",
+        pink: "#E26EE5",
+      },
+      light: {
+        pink: "#FF90BC",
       },
       socials: {
         discord: "#7289d9",

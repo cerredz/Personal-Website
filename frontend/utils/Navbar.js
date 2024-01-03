@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { setLightMode, setDarkMode } from "@/app/Redux/store";
+import { setLightMode, setDarkMode, setVolume } from "@/app/Redux/store";
 import { toggleSound } from "./Sound";
 // toggle between light and dark mode
 const toggle = async (isDarkMode, dispatch, volume) => {
@@ -20,4 +20,15 @@ const toggle = async (isDarkMode, dispatch, volume) => {
   }
 };
 
-export { toggle };
+// change the volume of the music playing
+const adjustVolume = async (event, dispatch) => {
+  try {
+    const newVolume = parseFloat(event.target.value / 100);
+    localStorage.setItem("cerreto-volume", newVolume);
+    dispatch(setVolume({ amount: newVolume }));
+  } catch {
+    console.log("🔴: Error Chaning the Volume of the Muisc");
+  }
+};
+
+export { toggle, adjustVolume };

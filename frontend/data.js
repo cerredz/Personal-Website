@@ -44,3 +44,21 @@ export const sidebarLinks = () => [
       "https://devpost.com/422michaelcerreto?ref_content=user-portfolio&ref_feature=portfolio&ref_medium=global-nav",
   },
 ];
+
+export const musicTypes = () => [
+  {
+    type: "Relaxed",
+  },
+  {
+    type: "Uplifting",
+  },
+  {
+    type: "Mysterious",
+  },
+  {
+    type: "Playful",
+  },
+  {
+    type: "Mute",
+  },
+];
