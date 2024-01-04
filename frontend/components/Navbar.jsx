@@ -14,8 +14,9 @@ import { clickSound } from "@/utils/Sound";
 import BackgroundBlob from "@/Widgets/BackgroundBlob";
 import { easeInOut, motion } from "framer-motion";
 import { musicTypes } from "@/data";
-import { adjustVolume } from "@/utils/Navbar";
+import { adjustVolume, changeMusic } from "@/utils/Navbar";
 import { setVolume } from "@/app/Redux/store";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
@@ -27,7 +28,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const dark = useSelector((state) => state.auth.dark);
   const volume = useSelector((state) => state.auth.volume);
-
+  const music = useSelector((state) => state.auth.music);
   // load the links / music data upon render
   useEffect(() => {
     setLinks(NavbarLinks);
@@ -37,7 +38,7 @@ const Navbar = () => {
 
   const handleVolumeSliderChange = (event) => {
     adjustVolume(event, dispatch);
-    setMusicVolume(parseFloat(event.target.value / 100));
+    setMusicVolume(parseFloat((event.target.value / 100).toFixed(2)));
   };
 
   return (
@@ -96,13 +97,14 @@ const Navbar = () => {
                 />
               </div>
 
-              {volume ? (
+              {musicVolume > 0 ? (
                 <BsVolumeUpFill className="z-20" />
               ) : (
                 <BsVolumeOffFill className="z-20" />
               )}
             </motion.div>
 
+            {/* VOLUME DROPDOWN MENU */}
             {isHoveringVolume && (
               <motion.div
                 initial={{ y: 150, opacity: 0 }}
@@ -112,18 +114,19 @@ const Navbar = () => {
                   transition: { duration: 0.5, ease: "easeInOut" },
                 }}
                 className={`absolute z-2 flex-col left-[-50px] top-100 rounded-lg p-4
-                backdrop-blur-lg border border-solid after:bg-red-400
+                backdrop-blur-lg after:bg-red-400
+                shadow-xl 
                 ${
                   dark
-                    ? "border-dark-pink text dark-text"
-                    : "border-light-pink text-black"
+                    ? "dark-text volume-slider-dark shadow-neutral-700/10"
+                    : "text-black volume-slider-light shadow-neutral-400/40 border-neutral-400"
                 }
                 `}
                 onMouseEnter={() => setIsHoveringVolume(true)}
                 onMouseLeave={() => setIsHoveringVolume(false)}
               >
-                <div className="flex flex-row items-center justify-center gap-2 ">
-                  <label className="text-md font-normal tracking-wide">0</label>
+                <div className="flex flex-row items-center justify-center w-full gap-2">
+                  <label className="text-sm font-normal tracking-wide">0</label>
                   <input
                     type="range"
                     id="volume-slider"
@@ -131,18 +134,35 @@ const Navbar = () => {
                     max={100}
                     value={parseInt(musicVolume * 100)}
                     onChange={() => handleVolumeSliderChange(event)}
-                    className="appearance-none w-[100px] h-[2px] rounded-full dark-background"
+                    className={`appearance-none w-[50px] h-[2px] rounded-full  ${
+                      dark ? "bg-neutral-700" : "bg-neutral-400"
+                    }`}
                   />
-                  <label className="text-md font-normal tracking-wide">
+                  <label className="text-sm font-normal tracking-wide">
                     100
                   </label>
                 </div>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col mt-2 gap-1">
                   {musicData.map((type, index) => (
-                    <div key={index}>
-                      <p>{type.type}</p>
-                      <hr></hr>
-                    </div>
+                    <motion.div
+                      whileTap={{ scale: 0.8 }}
+                      className={`flex w-full flex-row items-center rounded-lg pt-1 pb-1 pl-4 pr-4 cursor-pointer ${
+                        dark ? "hover:bg-neutral-700" : "hover:bg-neutral-300"
+                      } ${
+                        music == type.type
+                          ? dark
+                            ? "text-dark-pink bg-neutral-700"
+                            : "text-light-pink bg-neutral-300"
+                          : ""
+                      } `}
+                      key={index}
+                      onClick={() => changeMusic(type.type, dispatch)}
+                    >
+                      <p className="text-sm tracking-widest font-normal">
+                        {" "}
+                        {type.type}
+                      </p>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
@@ -161,7 +181,7 @@ const Navbar = () => {
             whileTap={{ scale: 0.8 }}
             onMouseEnter={() => setIsHoveringToggle(true)}
             onMouseLeave={() => setIsHoveringToggle(false)}
-            onClick={() => toggle(dark, dispatch, volume)}
+            onClick={() => toggle(dark, dispatch, musicVolume)}
             className={`z-25 flex items-center justify-center relative text-2xl cursor-pointer p-2 mr-4 rounded-lg`}
           >
             <div className="z-1 absolute left-[-20px] top-[-20px] w-14 h-14">

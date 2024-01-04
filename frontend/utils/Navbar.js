@@ -1,5 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
-import { setLightMode, setDarkMode, setVolume } from "@/app/Redux/store";
+import {
+  setLightMode,
+  setDarkMode,
+  setVolume,
+  setMusic,
+} from "@/app/Redux/store";
 import { toggleSound } from "./Sound";
 // toggle between light and dark mode
 const toggle = async (isDarkMode, dispatch, volume) => {
@@ -23,12 +27,24 @@ const toggle = async (isDarkMode, dispatch, volume) => {
 // change the volume of the music playing
 const adjustVolume = async (event, dispatch) => {
   try {
-    const newVolume = parseFloat(event.target.value / 100);
+    const newVolume = Number(parseFloat(event.target.value / 100).toFixed(2));
     localStorage.setItem("cerreto-volume", newVolume);
     dispatch(setVolume({ amount: newVolume }));
   } catch {
-    console.log("🔴: Error Chaning the Volume of the Muisc");
+    console.log("🔴: Error Changing the Volume of the Music");
   }
 };
 
-export { toggle, adjustVolume };
+// change the type of background music that is playing
+const changeMusic = async (music, dispatch) => {
+  try {
+    const newMusic = music;
+    dispatch(setMusic({ music: newMusic }));
+    localStorage.setItem("cerreto-music", newMusic);
+    console.log("🟢 Successfully Changed Music to " + newMusic);
+  } catch {
+    console.log("🔴: Error Changing the type of Background Music");
+  }
+};
+
+export { toggle, adjustVolume, changeMusic };

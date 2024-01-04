@@ -25,6 +25,8 @@ module.exports = {
       green: colors.emerald,
       purple: colors.violet,
       pink: colors.pink,
+      slate: colors.slate,
+      neutral: colors.neutral,
       primary: {
         light: `#F9FAFB`,
         dark: `#1E1E21`,
@@ -35,7 +37,7 @@ module.exports = {
         pink: "#E26EE5",
       },
       light: {
-        pink: "#FF90BC",
+        pink: "#bc73bf",
       },
       socials: {
         discord: "#7289d9",
