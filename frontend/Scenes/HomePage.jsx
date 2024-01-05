@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Landing from "@/components/Landing";
 import { useSelector, useDispatch } from "react-redux";
 import { playSong } from "@/utils/Sound";
+import { setVolume } from "@/app/Redux/store";
 
 import "../styles/globals.css";
 
@@ -21,9 +22,20 @@ const HomePage = () => {
     // update background song whenever the category changed
     const playBackgroundMusic = async () => {
       audioTags.forEach((audio) => audio.pause());
+      if (music == "Mute") {
+        dispatch(setVolume({ amount: 0 }));
+        return;
+      }
       const song = await playSong(music, volume);
       setAudioTags((prev) => [...prev, song]);
-      await song.play();
+      await song.play().catch(() => {
+        // user not yet interacted with window, add one time event listeners
+        ["click", "keydown"].forEach((eventType) =>
+          window.addEventListener(eventType, () => playBackgroundMusic(), {
+            once: true,
+          })
+        );
+      });
     };
 
     playBackgroundMusic();

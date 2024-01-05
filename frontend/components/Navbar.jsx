@@ -132,7 +132,7 @@ const Navbar = () => {
                     id="volume-slider"
                     min={0}
                     max={100}
-                    value={parseInt(musicVolume * 100)}
+                    value={parseInt(volume * 100)}
                     onChange={() => handleVolumeSliderChange(event)}
                     className={`appearance-none w-[50px] h-[2px] rounded-full  ${
                       dark ? "bg-neutral-700" : "bg-neutral-400"
