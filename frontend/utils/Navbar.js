@@ -41,7 +41,6 @@ const changeMusic = async (music, dispatch) => {
     const newMusic = music;
     dispatch(setMusic({ music: newMusic }));
     localStorage.setItem("cerreto-music", newMusic);
-    console.log("🟢 Successfully Changed Music to " + newMusic);
   } catch {
     console.log("🔴: Error Changing the type of Background Music");
   }

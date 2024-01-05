@@ -8,7 +8,7 @@ const music = JSON.stringify(localStorage.getItem("cerreto-music")).slice(
 
 const initialState = {
   dark: JSON.parse(localStorage.getItem("dark-mode")) === true,
-  volume: volume !== null ? parseFloat(volume) : 1,
+  volume: volume !== null ? parseFloat(volume) : 0.5,
   music: music != null ? music : "Relaxed",
 };
 
