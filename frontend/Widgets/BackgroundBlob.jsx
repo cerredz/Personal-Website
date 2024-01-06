@@ -9,7 +9,7 @@ const BackgroundBlob = (props) => {
       <OrbitControls enableZoom={false} />
       <ambientLight intensity={1} />
       <directionalLight position={[3, 2, 1]} shadow={true} />
-      <Sphere args={[1, 100, 200]} scale={2.6} castShadow>
+      <Sphere args={[1, 100, 200]} scale={props.scale} castShadow>
         <MeshDistortMaterial
           color={`${dark ? `${props.dark}` : `${props.light}`}`}
           attach="material"

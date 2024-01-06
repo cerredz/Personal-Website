@@ -27,6 +27,8 @@ module.exports = {
       pink: colors.pink,
       slate: colors.slate,
       neutral: colors.neutral,
+      sky: colors.sky,
+      cyan: colors.cyan,
       primary: {
         light: `#F9FAFB`,
         dark: `#1E1E21`,

@@ -12,19 +12,21 @@ import { LuSunDim } from "react-icons/lu";
 import { BsVolumeUpFill, BsVolumeOffFill } from "react-icons/bs";
 import { clickSound } from "@/utils/Sound";
 import BackgroundBlob from "@/Widgets/BackgroundBlob";
-import { easeInOut, motion } from "framer-motion";
+import { AnimatePresence, easeInOut, motion } from "framer-motion";
 import { musicTypes } from "@/data";
 import { adjustVolume, changeMusic } from "@/utils/Navbar";
 import { setVolume } from "@/app/Redux/store";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
+import { AiOutlineClose } from "react-icons/ai";
+import { MdOutlineArrowBackIosNew } from "react-icons/md";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
   const [musicData, setMusicData] = useState([]);
-  const [mute, setMute] = useState(true);
   const [musicVolume, setMusicVolume] = useState(0);
-  const [isHoveringToggle, setIsHoveringToggle] = useState(false);
+  const [showMobileLinks, setShowMobileLinks] = useState(false);
   const [isHoveringVolume, setIsHoveringVolume] = useState(false);
+  const [isHoveringtoggle, setIsHoveringToggle] = useState(false);
   const dispatch = useDispatch();
   const dark = useSelector((state) => state.auth.dark);
   const volume = useSelector((state) => state.auth.volume);
@@ -90,6 +92,7 @@ const Navbar = () => {
             >
               <div className="z-1 absolute left-[-10px] top-[-7px] w-14 h-14">
                 <BackgroundBlob
+                  scale={2.6}
                   dark="#E26EE5"
                   light="#FF90BC"
                   distort=".44"
@@ -186,6 +189,7 @@ const Navbar = () => {
           >
             <div className="z-1 absolute left-[-20px] top-[-20px] w-14 h-14">
               <BackgroundBlob
+                scale={2.6}
                 light="#040D12"
                 dark="#F3F8FF"
                 distort=".35"
@@ -204,10 +208,21 @@ const Navbar = () => {
           </motion.div>
 
           {/* SIDEBAR TOGGLE */}
+          <AnimatePresence>
+            {showMobileLinks && (
+              <MobileNavLinks
+                dark={dark}
+                links={links}
+                toggle={() => setShowMobileLinks((prev) => !prev)}
+              />
+            )}
+          </AnimatePresence>
+
           <div
-            className={`z-20 text-bold cursor-pointer p-0 m-0 text-2xl block md:hidden  p-2  ${
-              dark ? "dark-text dark-background " : "bg-gray-300 "
+            className={`z-20 rounded-md text-bold cursor-pointer p-2 m-0 text-2xl block md:hidden  ${
+              dark ? "text-black bg-neutral-700 " : "bg-neutral-300 "
             }`}
+            onClick={() => setShowMobileLinks((prev) => !prev)}
           >
             <TfiAlignJustify />
           </div>
@@ -218,3 +233,116 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// accessing navbar links on mobile
+const MobileNavLinks = ({ dark, links, toggle }) => {
+  const [isHoveringLink, setIsHoveringLink] = useState(null);
+  const [animationComplete, setAnimationComplete] = useState(false);
+  return (
+    <motion.div
+      initial={{ scaleY: 0 }}
+      animate={{
+        scaleY: 1,
+        transition: { duration: 0.4, ease: "easeInOut" },
+      }}
+      onAnimationComplete={() => setAnimationComplete(true)}
+      exit={{
+        scaleY: 0,
+        transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
+      }}
+      className={`md:hidden z-30 fixed top-0 left-0 w-full h-screen origin-top ${
+        dark ? "bg-black" : "bg-neutral-200"
+      } `}
+    >
+      {/* HEADER */}
+      <div
+        className={`p-6 absolute w-full  top-0 left-0 flex flex-row justify-between items-center ${
+          dark ? "bg-dark-background" : "bg-primary-light"
+        }`}
+      >
+        <Image src="/logo.png" width={45} height={100} alt="logo"></Image>
+        <AiOutlineClose
+          onClick={toggle}
+          className={`z-30 cursor-pointer text-4xl p-2 rounded-md bg-black text-white`}
+        />
+      </div>
+      {/* LINKS */}
+      <div className="absolute top-0 left-0 h-full w-full flex items-center flex-wrap justify-center">
+        <div
+          className={`relative h-3/4 w-full flex flex-col items-center justify-center`}
+        >
+          {animationComplete && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{
+                opacity: 1,
+                transition: { duration: 0.4, ease: "easeInOut" },
+              }}
+              exit={{
+                opacity: 0,
+                transition: { delay: 0.3, duration: 0.3, ease: "easeInOut" },
+              }}
+              className="absolute h-full w-full"
+            >
+              <BackgroundBlob
+                scale={2.2}
+                light="#06B6D4"
+                dark="#11009E"
+                distort={0.4}
+                speed={2.2}
+              />
+            </motion.div>
+          )}
+
+          <div className="absolute h-1/2 gap-5 w-1/2 flex flex-col items-center justify-center ">
+            {links.map((link, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.5, ease: "easeInOut", delay: 0.8 },
+                }}
+                exit={{
+                  opacity: 0,
+                  y: 10,
+                  transition: { duration: 0.3, ease: "easeInOut" },
+                }}
+                key={index}
+                onMouseEnter={() => setIsHoveringLink(link.title)}
+                onMouseLeave={() => setIsHoveringLink(null)}
+                className={`mobile-link cursor-pointer relative flex flex-row justify-between items-center ml-10 pr-10 pl-4 after:absolute after:transition after:blur-xl after:duration-500 after:inset-0 after:z-0 ${
+                  dark
+                    ? "hover:after:bg-cyan-300 dark-text "
+                    : "text-neutral-300 hover:after:bg-blue-800"
+                } `}
+              >
+                <p
+                  className={`z-40 cursor-pointer relative tracking-widest font-bold  text-2xl w-full h-full hover:text-primary-dark hover:transition hover:duration-500${
+                    dark ? "dark-text" : ""
+                  }`}
+                >
+                  {link.title}
+                  {isHoveringLink == link.title && (
+                    <motion.div
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{
+                        x: 0,
+                        opacity: 1,
+                        transition: { duration: 0.5, ease: "easeInOut" },
+                      }}
+                      exit={{ x: 100, opacity: 0 }}
+                      className="absolute right-[-25px] top-[9px]"
+                    >
+                      <MdOutlineArrowBackIosNew className="text-sm font-bold" />
+                    </motion.div>
+                  )}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
