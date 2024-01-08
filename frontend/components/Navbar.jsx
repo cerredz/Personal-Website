@@ -92,6 +92,7 @@ const Navbar = () => {
             >
               <div className="z-1 absolute left-[-10px] top-[-7px] w-14 h-14">
                 <BackgroundBlob
+                  loop={showMobileLinks}
                   scale={2.6}
                   dark="#E26EE5"
                   light="#FF90BC"
@@ -189,6 +190,7 @@ const Navbar = () => {
           >
             <div className="z-1 absolute left-[-20px] top-[-20px] w-14 h-14">
               <BackgroundBlob
+                loop={showMobileLinks}
                 scale={2.6}
                 light="#040D12"
                 dark="#F3F8FF"

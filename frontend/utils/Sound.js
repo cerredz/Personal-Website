@@ -48,13 +48,6 @@ const playSong = async (category, volume) => {
     audio.loop = true;
     return audio;
   } catch (error) {
-    // user not yet interacted with window, add one time event listeners
-    ["click", "keydown"].forEach((eventType) =>
-      window.addEventListener(eventType, () => playSong(category, volume), {
-        once: true,
-      })
-    );
-
     console.log("🔴 Error: Failed to Play Background Music", error);
   }
 };

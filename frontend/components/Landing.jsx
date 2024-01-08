@@ -24,22 +24,8 @@ const Landing = () => {
           <button>Contact Me</button>
         </div>
         {/* Right */}
-        <div className="md:flex-3 md:relative flex-1 h-full w-full">
-          <Canvas>
-            <Suspense fallback={null}>
-              <OrbitControls enableZoom={false} />
-              <ambientLight intensity={1} />
-              <directionalLight position={[3, 2, 1]} />
-              <Sphere args={[1, 100, 200]} scale={2}>
-                <MeshDistortMaterial
-                  color={`${dark ? "#11009E" : "#7FC7D9"}`}
-                  attach="material"
-                  distort={0.5}
-                  speed={3}
-                />
-              </Sphere>
-            </Suspense>
-          </Canvas>
+        <div className="md:flex-3 flex items-center justify-center md:relative flex-1 h-full w-full">
+          <Image src={"/images/bg4.png"} height={500} width={500} />
         </div>
       </div>
     </div>
