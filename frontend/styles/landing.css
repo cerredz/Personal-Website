@@ -1,0 +1,59 @@
+.left {
+  flex-basis: 1;
+}
+
+.right {
+  flex-basis: 2;
+}
+
+.light-text-gradient,
+.dark-text-gradient {
+  background-clip: text;
+  color: transparent;
+}
+
+.dark-text-gradient {
+  background-image: linear-gradient(to right, #ded8d9, #7f7f7f);
+}
+
+.light-text-gradient {
+  background-image: linear-gradient(to right, #171717, #4d4c4c);
+}
+
+.dark-landing-text {
+  color: #7f7f7f;
+}
+
+.light-landing-text {
+  color: #171717;
+}
+
+.portfolio-label {
+  padding: 6px 15px;
+  overflow: hidden;
+}
+
+.portfolio-label::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  filter: blur(20px);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    transparent,
+    #2563eb
+  );
+}
+
+.contact-btn {
+  padding: 5px 15px;
+}
+
+.landing {
+  background-image: url("../public/images/homebg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

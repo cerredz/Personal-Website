@@ -8,6 +8,7 @@ import { FaSlack } from "react-icons/fa";
 import { sidebarLinks } from "@/data";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { easeInOut, motion } from "framer-motion";
 
 const Sidebar = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -32,12 +33,22 @@ const Sidebar = () => {
     >
       {/* Social Media Links */}
       {links.map((link, index) => (
-        <a
+        <motion.a
           key={index}
           href={link.redirect}
           target="_blank"
           rel="noopener noreferrer"
           className="cursor-pointer transition-all duration-600 hover:translate-y-[-5px] md:hover:translate-y-0 md:hover:translate-x-[-5px]"
+          initial={{ x: 100, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: {
+              delay: index * 0.2 + 1,
+              duration: 0.2,
+              ease: "easeInOut",
+            },
+          }}
         >
           {link.social === "LinkedIn" && (
             <FaLinkedinIn className="transition-all duration-600 hover:text-socials-linkedin" />
@@ -54,7 +65,7 @@ const Sidebar = () => {
           {link.social === "Devpost" && (
             <SiDevpost className="transition-all duration-600 hover:text-socials-devpost" />
           )}
-        </a>
+        </motion.a>
       ))}
     </div>
   );
