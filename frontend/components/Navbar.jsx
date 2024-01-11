@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`z-20 fixed w-full p-0 m-0 ${
+      className={`z-20 fixed w-full p-0 m-0 nav ${
         dark ? "dark-border " : "light-border"
       }`}
     >

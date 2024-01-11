@@ -46,3 +46,24 @@ input[type="range"]::-webkit-slider-thumb {
 .mobile-link::after {
   content: "";
 }
+
+.nav {
+  backdrop-filter: blur(5px);
+  z-index: 100;
+}
+
+.nav::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.05);
+  transition: 0.5s ease-in-out;
+}
+
+.nav:hover::before {
+  height: 100%;
+  transition: 0.5s ease-in-out;
+}

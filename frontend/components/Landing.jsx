@@ -1,14 +1,13 @@
 "use client";
 import { Suspense, useEffect, useState } from "react";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Sphere, MeshDistortMaterial } from "@react-three/drei";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { AnimatePresence, easeInOut, motion } from "framer-motion";
 import "../styles/landing.css";
 import { GiStarSwirl } from "react-icons/gi";
 import { FaArrowLeftLong } from "react-icons/fa6";
-import BackgroundSkillsIcons from "@/Widgets/BackgroundSkillsIcons";
+import { BsStars } from "react-icons/bs";
+import Bubbles from "@/Widgets/Bubbles";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -53,7 +52,6 @@ export default Landing;
 
 // left side of the screen, seperated for readability
 const LeftContainer = ({ dark }) => {
-  const [isHoveringContact, setIsHoveringContact] = useState(false);
   return (
     <>
       <motion.div
@@ -141,39 +139,18 @@ const LeftContainer = ({ dark }) => {
         }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.8 }}
-        onMouseEnter={() => setIsHoveringContact(true)}
-        onMouseLeave={() => setIsHoveringContact(false)}
-        className={`w-min tracking-widest whitespace-nowrap transition-opacity duration-500 mt-2 text-lg rounded-md cursor-pointer contact-btn bg-gradient-to-br ${
-          dark
-            ? "text-black from-blue-500 to-blue-400"
-            : "text-neutral-800 from-blue-400 to-blue-300"
-        }`}
+        className={`font-normal relative flex flex-row items-center justify-center w-min gap-2 tracking-widest whitespace-nowrap transition-opacity duration-500 mt-2 text-lg rounded-md cursor-pointer contact-btn bg-gradient-to-r 
+         ${
+           dark
+             ? "text-black from-[#1d95e8] via-[#6b62e8] to-[#a030e3]"
+             : "text-neutral-800 from-blue-500 via-purple-400 to-pink-400"
+         }`}
       >
-        Contact Me
-        <AnimatePresence>
-          {isHoveringContact && (
-            <motion.div
-              initial={{ x: 150, opacity: 0 }}
-              animate={{
-                x: 25,
-                opacity: 1,
-                transition: { duration: 0.3, ease: "easeInOut" },
-              }}
-              exit={{
-                x: 150,
-                opacity: 0,
-                transition: { duration: 0.4, ease: "easeInOut" },
-              }}
-              className="absolute flex items-center justify-center right-0 top-0 h-full"
-            >
-              <FaArrowLeftLong
-                className={`p-0 m-0 ${
-                  dark ? "text-blue-500" : "text-blue-400"
-                }`}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <BsStars className="z-50" />
+        <p className="z-50"> Contact me</p>
+        <div className="absolute top-[-5px] bottom-[-5px] right-[10px] left-[10px] z-20">
+          <Bubbles amount={3000} colors={["#1d95e8"]} />
+        </div>
       </motion.button>
     </>
   );

@@ -8,8 +8,9 @@ import Landing from "@/components/Landing";
 import { useSelector, useDispatch } from "react-redux";
 import { playSong } from "@/utils/Sound";
 import { setVolume } from "@/app/Redux/store";
-
 import "../styles/globals.css";
+import Quote from "@/Widgets/Quote";
+import About from "@/components/About";
 
 const HomePage = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -59,6 +60,12 @@ const HomePage = () => {
       <section className="relative" id="home">
         <Suspense fallback={<Loading />}>
           <Landing />
+          <Quote
+            background="/images/quote1.png"
+            quote="Hello World"
+            name="Michael Cerreto"
+          />
+          <About />
         </Suspense>
       </section>
     </main>
