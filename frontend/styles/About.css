@@ -1,0 +1,11 @@
+.phone {
+  backdrop-filter: blur(15px);
+}
+
+.dark-shadow {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.light-shadow {
+  background: rgba(0, 0, 0, 0.05);
+}
