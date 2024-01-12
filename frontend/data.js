@@ -66,7 +66,7 @@ export const musicTypes = () => [
 export const phoneIcons = () => [
   {
     icon: "gmail",
-    src: "/images/gmail.png",
+    src: "gmail",
     clickEvent: true,
     text: "Contact Me",
     color: "#6c061c",
@@ -74,28 +74,28 @@ export const phoneIcons = () => [
   },
   {
     icon: "timezone",
-    src: "/images/timezone.png",
+    src: "timezone",
     clickEvent: false,
     text: "Eastern Standard time (EST)",
     color: "#db0850",
   },
   {
     icon: "phone",
-    src: "/images/phone.png",
+    src: "phone",
     clickEvent: false,
     text: "(732) - 673 - 1556",
     color: "#33b6a7",
   },
   {
     icon: "location",
-    src: "/images/location.png",
+    src: "location",
     clickEvent: false,
     text: "New Jersey, United States",
     color: "#e48e0a",
   },
   {
     icon: "awards",
-    src: "/images/awards.png",
+    src: "awards",
     clickEvent: true,
     text: "Awards / Accomplishments",
     color: "#725908",
@@ -103,7 +103,7 @@ export const phoneIcons = () => [
   },
   {
     icon: "linkedin",
-    src: "/images/linkedin.png",
+    src: "linkedin",
     clickEvent: true,
     text: "LinkedIn",
     color: "#0a9fc2",
@@ -111,7 +111,7 @@ export const phoneIcons = () => [
   },
   {
     icon: "twitter",
-    src: "/images/twitter.png",
+    src: "twitter",
     clickEvent: true,
     text: "Twitter",
     color: "#0cd4f7",
@@ -119,7 +119,7 @@ export const phoneIcons = () => [
   },
   {
     icon: "github",
-    src: "/images/github.png",
+    src: "github",
     clickEvent: true,
     text: "Github",
     color: "#00baf6",
@@ -127,7 +127,7 @@ export const phoneIcons = () => [
   },
   {
     icon: "instagram",
-    src: "/images/instagram.png",
+    src: "instagram",
     clickEvent: true,
     text: "Instagram",
     color: "#dc626a",
