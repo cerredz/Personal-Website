@@ -3,11 +3,10 @@ import Title from "@/Widgets/Title";
 import { useSelector } from "react-redux";
 import "../styles/About.css";
 import Image from "next/image";
-import { IoHome } from "react-icons/io5";
 import { phoneIcons } from "@/data";
 import { useState, useEffect, use } from "react";
 import { IoIosHome } from "react-icons/io";
-import { GrWaypoint } from "react-icons/gr";
+import { AnimatePresence, motion } from "framer-motion";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -96,21 +95,17 @@ const About = () => {
         {/* PHONE ICONS */}
 
         {icons != null ? (
-          <div className="grid grid-cols-3 gap-y-2 gap-x-5 mt-2 w-full px-6">
+          <div className="relative z-1 grid grid-cols-3 gap-y-2 gap-x-5 mt-2 w-full px-6">
             {icons.map((icon, index) => (
-              <div
-                key={index}
-                className={`relative phone-icon-container cursor-pointer flex justify-center rounded-lg items-center 
-                ${phoneIconsBackground} py-3 ${icon.className}`}
-              >
-                <Image
-                  src={icon.src}
-                  alt={icon.alt}
-                  height={19}
-                  width={19}
-                  className={`phone-icon relative ${icon.className}-icon`}
-                />
-              </div>
+              <PhoneIcon
+                index={index}
+                className={icon.className}
+                background={phoneIconsBackground}
+                src={icon.src}
+                alt={icon.alt}
+                text={icon.text}
+                dark={dark}
+              />
             ))}
           </div>
         ) : (
@@ -128,7 +123,7 @@ const About = () => {
             dark ? "bg-neutral-400" : "bg-neutral-800"
           } `}
         ></hr>
-        <div className="flex flex-row w-full h-full items-center justify-between my-3 px-3">
+        <div className="flex flex-row w-full h-full items-center justify-between my-3 px-2">
           <div>
             <p>Skills</p>
           </div>
@@ -145,3 +140,68 @@ const About = () => {
 };
 
 export default About;
+
+{
+  /* CODE FOR SINGULAR PHONE ICON, Seperated for better Readability */
+}
+const PhoneIcon = ({ className, index, background, src, alt, text, dark }) => {
+  const [hoveringIcon, setHoveringIcon] = useState(null);
+  let hoveringTextColor = dark ? "text-neutral-300" : "text-neutral-800";
+  let hoveringBackgroundColor = dark ? "bg-[#0F0F0F]" : "bg-neutral-100";
+
+  useEffect(() => {
+    hoveringTextColor = dark ? "text-neutral-300" : "text-neutral-800";
+    hoveringBackgroundColor = dark ? "bg-[#0F0F0F]" : "bg-neutral-100";
+  }, [dark]);
+
+  return (
+    <div
+      onMouseEnter={() => setHoveringIcon(className)}
+      onMouseLeave={() => setHoveringIcon(null)}
+      className="relative overflow-visible cursor-pointer"
+    >
+      <div
+        key={index}
+        className={`z-10 relative phone-icon-container cursor-pointer flex justify-center rounded-lg items-center 
+  ${background} py-3 ${className}`}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          height={19}
+          width={19}
+          className={`phone-icon relative ${className}-icon`}
+        />
+      </div>
+      <AnimatePresence>
+        {hoveringIcon == className && (
+          <motion.div
+            initial={{ y: 25, opacity: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
+            exit={{
+              y: 25,
+              opacity: 0,
+              transition: { duration: 0.3, ease: "easeInOut" },
+            }}
+            className={`  shadow-md absolute bottom-[-40px] left-0 overflow-visible z-50  whitespace-nowrap`}
+          >
+            <div className="relative z-50 flex flex-col">
+              <div
+                className={`h-4 w-4 rotate-45 top-0 left-0 z-1 ${hoveringBackgroundColor} ml-4`}
+              ></div>
+              <p
+                className={`-mt-2 rounded-md hovering-text font-normal italic ${hoveringTextColor} ${hoveringBackgroundColor} px-3 py-1 relative z-10`}
+              >
+                {text}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};

@@ -154,3 +154,8 @@
 .instagram::after {
   background: #7b22bb;
 }
+
+.hovering-text {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
