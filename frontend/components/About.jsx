@@ -6,16 +6,20 @@ import Image from "next/image";
 import { IoHome } from "react-icons/io5";
 import { phoneIcons } from "@/data";
 import { useState, useEffect, use } from "react";
+import { IoIosHome } from "react-icons/io";
+import { GrWaypoint } from "react-icons/gr";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
   let primaryTextColor = dark ? "text-neutral-300" : "text-neutral-700";
   let secondaryTextColor = dark ? "text-neutral-600" : "text-neutral-400";
+  let phoneIconsBackground = dark ? "bg-[#18181A]" : "bg-[#C7C7C7]";
   const [icons, setIcons] = useState(null);
 
   // render in icons upon load
   useEffect(() => {
     setIcons(phoneIcons);
+    phoneIconsBackground = dark ? "bg-[#18181A]" : "bg-[#C7C7C7]";
   }, []);
 
   // change text color when switching from light to dark mode
@@ -92,16 +96,19 @@ const About = () => {
         {/* PHONE ICONS */}
 
         {icons != null ? (
-          <div className="grid grid-cols-3 gap-5 mt-2 w-full">
+          <div className="grid grid-cols-3 gap-y-2 gap-x-5 mt-2 w-full px-6">
             {icons.map((icon, index) => (
-              <div key={index} className="cursor-pointer">
+              <div
+                key={index}
+                className={`relative phone-icon-container cursor-pointer flex justify-center rounded-lg items-center 
+                ${phoneIconsBackground} py-3 ${icon.className}`}
+              >
                 <Image
-                  src={`/images/${
-                    dark ? icon.src : String(icon.src + "Light")
-                  }.png`}
-                  alt={`${icon.icon} logo`}
-                  height={50}
-                  width={50}
+                  src={icon.src}
+                  alt={icon.alt}
+                  height={19}
+                  width={19}
+                  className={`phone-icon relative ${icon.className}-icon`}
                 />
               </div>
             ))}
@@ -126,12 +133,7 @@ const About = () => {
             <p>Skills</p>
           </div>
           <div className="flex items-center justify-center">
-            <Image
-              src={`${dark ? "/images/home.png" : "/images/homeLight.png"}`}
-              alt="home logo"
-              height={40}
-              width={40}
-            />
+            <IoIosHome />
           </div>
           <div>
             <p> Projects</p>
