@@ -167,3 +167,7 @@
 .fact-text-cloud-1 {
   max-width: 250px;
 }
+
+.cloud-3-transform {
+  transform: translateY(-17rem) translateX(7rem);
+}

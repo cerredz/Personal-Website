@@ -147,4 +147,10 @@ export const aboutMeFacts = [
     "As my proficiency in Java and C++ grew, I then delved into the the world of web development, learning basic HTML, CSS, and Javascript.",
     "My passion for web development grew, leading me to complete an online course covering React, RESTful APIs, SQL, MongoDB and more.",
   ],
+  [
+    "After about a year of writing my first line of code, I started to create full-stack projects, translating my knowledge into real-world applications.",
+    "As time went on, I started to learn many software engineering tools, techniques, and frameworks (Next.js, Express.js, Flask, Firebase, etc). ",
+    "Each project became an opportunity to apply new tools, refine techniques, and deepen my understanding of software engineering principles.",
+    "Today, now knowing over 15+ languages / frameworks, I continually try to become the best software engineer I can be everyday. ",
+  ],
 ];
