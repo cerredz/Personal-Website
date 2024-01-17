@@ -141,4 +141,10 @@ export const aboutMeFacts = [
     "As soon as I wrote my first program I discovered the freedom and intuition that was involved in programming.",
     "This ability to create one-of-a-kind pieces of software is what has fueled my passion till this day",
   ],
+  [
+    "Java and C++ were the first coding languages in which I gained significant experience. ",
+    "Within these languages, I first encountered data structures and tackled challenging computer science problems (leetcode). ",
+    "As my proficiency in Java and C++ grew, I then delved into the the world of web development, learning basic HTML, CSS, and Javascript.",
+    "My passion for web development grew, leading me to complete an online course covering React, RESTful APIs, SQL, MongoDB and more.",
+  ],
 ];

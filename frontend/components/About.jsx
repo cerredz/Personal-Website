@@ -84,6 +84,8 @@ const About = () => {
 
         {/* PHONE IMAGE */}
         <Image
+          quality={100}
+          priority={true}
           src={`${
             dark ? "/images/darkHeadshot.png" : "/images/lightHeadShot.png"
           } `}
@@ -156,9 +158,9 @@ const About = () => {
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? "1" : "0",
-            transition: "all .4s ease-in-out 2.5s",
+            transition: "all .4s ease-in-out 1.5s",
           }}
-          className="hidden xl:block absolute right-[-500px] top-0 origin-left"
+          className="hidden xl:block absolute right-[-500px] top-[-50px] origin-left"
         >
           <Image
             src={`${dark ? "/images/cloud1.png" : "/images/cloud1light.png"} `}
@@ -170,7 +172,27 @@ const About = () => {
             <Facts facts={aboutMeFacts[0]} />
           </div>
         </motion.div>
+        <motion.div
+          ref={ref}
+          style={{
+            y: inView ? "0" : "50px",
+            opacity: inView ? "1" : "0",
+            transition: "all .5s ease-in-out 1.7s",
+          }}
+          className="hidden xl:block absolute left-[-500px] top-[75px] origin-right"
+        >
+          <Image
+            src={`${dark ? "/images/cloud2.png" : "/images/cloud2light.png"} `}
+            alt="cloud2"
+            width={500}
+            height={500}
+          ></Image>
+          <div className="absolute transform translate-x-10 -translate-y-64">
+            <Facts facts={aboutMeFacts[1]} />
+          </div>
+        </motion.div>
       </motion.div>
+      {/* */}
     </section>
   );
 };

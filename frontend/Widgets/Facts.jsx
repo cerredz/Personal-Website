@@ -15,8 +15,8 @@ const Facts = ({ facts }) => {
         className={`flex flex-row w-full justify-between items-center gap-2`}
       >
         <IoIosArrowBack
-          className={`flex items-center justify-center p-1 text-3xl font-bold m-0 cursor-pointer transition duration-400 rounded-full ${
-            dark ? "hover:bg-neutral-700" : "hover:bg-neutral-400"
+          className={`flex items-center justify-center p-1 text-3xl hover:transition hover:duration-400 font-bold m-0 cursor-pointer transition duration-400 rounded-full ${
+            dark ? "hover:bg-neutral-800" : "hover:bg-neutral-400"
           }`}
           onClick={() =>
             setFactNumber((prev) => (prev - 1 + facts.length) % facts.length)
@@ -45,8 +45,8 @@ const Facts = ({ facts }) => {
             </AnimatePresence>
           ))}
         <IoIosArrowForward
-          className={`flex items-center justify-center p-1 text-3xl font-bold m-0 cursor-pointer transition duration-400 rounded-full ${
-            dark ? "hover:bg-neutral-700" : "hover:bg-neutral-400"
+          className={`flex items-center justify-center p-1 text-3xl hover:transition hover:duration-400 font-bold m-0 cursor-pointer transition duration-400 rounded-full ${
+            dark ? "hover:bg-neutral-800" : "hover:bg-neutral-400"
           }`}
           onClick={() => setFactNumber((prev) => (prev + 1) % facts.length)}
         />
