@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import "../styles/globals.css";
 import HomePage from "@/Scenes/HomePage";
 import BackgroundSkillsIcons from "@/Widgets/BackgroundSkillsIcons";
+import { useRouter } from "next/router";
 
 const store = configureStore({
   reducer: {

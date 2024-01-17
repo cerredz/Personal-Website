@@ -134,3 +134,11 @@ export const phoneIcons = () => [
     className: "instagram",
   },
 ];
+
+export const aboutMeFacts = [
+  [
+    "I am Michael Cerreto, and my journey into coding began at the age of 17 during my senior year of high school. ",
+    "As soon as I wrote my first program I discovered the freedom and intuition that was involved in programming.",
+    "This ability to create one-of-a-kind pieces of software is what has fueled my passion till this day",
+  ],
+];

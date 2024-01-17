@@ -4,9 +4,14 @@ import { useSelector } from "react-redux";
 import "../styles/About.css";
 import Image from "next/image";
 import { phoneIcons } from "@/data";
-import { useState, useEffect, use } from "react";
+import { useState, useEffect } from "react";
 import { IoIosHome } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+
+import { aboutMeFacts } from "@/data";
+import Facts from "@/Widgets/Facts";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -14,6 +19,8 @@ const About = () => {
   let secondaryTextColor = dark ? "text-neutral-600" : "text-neutral-400";
   let phoneIconsBackground = dark ? "bg-[#18181A]" : "bg-[#C7C7C7]";
   const [icons, setIcons] = useState(null);
+  const ref = useRef(null);
+  const inView = useInView(ref);
 
   // render in icons upon load
   useEffect(() => {
@@ -30,7 +37,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex flex-col items-center justify-center gap-6"
+      className="min-h-screen flex flex-col items-center justify-center gap-12"
     >
       <Title
         text={"About"}
@@ -41,8 +48,14 @@ const About = () => {
         translateY={"-translate-y-2"}
       />
       {/* PHONE IN THE CENTER OF THE SCREEN */}
-      <div
-        className={`phone flex flex-col p-2 m-0 rounded-2xl px-8 py-2  justify-center items-center ${
+      <motion.div
+        ref={ref}
+        style={{
+          y: inView ? "0" : "100px",
+          opacity: inView ? "1" : "0",
+          transition: "all .4s ease-in-out .8s",
+        }}
+        className={`phone relative flex flex-col p-2 m-0 rounded-2xl px-10 py-4  justify-center items-center origin-top ${
           dark ? "dark-shadow" : "light-shadow"
         } ${primaryTextColor}`}
       >
@@ -98,13 +111,15 @@ const About = () => {
           <div className="relative z-1 grid grid-cols-3 gap-y-2 gap-x-5 mt-2 w-full px-6">
             {icons.map((icon, index) => (
               <PhoneIcon
-                index={index}
+                key={index}
                 className={icon.className}
                 background={phoneIconsBackground}
                 src={icon.src}
                 alt={icon.alt}
                 text={icon.text}
                 dark={dark}
+                clickEvent={icon.clickEvent}
+                redirect={icon.clickEvent ? icon.redirect : ""}
               />
             ))}
           </div>
@@ -134,17 +149,45 @@ const About = () => {
             <p> Projects</p>
           </div>
         </div>
-      </div>
+
+        {/* PHONE CLOUDS */}
+        <motion.div
+          ref={ref}
+          style={{
+            y: inView ? "0" : "50px",
+            opacity: inView ? "1" : "0",
+            transition: "all .4s ease-in-out 2.5s",
+          }}
+          className="hidden xl:block absolute right-[-500px] top-0 origin-left"
+        >
+          <Image
+            src={`${dark ? "/images/cloud1.png" : "/images/cloud1light.png"} `}
+            alt="cloud1"
+            width={500}
+            height={500}
+          ></Image>
+          <div className="absolute transform translate-x-28 -translate-y-56">
+            <Facts facts={aboutMeFacts[0]} />
+          </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
 
 export default About;
 
-{
-  /* CODE FOR SINGULAR PHONE ICON, Seperated for better Readability */
-}
-const PhoneIcon = ({ className, index, background, src, alt, text, dark }) => {
+/* CODE FOR SINGULAR PHONE ICON, Seperated for better Readability */
+const PhoneIcon = ({
+  className,
+  background,
+  src,
+  alt,
+  text,
+  dark,
+  clickEvent,
+  redirect,
+}) => {
   const [hoveringIcon, setHoveringIcon] = useState(null);
   let hoveringTextColor = dark ? "text-neutral-300" : "text-neutral-800";
   let hoveringBackgroundColor = dark ? "bg-[#0F0F0F]" : "bg-neutral-100";
@@ -155,13 +198,14 @@ const PhoneIcon = ({ className, index, background, src, alt, text, dark }) => {
   }, [dark]);
 
   return (
-    <div
+    <motion.div
       onMouseEnter={() => setHoveringIcon(className)}
       onMouseLeave={() => setHoveringIcon(null)}
+      onClick={() => (clickEvent ? window.open(redirect, "_blank") : "")}
       className="relative overflow-visible cursor-pointer"
+      whileTap={{ scale: 0.9 }}
     >
       <div
-        key={index}
         className={`z-10 relative phone-icon-container cursor-pointer flex justify-center rounded-lg items-center 
   ${background} py-3 ${className}`}
       >
@@ -173,6 +217,8 @@ const PhoneIcon = ({ className, index, background, src, alt, text, dark }) => {
           className={`phone-icon relative ${className}-icon`}
         />
       </div>
+
+      {/* HOVERING ANIMATION */}
       <AnimatePresence>
         {hoveringIcon == className && (
           <motion.div
@@ -187,7 +233,7 @@ const PhoneIcon = ({ className, index, background, src, alt, text, dark }) => {
               opacity: 0,
               transition: { duration: 0.3, ease: "easeInOut" },
             }}
-            className={`  shadow-md absolute bottom-[-40px] left-0 overflow-visible z-50  whitespace-nowrap`}
+            className={`shadow-md absolute bottom-[-40px] left-0 overflow-visible z-50  whitespace-nowrap`}
           >
             <div className="relative z-50 flex flex-col">
               <div
@@ -202,6 +248,6 @@ const PhoneIcon = ({ className, index, background, src, alt, text, dark }) => {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
