@@ -4,8 +4,8 @@
 
 .dark-shadow {
   background: rgba(255, 255, 255, 0.01);
-  box-shadow: inset 0 4px 5px rgba(255, 255, 255, 0.4),
-    inset 0 4px 25px rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 4px 5px rgba(255, 255, 255, 0.05),
+    inset 0 4px 25px rgba(255, 255, 255, 0.025);
 }
 
 .light-shadow {
@@ -164,10 +164,6 @@
   letter-spacing: 2px;
 }
 
-.fact-text-cloud-1 {
-  max-width: 250px;
-}
-
-.cloud-3-transform {
-  transform: translateY(-17rem) translateX(7rem);
+.fact-text {
+  max-width: 550px;
 }

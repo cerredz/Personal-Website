@@ -47,176 +47,127 @@ const About = () => {
         translateX="-translate-x-64"
         translateY={"-translate-y-2"}
       />
-      {/* PHONE IN THE CENTER OF THE SCREEN */}
-      <motion.div
-        ref={ref}
-        style={{
-          y: inView ? "0" : "100px",
-          opacity: inView ? "1" : "0",
-          transition: "all .4s ease-in-out .8s",
-        }}
-        className={`phone relative flex flex-col p-2 m-0 rounded-2xl px-10 py-4  justify-center items-center origin-top ${
-          dark ? "dark-shadow" : "light-shadow"
-        } ${primaryTextColor}`}
-      >
-        {/* PHONE HEADER */}
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="mt-3 text-3xl font-bold tracking-widest text-center">
-            Michel Cerreto
-          </h1>
-          <div className="flex flex-row justify-between items-center w-full gap-4">
-            <div className="flex flex-col justify-center items-start">
-              <p className={`${secondaryTextColor} tracking-wider`}>Age:</p>
-              <p className="transform -translate-y-2 tracking-wider">19</p>
-            </div>
-            <div className="flex flex-col justify-center items-start">
-              <p className={`${secondaryTextColor} tracking-wider`}>
-                Education:
-              </p>
-              <p className="transform -translate-y-2 tracking-wider">Rutgers</p>
-            </div>
-            <div className="flex flex-col justify-center items-start">
-              <p className={`${secondaryTextColor} tracking-wider`}>From:</p>
-              <p className="transform -translate-y-2 tracking-wider">NJ</p>
+      <div className="relative w-11/12 lg:w-8/12 mx-auto flex flex-col lg:flex-row justify-center items-center gap-10">
+        {/* PHONE IN THE CENTER OF THE SCREEN */}
+        <motion.div
+          ref={ref}
+          style={{
+            y: inView ? "0" : "100px",
+            opacity: inView ? "1" : "0",
+            transition: "all .4s ease-in-out .8s",
+          }}
+          className={`phone relative flex flex-col p-2 m-0 rounded-2xl px-10 py-4  justify-center items-center origin-top ${
+            dark ? "dark-shadow" : "light-shadow"
+          } ${primaryTextColor}`}
+        >
+          {/* PHONE HEADER */}
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="mt-3 text-3xl font-bold tracking-widest text-center">
+              Michel Cerreto
+            </h1>
+            <div className="flex flex-row justify-between items-center w-full gap-4">
+              <div className="flex flex-col justify-center items-start">
+                <p className={`${secondaryTextColor} tracking-wider`}>Age:</p>
+                <p className="transform -translate-y-2 tracking-wider">19</p>
+              </div>
+              <div className="flex flex-col justify-center items-start">
+                <p className={`${secondaryTextColor} tracking-wider`}>
+                  Education:
+                </p>
+                <p className="transform -translate-y-2 tracking-wider">
+                  Rutgers
+                </p>
+              </div>
+              <div className="flex flex-col justify-center items-start">
+                <p className={`${secondaryTextColor} tracking-wider`}>From:</p>
+                <p className="transform -translate-y-2 tracking-wider">NJ</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* PHONE IMAGE */}
-        <Image
-          quality={100}
-          priority={true}
-          src={`${
-            dark ? "/images/darkHeadshot.png" : "/images/lightHeadShot.png"
-          } `}
-          alt="picture of me"
-          height={120}
-          width={150}
-          className="invert-1"
-        />
+          {/* PHONE IMAGE */}
+          <Image
+            quality={100}
+            priority={true}
+            src={`${
+              dark ? "/images/darkHeadshot.png" : "/images/lightHeadShot.png"
+            } `}
+            alt="picture of me"
+            height={120}
+            width={150}
+            className="invert-1"
+          />
 
-        <div className="w-full text-center">
-          <h3
-            className={`text-2xl font-medium tracking-wider ${
-              dark ? "text-blue-600" : "text-blue-400"
-            }`}
+          <div className="w-full text-center">
+            <h3
+              className={`text-2xl font-medium tracking-wider ${
+                dark ? "text-blue-600" : "text-blue-400"
+              }`}
+            >
+              Software Engineer
+            </h3>
+            <p className={`text-sm ${secondaryTextColor} tracking-wide`}>
+              retto12345678@gmail.com
+            </p>
+          </div>
+          {/* PHONE ICONS */}
+
+          {icons != null ? (
+            <div className="relative z-1 grid grid-cols-3 gap-y-2 gap-x-5 mt-2 w-full px-6">
+              {icons.map((icon, index) => (
+                <PhoneIcon
+                  key={index}
+                  className={icon.className}
+                  background={phoneIconsBackground}
+                  src={icon.src}
+                  alt={icon.alt}
+                  text={icon.text}
+                  dark={dark}
+                  clickEvent={icon.clickEvent}
+                  redirect={icon.clickEvent ? icon.redirect : ""}
+                />
+              ))}
+            </div>
+          ) : (
+            <></>
+          )}
+
+          {/* PHONE FOOTER */}
+          <p
+            className={`${secondaryTextColor} my-3 tracking-wide font-light text-xs`}
           >
-            Software Engineer
-          </h3>
-          <p className={`text-sm ${secondaryTextColor} tracking-wide`}>
-            retto12345678@gmail.com
+            @ 2024, All Rights Reserved
           </p>
-        </div>
-        {/* PHONE ICONS */}
-
-        {icons != null ? (
-          <div className="relative z-1 grid grid-cols-3 gap-y-2 gap-x-5 mt-2 w-full px-6">
-            {icons.map((icon, index) => (
-              <PhoneIcon
-                key={index}
-                className={icon.className}
-                background={phoneIconsBackground}
-                src={icon.src}
-                alt={icon.alt}
-                text={icon.text}
-                dark={dark}
-                clickEvent={icon.clickEvent}
-                redirect={icon.clickEvent ? icon.redirect : ""}
-              />
-            ))}
-          </div>
-        ) : (
-          <></>
-        )}
-
-        {/* PHONE FOOTER */}
-        <p
-          className={`${secondaryTextColor} my-3 tracking-wide font-light text-xs`}
-        >
-          @ 2024, All Rights Reserved
-        </p>
-        <hr
-          className={`m-0 p-0 h-.5 w-full rounded-lg ${
-            dark ? "bg-neutral-400" : "bg-neutral-800"
-          } `}
-        ></hr>
-        <div className="flex flex-row w-full h-full items-center justify-between my-3 px-2">
-          <div>
-            <p>Skills</p>
-          </div>
-          <div className="flex items-center justify-center">
-            <IoIosHome />
-          </div>
-          <div>
-            <p> Projects</p>
-          </div>
-        </div>
-
-        {/* PHONE CLOUDS */}
-        <motion.div
-          ref={ref}
-          style={{
-            y: inView ? "0" : "50px",
-            opacity: inView ? "1" : "0",
-            transition: "all .4s ease-in-out 1.5s",
-          }}
-          className="hidden xl:block absolute right-[-500px] top-[-50px] origin-left"
-        >
-          <Image
-            quality={100}
-            priority={true}
-            src={`${dark ? "/images/cloud1.png" : "/images/cloud1light.png"} `}
-            alt="cloud1"
-            width={500}
-            height={500}
-          ></Image>
-          <div className="absolute transform translate-x-28 -translate-y-56">
-            <Facts facts={aboutMeFacts[0]} />
+          <hr
+            className={`m-0 p-0 h-.5 w-full rounded-lg ${
+              dark ? "bg-neutral-400" : "bg-neutral-800"
+            } `}
+          ></hr>
+          <div className="flex flex-row w-full h-full items-center justify-between my-3 px-2">
+            <div>
+              <p>Skills</p>
+            </div>
+            <div className="flex items-center justify-center">
+              <IoIosHome />
+            </div>
+            <div>
+              <p> Projects</p>
+            </div>
           </div>
         </motion.div>
+
         <motion.div
-          ref={ref}
-          style={{
-            y: inView ? "0" : "50px",
-            opacity: inView ? "1" : "0",
-            transition: "all .5s ease-in-out 1.7s",
+          initial={{ x: 100, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: { duration: 0.4, ease: "easeInOut", delay: 1 },
           }}
-          className="hidden xl:block absolute left-[-500px] top-[100px] origin-right"
+          className="flex flex-col items-center justify-center"
         >
-          <Image
-            quality={100}
-            priority={true}
-            src={`${dark ? "/images/cloud2.png" : "/images/cloud2light.png"} `}
-            alt="cloud2"
-            width={500}
-            height={500}
-          ></Image>
-          <div className="absolute transform translate-x-10 -translate-y-64">
-            <Facts facts={aboutMeFacts[1]} />
-          </div>
+          <Facts facts={aboutMeFacts} />
         </motion.div>
-        <motion.div
-          ref={ref}
-          style={{
-            y: inView ? "0" : "50px",
-            opacity: inView ? "1" : "0",
-            transition: "all .4s ease-in-out 1.9s",
-          }}
-          className="hidden xl:block absolute right-[-550px] bottom-[-75px] origin-left"
-        >
-          <Image
-            quality={100}
-            priority={true}
-            src={`${dark ? "/images/cloud3.png" : "/images/cloud3light.png"} `}
-            alt="cloud2"
-            width={550}
-            height={500}
-          ></Image>
-          <div className="absolute cloud-3-transform">
-            <Facts facts={aboutMeFacts[2]} />
-          </div>
-        </motion.div>
-      </motion.div>
+      </div>
       {/* */}
     </section>
   );

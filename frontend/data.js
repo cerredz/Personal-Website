@@ -136,21 +136,8 @@ export const phoneIcons = () => [
 ];
 
 export const aboutMeFacts = [
-  [
-    "I am Michael Cerreto, and my journey into coding began at the age of 17 during my senior year of high school. ",
-    "As soon as I wrote my first program I discovered the freedom and intuition that was involved in programming.",
-    "This ability to create one-of-a-kind pieces of software is what has fueled my passion till this day",
-  ],
-  [
-    "Java and C++ were the first coding languages in which I gained significant experience. ",
-    "Within these languages, I first encountered data structures and tackled challenging computer science problems (leetcode). ",
-    "As my proficiency in Java and C++ grew, I then delved into the the world of web development, learning basic HTML, CSS, and Javascript.",
-    "My passion for web development grew, leading me to complete an online course covering React, RESTful APIs, SQL, MongoDB and more.",
-  ],
-  [
-    "After about a year of writing my first line of code, I started to create full-stack projects, translating my knowledge into real-world applications.",
-    "As time went on, I started to learn many software engineering tools, techniques, and frameworks (Next.js, Express.js, Flask, Firebase, etc). ",
-    "Each project became an opportunity to apply new tools, refine techniques, and deepen my understanding of software engineering principles.",
-    "Today, now knowing over 15+ languages / frameworks, I continually try to become the best software engineer I can be everyday. ",
-  ],
+  "I am Michael Cerreto, and my journey into coding began at the age of 17 during my senior year of high school. As soon as I wrote my first program I discovered the freedom and intuition that was involved in programming. This ability to create one-of-a-kind pieces of software is what has fueled my passion till this day.",
+  "Java and C++ were the first coding languages in which I gained significant experience. Within these languages, I first encountered data structures and tackled challenging computer science problems (leetcode). As my proficiency in Java and C++ grew, I then delved into the the world of web development, learning basic HTML, CSS, and Javascript. My passion for web development grew, leading me to complete an online course covering React, RESTful APIs, SQL, MongoDB and more.",
+  "After Completing the online Web Developement course, I started to create full-stack projects, translating my knowledge into real-world applications. As time went on, I started to learn many software engineering tools, techniques, and frameworks (Next.js, Express.js, Flask, Firebase, etc).  Each project became an opportunity to apply new tools, refine techniques, and deepen my understanding of software engineering principles. ",
+  "Today, now knowing over 15+ languages / frameworks, I continually try to become the best software engineer I can be everyday. I regularly work on improving my algorithmic thinking abilities, completing unique full-stack projects, exposing my self to as many different languages / frameworks / practices as I can, and also watch software engineering related videos to learn off of what other people do. ",
 ];

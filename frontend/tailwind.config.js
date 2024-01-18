@@ -30,6 +30,7 @@ module.exports = {
       neutral: colors.neutral,
       sky: colors.sky,
       cyan: colors.cyan,
+      indigo: colors.indigo,
       primary: {
         light: `#F9FAFB`,
         dark: `#1E1E21`,
