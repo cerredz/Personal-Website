@@ -42,6 +42,12 @@ const Facts = ({ facts }) => {
           facts.map((fact, index) => (
             <motion.p
               key={index}
+              initial={{ x: 50, opacity: 0 }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: { duration: 0.4, ease: "easeInOut" },
+              }}
               className={`fact-text text-md tracking-wider font-medium ml-3 ${
                 dark ? "text-neutral-600" : "text-neutral-800"
               } ${index === factNumber ? "" : "hidden"}`}

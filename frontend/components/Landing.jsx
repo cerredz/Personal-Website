@@ -13,7 +13,13 @@ const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
 
   return (
-    <div className="h-screen items-center justify-between landing">
+    <div className="relative h-screen items-center justify-between landing">
+      <Image
+        src={"/images/homebg.png"}
+        alt=""
+        layout="fill"
+        className="absolute top-0 left-0 h-full width-full z-10"
+      />
       <div className="lg:left lg:gap-10 h-full w-10/12 mt-10 lg:mt-0 items-center flex-col m-auto justify-center flex md:flex-row md:justify-center md:w-4/5 xl:w-3/4">
         {/* LEFT */}
         <div className="mt-16 md:mt-0 flex flex-col gap-2 justify-center ">

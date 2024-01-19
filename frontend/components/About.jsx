@@ -39,7 +39,7 @@ const About = () => {
 
   return (
     <section id="about" className="min-h-screen  ">
-      <div className="flex items-center justify-center my-16">
+      <div className="flex items-center justify-center mt-48 mb-16">
         <Title
           text={"About"}
           backgroundText={"<About Me />"}
@@ -166,27 +166,48 @@ const About = () => {
           }}
           className="flex flex-col items-center justify-center"
         >
-          <div className="absolute top-[-100px] left-[15%]">
+          <motion.div
+            style={{
+              x: inView ? "0" : "-50px",
+              opacity: inView ? 1 : 0,
+              transition: "all .4s ease-in-out 1.5s",
+            }}
+            className="absolute top-[-100px] left-[15%]"
+          >
             <IoTerminal
               className={`rotate-12 text-5xl ${
                 dark ? "bg-dark-text" : "text-neutral-200"
               }`}
             />
-          </div>
-          <div className="absolute top-[-125px] left-[45%]">
+          </motion.div>
+          <motion.div
+            style={{
+              x: inView ? "0" : "-50px",
+              opacity: inView ? 1 : 0,
+              transition: "all .4s ease-in-out 1.7s",
+            }}
+            className="absolute top-[-125px] left-[45%]"
+          >
             <FaGit
               className={`-rotate-12 text-5xl ${
                 dark ? "bg-dark-text" : "text-neutral-200"
               }`}
             />
-          </div>
-          <div className="absolute top-[-75px] left-[75%]">
+          </motion.div>
+          <motion.div
+            style={{
+              x: inView ? "0" : "-50px",
+              opacity: inView ? 1 : 0,
+              transition: "all .4s ease-in-out 1.9s",
+            }}
+            className="absolute top-[-75px] left-[75%]"
+          >
             <SiVisualstudiocode
               className={`-rotate-6 text-5xl ${
                 dark ? "bg-dark-text" : "text-neutral-200"
               }`}
             />
-          </div>
+          </motion.div>
 
           <Facts facts={aboutMeFacts} />
         </motion.div>
