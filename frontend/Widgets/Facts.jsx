@@ -7,11 +7,16 @@ import { VscDebugStart } from "react-icons/vsc";
 import { RiComputerLine } from "react-icons/ri";
 import { TbApi } from "react-icons/tb";
 import { MdAlarmOn } from "react-icons/md";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+import Image from "next/image";
 
 /* ABOUT ME FACTS */
 const Facts = ({ facts }) => {
   const dark = useSelector((state) => state.auth.dark);
   const [factNumber, setFactNumber] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref);
 
   return (
     <div className="flex flex-col justify-center items-center gap-10">
@@ -60,11 +65,10 @@ const Facts = ({ facts }) => {
       {/* Circles on the bottom */}
       <div className="relative w-3/4 m-auto flex flex-row justify-between items-center gap-4">
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.4, ease: "easeInOut", delay: 1.5 },
+          style={{
+            y: inView ? "0" : "50px",
+            opacity: inView ? 1 : 0,
+            transition: "all .4s ease-in-out 1.5s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -97,11 +101,10 @@ const Facts = ({ facts }) => {
         </motion.div>
 
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.4, ease: "easeInOut", delay: 1.7 },
+          style={{
+            y: inView ? "0" : "50px",
+            opacity: inView ? 1 : 0,
+            transition: "all .4s ease-in-out 1.7s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -133,11 +136,10 @@ const Facts = ({ facts }) => {
           </p>
         </motion.div>
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.4, ease: "easeInOut", delay: 1.9 },
+          style={{
+            y: inView ? "0" : "50px",
+            opacity: inView ? 1 : 0,
+            transition: "all .4s ease-in-out 1.9s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -169,11 +171,10 @@ const Facts = ({ facts }) => {
           </p>
         </motion.div>
         <motion.div
-          initial={{ y: 50, opacity: 0 }}
-          animate={{
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.4, ease: "easeInOut", delay: 2.1 },
+          style={{
+            y: inView ? "0" : "50px",
+            opacity: inView ? 1 : 0,
+            transition: "all .4s ease-in-out 2.1s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -204,6 +205,21 @@ const Facts = ({ facts }) => {
             Today
           </p>
         </motion.div>
+        <div className="absolute bottom-[-100px] left-0 w-full flex justify-center items-center">
+          <motion.h1
+            ref={ref}
+            style={{
+              y: inView ? "0" : "50px",
+              opacity: inView ? "1" : "0",
+              transition: "all .4s ease-in-out 2.2s",
+            }}
+            className={`text-6xl hidden xl:block font-black tracking-widest whitespace-nowrap ${
+              dark ? "bg-dark-text" : "text-neutral-200"
+            }`}
+          >
+            My Journey
+          </motion.h1>
+        </div>
       </div>
     </div>
   );

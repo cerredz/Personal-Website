@@ -9,6 +9,9 @@ import { IoIosHome } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
+import { IoTerminal } from "react-icons/io5";
+import { FaGit } from "react-icons/fa";
+import { SiVisualstudiocode } from "react-icons/si";
 
 import { aboutMeFacts } from "@/data";
 import Facts from "@/Widgets/Facts";
@@ -35,19 +38,18 @@ const About = () => {
   }, [dark]);
 
   return (
-    <section
-      id="about"
-      className="min-h-screen flex flex-col items-center justify-center gap-12"
-    >
-      <Title
-        text={"About"}
-        backgroundText={"<About Me />"}
-        dark={dark}
-        color={`${dark ? "bg-blue-600" : "bg-blue-400"}`}
-        translateX="-translate-x-64"
-        translateY={"-translate-y-2"}
-      />
-      <div className="relative w-11/12 lg:w-8/12 mx-auto flex flex-col lg:flex-row justify-center items-center gap-10">
+    <section id="about" className="min-h-screen  ">
+      <div className="flex items-center justify-center my-16">
+        <Title
+          text={"About"}
+          backgroundText={"<About Me />"}
+          dark={dark}
+          color={`${dark ? "bg-blue-600" : "bg-blue-400"}`}
+          translateX="-translate-x-64"
+          translateY={"-translate-y-2"}
+        />
+      </div>
+      <div className="relative w-11/12 xl:w-8/12 mx-auto flex flex-col xl:flex-row justify-center items-center gap-10">
         {/* PHONE IN THE CENTER OF THE SCREEN */}
         <motion.div
           ref={ref}
@@ -157,14 +159,35 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{
-            x: 0,
-            opacity: 1,
-            transition: { duration: 0.4, ease: "easeInOut", delay: 1 },
+          style={{
+            x: inView ? "0" : "50px",
+            opacity: inView ? 1 : 0,
+            transition: "all .4s ease-in-out .6s",
           }}
           className="flex flex-col items-center justify-center"
         >
+          <div className="absolute top-[-100px] left-[15%]">
+            <IoTerminal
+              className={`rotate-12 text-5xl ${
+                dark ? "bg-dark-text" : "text-neutral-200"
+              }`}
+            />
+          </div>
+          <div className="absolute top-[-125px] left-[45%]">
+            <FaGit
+              className={`-rotate-12 text-5xl ${
+                dark ? "bg-dark-text" : "text-neutral-200"
+              }`}
+            />
+          </div>
+          <div className="absolute top-[-75px] left-[75%]">
+            <SiVisualstudiocode
+              className={`-rotate-6 text-5xl ${
+                dark ? "bg-dark-text" : "text-neutral-200"
+              }`}
+            />
+          </div>
+
           <Facts facts={aboutMeFacts} />
         </motion.div>
       </div>

@@ -167,3 +167,7 @@
 .fact-text {
   max-width: 550px;
 }
+
+.bg-dark-text {
+  color: rgba(255, 255, 255, 0.05);
+}

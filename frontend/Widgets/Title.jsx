@@ -35,7 +35,7 @@ const Title = ({
         {text}
       </motion.h3>
       <div
-        className={`absolute whitespace-nowrap hidden md:block text-8xl transform ${translateY} ${translateX}`}
+        className={`absolute whitespace-nowrap hidden lg:block text-8xl transform ${translateY} ${translateX}`}
       >
         <motion.h1
           ref={ref}
