@@ -74,7 +74,7 @@ const Facts = ({ facts }) => {
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
-            transition: "all .4s ease-in-out 1.5s",
+            transition: "all .4s ease-in-out .7s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -110,7 +110,7 @@ const Facts = ({ facts }) => {
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
-            transition: "all .4s ease-in-out 1.7s",
+            transition: "all .4s ease-in-out .9s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -145,7 +145,7 @@ const Facts = ({ facts }) => {
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
-            transition: "all .4s ease-in-out 1.9s",
+            transition: "all .4s ease-in-out 1.1s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -180,7 +180,7 @@ const Facts = ({ facts }) => {
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
-            transition: "all .4s ease-in-out 2.1s",
+            transition: "all .4s ease-in-out 1.3s",
           }}
           className="flex flex-col justify-center items-center gap-2"
         >
@@ -217,7 +217,7 @@ const Facts = ({ facts }) => {
             style={{
               y: inView ? "0" : "50px",
               opacity: inView ? "1" : "0",
-              transition: "all .4s ease-in-out 2.2s",
+              transition: "all .4s ease-in-out 1.4s",
             }}
             className={`text-6xl hidden xl:block font-black tracking-widest whitespace-nowrap ${
               dark ? "bg-dark-text" : "text-neutral-200"

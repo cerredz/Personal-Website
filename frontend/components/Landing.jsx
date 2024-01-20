@@ -7,13 +7,16 @@ import "../styles/landing.css";
 import { GiStarSwirl } from "react-icons/gi";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
-import Bubbles from "@/Widgets/Bubbles";
+import { SlArrowDown } from "react-icons/sl";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
 
   return (
-    <div className="relative h-screen items-center justify-between landing">
+    <section
+      id="Home"
+      className="relative h-screen items-center justify-between landing"
+    >
       <Image
         src={"/images/homebg.png"}
         alt=""
@@ -50,7 +53,7 @@ const Landing = () => {
           </motion.div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -136,28 +139,45 @@ const LeftContainer = ({ dark }) => {
       </motion.p>
 
       {/* CONTACT ME BUTTON */}
-      <motion.button
-        initial={{ x: -50, opacity: 0 }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          transition: { duration: 0.4, ease: "easeInOut", delay: 0.8 },
-        }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.8 }}
-        className={`font-normal relative flex flex-row items-center justify-center w-min gap-2 tracking-widest whitespace-nowrap transition-opacity duration-500 mt-2 text-lg rounded-md cursor-pointer contact-btn bg-gradient-to-r 
+      <div className="w-full flex flex-row justify-start items-center gap-8">
+        <motion.button
+          initial={{ x: -50, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: { duration: 0.4, ease: "easeInOut", delay: 0.8 },
+          }}
+          whileHover={{ y: -5 }}
+          whileTap={{ scale: 0.8 }}
+          className={`z-50 font-normal contact-btn relative flex flex-row items-center justify-center w-min gap-2 tracking-widest whitespace-nowrap transition-opacity duration-500 mt-5 text-lg rounded-3xl py-2 px-6 cursor-pointer bg-gradient-to-r 
          ${
            dark
-             ? "text-black from-[#1d95e8] via-[#6b62e8] to-[#a030e3]"
-             : "text-neutral-800 from-blue-500 via-purple-400 to-pink-400"
+             ? "text-neutral-300 from-sky-500  to-blue-600"
+             : "text-neutral-800 from-sky-400  to-blue-500"
          }`}
-      >
-        <BsStars className="z-50" />
-        <p className="z-50"> Contact me</p>
-        <div className="absolute top-[-5px] bottom-[-5px] right-[10px] left-[10px] z-20">
-          <Bubbles amount={3000} colors={["#1d95e8"]} />
-        </div>
-      </motion.button>
+        >
+          <BsStars className="" />
+          <p className=""> Contact me</p>
+        </motion.button>
+
+        <motion.button
+          initial={{ x: -50, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: { duration: 0.4, ease: "easeInOut", delay: 0.8 },
+          }}
+          className={`z-50 resume-btn font-normal relative flex flex-row items-center justify-center w-min gap-3 tracking-widest whitespace-nowrap transition-opacity duration-500 mt-5 text-lg rounded-3xl px-6 cursor-pointer border-2 border-solid
+         ${
+           dark
+             ? "text-neutral-300 border-sky-500"
+             : "text-neutral-800 border-sky-400"
+         }`}
+        >
+          <p>Resume</p>
+          <SlArrowDown className="font-bold arrow p-0 m-0 flex items-center justify-center text-sm" />
+        </motion.button>
+      </div>
     </>
   );
 };

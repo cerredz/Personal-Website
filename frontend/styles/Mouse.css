@@ -1,0 +1,61 @@
+.dark-mouse {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.05)
+  );
+  transition: 0.4s ease-in-out;
+}
+
+.dark-mouse:hover {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.075)
+  );
+  transition: 0.4s ease-in-out;
+}
+
+.light-mouse {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: 0.4s ease-in-out;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.05));
+}
+
+.light-mouse:hover {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.075));
+  transition: 0.4s ease-in-out;
+}
+
+.mouse-up-arrow {
+  transform: translateY(-100%) rotate(-90deg);
+}
+.mouse-down-arrow {
+  transform: translateY(100%) rotate(90deg);
+}
+
+.text-up {
+  transform: translateY(-250%) translateX(-50%);
+  transition: 0.4s ease-in-out;
+}
+
+.text-up:hover {
+  transform: translateY(-250%) translateX(-50%) scale(1.1);
+  letter-spacing: 3px;
+  color: rgb(15, 163, 232);
+  transition: 0.4s ease-in-out;
+}
+
+.text-down {
+  transform: translateX(-50%) translateY(250%);
+  transition: 0.4s ease-in-out;
+}
+.text-down:hover {
+  transform: translateX(-50%) translateY(250%) scale(1.1);
+  letter-spacing: 3px;
+  color: rgb(9, 42, 226);
+  transition: 0.4s ease-in-out;
+}

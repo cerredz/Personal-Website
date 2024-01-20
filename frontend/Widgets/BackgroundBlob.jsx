@@ -9,7 +9,7 @@ const BackgroundBlob = (props) => {
   const frameLoop = animate ? "always" : "demand"; // saves performance by stopping the animate of backgroundBlobs we cannot see
 
   return (
-    <Canvas frameloop={frameLoop}>
+    <Canvas frameloop="demand">
       <OrbitControls enableZoom={false} />
       <ambientLight intensity={1} />
       <directionalLight position={[3, 2, 1]} shadow={true} />

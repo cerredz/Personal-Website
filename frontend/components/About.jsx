@@ -12,6 +12,7 @@ import { useInView } from "framer-motion";
 import { IoTerminal } from "react-icons/io5";
 import { FaGit } from "react-icons/fa";
 import { SiVisualstudiocode } from "react-icons/si";
+import Mouse from "@/Widgets/Mouse";
 
 import { aboutMeFacts } from "@/data";
 import Facts from "@/Widgets/Facts";
@@ -38,8 +39,8 @@ const About = () => {
   }, [dark]);
 
   return (
-    <section id="about" className="min-h-screen  ">
-      <div className="flex items-center justify-center mt-48 mb-16">
+    <section id="about" className="min-h-screen relative ">
+      <div className="flex items-center justify-center mt-56 mb-28">
         <Title
           text={"About"}
           backgroundText={"<About Me />"}
@@ -172,7 +173,7 @@ const About = () => {
               opacity: inView ? 1 : 0,
               transition: "all .4s ease-in-out 1.5s",
             }}
-            className="absolute top-[-100px] left-[15%]"
+            className="absolute top-[-100px] left-[15%] hidden xl:block"
           >
             <IoTerminal
               className={`rotate-12 text-5xl ${
@@ -186,7 +187,7 @@ const About = () => {
               opacity: inView ? 1 : 0,
               transition: "all .4s ease-in-out 1.7s",
             }}
-            className="absolute top-[-125px] left-[45%]"
+            className="absolute top-[-125px] left-[45%] hidden xl:block"
           >
             <FaGit
               className={`-rotate-12 text-5xl ${
@@ -200,10 +201,10 @@ const About = () => {
               opacity: inView ? 1 : 0,
               transition: "all .4s ease-in-out 1.9s",
             }}
-            className="absolute top-[-75px] left-[75%]"
+            className="absolute top-[-75px] left-[75%] hidden xl:block"
           >
             <SiVisualstudiocode
-              className={`-rotate-6 text-5xl ${
+              className={`-rotate-6 text-5xl  ${
                 dark ? "bg-dark-text" : "text-neutral-200"
               }`}
             />
@@ -212,7 +213,16 @@ const About = () => {
           <Facts facts={aboutMeFacts} />
         </motion.div>
       </div>
-      {/* */}
+      <motion.div
+        style={{
+          x: inView ? "0" : "-50px",
+          opacity: inView ? 1 : 0,
+          transition: "all .4s ease-in-out 1s",
+        }}
+        className="absolute hidden xl:block left-[5%] top-[50%] transform -translate-y-1/2"
+      >
+        <Mouse above={"Home"} below={"Projects"} />
+      </motion.div>
     </section>
   );
 };
