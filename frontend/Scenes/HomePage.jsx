@@ -11,6 +11,7 @@ import { setVolume } from "@/app/Redux/store";
 import "../styles/globals.css";
 import Quote from "@/Widgets/Quote";
 import About from "@/components/About";
+import Skills from "@/components/Skills";
 
 const HomePage = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -69,6 +70,15 @@ const HomePage = () => {
             translateXClose="translate-x-80"
           />
           <About />
+          <Quote
+            quote="The art of programming is the art of organizing complexity, of mastering multitude, and avoiding its bastard chaos as effectively as possible."
+            name="Edsger Dijkstra"
+            translateYOpen="-translate-y-10"
+            translateXOpen="-translate-x-80"
+            translateYClose="-translate-y-10"
+            translateXClose="translate-x-80"
+          />
+          <Skills />
         </Suspense>
       </section>
     </main>
