@@ -29,18 +29,7 @@ const Landing = () => {
           <LeftContainer dark={dark} />
         </div>
         {/* Right */}
-        <motion.div
-          animate={{
-            y: ["-10px", "10px", "-10px"],
-            opacity: [0.8, 1, 0.8], // Fade in animation
-          }}
-          transition={{
-            duration: 10,
-            ease: "easeInOut",
-            repeat: Infinity,
-          }}
-          className="lg:right lg:flex-grow flex items-center justify-center md:relative h-full w-full md:h-4/5 max-w-lg lg:max-w-2xl"
-        >
+        <motion.div className="lg:right lg:flex-grow flex items-center justify-center md:relative h-full w-full md:h-4/5 max-w-lg lg:max-w-2xl">
           <motion.div
             initial={{ opacity: 0, x: 100 }}
             animate={{
@@ -48,8 +37,14 @@ const Landing = () => {
               opacity: 1,
               transition: { delay: 0.7, duration: 0.4, ease: "easeInOut" },
             }}
+            className="relative flex justify-center items-center w-full h-full"
           >
-            <Image src={"/images/bg5.png"} height={1000} width={1000} />
+            <Image
+              src={"/images/bg5.png"}
+              height={1000}
+              width={1000}
+              className="absolute z-10"
+            />
           </motion.div>
         </motion.div>
       </div>

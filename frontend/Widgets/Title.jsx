@@ -9,23 +9,26 @@ const Title = ({
   translateX,
   translateY,
 }) => {
-  const [ref, inView] = useInView();
+  const [spanRef, spanInView] = useInView();
+  const [h3Ref, h3InView] = useInView();
+  const [h1Ref, h1InView] = useInView();
+
   return (
     <div className="flex flex-row justify-between items-center relative gap-2 ">
       <motion.span
-        ref={ref}
+        ref={spanRef}
         style={{
-          transform: inView ? "none" : "translateY(50px)",
-          opacity: inView ? 1 : 0,
+          transform: spanInView ? "none" : "translateY(50px)",
+          opacity: spanInView ? 1 : 0,
           transition: "all .4s ease-in-out .4s",
         }}
         className={`h-1 w-12 rounded-sm ${color} relative z-10`}
       ></motion.span>
       <motion.h3
-        ref={ref}
+        ref={h3Ref}
         style={{
-          transform: inView ? "none" : "translateY(50px)",
-          opacity: inView ? 1 : 0,
+          transform: h3InView ? "none" : "translateY(50px)",
+          opacity: h3InView ? 1 : 0,
           transition: "all .4s ease-in-out .4s",
         }}
         className={`text-3xl tracking-widest font-light tracking-wide relative z-10 ${
@@ -38,10 +41,10 @@ const Title = ({
         className={`absolute whitespace-nowrap hidden lg:block text-8xl transform ${translateY} ${translateX}`}
       >
         <motion.h1
-          ref={ref}
+          ref={h1Ref}
           style={{
-            transform: inView ? "none" : "translateY(50px)",
-            opacity: inView ? 1 : 0,
+            transform: h1InView ? "none" : "translateY(50px)",
+            opacity: h1InView ? 1 : 0,
             transition: "all .4s ease-in-out .2s",
           }}
           className={`relative z-0 font-normal tracking-widest text-opacity-5 ${

@@ -141,3 +141,139 @@ export const aboutMeFacts = [
   "After Completing the online Web Developement course, I started to create full-stack projects, translating my knowledge into real-world applications. As time went on, I started to learn many software engineering tools, techniques, and frameworks (Next.js, Express.js, Flask, Firebase, etc).  Each project became an opportunity to apply new tools, refine techniques, and deepen my understanding of software engineering principles. ",
   "Today, now knowing over 15+ languages / frameworks, I continually try to become the best software engineer I can be everyday. I regularly work on improving my algorithmic thinking abilities, completing unique full-stack projects, exposing my self to as many different languages / frameworks / practices as I can, and also watch software engineering related videos to learn off of what other people do. ",
 ];
+
+export const skillsIconData = [
+  {
+    name: "C",
+    src: "/images/skills/c.png",
+    alt: "c icon",
+  },
+  {
+    name: "C++",
+    src: "/images/skills/c++.png",
+    alt: "c++ icon",
+  },
+  {
+    name: "Java",
+    src: "/images/skills/java.png",
+    alt: "java icon",
+  },
+  {
+    name: "Python",
+    src: "/images/skills/python.png",
+    alt: "python icon",
+  },
+  {
+    name: "React.js",
+    src: "/images/skills/react.png",
+    alt: "react.js icon",
+  },
+  {
+    name: "Next.js",
+    src: "/images/skills/nextjs.png",
+    alt: "next.js icon",
+  },
+  {
+    name: "Redux",
+    src: "/images/skills/redux.png",
+    alt: "redux icon",
+  },
+  {
+    name: "HTML",
+    src: "/images/skills/html.png",
+    alt: "html icon",
+  },
+  {
+    name: "CSS",
+    src: "/images/skills/css.png",
+    alt: "css icon",
+  },
+  {
+    name: "SASS",
+    src: "/images/skills/sass.png",
+    alt: "sass icon",
+  },
+  {
+    name: "Tailwind CSS",
+    src: "/images/skills/tailwindcss.png",
+    alt: "tailwind css icon",
+  },
+  {
+    name: "Javascript",
+    src: "/images/skills/javascript.png",
+    alt: "css icon",
+  },
+  {
+    name: "Node.js",
+    src: "/images/skills/nodejs.png",
+    alt: "node.js icon",
+  },
+  {
+    name: "Express.js",
+    src: "/images/skills/expressjs.png",
+    alt: "express.js icon",
+  },
+  {
+    name: "MongoDB",
+    src: "/images/skills/mongodb.png",
+    alt: "mongodb icon",
+  },
+  {
+    name: "SQL",
+    src: "/images/skills/sql.png",
+    alt: "sql icon",
+  },
+  {
+    name: "Firebase",
+    src: "/images/skills/firebase.png",
+    alt: "firebase icon",
+  },
+  {
+    name: "Flask",
+    src: "/images/skills/flask.png",
+    alt: "flask icon",
+  },
+  {
+    name: "Framer Motion",
+    src: "/images/skills/framermotion.png",
+    alt: "framer motion icon",
+  },
+  {
+    name: "Figma",
+    src: "/images/skills/figma.png",
+    alt: "figma icon",
+  },
+  {
+    name: "Axios",
+    src: "/images/skills/axios.png",
+    alt: "axios icon",
+  },
+];
+
+export const compSciSkillsData = [
+  {
+    title: "Problem Solver",
+    description: "",
+    icon: "",
+  },
+  {
+    title: "Software Development",
+    description: "",
+    icon: "",
+  },
+  {
+    title: "Algorithms",
+    description: "",
+    icon: "",
+  },
+  {
+    title: "Web Development",
+    description: "",
+    icon: "",
+  },
+  {
+    title: "Collaboration / Teamwork",
+    description: "",
+    icon: "",
+  },
+];
