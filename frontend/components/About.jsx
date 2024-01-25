@@ -160,6 +160,7 @@ const About = () => {
         </motion.div>
 
         <motion.div
+          ref={ref}
           style={{
             x: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
@@ -168,6 +169,7 @@ const About = () => {
           className="flex flex-col items-center justify-center"
         >
           <motion.div
+            ref={ref}
             style={{
               x: inView ? "0" : "-50px",
               opacity: inView ? 1 : 0,
@@ -182,6 +184,7 @@ const About = () => {
             />
           </motion.div>
           <motion.div
+            ref={ref}
             style={{
               x: inView ? "0" : "-50px",
               opacity: inView ? 1 : 0,
@@ -196,6 +199,7 @@ const About = () => {
             />
           </motion.div>
           <motion.div
+            ref={ref}
             style={{
               x: inView ? "0" : "-50px",
               opacity: inView ? 1 : 0,

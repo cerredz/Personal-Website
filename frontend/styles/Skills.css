@@ -1,0 +1,94 @@
+.dark-icon-bg {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0.5em rgba(255, 255, 255, 0.075),
+    5px 5px 1em rgba(0, 0, 0, 0.4);
+}
+
+.light-icon-bg {
+  background: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.1), 5px 5px 1em rgba(0, 0, 0, 0.1);
+}
+
+.light-other-skills {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.025),
+    rgba(0, 0, 0, 0.05)
+  );
+  transition: 0.4s ease-in-out;
+}
+
+.other-skills-container::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  filter: blur(3rem);
+}
+
+.brain::before {
+  background: #ec4899;
+}
+
+.database::before {
+  background: #a855f7;
+}
+
+.algorithmns::before {
+  background: #1d4ed8;
+}
+
+.web::before {
+  background: #0ea5e9;
+}
+
+.teamwork::before {
+  background: #67e8f9;
+}
+
+.other-skills-container::after {
+  position: absolute;
+  content: "";
+  left: 10%;
+  top: 10%;
+  bottom: 10%;
+  width: 0;
+  filter: blur(3rem);
+  border-radius: inherit;
+  transition: 0.2s ease-in-out;
+}
+
+.other-skills-container:hover::after {
+  width: 90%;
+}
+
+.dark-other-skills {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.025),
+    rgba(255, 255, 255, 0.0125),
+    rgba(255, 255, 255, 0.025)
+  );
+}
+
+.light-other-skills {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.025),
+    rgba(0, 0, 0, 0.0125),
+    rgba(0, 0, 0, 0.025)
+  );
+}
+
+.dark-other-skills::after {
+  background: rgba(255, 255, 255, 0.2);
+  transition: 0.4s ease-in-out;
+}
+
+.light-other-skills::after {
+  background: rgba(0, 0, 0, 0.2);
+  transition: 0.4s ease-in-out;
+}

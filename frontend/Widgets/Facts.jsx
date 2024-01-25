@@ -71,6 +71,7 @@ const Facts = ({ facts }) => {
       {/* Circles on the bottom */}
       <div className="relative w-3/4 m-auto flex flex-row justify-between items-center gap-4">
         <motion.div
+          ref={ref}
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
@@ -98,7 +99,7 @@ const Facts = ({ facts }) => {
           </motion.div>
 
           <p
-            className={`font-medium tracking-wider text-sm ${
+            className={`font-medium text-center tracking-wider text-sm ${
               dark ? "text-neutral-600" : " text-neutral-800"
             }`}
           >
@@ -107,6 +108,7 @@ const Facts = ({ facts }) => {
         </motion.div>
 
         <motion.div
+          ref={ref}
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
@@ -134,7 +136,7 @@ const Facts = ({ facts }) => {
           </motion.div>
 
           <p
-            className={`font-medium tracking-wider text-sm ${
+            className={`font-medium text-center tracking-wider text-sm ${
               dark ? "text-neutral-600" : " text-neutral-800"
             }`}
           >
@@ -142,6 +144,7 @@ const Facts = ({ facts }) => {
           </p>
         </motion.div>
         <motion.div
+          ref={ref}
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
@@ -169,7 +172,7 @@ const Facts = ({ facts }) => {
           </motion.div>
 
           <p
-            className={`font-medium tracking-wider text-sm ${
+            className={`font-medium text-center tracking-wider text-sm ${
               dark ? "text-neutral-600" : " text-neutral-800"
             }`}
           >
@@ -177,6 +180,7 @@ const Facts = ({ facts }) => {
           </p>
         </motion.div>
         <motion.div
+          ref={ref}
           style={{
             y: inView ? "0" : "50px",
             opacity: inView ? 1 : 0,
@@ -204,7 +208,7 @@ const Facts = ({ facts }) => {
           </motion.div>
 
           <p
-            className={`font-medium tracking-wider text-sm ${
+            className={`font-medium text-center tracking-wider text-sm ${
               dark ? "text-neutral-600" : " text-neutral-800"
             }`}
           >
@@ -219,7 +223,7 @@ const Facts = ({ facts }) => {
               opacity: inView ? "1" : "0",
               transition: "all .4s ease-in-out 1.4s",
             }}
-            className={`text-6xl hidden xl:block font-black tracking-widest whitespace-nowrap ${
+            className={`text-6xl text-center font-black tracking-widest whitespace-nowrap ${
               dark ? "bg-dark-text" : "text-neutral-200"
             }`}
           >

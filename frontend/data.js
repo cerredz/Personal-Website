@@ -1,3 +1,10 @@
+import { BiSolidBrain } from "react-icons/bi";
+import { FaLaptopCode } from "react-icons/fa";
+import { AiFillCode } from "react-icons/ai";
+import { IoPeople } from "react-icons/io5";
+import { FaDatabase } from "react-icons/fa";
+import "./styles/Skills.css";
+
 export const NavbarLinks = () => [
   {
     title: "Home",
@@ -254,26 +261,31 @@ export const compSciSkillsData = [
   {
     title: "Problem Solver",
     description: "",
-    icon: "",
+    icon: <BiSolidBrain className="fill-pink-500 text-xl" />,
+    className: "brain",
   },
   {
     title: "Software Development",
     description: "",
-    icon: "",
+    icon: <FaDatabase className="fill-purple-400 text-xl" />,
+    className: "database",
   },
   {
     title: "Algorithms",
     description: "",
-    icon: "",
+    icon: <AiFillCode className="fill-blue-700 text-xl" />,
+    className: "algorithmns",
   },
   {
     title: "Web Development",
     description: "",
-    icon: "",
+    icon: <FaLaptopCode className="fill-sky-500 text-xl" />,
+    className: "web",
   },
   {
     title: "Collaboration / Teamwork",
     description: "",
-    icon: "",
+    icon: <IoPeople className="fill-cyan-300 text-xl" />,
+    className: "teamwork",
   },
 ];
