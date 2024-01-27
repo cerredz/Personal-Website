@@ -15,15 +15,33 @@ import { AiFillCode } from "react-icons/ai";
 import { IoPeople } from "react-icons/io5";
 import { FaDatabase } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa6";
+import { current } from "tailwindcss/colors";
+import { IoMdClose } from "react-icons/io";
 
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [skills, setSkills] = useState(null);
   const [computerScienceSkills, setComputerScienceSkills] = useState(null);
+  const [currentSkillsIndex, setCurrentSkillIndex] = useState(null);
+  const [otherSkillsDivHeight, setOtherSkillsDivHeight] = useState(0);
+
+  // load skills data
   useEffect(() => {
     setSkills(skillsIconData);
     setComputerScienceSkills(compSciSkillsData);
-  }, {});
+  }, []);
+
+  useEffect(() => {
+    console.log(otherSkillsDivHeight);
+  }, [otherSkillsDivHeight]);
+
+  useEffect(() => {
+    const divElement = document.getElementById("other-skills-container"); // Replace with your actual div ID
+    if (divElement) {
+      setOtherSkillsDivHeight(divElement.offsetHeight);
+    }
+  }, [computerScienceSkills]);
+
   return (
     <section
       id="skills"
@@ -43,10 +61,16 @@ const Skills = () => {
       <div className="w-9/12 mx-auto flex justify-center items-center flex-col lg:flex-row gap-6">
         {/* LEFT */}
         <div className="lg:basis-1/2 flex flex-col">
+          <h1 className="text-6xl"> hello world</h1>
+          <h1 className="text-6xl"> hello world</h1>
+          <h1 className="text-6xl"> hello world</h1>
+          <h1 className="text-6xl"> hello world</h1>
+          <h1 className="text-6xl"> hello world</h1>
           <div className="flex flex-row gap-2 jusify-center items-center w-full flex-wrap">
             {skills !== null ? (
               skills.map((skill, index) => (
                 <SkillIcon
+                  key={index}
                   index={index}
                   name={skill.name}
                   src={skill.src}
@@ -61,16 +85,27 @@ const Skills = () => {
         </div>
 
         {/* RIGHT */}
-        <div className="lg:basis-1/2 relative flex flex-wrap flex-col justify-between items-center h-full">
+        <div
+          id="other-skills-container "
+          className={`lg:basis-1/2  relative flex flex-wrap flex-col justify-between items-center flex-grow `}
+        >
           {computerScienceSkills !== null ? (
             computerScienceSkills.map((skill, index) => (
-              <Skill
-                key={index}
-                title={skill.title}
-                icon={skill.icon}
-                dark={dark}
-                className={skill.className}
-              />
+              <AnimatePresence key={index}>
+                {(currentSkillsIndex === null ||
+                  currentSkillsIndex == index) && (
+                  <Skill
+                    title={skill.title}
+                    icon={skill.icon}
+                    dark={dark}
+                    className={skill.className}
+                    index={index}
+                    description={skill.description}
+                    currentIndex={currentSkillsIndex}
+                    changeCurrentIndex={(index) => setCurrentSkillIndex(index)}
+                  />
+                )}
+              </AnimatePresence>
             ))
           ) : (
             <Loader />
@@ -142,22 +177,106 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
   );
 };
 
-const Skill = ({ title, description, icon, dark, className }) => {
+/* SINGLUAR OTHER-SKILLS CONTAINER, SEPERATED FOR CODE READABILTIY */
+const Skill = ({
+  title,
+  description,
+  icon,
+  dark,
+  className,
+  index,
+  currentIndex,
+  changeCurrentIndex,
+}) => {
   return (
-    <div
-      className={`relative other-skills-container overflow-hidden rounded-md flex flex-row cursor-pointer justify-between items-center py-2 px-4 rounded-md w-full  m-3 ${
-        dark
-          ? "dark-other-skills text-neutral-600 hover:text-neutral-400"
-          : "light-other-skills text-neutral-700 hover:text-neutral-800"
-      } ${className} transition duration-500`}
-    >
-      <div className=" flex flex-row items-center justify-center gap-3">
-        <>{icon}</>
-        <h1 className={`ml-3 text-xl font-bold tracking-wider `}>{title}</h1>
-      </div>
-
-      <FaAngleDown className={`text-xl mr-3 `} />
-    </div>
+    <>
+      <motion.div
+        whileHover={{ x: -10 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => changeCurrentIndex(currentIndex === null ? index : null)}
+        initial={{ x: 50, opacity: 0, display: "none" }}
+        animate={{
+          x: 0,
+          opacity: 1,
+          display: "flex",
+          transition: {
+            duration: 0.4,
+            ease: "easeInOut",
+            delay: index * 0.1 + 0.6,
+          },
+        }}
+        exit={{
+          opacity: 0,
+          transition: {
+            duration: 0.4,
+            ease: "easeInOut",
+            delay: index * 0.1,
+          },
+        }}
+        className={`relative other-skills-container overflow-hidden rounded-md flex flex-row cursor-pointer justify-between items-center p-4 rounded-md w-full  m-3 ${
+          dark
+            ? "dark-other-skills text-neutral-600 hover:text-neutral-400"
+            : "light-other-skills text-neutral-700 hover:text-neutral-800"
+        } ${
+          currentIndex == index ? `${className}-border` : ""
+        } ${className} transition duration-500 `}
+      >
+        <div className=" flex flex-row items-center justify-center gap-3">
+          <>{icon}</>
+          <h1 className={`ml-3 text-xl font-bold tracking-wider `}>{title}</h1>
+        </div>
+        {currentIndex == index ? (
+          <>
+            <IoMdClose
+              onClick={() => changeCurrentIndex(null)}
+              className={`text-xl mr-3 relative rounded-full z-10 transition duration-500 ${
+                dark ? "hover:text-neutral-100" : "hover:text-neutral-900"
+              }`}
+            />
+          </>
+        ) : (
+          <FaAngleDown className={`text-xl mr-3 `} />
+        )}
+      </motion.div>
+      <AnimatePresence>
+        {currentIndex === index && (
+          <motion.div
+            initial={{ scale: 0, display: "none" }}
+            animate={{
+              scale: 1,
+              display: "block",
+              transition: { duration: 0.6, ease: "easeInOut", delay: 1.2 },
+            }}
+            exit={{
+              scale: 0,
+              transition: { duration: 0.5, ease: "easeInOut", delay: 0.3 },
+            }}
+            className={`w-full origin-top rounded-md ${
+              dark
+                ? "text-dark-bg text-neutral-500"
+                : "text-light-bg text-neutral-700"
+            }`}
+          >
+            <motion.p
+              initial={{ y: 25, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.5, ease: "easeInOut", delay: 1.4 },
+              }}
+              exit={{
+                y: -25,
+                opacity: 0,
+                transition: { duration: 0.4, ease: "easeInOut" },
+              }}
+              className="text-sm font-normal tracking-wider mx-6 my-4"
+            >
+              {description}
+            </motion.p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 export default Skills;

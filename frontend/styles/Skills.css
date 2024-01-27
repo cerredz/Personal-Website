@@ -33,20 +33,60 @@
   background: #ec4899;
 }
 
+.brain:hover {
+  color: #ec4899;
+}
+
+.brain-border {
+  border: 2px solid #ec4899;
+}
+
 .database::before {
   background: #a855f7;
+}
+
+.database:hover {
+  color: #a855f7;
+}
+
+.database-border {
+  border: 2px solid #a855f7;
 }
 
 .algorithmns::before {
   background: #1d4ed8;
 }
 
+.algorithmns:hover {
+  color: #1d4ed8;
+}
+
+.algorithmns-border {
+  border: 2px solid #1d4ed8;
+}
+
 .web::before {
   background: #0ea5e9;
 }
 
+.web:hover {
+  color: #0ea5e9;
+}
+
+.web-border {
+  border: 2px solid #0ea5e9;
+}
+
 .teamwork::before {
   background: #67e8f9;
+}
+
+.teamwork:hover {
+  color: #67e8f9;
+}
+
+.teamwork-border {
+  border: 2px solid #67e8f9;
 }
 
 .other-skills-container::after {
@@ -91,4 +131,12 @@
 .light-other-skills::after {
   background: rgba(0, 0, 0, 0.2);
   transition: 0.4s ease-in-out;
+}
+
+.text-dark-bg {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.05)
+  );
 }

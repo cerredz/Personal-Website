@@ -260,31 +260,36 @@ export const skillsIconData = [
 export const compSciSkillsData = [
   {
     title: "Problem Solver",
-    description: "",
+    description:
+      "I enjoy solving problems within the realm of computer science, and especially software engineering. With a solid understanding of data structures and algorithms, combined with experience in tackling tough challenges and increasingly complex problems, I have noticed a significant enhancement in my ability to devise effective solutions. The beauty of problem solving in computer science lies in the uniqueness of each obstacle, compelling me to approach challenges with creativity, intuition, and innovation. This process not only has made my problem-solving ability more efficient, fast-paced, and accurate, but it also facilitates continuous growth and learning the world of problem solving.",
     icon: <BiSolidBrain className="fill-pink-500 text-xl" />,
     className: "brain",
   },
   {
     title: "Software Development",
-    description: "",
+    description:
+      "Being able to put multiple different skillsets together allows me to approach software development comprehensively. With expertise in full-stack applications, database management, algorithmic thinking, user authentication, and various other standard software engineering practices, I am able to put these different skills together in order to create unique, creative, and high-end solutions that effectively address challenges. This approach ensures the development of software that is not only functional but also stands out in terms of ingenuity and user satisfaction. ",
     icon: <FaDatabase className="fill-purple-400 text-xl" />,
     className: "database",
   },
   {
     title: "Algorithms",
-    description: "",
+    description:
+      "When implementing code, my focus is on achieving optimal efficiency. Algorithmic thinking is essential to me bacause I know that as systems and data sizes grow, the optimization and performance of your code becomes increasingly more important. Whether tackling simple or intricate problems in frontend or backend developemenent, I consistently strive to implement solutions that not only deliver the desired functionality but also exhibit scalability, responsiveness, and speed. ",
     icon: <AiFillCode className="fill-blue-700 text-xl" />,
     className: "algorithmns",
   },
   {
     title: "Web Development",
-    description: "",
+    description:
+      "Web development provides software engineers the ability to create applications and services that can be accessed globally. In the broad scope of web developement, I have personally undertaken a wide range of diverse projects, including full-stack applications, real-world applications, frontend-only projects, Node vs Flask backends, MongoDB vs SQL databases, React vs Next frameworks, and more. These experiences have given me a comprehensive understanding or various tools and technologies within the web developement landscape.  ",
     icon: <FaLaptopCode className="fill-sky-500 text-xl" />,
     className: "web",
   },
   {
     title: "Collaboration / Teamwork",
-    description: "",
+    description:
+      "Teammwork is crucial when it comes to software engineering. Being able to effectively communicate, collaborate, share ideas, and overall work togther with other fellow software engineers is a very valuable skill due to its ability to speed up the production cycle. This is something that I have firsthand experience in; I have competed in multiple hackathons where me and fellow computer science students have worked together to create the best project possible within a 24-hour timeframe. Me and my team made sure that we were organized, our code was synchronized, and were working toward the same goal. Due to this I was actually able to win one of the hackathons I attended.",
     icon: <IoPeople className="fill-cyan-300 text-xl" />,
     className: "teamwork",
   },
