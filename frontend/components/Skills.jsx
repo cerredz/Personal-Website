@@ -1,7 +1,7 @@
 import Title from "@/Widgets/Title";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { skillsIconData, compSciSkillsData } from "@/data";
+import { skillsIconData, compSciSkillsData, bestSkills } from "@/data";
 import Loader from "@/Widgets/Loader";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -21,6 +21,7 @@ import { IoMdClose } from "react-icons/io";
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [skills, setSkills] = useState(null);
+  const [topSkills, setTopSkills] = useState(null);
   const [computerScienceSkills, setComputerScienceSkills] = useState(null);
   const [currentSkillsIndex, setCurrentSkillIndex] = useState(null);
   const [otherSkillsDivHeight, setOtherSkillsDivHeight] = useState(0);
@@ -29,6 +30,7 @@ const Skills = () => {
   useEffect(() => {
     setSkills(skillsIconData);
     setComputerScienceSkills(compSciSkillsData);
+    setTopSkills(bestSkills);
   }, []);
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen relative flex flex-col items-center justify-center gap-6"
+      className="min-h-screen relative flex flex-col items-center justify-center gap-28"
     >
       <div className="flex items-center justify-center ">
         <Title
@@ -58,15 +60,62 @@ const Skills = () => {
         />
       </div>
 
-      <div className="w-9/12 mx-auto flex justify-center items-center flex-col lg:flex-row gap-6">
+      <div className="w-9/12 mx-auto flex justify-center items-center flex-col lg:flex-row gap-16">
         {/* LEFT */}
-        <div className="lg:basis-1/2 flex flex-col">
-          <h1 className="text-6xl"> hello world</h1>
-          <h1 className="text-6xl"> hello world</h1>
-          <h1 className="text-6xl"> hello world</h1>
-          <h1 className="text-6xl"> hello world</h1>
-          <h1 className="text-6xl"> hello world</h1>
-          <div className="flex flex-row gap-2 jusify-center items-center w-full flex-wrap">
+        <div className="lg:basis-1/2 flex flex-col max-w-xl">
+          <div
+            className={`rounded-xl p-10 mb-10 relative ${
+              dark ? "top-skills-dark-bg" : "top-skills-light-bg"
+            }`}
+          >
+            <h1
+              className={`relative top-skills-title font-bold text-3xl tracking-widest mb-8 text-center w-min mx-auto whitespace-nowrap ${
+                dark ? "text-neutral-300" : "text-neutral-800"
+              }`}
+            >
+              My Top Skills
+            </h1>
+            {topSkills !== null ? (
+              <div
+                className={` flex flex-col items-center justify-center gap-5 `}
+              >
+                {topSkills.map((skill, index) => (
+                  <>
+                    <div className="flex flex-row items-center justify-center w-full  gap-6">
+                      <p
+                        className={`italic basis-1/2 md:basis-1/4 text-center text-lg xl:text-xl font-bold tracking-wider  ${
+                          dark ? "text-neutral-600" : "text-neutral-700"
+                        }`}
+                      >
+                        {skill.skill}
+                      </p>
+                      <div
+                        style={{
+                          width: `calc(${skill.rating})`,
+                        }}
+                        className={`relative flex basis-1/2 md:basis-3/4 h-7 rounded-md top-skill ${
+                          dark
+                            ? "bg-[rgba(255,255,255,.025)]"
+                            : "bg-[rgba(0,0,0,.05)]"
+                        }`}
+                      >
+                        <span
+                          style={{
+                            width: `calc(${skill.rating}% - 5px)`,
+                          }}
+                          className={`absolute top-[5px] bottom-[5px] left-[5px] rounded-md bg-gradient-to-r from-[#2563eb] via-[#6d28d9] to-[#c026d3] top-skill-gradient`}
+                        ></span>
+                      </div>
+                    </div>
+                  </>
+                ))}
+              </div>
+            ) : (
+              <Loader />
+            )}
+          </div>
+
+          <div className="flex flex-row gap-2 justify-center items-center w-full flex-wrap lg:justify-start">
             {skills !== null ? (
               skills.map((skill, index) => (
                 <SkillIcon

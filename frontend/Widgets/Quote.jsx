@@ -24,7 +24,7 @@ const Quote = ({
         dark
           ? "quotes-container bg-[#18181A]"
           : "quotes-light-container bg-[#c6c6c6]"
-      } absolute flex flex-col items-center justify-center w-full h-auto transform -translate-y-1/2 py-24 hidden lg:flex`}
+      } relative flex flex-col items-center justify-center w-full h-auto py-24 hidden md:flex`}
     >
       {/* QUOTATION MARK ICONS */}
       <motion.div

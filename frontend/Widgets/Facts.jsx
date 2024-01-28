@@ -215,7 +215,7 @@ const Facts = ({ facts }) => {
             Today
           </p>
         </motion.div>
-        <div className="absolute bottom-[-100px] left-0 w-full flex justify-center items-center">
+        <div className="absolute bottom-[-100px] left-0 w-full flex justify-center items-center z-10">
           <motion.h1
             ref={ref}
             style={{
@@ -223,7 +223,7 @@ const Facts = ({ facts }) => {
               opacity: inView ? "1" : "0",
               transition: "all .4s ease-in-out 1.4s",
             }}
-            className={`text-6xl text-center font-black tracking-widest whitespace-nowrap ${
+            className={`text-6xl text-center font-black z-10 tracking-widest whitespace-nowrap ${
               dark ? "bg-dark-text" : "text-neutral-200"
             }`}
           >

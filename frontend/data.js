@@ -294,3 +294,30 @@ export const compSciSkillsData = [
     className: "teamwork",
   },
 ];
+
+export const bestSkills = [
+  {
+    skill: "C / C++",
+    rating: 96,
+  },
+  {
+    skill: "React.js",
+    rating: 94,
+  },
+  {
+    skill: "Node.js",
+    rating: 93,
+  },
+  {
+    skill: "MongoDB",
+    rating: 91,
+  },
+  {
+    skill: "Python",
+    rating: 89,
+  },
+  {
+    skill: "Javascript",
+    rating: 86,
+  },
+];

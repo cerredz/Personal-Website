@@ -39,8 +39,11 @@ const About = () => {
   }, [dark]);
 
   return (
-    <section id="about" className="min-h-screen relative ">
-      <div className="flex items-center justify-center mt-56 mb-28">
+    <section
+      id="about"
+      className="my-20 relative flex items-center justify-center flex-col gap-10"
+    >
+      <div className="flex items-center justify-center mb-28">
         <Title
           text={"About"}
           backgroundText={"<About Me />"}
@@ -59,7 +62,7 @@ const About = () => {
             opacity: inView ? "1" : "0",
             transition: "all .4s ease-in-out .8s",
           }}
-          className={`phone relative flex flex-col p-2 m-0 rounded-2xl px-10 py-4  justify-center items-center origin-top ${
+          className={`phone relative flex flex-col p-2 m-0 rounded-2xl px-10 py-4  justify-center items-center origin-top z-10 ${
             dark ? "dark-shadow" : "light-shadow"
           } ${primaryTextColor}`}
         >
