@@ -151,7 +151,7 @@
 .top-skills-dark-bg {
   background: linear-gradient(to bottom, #1b1b1e, #1c1c1f, #1e1e21);
   overflow: hidden;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 .top-skills-light-bg {
   background: linear-gradient(to bottom, #eff0f1, #f9fafb);

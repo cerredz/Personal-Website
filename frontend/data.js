@@ -299,25 +299,31 @@ export const bestSkills = [
   {
     skill: "C / C++",
     rating: 96,
+    delay: 1.5,
   },
   {
     skill: "React.js",
     rating: 94,
+    delay: 2.6,
   },
   {
     skill: "Node.js",
     rating: 93,
+    delay: 3.6,
   },
   {
     skill: "MongoDB",
     rating: 91,
+    delay: 4.5,
   },
   {
     skill: "Python",
     rating: 89,
+    delay: 5.4,
   },
   {
     skill: "Javascript",
     rating: 86,
+    delay: 6.3,
   },
 ];

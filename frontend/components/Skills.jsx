@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { skillsIconData, compSciSkillsData, bestSkills } from "@/data";
 import Loader from "@/Widgets/Loader";
-import { motion } from "framer-motion";
+import { inView, motion } from "framer-motion";
 import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 import { useRef } from "react";
@@ -17,6 +17,8 @@ import { FaDatabase } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa6";
 import { current } from "tailwindcss/colors";
 import { IoMdClose } from "react-icons/io";
+import Label from "@/Widgets/Label";
+import { BsFillRocketTakeoffFill } from "react-icons/bs";
 
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -25,6 +27,8 @@ const Skills = () => {
   const [computerScienceSkills, setComputerScienceSkills] = useState(null);
   const [currentSkillsIndex, setCurrentSkillIndex] = useState(null);
   const [otherSkillsDivHeight, setOtherSkillsDivHeight] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref);
 
   // load skills data
   useEffect(() => {
@@ -47,7 +51,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen relative flex flex-col items-center justify-center gap-28"
+      className="min-h-screen relative flex flex-col items-center justify-center gap-28 pt-10 md:pt-0"
     >
       <div className="flex items-center justify-center ">
         <Title
@@ -60,62 +64,102 @@ const Skills = () => {
         />
       </div>
 
-      <div className="w-9/12 mx-auto flex justify-center items-center flex-col lg:flex-row gap-16">
+      <div className="w-9/12 mx-auto flex flex-col justify-center items-center lg:justify-start lg:items-start lg:flex-row gap-10 lg:gap-20 ">
+        <Label
+          text={"Concepts / Practices"}
+          icon={
+            <BsFillRocketTakeoffFill
+              className={`${dark ? "text-blue-700" : "text-sky-500"}`}
+            />
+          }
+          borderColor={`${dark ? "border-blue-700" : "border-sky-500"}`}
+          textColor={`${dark ? "text-gray-600" : "text-gray-500"}`}
+          bgClassName={`${dark ? "concepts-dark" : "concepts-light"}`}
+        />
+
         {/* LEFT */}
         <div className="lg:basis-1/2 flex flex-col max-w-xl">
-          <div
+          {/* TOP SKILLS CONTAINER */}
+          {/* 
+          <motion.div
+            ref={ref}
+            style={{
+              y: inView ? "0" : "50px",
+              opacity: inView ? 1 : 0,
+              transition: "all .4s ease-in-out .4s",
+            }}
             className={`rounded-xl p-10 mb-10 relative ${
               dark ? "top-skills-dark-bg" : "top-skills-light-bg"
             }`}
           >
-            <h1
+            <motion.h1
+              ref={ref}
+              style={{
+                y: inView ? "0" : "50px",
+                opacity: inView ? 1 : 0,
+                transition: "all .4s ease-in-out .7s",
+              }}
               className={`relative top-skills-title font-bold text-3xl tracking-widest mb-8 text-center w-min mx-auto whitespace-nowrap ${
                 dark ? "text-neutral-300" : "text-neutral-800"
               }`}
             >
               My Top Skills
-            </h1>
+            </motion.h1>
+            */}
+          {/* LIST OF TOP SKILLS */}
+          {/*
             {topSkills !== null ? (
               <div
                 className={` flex flex-col items-center justify-center gap-5 `}
               >
                 {topSkills.map((skill, index) => (
                   <>
-                    <div className="flex flex-row items-center justify-center w-full  gap-6">
+                    <motion.div
+                      ref={ref}
+                      style={{
+                        y: inView ? "0" : `100px`,
+                        opacity: inView ? 1 : 0,
+                        transition: `all .6s ease-in-out ${0.8 * index + 1.1}s`,
+                      }}
+                      className="flex flex-row items-center justify-center w-full  gap-6"
+                    >
                       <p
-                        className={`italic basis-1/2 md:basis-1/4 text-center text-lg xl:text-xl font-bold tracking-wider  ${
+                        className={`italic basis-1/2 lg:basis-1/3  text-center text-lg xl:text-xl font-bold tracking-wider  ${
                           dark ? "text-neutral-600" : "text-neutral-700"
                         }`}
                       >
                         {skill.skill}
                       </p>
                       <div
-                        style={{
-                          width: `calc(${skill.rating})`,
-                        }}
-                        className={`relative flex basis-1/2 md:basis-3/4 h-7 rounded-md top-skill ${
+                        className={`relative flex basis-1/2 lg:basis-2/3  h-7 rounded-md top-skill ${
                           dark
                             ? "bg-[rgba(255,255,255,.025)]"
                             : "bg-[rgba(0,0,0,.05)]"
                         }`}
                       >
-                        <span
+                        <motion.span
+                          ref={ref}
                           style={{
-                            width: `calc(${skill.rating}% - 5px)`,
+                            width: inView
+                              ? `calc(${skill.rating}% - 5px)`
+                              : `0`,
+                            transition: `width 2.2s ease-in-out ${skill.delay}s`,
                           }}
                           className={`absolute top-[5px] bottom-[5px] left-[5px] rounded-md bg-gradient-to-r from-[#2563eb] via-[#6d28d9] to-[#c026d3] top-skill-gradient`}
-                        ></span>
+                        ></motion.span>
                       </div>
-                    </div>
+                    </motion.div>
                   </>
                 ))}
               </div>
             ) : (
               <Loader />
             )}
-          </div>
+          </motion.div>
+          */}
 
-          <div className="flex flex-row gap-2 justify-center items-center w-full flex-wrap lg:justify-start">
+          {/* 
+          <div className="flex flex-row gap-10 justify-center items-center w-full flex-wrap lg:justify-start">
             {skills !== null ? (
               skills.map((skill, index) => (
                 <SkillIcon
@@ -131,12 +175,14 @@ const Skills = () => {
               <Loader />
             )}
           </div>
+           */}
         </div>
 
         {/* RIGHT */}
+        {/* 
         <div
           id="other-skills-container "
-          className={`lg:basis-1/2  relative flex flex-wrap flex-col justify-between items-center flex-grow `}
+          className={`lg:basis-1/2 flex flex-col relative grow`}
         >
           {computerScienceSkills !== null ? (
             computerScienceSkills.map((skill, index) => (
@@ -160,6 +206,7 @@ const Skills = () => {
             <Loader />
           )}
         </div>
+        */}
       </div>
     </section>
   );
@@ -170,7 +217,7 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
   const [isHoveringSkillIcon, setIsHoveringSkillIcon] = useState(false);
   const ref = useRef(null);
   const inView = useInView(ref);
-  const delay = 0.5 + index / 10;
+  const delay = 1.5 + index / 10;
   return (
     <motion.div
       ref={ref}
@@ -191,8 +238,8 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
         } `}
         src={src}
         alt={alt}
-        width={40}
-        height={40}
+        width={50}
+        height={50}
       ></Image>
       <AnimatePresence>
         {isHoveringSkillIcon && (
@@ -237,22 +284,21 @@ const Skill = ({
   currentIndex,
   changeCurrentIndex,
 }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref);
   return (
     <>
       <motion.div
-        whileHover={{ x: -10 }}
+        ref={ref}
+        whileHover={{ transform: "translateX(-10px)" }}
         whileTap={{ scale: 0.9 }}
         onClick={() => changeCurrentIndex(currentIndex === null ? index : null)}
-        initial={{ x: 50, opacity: 0, display: "none" }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          display: "flex",
-          transition: {
-            duration: 0.4,
-            ease: "easeInOut",
-            delay: index * 0.1 + 0.6,
-          },
+        style={{
+          transform: inView ? "translateX(0)" : "translateX(150px)",
+          opacity: inView ? 1 : 0,
+          transition: `transform .5s ease-in-out ${
+            index * 0.35 + 1.4
+          }s, opacity .5s ease-in-out ${index * 0.35 + 1.4}s`,
         }}
         exit={{
           opacity: 0,
@@ -262,7 +308,7 @@ const Skill = ({
             delay: index * 0.1,
           },
         }}
-        className={`relative other-skills-container overflow-hidden rounded-md flex flex-row cursor-pointer justify-between items-center p-4 rounded-md w-full  m-3 ${
+        className={`relative other-skills-container overflow-hidden rounded-md flex flex-row cursor-pointer justify-between items-center p-4 rounded-md w-full  my-3 ${
           dark
             ? "dark-other-skills text-neutral-600 hover:text-neutral-400"
             : "light-other-skills text-neutral-700 hover:text-neutral-800"
@@ -318,7 +364,7 @@ const Skill = ({
                 opacity: 0,
                 transition: { duration: 0.4, ease: "easeInOut" },
               }}
-              className="text-sm font-normal tracking-wider mx-6 my-4"
+              className="text-sm font-bold tracking-widest mx-6 my-4"
             >
               {description}
             </motion.p>

@@ -1,0 +1,26 @@
+.label::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  filter: blur(20px);
+}
+
+.concepts-dark::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    transparent,
+    #1d4ed8
+  );
+}
+
+.concepts-light::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    transparent,
+    #0ea5e9
+  );
+}
