@@ -8,6 +8,7 @@ import { GiStarSwirl } from "react-icons/gi";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
 import { SlArrowDown } from "react-icons/sl";
+import Label from "@/Widgets/Label";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -58,26 +59,17 @@ export default Landing;
 const LeftContainer = ({ dark }) => {
   return (
     <>
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{
-          y: 0,
-          opacity: 1,
-          transition: { delay: 0.4, duration: 0.4, ease: "easeInOut" },
-        }}
-        className={`flex flex-row items-center justify-between w-min gap-3 rounded-2xl portfolio-label border border-solid border-blue-300 relative`}
-      >
-        <GiStarSwirl
-          className={`text-xl ${dark ? "text-blue-600" : "text-blue-400"}`}
-        />
-        <p
-          className={`whitespace-nowrap text-sm tracking-wider  ${
-            dark ? "text-gray-600 font-bold" : "text-nuetral-800 font-normal"
-          }`}
-        >
-          Software Engineer Portfolio
-        </p>
-      </motion.div>
+      <Label
+        text={"Software Engineer Portfolio"}
+        icon={
+          <GiStarSwirl
+            className={`text-xl ${dark ? "text-blue-600" : "text-blue-400"}`}
+          />
+        }
+        borderColor={`border-blue-300`}
+        textColor={`${dark ? "text-gray-600 " : "text-gray-500 "}`}
+        bgClassName={`${dark ? "portfolio-dark" : "portfolio-light"}`}
+      />
 
       <motion.p
         initial={{ x: -50, opacity: 0 }}

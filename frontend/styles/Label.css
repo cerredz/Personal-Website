@@ -5,6 +5,17 @@
   filter: blur(20px);
 }
 
+.portfolio-dark::after,
+.portfolio-light::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    transparent,
+    #60a5fa
+  );
+}
+
 .concepts-dark::after {
   background: linear-gradient(
     to bottom,
@@ -22,5 +33,24 @@
     transparent,
     transparent,
     #0ea5e9
+  );
+}
+
+.languages-dark::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    transparent,
+    #c026d3
+  );
+}
+.languages-light::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    transparent,
+    #d946ef
   );
 }

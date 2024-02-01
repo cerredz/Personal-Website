@@ -1,12 +1,10 @@
 .dark-icon-bg {
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: inset 0 0 0.5em rgba(255, 255, 255, 0.075),
-    5px 5px 1em rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .light-icon-bg {
   background: rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 0 0.5em rgba(0, 0, 0, 0.1), 5px 5px 1em rgba(0, 0, 0, 0.1);
 }
 
 .light-other-skills {
@@ -19,22 +17,38 @@
   transition: 0.4s ease-in-out;
 }
 
-.other-skills-container::before {
+.other-skills-container {
+  width: min(75%, 300px);
+  backdrop-filter: blur(10px);
+}
+
+.dark-skills-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.025),
+    transparent,
+    rgba(255, 255, 255, 0.025)
+  );
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1),
+    inset 0 0 3px rgba(255, 255, 255, 0.2);
+}
+.read-more-text::before {
   position: absolute;
   content: "";
-  top: 0;
   left: 0;
-  bottom: 0;
-  width: 40px;
-  filter: blur(3rem);
+  bottom: 5px;
+  height: 5px;
+  width: 0;
+  transition: 0.4s ease-in-out;
+}
+
+.read-more-text:hover::before {
+  width: 100%;
+  transition: 0.4s ease-in-out;
 }
 
 .brain::before {
   background: #ec4899;
-}
-
-.brain:hover {
-  color: #ec4899;
 }
 
 .brain-border {
@@ -45,20 +59,12 @@
   background: #a855f7;
 }
 
-.database:hover {
-  color: #a855f7;
-}
-
 .database-border {
   border: 2px solid #a855f7;
 }
 
 .algorithmns::before {
   background: #1d4ed8;
-}
-
-.algorithmns:hover {
-  color: #1d4ed8;
 }
 
 .algorithmns-border {
@@ -69,10 +75,6 @@
   background: #0ea5e9;
 }
 
-.web:hover {
-  color: #0ea5e9;
-}
-
 .web-border {
   border: 2px solid #0ea5e9;
 }
@@ -81,24 +83,8 @@
   background: #67e8f9;
 }
 
-.teamwork:hover {
-  color: #67e8f9;
-}
-
 .teamwork-border {
   border: 2px solid #67e8f9;
-}
-
-.other-skills-container::after {
-  position: absolute;
-  content: "";
-  left: 10%;
-  top: 10%;
-  bottom: 10%;
-  width: 0;
-  filter: blur(3rem);
-  border-radius: inherit;
-  transition: 0.2s ease-in-out;
 }
 
 .other-skills-container:hover::after {

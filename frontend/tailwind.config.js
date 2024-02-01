@@ -31,6 +31,7 @@ module.exports = {
       sky: colors.sky,
       cyan: colors.cyan,
       indigo: colors.indigo,
+      fuchsia: colors.fuchsia,
       primary: {
         light: `#F9FAFB`,
         dark: `#1E1E21`,

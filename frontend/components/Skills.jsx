@@ -9,16 +9,11 @@ import { AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 import "../styles/Skills.css";
-import { BiSolidBrain } from "react-icons/bi";
-import { FaLaptopCode } from "react-icons/fa";
-import { AiFillCode } from "react-icons/ai";
-import { IoPeople } from "react-icons/io5";
-import { FaDatabase } from "react-icons/fa";
-import { FaAngleDown } from "react-icons/fa6";
-import { current } from "tailwindcss/colors";
-import { IoMdClose } from "react-icons/io";
 import Label from "@/Widgets/Label";
 import { BsFillRocketTakeoffFill } from "react-icons/bs";
+import { PiMoonStarsFill } from "react-icons/pi";
+import { shortenedDescription } from "@/utils/Skills";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -51,9 +46,9 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen relative flex flex-col items-center justify-center gap-28 pt-10 md:pt-0"
+      className="min-h-screen relative flex flex-col items-center justify-center  pt-10 md:pt-0"
     >
-      <div className="flex items-center justify-center ">
+      <div className="flex items-center justify-center mb-16">
         <Title
           text={"Skills"}
           backgroundText={"<My Skills />"}
@@ -64,18 +59,74 @@ const Skills = () => {
         />
       </div>
 
-      <div className="w-9/12 mx-auto flex flex-col justify-center items-center lg:justify-start lg:items-start lg:flex-row gap-10 lg:gap-20 ">
-        <Label
-          text={"Concepts / Practices"}
-          icon={
-            <BsFillRocketTakeoffFill
-              className={`${dark ? "text-blue-700" : "text-sky-500"}`}
-            />
-          }
-          borderColor={`${dark ? "border-blue-700" : "border-sky-500"}`}
-          textColor={`${dark ? "text-gray-600" : "text-gray-500"}`}
-          bgClassName={`${dark ? "concepts-dark" : "concepts-light"}`}
-        />
+      <div className="w-9/12 mx-auto flex flex-col justify-center items-center  gap-10 lg:gap-20 ">
+        <div className="flex flex-col justify-center items-center gap-4">
+          <Label
+            text={"Concepts / Practices"}
+            icon={
+              <BsFillRocketTakeoffFill
+                className={`${dark ? "text-blue-700" : "text-sky-500"}`}
+              />
+            }
+            borderColor={`${dark ? "border-blue-700" : "border-sky-500"}`}
+            textColor={`${dark ? "text-gray-600" : "text-gray-500"}`}
+            bgClassName={`${dark ? "concepts-dark" : "concepts-light"}`}
+          />
+
+          <div
+            className={` flex flex-row gap-10 items-center justify-center relative flex-wrap `}
+          >
+            {computerScienceSkills !== null ? (
+              computerScienceSkills.map((skill, index) => (
+                <Skill
+                  key={index}
+                  title={skill.title}
+                  icon={skill.icon}
+                  dark={dark}
+                  className={skill.className}
+                  index={index}
+                  description={skill.description}
+                  src={skill.src}
+                  words={skill.words}
+                />
+              ))
+            ) : (
+              <Loader />
+            )}
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center gap-12">
+          <Label
+            text={"Languages / Frameworks"}
+            icon={
+              <PiMoonStarsFill
+                className={`${dark ? "text-fuchsia-700" : "text-fuchsia-600"}`}
+              />
+            }
+            borderColor={`${
+              dark ? "border-fuchsia-700" : "border-fuchsia-600"
+            }`}
+            textColor={`text-fuchsia-400`}
+            bgClassName={`${dark ? "languages-dark" : "languages-light"}`}
+          />
+
+          <div className="flex flex-row gap-10 justify-center items-center w-full flex-wrap lg:w-10/12 mx-auto ">
+            {skills !== null ? (
+              skills.map((skill, index) => (
+                <SkillIcon
+                  key={index}
+                  index={index}
+                  name={skill.name}
+                  src={skill.src}
+                  alt={skill.alt}
+                  dark={dark}
+                />
+              ))
+            ) : (
+              <Loader />
+            )}
+          </div>
+        </div>
 
         {/* LEFT */}
         <div className="lg:basis-1/2 flex flex-col max-w-xl">
@@ -233,7 +284,7 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
       <Image
         priority
         quality={100}
-        className={` cursor-pointer p-2 relative z-10 rounded-full ${
+        className={` cursor-pointer p-3 relative z-10 rounded-full ${
           dark ? "dark-icon-bg" : "light-icon-bg"
         } `}
         src={src}
@@ -283,94 +334,82 @@ const Skill = ({
   index,
   currentIndex,
   changeCurrentIndex,
+  src,
+  words,
+  clickEvent,
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref);
+  const [isHoveringReadMore, setIsHoveringReadMore] = useState(false);
+
+  // shorten description of skill to 20 words
+  const newDesc = shortenedDescription(description, words);
   return (
     <>
       <motion.div
         ref={ref}
-        whileHover={{ transform: "translateX(-10px)" }}
-        whileTap={{ scale: 0.9 }}
         onClick={() => changeCurrentIndex(currentIndex === null ? index : null)}
-        style={{
-          transform: inView ? "translateX(0)" : "translateX(150px)",
-          opacity: inView ? 1 : 0,
-          transition: `transform .5s ease-in-out ${
-            index * 0.35 + 1.4
-          }s, opacity .5s ease-in-out ${index * 0.35 + 1.4}s`,
-        }}
-        exit={{
-          opacity: 0,
-          transition: {
-            duration: 0.4,
-            ease: "easeInOut",
-            delay: index * 0.1,
-          },
-        }}
-        className={`relative other-skills-container overflow-hidden rounded-md flex flex-row cursor-pointer justify-between items-center p-4 rounded-md w-full  my-3 ${
-          dark
-            ? "dark-other-skills text-neutral-600 hover:text-neutral-400"
-            : "light-other-skills text-neutral-700 hover:text-neutral-800"
-        } ${
-          currentIndex == index ? `${className}-border` : ""
-        } ${className} transition duration-500 `}
+        className={`flex flex-col gap-2 items-center justify-center p-4 rounded-2xl other-skills-container ${
+          dark ? "dark-skills-bg" : "light-skills-bg"
+        } `}
       >
-        <div className=" flex flex-row items-center justify-center gap-3">
-          <>{icon}</>
-          <h1 className={`ml-3 text-xl font-bold tracking-wider `}>{title}</h1>
+        {/* IMAGE */}
+        <div className="h-[60px] flex justify-center items-center ">
+          <Image
+            priority
+            quality={100}
+            src={src}
+            alt=""
+            height={50}
+            width={50}
+          />
         </div>
-        {currentIndex == index ? (
-          <>
-            <IoMdClose
-              onClick={() => changeCurrentIndex(null)}
-              className={`text-xl mr-3 relative rounded-full z-10 transition duration-500 ${
-                dark ? "hover:text-neutral-100" : "hover:text-neutral-900"
-              }`}
-            />
-          </>
-        ) : (
-          <FaAngleDown className={`text-xl mr-3 `} />
-        )}
-      </motion.div>
-      <AnimatePresence>
-        {currentIndex === index && (
-          <motion.div
-            initial={{ scale: 0, display: "none" }}
-            animate={{
-              scale: 1,
-              display: "block",
-              transition: { duration: 0.6, ease: "easeInOut", delay: 1.2 },
-            }}
-            exit={{
-              scale: 0,
-              transition: { duration: 0.5, ease: "easeInOut", delay: 0.3 },
-            }}
-            className={`w-full origin-top rounded-md ${
-              dark
-                ? "text-dark-bg text-neutral-500"
-                : "text-light-bg text-neutral-700"
+
+        {/* TEXT */}
+        <div className="flex flex-col justify-start items-center gap-2 h-[125px]">
+          <h1
+            className={`font-bold tracking-wider text-xl ${
+              dark ? "text-neutral-300" : "text-neutral-800"
             }`}
           >
-            <motion.p
-              initial={{ y: 25, opacity: 0 }}
-              animate={{
-                y: 0,
-                opacity: 1,
-                transition: { duration: 0.5, ease: "easeInOut", delay: 1.4 },
-              }}
-              exit={{
-                y: -25,
-                opacity: 0,
-                transition: { duration: 0.4, ease: "easeInOut" },
-              }}
-              className="text-sm font-bold tracking-widest mx-6 my-4"
-            >
-              {description}
-            </motion.p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {title}
+          </h1>
+          <p
+            className={`text-center ${
+              dark ? "text-neutral-700" : "text-neutral-400"
+            }`}
+          >
+            {newDesc}
+          </p>
+        </div>
+
+        {/* READ MORE */}
+        <motion.div
+          whileHover={{ scale: 1.1 }}
+          whileTap={{
+            scale: 0.9,
+            transition: { duration: 0.2, ease: "easeInOut" },
+          }}
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          onMouseEnter={() => setIsHoveringReadMore(true)}
+          onMouseLeave={() => setIsHoveringReadMore(false)}
+          className={`relative z-10 read-more-text cursor-pointer my-3  flex flex-row justify-center gap-4 items-center ${
+            dark ? "text-neutral-300" : "text-neutral-800"
+          } ${className}`}
+          onClick={clickEvent}
+        >
+          <p className="z-10 text-md tracking-widest font-medium">Read More</p>
+          <FaArrowRightLong
+            className="z-10 transform translate-y-[1px]"
+            style={{
+              transform: isHoveringReadMore
+                ? "translateY(1px) translateX(5px)"
+                : "",
+              transition: "all .4s ease-in-out",
+            }}
+          />
+        </motion.div>
+      </motion.div>
     </>
   );
 };
