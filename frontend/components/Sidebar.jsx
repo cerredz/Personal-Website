@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div
       className={`text-3xl justify-between bottom-0 w-full 
         items-center sm:text-4xl lg:text-5xl fixed md:top-0 md:h-full
-        md:right-0 z-50 gap-6 md:justify-center flex md:flex-col gap-5 p-3 sm:p-5 md:p-7 lg:p-9 md:w-min 
+        md:right-0 z-50 md:z-10 gap-6 md:justify-center flex md:flex-col gap-5 p-3 sm:p-5 md:p-7 lg:p-9 md:w-min 
         md:bg-opacity-0 
         ${
           dark

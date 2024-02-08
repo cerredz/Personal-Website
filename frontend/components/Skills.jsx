@@ -14,6 +14,9 @@ import { BsFillRocketTakeoffFill } from "react-icons/bs";
 import { PiMoonStarsFill } from "react-icons/pi";
 import { shortenedDescription } from "@/utils/Skills";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { ReadMore } from "./ReadMore";
+
+import "../styles/Globals.css";
 
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -22,6 +25,7 @@ const Skills = () => {
   const [computerScienceSkills, setComputerScienceSkills] = useState(null);
   const [currentSkillsIndex, setCurrentSkillIndex] = useState(null);
   const [otherSkillsDivHeight, setOtherSkillsDivHeight] = useState(0);
+  const [readMore, setReadMore] = useState(null);
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -33,8 +37,8 @@ const Skills = () => {
   }, []);
 
   useEffect(() => {
-    console.log(otherSkillsDivHeight);
-  }, [otherSkillsDivHeight]);
+    console.log(readMore);
+  }, [readMore]);
 
   useEffect(() => {
     const divElement = document.getElementById("other-skills-container"); // Replace with your actual div ID
@@ -46,7 +50,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen relative flex flex-col items-center justify-center  pt-10 md:pt-0"
+      className="min-h-screen relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0"
     >
       <div className="flex items-center justify-center mb-16">
         <Title
@@ -60,7 +64,7 @@ const Skills = () => {
       </div>
 
       <div className="w-9/12 mx-auto flex flex-col justify-center items-center  gap-10 lg:gap-20 ">
-        <div className="flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-8">
           <Label
             text={"Concepts / Practices"}
             icon={
@@ -78,17 +82,34 @@ const Skills = () => {
           >
             {computerScienceSkills !== null ? (
               computerScienceSkills.map((skill, index) => (
-                <Skill
-                  key={index}
-                  title={skill.title}
-                  icon={skill.icon}
-                  dark={dark}
-                  className={skill.className}
-                  index={index}
-                  description={skill.description}
-                  src={skill.src}
-                  words={skill.words}
-                />
+                <>
+                  <Skill
+                    key={index}
+                    title={skill.title}
+                    icon={skill.icon}
+                    dark={dark}
+                    className={skill.className}
+                    index={index}
+                    description={skill.description}
+                    src={skill.src}
+                    words={skill.words}
+                    clickEvent={() => setReadMore(index)}
+                  />
+                  <AnimatePresence>
+                    {readMore === index && (
+                      <ReadMore
+                        key={index}
+                        title={skill.title}
+                        description={skill.description}
+                        dark={dark}
+                        bgColor={skill.bgColor}
+                        className={skill.className}
+                        textColor={skill.textColor}
+                        clickEvent={() => setReadMore(null)}
+                      />
+                    )}
+                  </AnimatePresence>
+                </>
               ))
             ) : (
               <Loader />
@@ -113,151 +134,22 @@ const Skills = () => {
           <div className="flex flex-row gap-10 justify-center items-center w-full flex-wrap lg:w-10/12 mx-auto ">
             {skills !== null ? (
               skills.map((skill, index) => (
-                <SkillIcon
-                  key={index}
-                  index={index}
-                  name={skill.name}
-                  src={skill.src}
-                  alt={skill.alt}
-                  dark={dark}
-                />
-              ))
-            ) : (
-              <Loader />
-            )}
-          </div>
-        </div>
-
-        {/* LEFT */}
-        <div className="lg:basis-1/2 flex flex-col max-w-xl">
-          {/* TOP SKILLS CONTAINER */}
-          {/* 
-          <motion.div
-            ref={ref}
-            style={{
-              y: inView ? "0" : "50px",
-              opacity: inView ? 1 : 0,
-              transition: "all .4s ease-in-out .4s",
-            }}
-            className={`rounded-xl p-10 mb-10 relative ${
-              dark ? "top-skills-dark-bg" : "top-skills-light-bg"
-            }`}
-          >
-            <motion.h1
-              ref={ref}
-              style={{
-                y: inView ? "0" : "50px",
-                opacity: inView ? 1 : 0,
-                transition: "all .4s ease-in-out .7s",
-              }}
-              className={`relative top-skills-title font-bold text-3xl tracking-widest mb-8 text-center w-min mx-auto whitespace-nowrap ${
-                dark ? "text-neutral-300" : "text-neutral-800"
-              }`}
-            >
-              My Top Skills
-            </motion.h1>
-            */}
-          {/* LIST OF TOP SKILLS */}
-          {/*
-            {topSkills !== null ? (
-              <div
-                className={` flex flex-col items-center justify-center gap-5 `}
-              >
-                {topSkills.map((skill, index) => (
-                  <>
-                    <motion.div
-                      ref={ref}
-                      style={{
-                        y: inView ? "0" : `100px`,
-                        opacity: inView ? 1 : 0,
-                        transition: `all .6s ease-in-out ${0.8 * index + 1.1}s`,
-                      }}
-                      className="flex flex-row items-center justify-center w-full  gap-6"
-                    >
-                      <p
-                        className={`italic basis-1/2 lg:basis-1/3  text-center text-lg xl:text-xl font-bold tracking-wider  ${
-                          dark ? "text-neutral-600" : "text-neutral-700"
-                        }`}
-                      >
-                        {skill.skill}
-                      </p>
-                      <div
-                        className={`relative flex basis-1/2 lg:basis-2/3  h-7 rounded-md top-skill ${
-                          dark
-                            ? "bg-[rgba(255,255,255,.025)]"
-                            : "bg-[rgba(0,0,0,.05)]"
-                        }`}
-                      >
-                        <motion.span
-                          ref={ref}
-                          style={{
-                            width: inView
-                              ? `calc(${skill.rating}% - 5px)`
-                              : `0`,
-                            transition: `width 2.2s ease-in-out ${skill.delay}s`,
-                          }}
-                          className={`absolute top-[5px] bottom-[5px] left-[5px] rounded-md bg-gradient-to-r from-[#2563eb] via-[#6d28d9] to-[#c026d3] top-skill-gradient`}
-                        ></motion.span>
-                      </div>
-                    </motion.div>
-                  </>
-                ))}
-              </div>
-            ) : (
-              <Loader />
-            )}
-          </motion.div>
-          */}
-
-          {/* 
-          <div className="flex flex-row gap-10 justify-center items-center w-full flex-wrap lg:justify-start">
-            {skills !== null ? (
-              skills.map((skill, index) => (
-                <SkillIcon
-                  key={index}
-                  index={index}
-                  name={skill.name}
-                  src={skill.src}
-                  alt={skill.alt}
-                  dark={dark}
-                />
-              ))
-            ) : (
-              <Loader />
-            )}
-          </div>
-           */}
-        </div>
-
-        {/* RIGHT */}
-        {/* 
-        <div
-          id="other-skills-container "
-          className={`lg:basis-1/2 flex flex-col relative grow`}
-        >
-          {computerScienceSkills !== null ? (
-            computerScienceSkills.map((skill, index) => (
-              <AnimatePresence key={index}>
-                {(currentSkillsIndex === null ||
-                  currentSkillsIndex == index) && (
-                  <Skill
-                    title={skill.title}
-                    icon={skill.icon}
-                    dark={dark}
-                    className={skill.className}
+                <>
+                  <SkillIcon
+                    key={index}
                     index={index}
-                    description={skill.description}
-                    currentIndex={currentSkillsIndex}
-                    changeCurrentIndex={(index) => setCurrentSkillIndex(index)}
+                    name={skill.name}
+                    src={skill.src}
+                    alt={skill.alt}
+                    dark={dark}
                   />
-                )}
-              </AnimatePresence>
-            ))
-          ) : (
-            <Loader />
-          )}
+                </>
+              ))
+            ) : (
+              <Loader />
+            )}
+          </div>
         </div>
-        */}
       </div>
     </section>
   );
@@ -328,15 +220,12 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
 const Skill = ({
   title,
   description,
-  icon,
   dark,
   className,
-  index,
-  currentIndex,
-  changeCurrentIndex,
   src,
   words,
   clickEvent,
+  icon,
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref);
@@ -348,27 +237,24 @@ const Skill = ({
     <>
       <motion.div
         ref={ref}
-        onClick={() => changeCurrentIndex(currentIndex === null ? index : null)}
+        whileHover={{ y: -5 }}
         className={`flex flex-col gap-2 items-center justify-center p-4 rounded-2xl other-skills-container ${
           dark ? "dark-skills-bg" : "light-skills-bg"
         } `}
       >
         {/* IMAGE */}
-        <div className="h-[60px] flex justify-center items-center ">
-          <Image
-            priority
-            quality={100}
-            src={src}
-            alt=""
-            height={50}
-            width={50}
-          />
+        <div
+          className={`mt-2 flex shadow-md justify-center items-center p-4 rounded-full ${className}-icon text-2xl ${
+            dark ? "text-[#1e1e21]" : "text-neutral-200"
+          } `}
+        >
+          {icon}
         </div>
 
         {/* TEXT */}
         <div className="flex flex-col justify-start items-center gap-2 h-[125px]">
           <h1
-            className={`font-bold tracking-wider text-xl ${
+            className={`text-center font-bold tracking-wider text-xl ${
               dark ? "text-neutral-300" : "text-neutral-800"
             }`}
           >

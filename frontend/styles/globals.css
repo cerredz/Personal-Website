@@ -17,6 +17,9 @@
   background: unset;
 }
 
+.z-70 {
+  z-index: 70;
+}
 .z-75 {
   z-index: 75;
 }

@@ -53,7 +53,7 @@ const About = () => {
           translateY={"-translate-y-2"}
         />
       </div>
-      <div className="relative w-11/12 xl:w-8/12 mx-auto flex flex-col xl:flex-row justify-center items-center gap-10">
+      <div className="relative w-11/12 xl:w-8/12 mx-auto flex flex-col xl:flex-row justify-center items-center gap-20">
         {/* PHONE IN THE CENTER OF THE SCREEN */}
         <motion.div
           ref={ref}
@@ -220,16 +220,6 @@ const About = () => {
           <Facts facts={aboutMeFacts} />
         </motion.div>
       </div>
-      <motion.div
-        style={{
-          x: inView ? "0" : "-50px",
-          opacity: inView ? 1 : 0,
-          transition: "all .4s ease-in-out 1s",
-        }}
-        className="absolute hidden xl:block left-[5%] top-[50%] transform -translate-y-1/2"
-      >
-        <Mouse above={"Home"} below={"Projects"} />
-      </motion.div>
     </section>
   );
 };

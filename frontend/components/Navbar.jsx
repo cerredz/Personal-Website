@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`z-20 fixed w-full p-0 m-0 nav ${
+      className={`z-20 fixed w-full p-0 m-0 ${
         dark ? "dark-border " : "light-border"
       }`}
     >
@@ -186,7 +186,7 @@ const Navbar = () => {
             onMouseEnter={() => setIsHoveringToggle(true)}
             onMouseLeave={() => setIsHoveringToggle(false)}
             onClick={() => toggle(dark, dispatch, musicVolume)}
-            className={`z-25 flex items-center justify-center relative text-2xl cursor-pointer p-2 mr-4 rounded-lg`}
+            className={`z-100 flex items-center justify-center relative text-2xl cursor-pointer p-2 mr-4 rounded-lg`}
           >
             <div className="z-1 absolute left-[-20px] top-[-20px] w-14 h-14">
               <BackgroundBlob

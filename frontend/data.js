@@ -1,8 +1,9 @@
-import { BiSolidBrain } from "react-icons/bi";
+import { FaBrain } from "react-icons/fa6";
+import { FaDatabase } from "react-icons/fa6";
+import { GoTerminal } from "react-icons/go";
 import { FaLaptopCode } from "react-icons/fa";
-import { AiFillCode } from "react-icons/ai";
-import { IoPeople } from "react-icons/io5";
-import { FaDatabase } from "react-icons/fa";
+import { FaPeopleGroup } from "react-icons/fa6";
+
 import "./styles/Skills.css";
 
 export const NavbarLinks = () => [
@@ -262,41 +263,50 @@ export const compSciSkillsData = [
     title: "Problem Solver",
     description:
       "I enjoy solving problems within the realm of computer science, and especially software engineering. With a solid understanding of data structures and algorithms, combined with experience in tackling tough challenges and increasingly complex problems, I have noticed a significant enhancement in my ability to devise effective solutions. The beauty of problem solving in computer science lies in the uniqueness of each obstacle, compelling me to approach challenges with creativity, intuition, and innovation. This process not only has made my problem-solving ability more efficient, fast-paced, and accurate, but it also facilitates continuous growth and learning the world of problem solving.",
-    src: "/images/brain.png",
+    icon: <FaBrain />,
     className: "brain",
     words: 13,
+    textColor:
+      "bg-gradient-to-br from-fuchsia-500 via-fuchsia-600 to-fuchsia-500",
   },
   {
     title: "Software Development",
     description:
       "Being able to put multiple different skillsets together allows me to approach software development comprehensively. With expertise in full-stack applications, database management, algorithmic thinking, user authentication, and various other standard software engineering practices, I am able to put these different skills together in order to create unique, creative, and high-end solutions that effectively address challenges. This approach ensures the development of software that is not only functional but also stands out in terms of ingenuity and user satisfaction. ",
-    src: "/images/database.png",
+    icon: <FaDatabase />,
     className: "database",
     words: 13,
+    textColor: "bg-gradient-to-br from-purple-600 via-purple-700 to-purple-600",
   },
   {
     title: "Algorithms",
     description:
       "When implementing code, my focus is on achieving optimal efficiency. Algorithmic thinking is essential to me bacause I know that as systems and data sizes grow, the optimization and performance of your code becomes increasingly more important. Whether tackling simple or intricate problems in frontend or backend developemenent, I consistently strive to implement solutions that not only deliver the desired functionality but also exhibit scalability, responsiveness, and speed. ",
     src: "/images/terminalIcon.png",
+    icon: <GoTerminal />,
     className: "algorithmns",
     words: 12,
+    textColor: "bg-gradient-to-br from-blue-600 via-blue-700 to-blue-600",
   },
   {
     title: "Web Development",
     description:
       "Web development provides software engineers the ability to create applications and services that can be accessed globally. In the broad scope of web developement, I have personally undertaken a wide range of diverse projects, including full-stack applications, real-world applications, frontend-only projects, Node vs Flask backends, MongoDB vs SQL databases, React vs Next frameworks, and more. These experiences have given me a comprehensive understanding or various tools and technologies within the web developement landscape.  ",
     src: "/images/laptop.png",
+    icon: <FaLaptopCode />,
     className: "web",
     words: 11,
+    textColor: "bg-gradient-to-br from-blue-400 via-blue-500 to-blue-400",
   },
   {
     title: "Collaboration / Teamwork",
     description:
       "Teammwork is crucial when it comes to software engineering. Being able to effectively communicate, collaborate, share ideas, and overall work togther with other fellow software engineers is a very valuable skill due to its ability to speed up the production cycle. This is something that I have firsthand experience in; I have competed in multiple hackathons where me and fellow computer science students have worked together to create the best project possible within a 24-hour timeframe. Me and my team made sure that we were organized, our code was synchronized, and were working toward the same goal. Due to this I was actually able to win one of the hackathons I attended.",
     src: "/images/people.png",
+    icon: <FaPeopleGroup />,
     className: "teamwork",
     words: 13,
+    textColor: "bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-400",
   },
 ];
 
