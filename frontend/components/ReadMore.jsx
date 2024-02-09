@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { IoMdClose } from "react-icons/io";
 import "../styles/Skills.css";
+import { useState } from "react";
+import Image from "next/image";
 
 export const ReadMore = ({
   title,
@@ -9,7 +11,21 @@ export const ReadMore = ({
   className,
   dark,
   textColor,
+  background,
+  images,
 }) => {
+  // random height and width values for the background images
+  function generateRandomNumbers() {
+    const numbers = [];
+    for (let i = 0; i < 7; i++) {
+      const randomNumber = Math.floor(Math.random() * (100 - 60 + 1)) + 40;
+      numbers.push(randomNumber);
+    }
+    return numbers;
+  }
+
+  const [numbers, setNumbers] = useState(generateRandomNumbers());
+
   return (
     <>
       {/* DIV USED FOR TRANSITIONS */}
@@ -52,7 +68,9 @@ export const ReadMore = ({
           zIndex: 100,
           transition: { opacity: { delay: 1.5 }, zIndex: { delay: 2.5 } },
         }}
-        className="fixed top-0 left-0 w-screen h-screen backdrop-blur-lg flex justify-center items-center flex-col gap-8 overflow-hidden"
+        className={`${
+          background === "blue" ? "blue-bg" : "pink-bg"
+        } fixed top-0 left-0 w-screen h-screen backdrop-blur-lg flex justify-center items-center flex-col gap-8 overflow-hidden`}
       >
         <div
           className={`cursor-pointer absolute right-[25px] p-2 rounded-full top-[25px] transition duration-400 hover:transition hover:duration-400 hover:rotate-180 ${
@@ -80,13 +98,15 @@ export const ReadMore = ({
             }`}
           >
             <h1
-              className={`${textColor} text-3xl font-bold tracking-widest lg:text-5xl ${
+              className={` text-3xl font-bold tracking-widest lg:text-5xl ${
                 className === "teamwork" && "text-xl lg:text-3xl"
               }`}
               style={{
+                backgroundImage: textColor,
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
+                textShadow: "1px 1px 50px #000",
               }}
             >
               {title}
@@ -95,7 +115,7 @@ export const ReadMore = ({
 
           {/* DESCRIPTION */}
           <div
-            className={`rounded-xl flex items-center justify-center flex-col gap-4 text-center backdrop-blur-2xl w-full py-3 px-6   ${
+            className={`rounded-xl flex items-center justify-center flex-col gap-4 text-center backdrop-blur-2xl w-full py-6 px-12   ${
               dark
                 ? "bg-[rgba(255,255,255,.05)] dark-inset-shadow"
                 : "bg-[rgba(0,0,0,.05)] light-inset-shadow"
@@ -103,15 +123,33 @@ export const ReadMore = ({
           >
             <p
               className={`z-10 text-sm font-medium lg:w-11/12 lg:mx-auto ${
-                dark ? "text-neutral-300" : "text-neutral-700"
+                dark ? "text-neutral-400" : "text-neutral-600"
               } tracking-wider `}
             >
               {description}
             </p>
-            <button className="" onClick={clickEvent}>
-              View More Skills
+            <button
+              className="border py-1 px-4 rounded-md"
+              onClick={clickEvent}
+            >
+              View More Skillssss
             </button>
           </div>
+
+          {/* BACKGROUND IMAGES */}
+          {images.map((image, index) => (
+            <motion.div
+              className={`hidden lg:block bg-image bg-image-index-${index}`}
+              key={index}
+            >
+              <Image
+                src={image.src}
+                alt="bg-image"
+                height={numbers[index]}
+                width={numbers[index]}
+              />
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </>

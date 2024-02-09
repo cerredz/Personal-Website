@@ -3,6 +3,21 @@
 <a href="https://www.flaticon.com/free-icons/terminal" title="terminal icons">Terminal icons created by icon wind - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/laptop-code" title="laptop code icons">Laptop code icons created by icon blast - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/diversity" title="diversity icons">Diversity icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/react" title="react icons">React icons created by Kiranshastry - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/code" title="code icons">Code icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/node" title="node icons">Node icons created by Freepik - Flaticon</a>
+<a target="_blank" href="https://icons8.com/icon/38557/dev-post">Dev Post</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+<a href="https://www.flaticon.com/free-icons/node" title="node icons">Node icons created by Freepik - Flaticon</a>
+<a target="_blank" href="https://icons8.com/icon/wDGo581Ea5Nf/level-up-your-coding-skills-and-quickly-land-a-job">Level up your coding skills and quickly land a job</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+<a target="_blank" href="https://icons8.com/icon/ezj3zaVtImPg/visual-studio">Visual Studio</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+<a target="_blank" href="https://icons8.com/icon/YSy0lU4Y0X4z/codeforces.-programming-competitions-and-contests%2C-programming-community.">Codeforces. Programming competitions and contests, programming community.</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+<a href="https://www.flaticon.com/free-icons/roadmap" title="roadmap icons">Roadmap icons created by Eucalyp - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/administration" title="administration icons">Administration icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/brain" title="brain icons">Brain icons created by Freepik - Flaticon</a>
+
+
+
+
 
 
 

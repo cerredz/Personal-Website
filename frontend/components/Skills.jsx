@@ -16,8 +16,6 @@ import { shortenedDescription } from "@/utils/Skills";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { ReadMore } from "./ReadMore";
 
-import "../styles/Globals.css";
-
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [skills, setSkills] = useState(null);
@@ -105,7 +103,9 @@ const Skills = () => {
                         bgColor={skill.bgColor}
                         className={skill.className}
                         textColor={skill.textColor}
+                        background={skill.background}
                         clickEvent={() => setReadMore(null)}
+                        images={skill.images}
                       />
                     )}
                   </AnimatePresence>
