@@ -3,6 +3,7 @@ import { FaDatabase } from "react-icons/fa6";
 import { GoTerminal } from "react-icons/go";
 import { FaLaptopCode } from "react-icons/fa";
 import { FaPeopleGroup } from "react-icons/fa6";
+import { GiFamilyTree } from "react-icons/gi";
 
 import "./styles/Skills.css";
 
@@ -274,6 +275,26 @@ export const compSciSkillsData = [
       { src: "/images/readmore/creative.png" },
       { src: "/images/readmore/files.png" },
       { src: "/images/readmore/brain.png" },
+    ],
+  },
+  {
+    title: "Backend Development",
+    description:
+      "In my journey through software engineering, backend development has been something that I have really enjoyed learning. It's where you basically create the functionality to your application, and create the purpose behind it. My experience in backend development extends across many different areas of backend development, including database management, user authentication, and seamless API integration. As far as the tools and languages that I have used for backend development, this includes Flask, Node.js, JavaScript, C / C++, Python, MongoDB, SQL, Firebase, and Axios. The way I approach backend development is very detailed and organized, ensuring that as code / systems becomes more complex, sophisticated, and complicates, I can make sure to achieve optimal performance and scalability.",
+    icon: <GiFamilyTree />,
+    className: "backend",
+    words: 13,
+    //textColor:"bg-gradient-to-br from-fuchsia-400 via-fuchsia-500 to-fuchsia-400",
+    textColor: "linear-gradient(135deg, #7e22ce, #581c87 , #7e22ce)",
+    background: "pink",
+    images: [
+      { src: "/images/readmore/c++.png" },
+      { src: "/images/readmore/python.png" },
+      { src: "/images/readmore/nodejs.png" },
+      { src: "/images/readmore/mongodb.png" },
+      { src: "/images/readmore/flask.png" },
+      { src: "/images/readmore/sql.png" },
+      { src: "/images/readmore/javascript.png" },
     ],
   },
   {

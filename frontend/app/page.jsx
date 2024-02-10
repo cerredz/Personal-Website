@@ -10,6 +10,7 @@ import "../styles/globals.css";
 import HomePage from "@/Scenes/HomePage";
 import BackgroundSkillsIcons from "@/Widgets/BackgroundSkillsIcons";
 import { useRouter } from "next/router";
+import { LazyMotion, domAnimation } from "framer-motion";
 
 const store = configureStore({
   reducer: {
@@ -30,7 +31,9 @@ TODO:
 export default function Home() {
   return (
     <Provider store={store}>
-      <HomePage />
+      <LazyMotion features={domAnimation}>
+        <HomePage />
+      </LazyMotion>
     </Provider>
   );
 }
