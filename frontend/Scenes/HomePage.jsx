@@ -12,6 +12,7 @@ import "../styles/globals.css";
 import Quote from "@/Widgets/Quote";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
 
 const HomePage = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -79,6 +80,15 @@ const HomePage = () => {
             translateXClose="translate-x-80"
           />
           <Skills />
+          <Quote
+            quote="Programming is a skill best acquired by practice and example rather than from books"
+            name="Alan Turing"
+            translateYOpen="-translate-y-10"
+            translateXOpen="-translate-x-80"
+            translateYClose="-translate-y-10"
+            translateXClose="translate-x-80"
+          />
+          <Projects />
         </Suspense>
       </section>
     </main>

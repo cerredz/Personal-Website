@@ -48,7 +48,7 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0"
+      className="min-h-screen relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0 "
     >
       <div className="flex items-center justify-center mb-16">
         <Title
@@ -131,7 +131,7 @@ const Skills = () => {
             bgClassName={`${dark ? "languages-dark" : "languages-light"}`}
           />
 
-          <div className="flex flex-row gap-10 justify-center items-center w-full flex-wrap lg:w-10/12 mx-auto ">
+          <div className="flex flex-row gap-12 justify-center items-center w-full flex-wrap lg:w-11/12 mx-auto ">
             {skills !== null ? (
               skills.map((skill, index) => (
                 <>
@@ -160,7 +160,7 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
   const [isHoveringSkillIcon, setIsHoveringSkillIcon] = useState(false);
   const ref = useRef(null);
   const inView = useInView(ref);
-  const delay = 1.5 + index / 10;
+  const delay = 0.2 + index * 0.1;
   return (
     <motion.div
       ref={ref}
@@ -171,12 +171,12 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
       }}
       onMouseEnter={() => setIsHoveringSkillIcon(true)}
       onMouseLeave={() => setIsHoveringSkillIcon(false)}
-      className={`flex justify-center items-center relative`}
+      className={`flex justify-center items-center relative `}
     >
       <Image
         priority
         quality={100}
-        className={` cursor-pointer p-3 relative z-10 rounded-full ${
+        className={` cursor-pointer p-3 relative z-10 rounded-full backdrop-blur-lg ${
           dark ? "dark-icon-bg" : "light-icon-bg"
         } `}
         src={src}
@@ -198,10 +198,10 @@ const SkillIcon = ({ index, name, src, alt, dark }) => {
               y: 10,
               transition: { duration: 0.2, ease: "easeInOut" },
             }}
-            className={`absolute bottom-[-35px] left-1/2`}
+            className={`absolute bottom-[-35px] left-1/2 z-75`}
           >
             <p
-              className={`py-1 px-3 rounded-md backdrop-blur-lg whitespace-nowrap relative z-20 transform -translate-x-1/2 font-light tracking-wider font-xs ${
+              className={`py-1 px-3 rounded-md backdrop-blur-lg whitespace-nowrap relative z-75 transform -translate-x-1/2 font-light tracking-wider font-xs ${
                 dark
                   ? "text-neutral-200 bg-neutral-800"
                   : "text-neutral-800 bg-neutral-100"
