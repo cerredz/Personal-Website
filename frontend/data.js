@@ -409,3 +409,5 @@ export const bestSkills = [
     delay: 6.3,
   },
 ];
+
+export const projectFilters = () => ["All", "Fullstack", "Frontend", "Backend"];
