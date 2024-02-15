@@ -412,7 +412,7 @@ export const bestSkills = [
 
 export const projectFilters = () => ["All", "Fullstack", "Frontend", "Backend"];
 
-export const projects = () => [
+export const projectsData = () => [
   {
     title: "LSR Kicks",
     tags: [
@@ -424,19 +424,18 @@ export const projects = () => [
       "Firebase",
       "Javascript",
       "Sanity",
-      "SCSS",
     ],
     github: "https://github.com/cerredz/lsr-kicks",
     live: true,
     redirect: "https://lsrkicks.com/",
-    img: "",
+    img: "/images/projects/lsrkicks.png",
   },
   {
     title: "Speed Typing",
-    tags: ["Backend, C++"],
+    tags: ["Backend", "C++"],
     github: "https://github.com/cerredz/SpeedTyping",
     live: false,
-    img: "",
+    img: "/images/projects/speedtyping.png",
   },
   {
     title: "RefinedAI",
@@ -447,20 +446,18 @@ export const projects = () => [
       "MongoDB",
       "API",
       "Redux",
-      "Javascript",
       "SCSS",
-      "Figma",
     ],
     github: "https://github.com/cerredz/RefinedAi",
     live: false,
-    img: "",
+    img: "/images/projects/refinedai.png",
   },
   {
     title: "Leetcode Problems",
     tags: ["Backend", "C++", "Java", "Python"],
     github: "https://github.com/cerredz/LeetCode-Problems",
     live: false,
-    img: "",
+    img: "/images/projects/leetcodeproblems.png",
   },
   {
     title: "ImageinateAI",
@@ -476,7 +473,7 @@ export const projects = () => [
     ],
     github: "https://github.com/cerredz/Rutgers-Hackathon",
     live: false,
-    img: "",
+    img: "/images/projects/imageinateai.png",
   },
   {
     title: "Personal Website",
@@ -491,34 +488,34 @@ export const projects = () => [
     ],
     github: "https://github.com/cerredz/Personal-Website",
     live: false,
-    img: "",
+    img: "/images/projects/personalwebsite.png",
   },
   {
     title: "ARTificial",
     tags: ["Fullstack", "React.js", "Flask", "Python"],
     github: "https://github.com/cerredz/ARTificial-TCNJ-Hackathon-2023",
     live: false,
-    img: "",
+    img: "/images/projects/artificial.png",
   },
   {
     title: "Rocket Math",
     tags: ["Fullstack", "React.js", "Node.js", "MySQL", "Javascript"],
     github: "https://github.com/cerredz/Rocket-Math-Game",
     live: false,
-    img: "",
+    img: "/images/projects/rocketmath.png",
   },
   {
     title: "Net Worth Calculator",
     tags: ["Frontend", "HTML", "CSS", "Javascript"],
     github: "https://github.com/cerredz/Net-Worth-Calculator",
     live: false,
-    img: "",
+    img: "/images/projects/networthcalculator.png",
   },
   {
     title: "Beating Captchas",
     tags: ["Fullstack", "React.js", "Flask", "Python"],
     github: "https://github.com/cerredz/Beating-Captchas-with-CNNs",
     live: false,
-    img: "",
+    img: "/images/projects/beatingcaptchas.png",
   },
 ];

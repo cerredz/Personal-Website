@@ -85,3 +85,79 @@ CUSTOM COLOR BOX SHADOW FADING IN FOR THE SELECTED FILTER
     box-shadow: inset 0 0 30px #026bb7, inset 0 0 10px rgba(255, 255, 255, 0.3);
   }
 }
+
+/* CUSTOM BACKGROUND COLORS FOR EACH TAG */
+.Fullstack-tag {
+  background: #d946ef;
+}
+
+.Frontend-tag {
+  background: #7c3aed;
+}
+.Backend-tag {
+  background: #0d06e7;
+}
+.React\.js-tag {
+  background: #5ed3f3;
+}
+.Next\.js-tag {
+  background: rgb(8, 8, 8);
+  color: #9b9b9b;
+}
+.Node\.js-tag {
+  background: rgb(80, 153, 65);
+}
+.Three\.js-tag {
+  background: rgb(255, 255, 255);
+}
+.MySQL-tag {
+  background: #d96c22;
+}
+.MongoDB-tag {
+  background: #4eac3d;
+}
+.Redux-tag {
+  background: #7248b6;
+}
+.Firebase-tag {
+  background: rgb(254, 169, 25);
+}
+.Javascript-tag {
+  background: #f7d724;
+}
+.C\+\+-tag {
+  background: rgb(8, 135, 197);
+}
+.Flask-tag {
+  background: #41aec5;
+}
+.Python-tag {
+  background: #3c77a8;
+}
+.SCSS-tag {
+  background: rgb(207, 107, 157);
+}
+.Tailwind.CSS-tag {
+  background: rgb(62, 191, 248);
+}
+.Java-tag {
+  background: rgb(242, 148, 24);
+}
+.Figma-tag {
+  background: rgb(255, 118, 103);
+}
+.HTML-tag {
+  background: #e5532d;
+}
+.CSS-tag {
+  background: rgb(49, 106, 241);
+}
+.Sanity-tag {
+  background: rgb(241, 68, 54);
+}
+.Framer.Motion-tag {
+  background: #7f1cf4;
+}
+.API-tag {
+  background: rgb(25, 79, 180);
+}
