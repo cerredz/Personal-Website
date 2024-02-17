@@ -161,3 +161,47 @@ CUSTOM COLOR BOX SHADOW FADING IN FOR THE SELECTED FILTER
 .API-tag {
   background: rgb(25, 79, 180);
 }
+
+.project-card-dark {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2), 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+.project-card-light {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2), 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.left-project-btn {
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.right-project-btn {
+  box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.left-project-btn:hover {
+  box-shadow: 0 0 3rem #0ea5e9;
+}
+.right-project-btn:hover {
+  box-shadow: 0 0 3rem #d946ef;
+}
+
+.github-btn::before {
+  position: absolute;
+  content: "";
+  inset: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: inherit;
+  transition: 0.2s ease-in-out;
+}
+.github-btn:hover::before {
+  inset: 0;
+  transition: 0.2s ease-in-out;
+}
+
+.read-more-project-btn {
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2),
+    5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.read-more-project-btn:hover {
+  transition: 0.5s ease-in-out;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+    5px 5px 5px rgba(0, 0, 0, 0.1);
+}

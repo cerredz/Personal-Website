@@ -1,26 +1,38 @@
 import Title from "@/Widgets/Title";
 import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { projectFilters, projectsData } from "@/data";
 import { BsArrowsAngleExpand } from "react-icons/bs";
 import Loading from "@/app/loading";
 import "../styles/projects.css";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
+import { useInView } from "framer-motion";
+import { FaGithub } from "react-icons/fa6";
+
 const Projects = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [filters, setFilters] = useState(null);
   const [activeFilter, setActiveFilter] = useState(0);
   const [projects, setProjects] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref);
+
   useEffect(() => {
     setFilters(projectFilters);
     setProjects(projectsData);
   }, []);
+  useEffect(() => {
+    setActiveIndex(projects.length / 2);
+    console.log(activeIndex);
+  }, [projects]);
 
   return (
     <section
       id="projects"
-      className=" relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0 mb-10 "
+      className="relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0 mb-10 "
     >
       <div className="flex items-center justify-center mb-16">
         <Title
@@ -63,52 +75,198 @@ const Projects = () => {
       </div>
 
       {/* Projects */}
-      <div className="flex flex-row gap-6 flex-wrap">
+      <div className="flex flex-row gap-6 flex-wrap relative justify-center items-center w-full mt-10 h-[400px] overflow-visible">
         {projects.map((project, index) => (
-          <ProjectCard project={project} dark={dark} />
+          <ProjectCard
+            key={index}
+            project={project}
+            dark={dark}
+            index={index}
+            activeIndex={activeIndex}
+            onClick={() => setActiveIndex(index)}
+          />
         ))}
+      </div>
+      {/* ARROWS */}
+      <div className="relative flex flex-row justify-center items-center mt-10 gap-6 w-full">
+        <motion.div
+          ref={ref}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="cursor-pointer p-6 rounded-full left-project-btn hover:scale-110 flex items-center justify-center border border-2 border-sky-500"
+          style={{
+            x: inView ? 0 : -300,
+            opacity: inView ? 1 : 0,
+            transition:
+              "x .6s ease-in-out 1s, x .6s ease-in-out 1s, scale .2s ease-in-out, box-shadow .3s ease-in-out",
+          }}
+          onClick={() => setActiveIndex((prev) => Math.max(prev - 1, 0))}
+        >
+          <FaLongArrowAltLeft
+            className={` text-2xl font-bold z-10 absolute text-sky-500  `}
+          />
+        </motion.div>
+
+        <motion.div
+          ref={ref}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="cursor-pointer p-6 rounded-full right-project-btn flex items-center justify-center border border-2 border-fuchsia-500 "
+          style={{
+            x: inView ? 0 : 300,
+            opacity: inView ? 1 : 0,
+            transition:
+              "x .6s ease-in-out 1s, x .6s ease-in-out 1s, scale .2s ease-in-out, box-shadow .3s ease-in-out",
+          }}
+          onClick={() =>
+            setActiveIndex((prev) => Math.min(prev + 1, projects.length - 1))
+          }
+        >
+          <FaLongArrowAltRight
+            className={`text-2xl font-bold z-10 absolute text-fuchsia-500 `}
+          />
+        </motion.div>
       </div>
     </section>
   );
 };
 
-const ProjectCard = ({ project, dark }) => {
+const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
+  const containerRef = useRef(null);
+  const inView = useInView(containerRef);
+  const [isHoveringExpand, setIsHoveringExpand] = useState(false);
+
   return (
-    <div
-      className={`relative h-[275px] w-[325px] rounded-2xl p-3 ${
-        dark ? "" : ""
-      }`}
+    <motion.div
+      ref={containerRef}
+      onClick={onClick}
+      className={`absolute h-[290px] w-[350px] rounded-2xl cursor-pointer `}
+      style={{
+        transform: `scale(1) translateX(${(index - activeIndex) * 120}%) `,
+        opacity: inView ? 1 : 0,
+        transition: `transform .4s ease-in-out, opacity .7s ease-in-out ${
+          0.2 * Math.abs(activeIndex - index)
+        }s`,
+      }}
     >
-      <Image
-        src={project.img}
-        alt={project.title}
-        layout="fill"
-        className="w-full h-full rounded-2xl"
-      />
-      {/* CONTENT OVER IMAGE */}
-      <div className=" absolute backdrop-blur-md bottom-0 left-0 right-0 h-[30%] flex flex-row justify-between items-center px-4 rounded-tl-[25%] rounded-tr-[25%] rounded-bl-2xl rounded-br-2xl">
-        <div className="flex flex-col gap-.5 items-start justify-start basis-11/12">
-          <h3
-            className={`text-md tracking-widest font-bold ${
-              dark ? "text-neutral-300" : "text-neutral-900"
-            }`}
-          >
-            {project.title}
-          </h3>
-          {/* TAGS */}
-          <div className="flex flex-row items-center flex-wrap justify-start gap-y-1 gap-x-1 basis-1/12">
-            {project.tags.map((tag, index) => (
-              <p
-                className={`${tag}-tag text-xs font-medium tracking-wider rounded-lg px-2`}
+      <div
+        className={`relative w-full h-full rounded-2xl p-3 ${
+          dark ? "project-card-dark" : "project-card-light"
+        } ${
+          activeIndex == index
+            ? `transform transition duration-200 scale-110`
+            : "opacity-40 transform scale-100 transition duration-600 hover:opacity-80"
+        }`}
+      >
+        <Image
+          quality={100}
+          priority={true}
+          src={project.img}
+          alt={project.title}
+          layout="fill"
+          className="w-full h-full rounded-2xl"
+          sizes=""
+        />
+        {/* CONTENT OVER IMAGE */}
+
+        <div
+          onMouseEnter={() => setIsHoveringExpand(true)}
+          onMouseLeave={() => setIsHoveringExpand(false)}
+          className={`cursor-pointer absolute backdrop-blur-xl bottom-0 left-0 right-0 h-[30%] ${
+            activeIndex == index &&
+            "transition-all duration-500 hover:h-[70%] hover:pt-6"
+          } flex flex-col justify-start items-start pt-3 px-4 rounded-tl-[25%] rounded-tr-[25%] rounded-bl-2xl rounded-br-2xl`}
+        >
+          <div className="flex flex-row gap-1 items-start justify-between">
+            {/* TAGS / TITLE */}
+            <div className="flex flex-col w-full justify-between items-start basis-11/12">
+              <h3
+                className={`text-md tracking-widest font-bold text-neutral-300`}
               >
-                {tag}
-              </p>
-            ))}
+                {project.title}
+              </h3>
+              {/* TAGS */}
+              <div className="flex flex-row items-center flex-wrap justify-start gap-y-1 gap-x-1 basis-1/12">
+                {project.tags.map((tag, index) => (
+                  <p
+                    className={`${tag}-tag text-xs font-medium tracking-wider rounded-lg px-2`}
+                  >
+                    {tag}
+                  </p>
+                ))}
+              </div>
+            </div>
+            {/* ON-HOVER EXPAND SVG */}
+            <BsArrowsAngleExpand
+              className={`font-black text-xl hover:scale-110 hover:transition hover:duration-600 transition duration-600 mt-5 ${
+                dark ? "text-neutral-300" : "text-neutral-900"
+              }`}
+            />
           </div>
+          {/* ON HOVER CONTENT */}
+          <AnimatePresence>
+            {isHoveringExpand && activeIndex == index && (
+              <motion.div className="flex flex-col w-full items-start justify-between h-full py-3">
+                {/* TEXT */}
+                <motion.p
+                  initial={{ y: 25, opacity: 0 }}
+                  animate={{
+                    y: 0,
+                    opacity: 1,
+                    transition: {
+                      duration: 0.4,
+                      ease: "easeInOut",
+                      delay: 0.4,
+                    },
+                  }}
+                  className="font-normal text-neutral-300 text-xs tracking-wider"
+                >
+                  {project.preview}
+                </motion.p>
+                {/* BUTTONS */}
+                <div className="flex flex-row gap-3 justify-between w-full items-center">
+                  <motion.a
+                    initial={{ x: -25, opacity: 0 }}
+                    animate={{
+                      x: 0,
+                      opacity: 1,
+                      transition: {
+                        duration: 0.4,
+                        ease: "easeInOut",
+                        delay: 0.5,
+                      },
+                    }}
+                    href={project.github}
+                    target="_blank"
+                    className="bg-[#171515] rounded-xl px-4 h-[40px] github-btn relative overflow-hidden flex items-center justify-center"
+                  >
+                    <FaGithub className=" text-neutral-300 text-2xl  " />
+                  </motion.a>
+
+                  <motion.a
+                    initial={{ translateX: 25, opacity: 0 }}
+                    animate={{
+                      translateX: 0,
+                      opacity: 1,
+                      transition: {
+                        duration: 0.5,
+                        ease: "easeInOut",
+                        delay: 0.6,
+                      },
+                    }}
+                    href={project.redirect}
+                    target="_blank"
+                    className="flex items-center justify-center read-more-project-btn w-full relative rounded-xl px-4 h-[40px] text-lg font-bold tracking-widest text-neutral-300 bg-[rgba(255,255,255,.1)] hover:bg-[rgba(255,255,255,.2)]"
+                  >
+                    {project.live ? "View" : "Read More"}
+                  </motion.a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-        <BsArrowsAngleExpand />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
