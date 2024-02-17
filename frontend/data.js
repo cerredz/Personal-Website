@@ -420,6 +420,8 @@ export const projectsData = () => [
     live: false,
     redirect: "/BeatingCaptchas",
     img: "/images/projects/beatingcaptchas.png",
+    preview:
+      "Beating Captchas uses machine learning (CNNs) to solve human verification tests, captchas, and displays it onto a website.",
   },
   {
     title: "Personal Website",
@@ -436,6 +438,8 @@ export const projectsData = () => [
     live: true,
     redirect: "https://localhost:3000",
     img: "/images/projects/personalwebsite.png",
+    preview:
+      "Website that displays the journey of my software engineering career. ",
   },
   {
     title: "Leetcode Problems",
@@ -444,6 +448,8 @@ export const projectsData = () => [
     live: false,
     redirect: "/LeetcodeProblems",
     img: "/images/projects/leetcodeproblems.png",
+    preview:
+      "Completed 350+ leetcode problems in order to gain to enhance problem-solving abilities, algorithmic thinking, and build an overall strong foundation in fundamental programming skills. ",
   },
   {
     title: "ImageinateAI",
@@ -461,6 +467,8 @@ export const projectsData = () => [
     live: false,
     redirect: "/ImageinateAI",
     img: "/images/projects/imageinateai.png",
+    preview:
+      "ImageinateAI is a game where participants compete in guessing captions used to generate AI images. Project won best overall hack at the 2023 TCNJ Hackathon. ",
   },
   {
     title: "Speed Typing",
@@ -469,6 +477,8 @@ export const projectsData = () => [
     live: false,
     redirect: "/SpeedTyping",
     img: "/images/projects/speedtyping.png",
+    preview:
+      "Speed Typing is an Object-Oriented  C++ game designed to improve typing speed and accuracy through interactive typing challenges and complex data analyzation.",
   },
   {
     title: "LSR Kicks",
@@ -504,6 +514,8 @@ export const projectsData = () => [
     live: false,
     redirect: "/RefinedAI",
     img: "/images/projects/refinedai.png",
+    preview:
+      "RefinedAI is a comprehensive Full-Stack application engineered to provide customers with advanced upscaling services through cutting-edge artificial intelligence (AI) technology.",
   },
   {
     title: "ARTificial",
@@ -512,6 +524,8 @@ export const projectsData = () => [
     live: false,
     redirect: "/ARTificial",
     img: "/images/projects/artificial.png",
+    preview:
+      "ARTificial is a web-based application designed to display and present an AI that uses neural style transfer to apply the style of one image to the content of another.",
   },
   {
     title: "Rocket Math",
@@ -520,6 +534,8 @@ export const projectsData = () => [
     live: false,
     redirect: "/RocketMath",
     img: "/images/projects/rocketmath.png",
+    preview:
+      "Wesbite that displays a game called Rocket Math; a series of math problems that have to be completed in a short amount of time. Includes a database of all users, leaderboard, and ranked system.",
   },
 
   {
@@ -529,5 +545,7 @@ export const projectsData = () => [
     live: false,
     redirect: "/NetWorthCalculator",
     img: "/images/projects/networthcalculator.png",
+    preview:
+      "Basic HTML, CSS, and Javascript website that asks the user a series of questions in order to calculate their net worth. My first ever software engineering project. ",
   },
 ];

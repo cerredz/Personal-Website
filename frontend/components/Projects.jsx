@@ -174,7 +174,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
           onMouseLeave={() => setIsHoveringExpand(false)}
           className={`cursor-pointer absolute backdrop-blur-xl bottom-0 left-0 right-0 h-[30%] ${
             activeIndex == index &&
-            "transition-all duration-500 hover:h-[70%] hover:pt-6"
+            "transition-all duration-500 hover:h-[75%] hover:pt-6"
           } flex flex-col justify-start items-start pt-3 px-4 rounded-tl-[25%] rounded-tr-[25%] rounded-bl-2xl rounded-br-2xl`}
         >
           <div className="flex flex-row gap-1 items-start justify-between">
@@ -225,6 +225,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                 </motion.p>
                 {/* BUTTONS */}
                 <div className="flex flex-row gap-3 justify-between w-full items-center">
+                  {/* GITHUB BUTTON */}
                   <motion.a
                     initial={{ x: -25, opacity: 0 }}
                     animate={{
@@ -243,6 +244,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                     <FaGithub className=" text-neutral-300 text-2xl  " />
                   </motion.a>
 
+                  {/* READ MORE BUTTON */}
                   <motion.a
                     initial={{ translateX: 25, opacity: 0 }}
                     animate={{
