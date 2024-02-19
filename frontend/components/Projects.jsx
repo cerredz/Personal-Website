@@ -14,9 +14,10 @@ import { FaGithub } from "react-icons/fa6";
 const Projects = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [filters, setFilters] = useState(null);
-  const [activeFilter, setActiveFilter] = useState(0);
+  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilterIndex, setActiveFilterIndex] = useState(0);
   const [projects, setProjects] = useState([]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeCardIndex, setActiveCardIndex] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref);
 
@@ -25,9 +26,21 @@ const Projects = () => {
     setProjects(projectsData);
   }, []);
   useEffect(() => {
-    setActiveIndex(projects.length / 2);
-    console.log(activeIndex);
+    setActiveCardIndex(projects.length / 2);
   }, [projects]);
+
+  /* HANDLE THE USER CLICKING A FILTER FOR THE PROJECTS */
+  const handleFilterClick = (index, filter) => {
+    setActiveFilterIndex(index);
+    setActiveFilter(filter);
+    // update active index of new filtered projects
+    const newProjects = projects.filter((project) =>
+      project.tags.includes(filter)
+    );
+    filter === "All"
+      ? setActiveCardIndex(projects.length / 2)
+      : setActiveCardIndex(newProjects.length / 2);
+  };
 
   return (
     <section
@@ -54,9 +67,9 @@ const Projects = () => {
             {filters.map((filter, index) => (
               <h1
                 key={index}
-                onClick={() => setActiveFilter(index)}
+                onClick={() => handleFilterClick(index, filter)}
                 className={`relative cursor-pointer text-lg font-bold tracking-widest px-4 py-3 italic z-10 filter-text overflow-hidden hover:transition hover:duration-500 ${
-                  activeFilter == index ? `text-[#fff] ${filter} ` : ""
+                  activeFilterIndex == index ? `text-[#fff] ${filter} ` : ""
                 } ${
                   dark
                     ? "bg-[rgba(255,255,255,.1)] text-neutral-800 hover:text-[#000]"
@@ -76,16 +89,37 @@ const Projects = () => {
 
       {/* Projects */}
       <div className="flex flex-row gap-6 flex-wrap relative justify-center items-center w-full mt-10 h-[400px] overflow-visible">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={index}
-            project={project}
-            dark={dark}
-            index={index}
-            activeIndex={activeIndex}
-            onClick={() => setActiveIndex(index)}
-          />
-        ))}
+        {activeFilter === "All" ? (
+          <>
+            {/* 'ALL' IS SELECTECD, APPLY NO FILTERS */}
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                project={project}
+                dark={dark}
+                index={index}
+                activeIndex={activeCardIndex}
+                onClick={() => setActiveCardIndex(index)}
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            {/* APPLY THE FILTER IF 'ALL' IS NOT SELECTED */}
+            {projects
+              .filter((project) => project.tags.includes(activeFilter))
+              .map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  project={project}
+                  dark={dark}
+                  index={index}
+                  activeIndex={activeCardIndex}
+                  onClick={() => setActiveCardIndex(index)}
+                />
+              ))}
+          </>
+        )}
       </div>
       {/* ARROWS */}
       <div className="relative flex flex-row justify-center items-center mt-10 gap-6 w-full">
@@ -100,7 +134,7 @@ const Projects = () => {
             transition:
               "x .6s ease-in-out 1s, x .6s ease-in-out 1s, scale .2s ease-in-out, box-shadow .3s ease-in-out",
           }}
-          onClick={() => setActiveIndex((prev) => Math.max(prev - 1, 0))}
+          onClick={() => setActiveCardIndex((prev) => Math.max(prev - 1, 0))}
         >
           <FaLongArrowAltLeft
             className={` text-2xl font-bold z-10 absolute text-sky-500  `}
@@ -119,7 +153,9 @@ const Projects = () => {
               "x .6s ease-in-out 1s, x .6s ease-in-out 1s, scale .2s ease-in-out, box-shadow .3s ease-in-out",
           }}
           onClick={() =>
-            setActiveIndex((prev) => Math.min(prev + 1, projects.length - 1))
+            setActiveCardIndex((prev) =>
+              Math.min(prev + 1, projects.length - 1)
+            )
           }
         >
           <FaLongArrowAltRight
@@ -174,7 +210,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
           onMouseLeave={() => setIsHoveringExpand(false)}
           className={`cursor-pointer absolute backdrop-blur-xl bottom-0 left-0 right-0 h-[30%] ${
             activeIndex == index &&
-            "transition-all duration-500 hover:h-[75%] hover:pt-6"
+            "transition-all duration-500 delay-200 hover:h-[75%] hover:pt-6"
           } flex flex-col justify-start items-start pt-3 px-4 rounded-tl-[25%] rounded-tr-[25%] rounded-bl-2xl rounded-br-2xl`}
         >
           <div className="flex flex-row gap-1 items-start justify-between">
@@ -219,6 +255,13 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                       delay: 0.4,
                     },
                   }}
+                  exit={{
+                    opacity: 0,
+                    transition: {
+                      duration: 0.2,
+                      ease: "easeInOut",
+                    },
+                  }}
                   className="font-normal text-neutral-300 text-xs tracking-wider"
                 >
                   {project.preview}
@@ -235,6 +278,14 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                         duration: 0.4,
                         ease: "easeInOut",
                         delay: 0.5,
+                      },
+                    }}
+                    exit={{
+                      x: -25,
+                      opacity: 0,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeInOut",
                       },
                     }}
                     href={project.github}
@@ -254,6 +305,14 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                         duration: 0.5,
                         ease: "easeInOut",
                         delay: 0.6,
+                      },
+                    }}
+                    exit={{
+                      translateX: 25,
+                      opacity: 0,
+                      transition: {
+                        duration: 0.2,
+                        ease: "easeInOut",
                       },
                     }}
                     href={project.redirect}
