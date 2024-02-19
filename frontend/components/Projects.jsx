@@ -45,7 +45,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0 mb-10 "
+      className="relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0 mb-12 "
     >
       <div className="flex items-center justify-center mb-16">
         <Title
@@ -315,7 +315,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                         ease: "easeInOut",
                       },
                     }}
-                    href={project.redirect}
+                    href={`/projects/${project.redirect}`}
                     target="_blank"
                     className="flex items-center justify-center read-more-project-btn w-full relative rounded-xl px-4 h-[40px] text-lg font-bold tracking-widest text-neutral-300 bg-[rgba(255,255,255,.1)] hover:bg-[rgba(255,255,255,.2)]"
                   >

@@ -418,7 +418,7 @@ export const projectsData = () => [
     tags: ["Fullstack", "React.js", "Flask", "Python"],
     github: "https://github.com/cerredz/Beating-Captchas-with-CNNs",
     live: false,
-    redirect: "/BeatingCaptchas",
+    redirect: "/Beating-Captchas",
     img: "/images/projects/beatingcaptchas.png",
     preview:
       "Beating Captchas uses machine learning (CNNs) to solve human verification tests, captchas, and displays it onto a website.",
@@ -446,7 +446,7 @@ export const projectsData = () => [
     tags: ["Backend", "C++", "Java", "Python"],
     github: "https://github.com/cerredz/LeetCode-Problems",
     live: false,
-    redirect: "/LeetcodeProblems",
+    redirect: "/Leetcode-Problems",
     img: "/images/projects/leetcodeproblems.png",
     preview:
       "Completed 350+ leetcode problems in order to gain to enhance problem-solving abilities, algorithmic thinking, and build an overall strong foundation in fundamental programming skills. ",
@@ -475,7 +475,7 @@ export const projectsData = () => [
     tags: ["Backend", "C++"],
     github: "https://github.com/cerredz/SpeedTyping",
     live: false,
-    redirect: "/SpeedTyping",
+    redirect: "/Speed-Typing",
     img: "/images/projects/speedtyping.png",
     preview:
       "Speed Typing is an Object-Oriented  C++ game designed to improve typing speed and accuracy through interactive typing challenges and complex data analyzation.",
@@ -532,18 +532,18 @@ export const projectsData = () => [
     tags: ["Fullstack", "React.js", "Node.js", "MySQL", "Javascript"],
     github: "https://github.com/cerredz/Rocket-Math-Game",
     live: false,
-    redirect: "/RocketMath",
+    redirect: "/Rocket-Math",
     img: "/images/projects/rocketmath.png",
     preview:
       "Wesbite that displays a game called Rocket Math; a series of math problems that have to be completed in a short amount of time. Includes a database of all users, leaderboard, and ranked system.",
   },
 
   {
-    title: "Net-Worth Calculator",
+    title: "Net Worth Calculator",
     tags: ["Frontend", "HTML", "CSS", "Javascript"],
     github: "https://github.com/cerredz/Net-Worth-Calculator",
     live: false,
-    redirect: "/NetWorthCalculator",
+    redirect: "/Net-Worth-Calculator",
     img: "/images/projects/networthcalculator.png",
     preview:
       "Basic HTML, CSS, and Javascript website that asks the user a series of questions in order to calculate their net worth. My first ever software engineering project. ",
