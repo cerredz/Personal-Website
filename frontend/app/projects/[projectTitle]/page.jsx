@@ -153,7 +153,6 @@ export default function Page() {
               )}
             </div>
           </main>
-          <a href="/">back</a>
         </>
       ) : (
         <Loading></Loading>
