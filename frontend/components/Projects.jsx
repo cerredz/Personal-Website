@@ -316,7 +316,6 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                       },
                     }}
                     href={`/projects/${project.redirect}`}
-                    target="_blank"
                     className="flex items-center justify-center read-more-project-btn w-full relative rounded-xl px-4 h-[40px] text-lg font-bold tracking-widest text-neutral-300 bg-[rgba(255,255,255,.1)] hover:bg-[rgba(255,255,255,.2)]"
                   >
                     {project.live ? "View" : "Read More"}

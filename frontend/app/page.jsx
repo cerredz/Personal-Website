@@ -2,21 +2,12 @@
 import Image from "next/image";
 import { Suspense } from "react";
 import Loading from "./loading";
-import { Provider } from "react-redux";
-import authReducer from "./Redux/store";
-import { configureStore } from "@reduxjs/toolkit";
 import Navbar from "@/components/Navbar";
 import "../styles/globals.css";
 import HomePage from "@/Scenes/HomePage";
 import BackgroundSkillsIcons from "@/Widgets/BackgroundSkillsIcons";
 import { useRouter } from "next/router";
 import { LazyMotion, domAnimation } from "framer-motion";
-
-const store = configureStore({
-  reducer: {
-    auth: authReducer,
-  },
-});
 
 /*
 TODO:
@@ -30,10 +21,8 @@ TODO:
 
 export default function Home() {
   return (
-    <Provider store={store}>
-      <LazyMotion features={domAnimation}>
-        <HomePage />
-      </LazyMotion>
-    </Provider>
+    <LazyMotion features={domAnimation}>
+      <HomePage />
+    </LazyMotion>
   );
 }

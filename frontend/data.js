@@ -377,51 +377,38 @@ export const compSciSkillsData = [
   },
 ];
 
-export const bestSkills = [
-  {
-    skill: "C / C++",
-    rating: 96,
-    delay: 1.5,
-  },
-  {
-    skill: "React.js",
-    rating: 94,
-    delay: 2.6,
-  },
-  {
-    skill: "Node.js",
-    rating: 93,
-    delay: 3.6,
-  },
-  {
-    skill: "MongoDB",
-    rating: 91,
-    delay: 4.5,
-  },
-  {
-    skill: "Python",
-    rating: 89,
-    delay: 5.4,
-  },
-  {
-    skill: "Javascript",
-    rating: 86,
-    delay: 6.3,
-  },
-];
-
 export const projectFilters = () => ["All", "Fullstack", "Frontend", "Backend"];
 
 export const projectsData = () => [
   {
     title: "Beating Captchas",
     tags: ["Fullstack", "React.js", "Flask", "Python"],
+
     github: "https://github.com/cerredz/Beating-Captchas-with-CNNs",
     live: false,
     redirect: "/Beating-Captchas",
     img: "/images/projects/beatingcaptchas.png",
+    readMoreImg: "/images/projects/beatingCaptchasGit.png",
+    textColor: "linear-gradient(135deg, #0ea5e9,#2563eb , #0ea5e9)",
     preview:
       "Beating Captchas uses machine learning (CNNs) to solve human verification tests, captchas, and displays it onto a website.",
+    paragraphs: {
+      overview:
+        "Both me and a fellow computer science student completed this project during a 24-hour hackathon hosted at TCNJ in 2022. Our project uses machine learning (CNN's) to successfully solve human verification tests, captchas, and displays it on a visually pleasing frontend. All the user has to do is press the 'AI Demo' button, and the Ai solves the captcha displayed, and automatically refreshes with 9 new images for a new captcha to solve.",
+      technologies:
+        "Technologies used for this project include React.js, bootstrap, flask, jQuery, python, and tenserflow.",
+      features: [
+        "utilizes machine learning to successfully solve captchas",
+        "displays the captcha-solving process on a website",
+        "integration of Flask backend and React.js frontend to invoke and display the AI algorithm",
+        "contains practically an unlimited amount of unique captchas ",
+      ],
+      award: {
+        devpost: true,
+        text: "This project won best overall hack at the 2022 TCNJ Hackdown",
+        link: "https://devpost.com/software/beating-captcha-b-captcha?ref_content=user-portfolio&ref_feature=in_progress",
+      },
+    },
   },
   {
     title: "Personal Website",
@@ -447,9 +434,17 @@ export const projectsData = () => [
     github: "https://github.com/cerredz/LeetCode-Problems",
     live: false,
     redirect: "/Leetcode-Problems",
+    textColor: "linear-gradient(135deg, #7e22ce, #581c87 , #7e22ce)",
     img: "/images/projects/leetcodeproblems.png",
+    readMoreImg: "/images/projects/leetcodeproblemsGit.png",
     preview:
       "Completed 350+ leetcode problems in order to gain to enhance problem-solving abilities, algorithmic thinking, and build an overall strong foundation in fundamental programming skills. ",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
   {
     title: "ImageinateAI",
@@ -467,8 +462,16 @@ export const projectsData = () => [
     live: false,
     redirect: "/ImageinateAI",
     img: "/images/projects/imageinateai.png",
+    readMoreImg: "/images/projects/imageinateaiGit.png",
+    textColor: "linear-gradient(135deg, #3b82f6,#1d4ed8 , #3b82f6)",
     preview:
       "ImageinateAI is a game where participants compete in guessing captions used to generate AI images. Project won best overall hack at the 2023 TCNJ Hackathon. ",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
   {
     title: "Speed Typing",
@@ -477,8 +480,16 @@ export const projectsData = () => [
     live: false,
     redirect: "/Speed-Typing",
     img: "/images/projects/speedtyping.png",
+    readMoreImg: "/images/projects/speedTypingGit.png",
+    textColor: "linear-gradient(135deg, #7e22ce, #581c87 , #7e22ce)",
     preview:
       "Speed Typing is an Object-Oriented  C++ game designed to improve typing speed and accuracy through interactive typing challenges and complex data analyzation.",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
   {
     title: "LSR Kicks",
@@ -498,6 +509,12 @@ export const projectsData = () => [
     img: "/images/projects/lsrkicks.png",
     preview:
       "LSR Kicks is a MERN stack real-world shoe-selling application offering users a user-friendly online store to browse and purchase desired shoes.",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
   {
     title: "RefinedAI",
@@ -514,8 +531,16 @@ export const projectsData = () => [
     live: false,
     redirect: "/RefinedAI",
     img: "/images/projects/refinedai.png",
+    readMoreImg: "/images/projects/refinedaiGit.png",
+    textColor: "linear-gradient(135deg, #a855f7,#7e22ce , #a855f7)",
     preview:
       "RefinedAI is a comprehensive Full-Stack application engineered to provide customers with advanced upscaling services through cutting-edge artificial intelligence (AI) technology.",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
   {
     title: "ARTificial",
@@ -524,8 +549,16 @@ export const projectsData = () => [
     live: false,
     redirect: "/ARTificial",
     img: "/images/projects/artificial.png",
+    readMoreImg: "/images/projects/artificialGit.png",
+    textColor: "linear-gradient(135deg, #7e22ce, #581c87 , #7e22ce)",
     preview:
       "ARTificial is a web-based application designed to display and present an AI that uses neural style transfer to apply the style of one image to the content of another.",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
   {
     title: "Rocket Math",
@@ -534,18 +567,35 @@ export const projectsData = () => [
     live: false,
     redirect: "/Rocket-Math",
     img: "/images/projects/rocketmath.png",
+
+    readMoreImg: "/images/projects/rocketmathGit.png",
+    textColor: "linear-gradient(135deg, #3b82f6,#1d4ed8 , #3b82f6)",
     preview:
       "Wesbite that displays a game called Rocket Math; a series of math problems that have to be completed in a short amount of time. Includes a database of all users, leaderboard, and ranked system.",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
 
   {
     title: "Net Worth Calculator",
     tags: ["Frontend", "HTML", "CSS", "Javascript"],
+    textColor: "linear-gradient(135deg, #a855f7,#7e22ce , #a855f7)",
     github: "https://github.com/cerredz/Net-Worth-Calculator",
     live: false,
     redirect: "/Net-Worth-Calculator",
     img: "/images/projects/networthcalculator.png",
+    readMoreImg: "/images/projects/networthcalculatorGit.png",
     preview:
       "Basic HTML, CSS, and Javascript website that asks the user a series of questions in order to calculate their net worth. My first ever software engineering project. ",
+    paragraphs: {
+      overview: "Overview text goes here.",
+      technologies: "Technologies used text goes here.",
+      features: "Features text goes here.",
+      awards: "Awards text goes here (if applicable).",
+    },
   },
 ];

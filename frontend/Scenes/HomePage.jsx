@@ -56,7 +56,6 @@ const HomePage = () => {
         dark ? "bg-primary-dark" : "bg-primary-light"
       }`}
     >
-      <Navbar />
       <Sidebar />
 
       <section className="relative" id="home">

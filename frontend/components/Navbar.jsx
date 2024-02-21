@@ -45,7 +45,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`z-20 fixed w-full p-0 m-0 ${
+      className={`z-20 fixed w-full p-0 m-0 backdrop-blur-md ${
         dark ? "dark-border " : "light-border"
       }`}
     >
@@ -60,7 +60,7 @@ const Navbar = () => {
             {links.map((link, index) => (
               <p
                 key={index}
-                className={`z-10 h-full flex items-center cursor-pointer relative tracking-wider font-medium  text-sm sm:text-base md:text-lg lg:text-xl ${
+                className={`z-10 h-full flex items-center cursor-pointer relative tracking-wider font-bold  text-sm sm:text-base md:text-lg lg:text-xl ${
                   dark && "dark-text"
                 }`}
               >
