@@ -82,15 +82,15 @@ export default {
           ],
         },
         {
+          name: 'devpost',
+          title: 'Devpost Link',
+          type: 'string',
+        },
+        {
           name: 'award',
           title: 'Award',
           type: 'object',
           fields: [
-            {
-              name: 'devpost',
-              title: 'Devpost Link',
-              type: 'boolean',
-            },
             {
               name: 'text',
               title: 'Award Text',

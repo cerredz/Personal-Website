@@ -13,3 +13,6 @@ export const getProjectData = (projectTitle, projects) => {
 
   return null;
 };
+
+/* USER WANTS TO VIEW MORE PROJECTS, REDIRECT THEM TO THE PROJECTS ON THE HOMEPAGE */
+export const viewMoreProjects = () => {};
