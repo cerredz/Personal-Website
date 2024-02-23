@@ -15,4 +15,10 @@ export const getProjectData = (projectTitle, projects) => {
 };
 
 /* USER WANTS TO VIEW MORE PROJECTS, REDIRECT THEM TO THE PROJECTS ON THE HOMEPAGE */
-export const viewMoreProjects = () => {};
+export const viewMoreProjects = () => {
+  window.location.href = "/?section=projects";
+  const projectsSection = document.getElementById("projects");
+  if (projectsSection) {
+    projectsSection.scrollIntoView({ behavior: "smooth" });
+  }
+};

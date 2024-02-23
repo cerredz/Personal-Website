@@ -10,7 +10,7 @@ import "../../../styles/globals.css";
 import Image from "next/image";
 import { client, urlFor } from "@/utils/Sanity";
 import { motion } from "framer-motion";
-
+import { viewMoreProjects } from "@/utils/Project";
 export default function Page() {
   const dark = useSelector((state) => state.auth.dark);
   const pathname = usePathname();
@@ -34,13 +34,6 @@ export default function Page() {
 
     fetchData();
   }, []);
-
-  useEffect(() => {
-    if (projectData !== null) {
-      console.log(projectData);
-      console.log(projectData.readMoreImg);
-    }
-  }, [projectData]);
 
   return (
     <div>
@@ -189,6 +182,7 @@ export default function Page() {
                 boxShadow: "inset 0 0 15px rgba(255,255,255,.2)",
               }}
               className={`px-6 py-2 rounded-lg italic font-bold tracking-wider text-neutral-300 `}
+              onClick={() => viewMoreProjects()}
             >
               View More Projects
             </motion.button>

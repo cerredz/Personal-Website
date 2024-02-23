@@ -167,7 +167,7 @@ const Projects = () => {
   );
 };
 
-const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
+const ProjectCard = ({ key, project, dark, index, activeIndex, onClick }) => {
   const containerRef = useRef(null);
   const inView = useInView(containerRef);
   const [isHoveringExpand, setIsHoveringExpand] = useState(false);
@@ -225,6 +225,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
               <div className="flex flex-row items-center flex-wrap justify-start gap-y-1 gap-x-1 basis-1/12">
                 {project.tags.map((tag, index) => (
                   <p
+                    key={index}
                     className={`${tag}-tag text-xs font-medium tracking-wider rounded-lg px-2`}
                   >
                     {tag}

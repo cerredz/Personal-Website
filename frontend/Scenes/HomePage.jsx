@@ -13,8 +13,10 @@ import Quote from "@/Widgets/Quote";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
+import { useSearchParams } from "next/navigation";
 
 const HomePage = () => {
+  const searchParams = useSearchParams();
   const dark = useSelector((state) => state.auth.dark);
   const volume = useSelector((state) => state.auth.volume);
   const music = useSelector((state) => state.auth.music);
@@ -22,33 +24,15 @@ const HomePage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // update background song whenever the category changed
-    const playBackgroundMusic = async () => {
-      audioTags.forEach((audio) => audio.pause());
-      if (music == "Mute") {
-        dispatch(setVolume({ amount: 0 }));
-        return;
+    // scroll to correct section if passed into the url query
+    const section = searchParams.get("section");
+    if (section) {
+      const projectsSection = document.getElementById(section);
+      if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: "smooth" });
       }
-      const song = await playSong(music, volume);
-      setAudioTags((prev) => [...prev, song]);
-      await song.play().catch(() => {
-        // user not yet interacted with window, add one time event listeners
-        ["click", "keydown"].forEach((eventType) =>
-          window.addEventListener(eventType, () => playBackgroundMusic(), {
-            once: true,
-          })
-        );
-      });
-    };
-
-    playBackgroundMusic();
-  }, [music]);
-
-  useEffect(() => {
-    // update the volume of the background song whenever the volume is changed
-    const currentSong = audioTags[audioTags.length - 1];
-    if (currentSong) currentSong.volume = parseFloat(volume).toFixed(2);
-  }, [volume]);
+    }
+  }, []);
 
   return (
     <main

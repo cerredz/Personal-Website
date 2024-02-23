@@ -19,6 +19,7 @@ import { setVolume } from "@/app/Redux/store";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
+import { playSong } from "@/utils/Sound";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
@@ -31,12 +32,42 @@ const Navbar = () => {
   const dark = useSelector((state) => state.auth.dark);
   const volume = useSelector((state) => state.auth.volume);
   const music = useSelector((state) => state.auth.music);
+  const [audioTags, setAudioTags] = useState([]);
+
   // load the links / music data upon render
   useEffect(() => {
     setLinks(NavbarLinks);
     setMusicData(musicTypes);
     setMusicVolume(volume);
   }, []);
+
+  // set up the background music
+  useEffect(() => {
+    const playBackgroundMusic = async () => {
+      audioTags.forEach((audio) => audio.pause());
+      if (music == "Mute") {
+        dispatch(setVolume({ amount: 0 }));
+        return;
+      }
+      const song = await playSong(music, volume);
+      setAudioTags((prev) => [...prev, song]);
+      await song.play().catch(() => {
+        // user not yet interacted with window, add one time event listeners
+        ["click", "keydown"].forEach((eventType) =>
+          window.addEventListener(eventType, () => playBackgroundMusic(), {
+            once: true,
+          })
+        );
+      });
+    };
+    playBackgroundMusic();
+  }, [music]);
+
+  useEffect(() => {
+    // update the volume of the background song whenever the volume is changed
+    const currentSong = audioTags[audioTags.length - 1];
+    if (currentSong) currentSong.volume = parseFloat(volume).toFixed(2);
+  }, [volume]);
 
   const handleVolumeSliderChange = (event) => {
     adjustVolume(event, dispatch);
