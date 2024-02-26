@@ -13,6 +13,8 @@ import { motion } from "framer-motion";
 import { viewMoreProjects } from "@/utils/Project";
 import { IoLogoReact } from "react-icons/io5";
 import { IoCodeSlash } from "react-icons/io5";
+import { FaNode } from "react-icons/fa";
+import { FaPython } from "react-icons/fa6";
 
 import "./styles.css";
 
@@ -40,6 +42,10 @@ export default function Page() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log(projectData);
+  }, [projectData]);
+
   return (
     <div>
       {projectData !== null ? (
@@ -47,7 +53,7 @@ export default function Page() {
           <div
             className={`overflow-hidden font-primary p-0 m-0 min-h-screen ${
               dark ? "bg-primary-dark" : "bg-primary-light"
-            } flex flex-col xl:flex-row gap-20 items-center justify-center px-20 xl:px-36 mx-auto pt-40 pb-20 `}
+            } flex flex-col xl:flex-row gap-20 items-center justify-center px-20 xl:px-36 mx-auto pt-28 pb-20 `}
           >
             {/* BACKGOUND ICONS */}
             <BackgroundIcons />
@@ -55,14 +61,26 @@ export default function Page() {
             <Image
               quality={100}
               priority={true}
-              src={"/images/projects/readMoreBackground.png"}
+              src={`${
+                dark
+                  ? "/images/projects/readMoreBackgroundDark.png"
+                  : "/images/projects/readMoreBackgroundLight.png"
+              }`}
               alt=""
               width={1920}
               height={1080}
-              className="absolute z-1 top-0 left-0 w-full h-[full] background-img hidden xl:block"
+              className="absolute z-1 top-0 left-0 w-full h-[105%] background-img hidden xl:block"
             />
             {/* IMAGE CONTAINER */}
-            <div className="flex items-center justify-center xl:basis-3/5 ">
+            <motion.div
+              initial={{ x: -500, opacity: 0 }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: { duration: 0.4, delay: 0.3 },
+              }}
+              className="flex items-center justify-center xl:basis-1/2 "
+            >
               <Image
                 quality={100}
                 priority={true}
@@ -73,23 +91,57 @@ export default function Page() {
                 className="z-10  rounded-2xl"
                 sizes=""
               />
-            </div>
+              <div
+                className={` hidden xl:block xl:absolute xl:bottom-[100px] flex items-center justify-center rounded-xl bg-transparent ${
+                  dark ? "bg-primary-dark" : "bg-primary-light"
+                }`}
+              >
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  style={{
+                    background: `${projectData.textColor}`,
+                    boxShadow: "inset 0 0 15px rgba(255,255,255,.2)",
+                  }}
+                  className={`px-6 py-2 rounded-lg italic font-bold tracking-wider text-neutral-300 `}
+                  onClick={() => viewMoreProjects()}
+                >
+                  View More Projects
+                </motion.button>
+              </div>
+            </motion.div>
             {/* TEXT CONTAINER */}
-            <div className="flex flex-col items-start justify-start xl:basis-2/5 gap-6 z-10">
-              <h1
+            <div className="flex flex-col items-start justify-start xl:basis-1/2 gap-2 z-10 ">
+              <motion.h1
+                initial={{ x: 500, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.3, delay: 0.2 },
+                }}
                 style={{
                   backgroundImage: `${projectData.textColor}`,
                   backgroundClip: "text",
                   WebkitBackgroundClip: "text",
                   color: "transparent",
                 }}
-                className={`font-bold text-5xl tracking-widest text-center`}
+                className={`font-bold text-5xl tracking-widest text-center w-full rounded-xl py-2 ${
+                  dark ? "text-dark-container" : "text-light-container"
+                }`}
               >
                 {projectData.title}
-              </h1>
+              </motion.h1>
               {/* OVERVIEW  */}
-              <div
-                className={`flex flex-col gap-2 items-start justify-start  `}
+              <motion.div
+                initial={{ x: 500, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.4, delay: 0.3 },
+                }}
+                className={`flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
+                  dark ? "text-dark-container" : "text-light-container"
+                }  `}
               >
                 <h1
                   className={` text-lg tracking-widest font-medium ${
@@ -105,10 +157,20 @@ export default function Page() {
                 >
                   {projectData.paragraphs.overview}
                 </p>
-              </div>
+              </motion.div>
               {/* TECHNOLOGIES USED  */}
               {projectData.paragraphs.technologies !== null && (
-                <div className="flex flex-col gap-2 items-start justify-start">
+                <motion.div
+                  initial={{ x: 500, opacity: 0 }}
+                  animate={{
+                    x: 0,
+                    opacity: 1,
+                    transition: { duration: 0.3, delay: 0.4 },
+                  }}
+                  className={`flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
+                    dark ? "text-dark-container" : "text-light-container"
+                  }`}
+                >
                   <h1
                     className={` text-lg tracking-widest font-medium ${
                       dark ? "text-neutral-300" : "text-neutral-800"
@@ -123,13 +185,23 @@ export default function Page() {
                   >
                     {projectData.paragraphs.technologies}
                   </p>
-                </div>
+                </motion.div>
               )}
               {/* FEATURES  */}
-              <div className="flex flex-col gap-2 items-start justify-start">
+              <motion.div
+                initial={{ x: 500, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.35, delay: 0.5 },
+                }}
+                className={`flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
+                  dark ? "text-dark-container" : "text-light-container"
+                } `}
+              >
                 <h1
                   className={` text-lg tracking-widest font-medium ${
-                    dark ? "text-neutral-300" : "text-neutral-800"
+                    dark ? "text-neutral-300 " : "text-neutral-800 "
                   }`}
                 >
                   Features
@@ -147,10 +219,20 @@ export default function Page() {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
               {/* AWARDS  */}
-              {projectData.paragraphs.awards && (
-                <div className="flex flex-col gap-2 items-start justify-start">
+              {projectData.paragraphs.award && (
+                <motion.div
+                  initial={{ x: 500, opacity: 0 }}
+                  animate={{
+                    x: 0,
+                    opacity: 1,
+                    transition: { duration: 0.4, delay: 0.55 },
+                  }}
+                  className={`flex flex-col gap-2 items-start justify-start w-full py-3 px-6 rounded-xl ${
+                    dark ? "text-dark-container" : "text-light-container"
+                  }`}
+                >
                   <h1
                     className={` text-lg tracking-widest font-medium ${
                       dark ? "text-neutral-300" : "text-neutral-800"
@@ -163,14 +245,22 @@ export default function Page() {
                       dark ? "text-neutral-600" : "text-neutral-400"
                     }`}
                   >
-                    {projectData.paragraphs.awards.text}
+                    {projectData.paragraphs.award.text}
                   </p>
-                </div>
+                </motion.div>
               )}
               {projectData.paragraphs.devpost && (
-                <p
-                  className={`text-sm tracking-wide font-medium ${
-                    dark ? "text-neutral-600" : "text-neutral-400"
+                <motion.p
+                  initial={{ x: 500, opacity: 0 }}
+                  animate={{
+                    x: 0,
+                    opacity: 1,
+                    transition: { duration: 0.4, delay: 0.6 },
+                  }}
+                  className={`text-sm tracking-wide font-medium w-full rounded-xl py-3 px-6 ${
+                    dark
+                      ? "text-neutral-600 text-dark-container"
+                      : "text-neutral-400 text-light-container"
                   }`}
                 >
                   To to view the devpost
@@ -182,26 +272,8 @@ export default function Page() {
                     {" "}
                     click here
                   </a>
-                </p>
+                </motion.p>
               )}
-            </div>
-            <div
-              className={`absolute bottom-[20px] flex items-center justify-center pb-10 ${
-                dark ? "bg-primary-dark" : "bg-primary-light"
-              }`}
-            >
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                style={{
-                  background: `${projectData.textColor}`,
-                  boxShadow: "inset 0 0 15px rgba(255,255,255,.2)",
-                }}
-                className={`px-6 py-2 rounded-lg italic font-bold tracking-wider text-neutral-300 `}
-                onClick={() => viewMoreProjects()}
-              >
-                View More Projects
-              </motion.button>
             </div>
           </div>
         </>
@@ -226,9 +298,25 @@ const BackgroundIcons = () => {
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 0.25, x: 0, transition: { delay: 0.8 } }}
-        className="absolute bottom-[40px] left-[300px] z-10"
+        className="absolute bottom-[10px] left-[300px] z-10 hidden xl:block"
       >
-        <IoCodeSlash className="text-5xl -rotate-12 text-neutral-500 hidden xl:block" />
+        <IoCodeSlash className="text-5xl -rotate-12 text-neutral-500 " />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 0.25, x: 0, transition: { delay: 1 } }}
+        className="absolute top-[250px] right-[25px] z-10 hidden xl:block"
+      >
+        <FaNode className="text-5xl rotate-12 text-neutral-500 " />
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 0.25, y: 0, transition: { delay: 1.2 } }}
+        className="absolute top-[125px] right-[75px] z-10 hidden xl:block"
+      >
+        <FaPython className="text-5xl rotate-12 text-neutral-500" />
       </motion.div>
     </>
   );
