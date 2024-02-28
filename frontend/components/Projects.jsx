@@ -10,6 +10,8 @@ import Image from "next/image";
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { useInView } from "framer-motion";
 import { FaGithub } from "react-icons/fa6";
+import { BackgroundBeams } from "@/AceternityUi/background-beams";
+import { CardItem, CardContainer } from "@/AceternityUi/3dcard";
 
 const Projects = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -85,6 +87,7 @@ const Projects = () => {
         ) : (
           <Loading />
         )}
+        <BackgroundBeams />
       </div>
 
       {/* Projects */}
@@ -93,14 +96,16 @@ const Projects = () => {
           <>
             {/* 'ALL' IS SELECTECD, APPLY NO FILTERS */}
             {projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                project={project}
-                dark={dark}
-                index={index}
-                activeIndex={activeCardIndex}
-                onClick={() => setActiveCardIndex(index)}
-              />
+              <>
+                <ProjectCard
+                  key={index}
+                  project={project}
+                  dark={dark}
+                  index={index}
+                  activeIndex={activeCardIndex}
+                  onClick={() => setActiveCardIndex(index)}
+                />
+              </>
             ))}
           </>
         ) : (
@@ -204,7 +209,6 @@ const ProjectCard = ({ key, project, dark, index, activeIndex, onClick }) => {
           sizes=""
         />
         {/* CONTENT OVER IMAGE */}
-
         <div
           onMouseEnter={() => setIsHoveringExpand(true)}
           onMouseLeave={() => setIsHoveringExpand(false)}

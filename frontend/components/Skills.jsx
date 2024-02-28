@@ -1,7 +1,7 @@
 import Title from "@/Widgets/Title";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { skillsIconData, compSciSkillsData, bestSkills } from "@/data";
+import { skillsIconData, compSciSkillsData } from "@/data";
 import Loader from "@/Widgets/Loader";
 import { inView, motion } from "framer-motion";
 import Image from "next/image";
@@ -15,11 +15,13 @@ import { PiMoonStarsFill } from "react-icons/pi";
 import { shortenedDescription } from "@/utils/Skills";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { ReadMore } from "./ReadMore";
+import { BackgroundBeams } from "@/AceternityUi/background-beams";
+import { GlowingStarsBackgroundCard } from "@/AceternityUi/glowing-stars";
 
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [skills, setSkills] = useState(null);
-  const [topSkills, setTopSkills] = useState(null);
+
   const [computerScienceSkills, setComputerScienceSkills] = useState(null);
   const [currentSkillsIndex, setCurrentSkillIndex] = useState(null);
   const [otherSkillsDivHeight, setOtherSkillsDivHeight] = useState(0);
@@ -31,7 +33,6 @@ const Skills = () => {
   useEffect(() => {
     setSkills(skillsIconData);
     setComputerScienceSkills(compSciSkillsData);
-    setTopSkills(bestSkills);
   }, []);
 
   useEffect(() => {

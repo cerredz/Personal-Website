@@ -15,6 +15,7 @@ import { IoLogoReact } from "react-icons/io5";
 import { IoCodeSlash } from "react-icons/io5";
 import { FaNode } from "react-icons/fa";
 import { FaPython } from "react-icons/fa6";
+import { BackgroundBeams } from "@/AceternityUi/background-beams";
 
 import "./styles.css";
 
@@ -47,7 +48,7 @@ export default function Page() {
   }, [projectData]);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       {projectData !== null ? (
         <>
           <div
@@ -125,7 +126,7 @@ export default function Page() {
                   WebkitBackgroundClip: "text",
                   color: "transparent",
                 }}
-                className={`font-bold text-5xl tracking-widest text-center w-full rounded-xl py-2 ${
+                className={`relative font-bold text-5xl tracking-widest text-center w-full rounded-xl py-2 ${
                   dark ? "text-dark-container" : "text-light-container"
                 }`}
               >
@@ -139,7 +140,7 @@ export default function Page() {
                   opacity: 1,
                   transition: { duration: 0.4, delay: 0.3 },
                 }}
-                className={`flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
+                className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
                   dark ? "text-dark-container" : "text-light-container"
                 }  `}
               >
@@ -150,6 +151,7 @@ export default function Page() {
                 >
                   Overview
                 </h1>
+
                 <p
                   className={`text-sm tracking-wide font-medium ${
                     dark ? "text-neutral-600" : "text-neutral-400"
@@ -157,6 +159,7 @@ export default function Page() {
                 >
                   {projectData.paragraphs.overview}
                 </p>
+                <BackgroundBeams />
               </motion.div>
               {/* TECHNOLOGIES USED  */}
               {projectData.paragraphs.technologies !== null && (
@@ -167,7 +170,7 @@ export default function Page() {
                     opacity: 1,
                     transition: { duration: 0.3, delay: 0.4 },
                   }}
-                  className={`flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
+                  className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
                     dark ? "text-dark-container" : "text-light-container"
                   }`}
                 >
@@ -185,6 +188,7 @@ export default function Page() {
                   >
                     {projectData.paragraphs.technologies}
                   </p>
+                  <BackgroundBeams />
                 </motion.div>
               )}
               {/* FEATURES  */}
@@ -195,7 +199,7 @@ export default function Page() {
                   opacity: 1,
                   transition: { duration: 0.35, delay: 0.5 },
                 }}
-                className={`flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
+                className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
                   dark ? "text-dark-container" : "text-light-container"
                 } `}
               >
@@ -219,6 +223,7 @@ export default function Page() {
                     </li>
                   ))}
                 </ul>
+                <BackgroundBeams />
               </motion.div>
               {/* AWARDS  */}
               {projectData.paragraphs.award && (
@@ -229,7 +234,7 @@ export default function Page() {
                     opacity: 1,
                     transition: { duration: 0.4, delay: 0.55 },
                   }}
-                  className={`flex flex-col gap-2 items-start justify-start w-full py-3 px-6 rounded-xl ${
+                  className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start w-full py-3 px-6 rounded-xl ${
                     dark ? "text-dark-container" : "text-light-container"
                   }`}
                 >
@@ -247,6 +252,7 @@ export default function Page() {
                   >
                     {projectData.paragraphs.award.text}
                   </p>
+                  <BackgroundBeams />
                 </motion.div>
               )}
               {projectData.paragraphs.devpost && (

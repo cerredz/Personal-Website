@@ -20,6 +20,7 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { playSong } from "@/utils/Sound";
+import SpinningBorderButton from "@/Widgets/SpinningBorderButton";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
@@ -101,44 +102,33 @@ const Navbar = () => {
           </div>
         </div>
         {/* NAVBAR WIDGETS */}
-
         <div className="flex justify-end items-center gap-3 z-10 relative">
           {/* VOLUME BUTTON */}
-          <div className="relative">
-            <motion.div
-              initial={{ opacity: 0, y: -100 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, ease: "easeInOut" },
-              }}
-              exit={{ opacity: 0 }}
-              whileTap={{ scale: 0.8 }}
-              whileHover={{ scale: 1.1 }}
-              onMouseEnter={() => setIsHoveringVolume(true)}
-              onMouseLeave={() => setIsHoveringVolume(false)}
-              onClick={() => clickSound(volume)}
-              className={`z-25 flex relative text-2xl cursor-pointer p-2 mr-4 rounded-lg after:absolute after: z-1 
+          <motion.div
+            initial={{ opacity: 0, y: -100 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.5, ease: "easeInOut" },
+            }}
+            exit={{ opacity: 0 }}
+            whileHover={{ scale: 1.1 }}
+            onMouseEnter={() => setIsHoveringVolume(true)}
+            onMouseLeave={() => setIsHoveringVolume(false)}
+            className={`relative z-25 mr-2 cursor-pointer after:absolute after:z-1 backdrop-blur-3xl
                 after:content-[''] after:top-[25px] after:left-0 after:w-full after:h-full `}
-            >
-              <div className="z-1 absolute left-[-10px] top-[-7px] w-14 h-14">
-                <BackgroundBlob
-                  loop={showMobileLinks}
-                  scale={2.6}
-                  dark="#E26EE5"
-                  light="#FF90BC"
-                  distort=".44"
-                  speed="1.9"
-                />
-              </div>
-
-              {musicVolume > 0 ? (
-                <BsVolumeUpFill className="z-20" />
-              ) : (
-                <BsVolumeOffFill className="z-20" />
-              )}
-            </motion.div>
-
+          >
+            <SpinningBorderButton
+              content={<BsVolumeUpFill className="z-20" />}
+              background={`icon-shadow ${
+                dark ? "bg-[#1e1e21]" : "bg-[#F7F7FA]"
+              }`}
+              textStyle={`text-xl font-bold ${
+                dark ? "text-fuchsia-500" : "text-fuchsia-400"
+              }`}
+              gradient={`bg-[conic-gradient(from_90deg_at_50%_50%,#d946ef_0%,transparent_50%,#d946ef_100%)]`}
+              onClick={() => clickSound(volume)}
+            />
             {/* VOLUME DROPDOWN MENU */}
             {isHoveringVolume && (
               <motion.div
@@ -148,19 +138,17 @@ const Navbar = () => {
                   opacity: 1,
                   transition: { duration: 0.5, ease: "easeInOut" },
                 }}
-                className={`absolute z-2 flex-col left-[-50px] top-100 rounded-lg p-4
-                backdrop-blur-lg after:bg-red-400
-                shadow-xl 
+                className={`absolute z-100 flex-col left-[-50px] top-100 rounded-lg p-4
                 ${
                   dark
-                    ? "dark-text volume-slider-dark shadow-neutral-700/10"
-                    : "text-black volume-slider-light shadow-neutral-400/40 border-neutral-400"
+                    ? "dark-text volume-slider-dark "
+                    : "text-black volume-slider-light border-neutral-400"
                 }
                 `}
                 onMouseEnter={() => setIsHoveringVolume(true)}
                 onMouseLeave={() => setIsHoveringVolume(false)}
               >
-                <div className="flex flex-row items-center justify-center w-full gap-2">
+                <div className="flex flex-row items-center justify-center w-full gap-2 ">
                   <label className="text-sm font-normal tracking-wide">0</label>
                   <input
                     type="range"
@@ -177,7 +165,7 @@ const Navbar = () => {
                     100
                   </label>
                 </div>
-                <div className="flex flex-col mt-2 gap-1">
+                <div className="flex flex-col mt-2 gap-1 ">
                   {musicData.map((type, index) => (
                     <motion.div
                       whileTap={{ scale: 0.8 }}
@@ -202,7 +190,7 @@ const Navbar = () => {
                 </div>
               </motion.div>
             )}
-          </div>
+          </motion.div>
 
           {/* LIGHT / DARK MODE */}
           <motion.div
@@ -217,27 +205,25 @@ const Navbar = () => {
             onMouseEnter={() => setIsHoveringToggle(true)}
             onMouseLeave={() => setIsHoveringToggle(false)}
             onClick={() => toggle(dark, dispatch, musicVolume)}
-            className={`z-100 flex items-center justify-center relative text-2xl cursor-pointer p-2 mr-4 rounded-lg`}
+            className={`z-100 flex items-center justify-center relative text-2xl cursor-pointer mr-4 rounded-full transition duration-500 ${
+              dark ? "dark-mode" : "light-mode"
+            } `}
           >
-            <div className="z-1 absolute left-[-20px] top-[-20px] w-14 h-14">
-              <BackgroundBlob
-                loop={showMobileLinks}
-                scale={2.6}
-                light="#040D12"
-                dark="#F3F8FF"
-                distort=".35"
-                speed="2.6"
-              />
-            </div>
-            {dark ? (
-              <div className="absolute z-25">
-                <LuSunDim className={`z-2 text-black`} />
-              </div>
-            ) : (
-              <div className="absolute z-25">
-                <GoMoon className="z-25 text-white" />
-              </div>
-            )}
+            <SpinningBorderButton
+              content={dark ? <LuSunDim /> : <GoMoon />}
+              background={`icon-shadow ${
+                dark ? "bg-[#1e1e21]" : "bg-[#F7F7FA]"
+              }`}
+              textStyle={`text-xl font-bold ${
+                dark ? "text-neutral-300" : "text-[#1e1e21]"
+              }`}
+              gradient={` ${
+                dark
+                  ? "bg-[conic-gradient(from_90deg_at_50%_50%,#F5F5F8_0%,transparent_50%,#F5F5F8_100%)]"
+                  : "bg-[conic-gradient(from_90deg_at_50%_50%,#1e1e21_0%,#1e1e21_50%,transparent_100%)]"
+              } `}
+              onClick={() => clickSound(volume)}
+            ></SpinningBorderButton>
           </motion.div>
 
           {/* SIDEBAR TOGGLE */}

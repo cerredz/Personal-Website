@@ -51,19 +51,19 @@ const Sidebar = () => {
           }}
         >
           {link.social === "LinkedIn" && (
-            <FaLinkedinIn className="transition-all duration-600 hover:text-socials-linkedin" />
+            <FaLinkedinIn className="transition-all duration-600 hover:text-socials-linkedin z-1" />
           )}
           {link.social === "Github" && (
-            <FaGithub className="transition-all duration-600 hover:text-socials-github" />
+            <FaGithub className="transition-all duration-600 hover:text-socials-github z-1" />
           )}
           {link.social === "Twitter" && (
-            <AiFillTwitterCircle className="transition-all duration-600 hover:text-socials-twitter" />
+            <AiFillTwitterCircle className="transition-all duration-600 hover:text-socials-twitter z-1" />
           )}
           {link.social === "Discord" && (
-            <FaDiscord className="transition-all duration-600 hover:text-socials-discord" />
+            <FaDiscord className="transition-all duration-600 hover:text-socials-discord z-1" />
           )}
           {link.social === "Devpost" && (
-            <SiDevpost className="transition-all duration-600 hover:text-socials-devpost" />
+            <SiDevpost className="transition-all duration-600 hover:text-socials-devpost z-1" />
           )}
         </motion.a>
       ))}

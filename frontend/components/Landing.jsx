@@ -9,6 +9,8 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { BsStars } from "react-icons/bs";
 import { SlArrowDown } from "react-icons/sl";
 import Label from "@/Widgets/Label";
+import { TypewriterEffect } from "@/AceternityUi/typewriter-effect";
+import { FaChevronDown } from "react-icons/fa";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -57,6 +59,18 @@ export default Landing;
 
 // left side of the screen, seperated for readability
 const LeftContainer = ({ dark }) => {
+  const word1 = [
+    {
+      text: "Michael",
+      className: `text-sky-500 text-6xl lg:text-8xl tracking-wide font-bold`,
+    },
+  ];
+  const word2 = [
+    {
+      text: "Cerreto",
+      className: `text-sky-500 text-6xl lg:text-8xl tracking-wide font-bold`,
+    },
+  ];
   return (
     <>
       <Label
@@ -84,6 +98,12 @@ const LeftContainer = ({ dark }) => {
       >
         Hi 👋, my name is
       </motion.p>
+      <div className="w-full flex justify-center items-center flex-col">
+        <TypewriterEffect words={word1} />
+        <TypewriterEffect words={word2} />
+      </div>
+
+      {/* 
       <motion.h1
         initial={{ x: -50, opacity: 0 }}
         animate={{
@@ -110,6 +130,7 @@ const LeftContainer = ({ dark }) => {
       >
         Cerreto
       </motion.h1>
+      */}
       <motion.p
         initial={{ x: -50, opacity: 0 }}
         animate={{
@@ -126,7 +147,7 @@ const LeftContainer = ({ dark }) => {
       </motion.p>
 
       {/* CONTACT ME BUTTON */}
-      <div className="w-full flex flex-row justify-start items-center gap-8">
+      <div className="w-full flex flex-row justify-start items-center gap-8 mt-5">
         <motion.button
           initial={{ x: -50, opacity: 0 }}
           animate={{
@@ -136,7 +157,7 @@ const LeftContainer = ({ dark }) => {
           }}
           whileHover={{ y: -5 }}
           whileTap={{ scale: 0.8 }}
-          className={`z-50 font-normal contact-btn relative flex flex-row items-center justify-center w-min gap-2 tracking-widest whitespace-nowrap transition-opacity duration-500 mt-5 text-lg rounded-3xl py-2 px-6 cursor-pointer bg-gradient-to-r 
+          className={`z-50 font-normal contact-btn relative flex flex-row items-center justify-center w-min gap-2 tracking-widest whitespace-nowrap transition-opacity duration-500 text-lg rounded-3xl py-2 px-6 cursor-pointer bg-gradient-to-r 
          ${
            dark
              ? "text-neutral-300 from-sky-500  to-blue-600"
@@ -154,15 +175,15 @@ const LeftContainer = ({ dark }) => {
             opacity: 1,
             transition: { duration: 0.4, ease: "easeInOut", delay: 0.8 },
           }}
-          className={`z-50 resume-btn font-normal relative flex flex-row items-center justify-center w-min gap-3 tracking-widest whitespace-nowrap transition-opacity duration-500 mt-5 text-lg rounded-3xl px-6 cursor-pointer border-2 border-solid
-         ${
-           dark
-             ? "text-neutral-300 border-sky-500"
-             : "text-neutral-800 border-sky-400"
-         }`}
+          whileHover={{ scale: 1.1 }}
+          className={`z-50 relative overflow-hidden gap-4 inline-flex tracking-widest font-bold h-12 animate-shimmer items-center justify-center rounded-3xl border border-2 border-sky-500 bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer ${
+            dark
+              ? "text-neutral-300 bg-[linear-gradient(110deg,#1e1e21,45%,#1e2631,55%,#1e1e21)] "
+              : "text-neutral-800 bg-[transparent]"
+          }`}
         >
           <p>Resume</p>
-          <SlArrowDown className="font-bold arrow p-0 m-0 flex items-center justify-center text-sm" />
+          <FaChevronDown className="flex items-center justify-center p-0 m-0" />
         </motion.button>
       </div>
     </>

@@ -14,6 +14,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import { useSearchParams } from "next/navigation";
+import { ThreeDCardDemo } from "@/AceternityUi/3dCard";
 
 const HomePage = () => {
   const searchParams = useSearchParams();
