@@ -54,7 +54,7 @@ export default function Page() {
           <div
             className={`overflow-hidden font-primary p-0 m-0 min-h-screen ${
               dark ? "bg-primary-dark" : "bg-primary-light"
-            } flex flex-col xl:flex-row gap-20 items-center justify-center px-20 xl:px-36 mx-auto pt-28 pb-20 `}
+            } flex flex-col xl:flex-row gap-20 items-center justify-center px-20 xl:px-36 mx-auto pt-32 pb-20 `}
           >
             {/* BACKGOUND ICONS */}
             <BackgroundIcons />

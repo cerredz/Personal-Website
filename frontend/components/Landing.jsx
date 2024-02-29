@@ -157,7 +157,7 @@ const LeftContainer = ({ dark }) => {
           }}
           whileHover={{ y: -5 }}
           whileTap={{ scale: 0.8 }}
-          className={`z-50 font-normal contact-btn relative flex flex-row items-center justify-center w-min gap-2 tracking-widest whitespace-nowrap transition-opacity duration-500 text-lg rounded-3xl py-2 px-6 cursor-pointer bg-gradient-to-r 
+          className={`z-50 font-normal contact-btn relative flex flex-row items-center justify-center w-min gap-2 tracking-widest whitespace-nowrap transition-opacity duration-500 text-lg rounded-3xl py-[.62rem] px-6 cursor-pointer bg-gradient-to-r 
          ${
            dark
              ? "text-neutral-300 from-sky-500  to-blue-600"

@@ -56,7 +56,7 @@ const Projects = () => {
           subtitle="Browse through my latest Software Engineering creations and projects."
           dark={dark}
           color={`${dark ? "bg-fuchsia-600" : "bg-fuchsia-400"}`}
-          translateX="-translate-x-[27rem]"
+          translateX="-translate-x-[28rem]"
           translateY={"-translate-y-2"}
         />
       </div>

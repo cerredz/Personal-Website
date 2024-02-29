@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-
+import "../styles/title.css";
 const Title = ({
   text,
   backgroundText,
@@ -9,6 +9,8 @@ const Title = ({
   translateX,
   translateY,
   subtitle,
+  beforeGradient,
+  afterGradient,
 }) => {
   const [spanRef, spanInView] = useInView();
   const [h3Ref, h3InView] = useInView();
@@ -18,15 +20,7 @@ const Title = ({
   return (
     <div className="flex flex-col items-center justify-between gap-8">
       <div className="flex flex-row justify-between items-center relative gap-2 ">
-        <motion.span
-          ref={spanRef}
-          style={{
-            transform: spanInView ? "none" : "translateY(50px)",
-            opacity: spanInView ? 1 : 0,
-            transition: "all .4s ease-in-out .4s",
-          }}
-          className={`h-1 w-12 rounded-sm ${color} relative z-10`}
-        ></motion.span>
+        {/* TITLE */}
         <motion.h3
           ref={h3Ref}
           style={{
@@ -34,12 +28,13 @@ const Title = ({
             opacity: h3InView ? 1 : 0,
             transition: "all .4s ease-in-out .4s",
           }}
-          className={`text-3xl tracking-widest font-light tracking-wide relative z-10 ${
+          className={`sm:text-6xl lg:text-4xl tracking-widest font-light relative z-10 title ${
             dark ? "text-neutral-200" : "text-neutral-700"
-          }`}
+          } ${beforeGradient} ${afterGradient}`}
         >
           {text}
         </motion.h3>
+        {/* GRAY BACKGROUND TEXT */}
         <div
           className={`absolute whitespace-nowrap hidden lg:block text-8xl transform ${translateY} ${translateX}`}
         >
@@ -58,6 +53,7 @@ const Title = ({
           </motion.h1>
         </div>
       </div>
+      {/* SUBTITLE */}
       {subtitle !== null && (
         <motion.p
           ref={pRef}

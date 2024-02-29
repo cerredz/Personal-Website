@@ -49,8 +49,10 @@ const About = () => {
           backgroundText={"<About Me />"}
           dark={dark}
           color={`${dark ? "bg-blue-600" : "bg-blue-400"}`}
-          translateX="-translate-x-64"
+          translateX="-translate-x-72"
           translateY={"-translate-y-2"}
+          beforeGradient={`about-me-before-title-gradient`}
+          afterGradient={`about-me-after-title-gradient`}
         />
       </div>
       <div className="relative w-11/12 xl:w-8/12 mx-auto flex flex-col xl:flex-row justify-center items-center gap-20">

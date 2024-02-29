@@ -130,66 +130,71 @@ const Navbar = () => {
               onClick={() => clickSound(volume)}
             />
             {/* VOLUME DROPDOWN MENU */}
-            {isHoveringVolume && (
-              <motion.div
-                initial={{ y: 150, opacity: 0 }}
-                animate={{
-                  y: 15,
-                  opacity: 1,
-                  transition: { duration: 0.5, ease: "easeInOut" },
-                }}
-                className={`absolute z-100 flex-col left-[-50px] top-100 rounded-lg p-4
+            <AnimatePresence>
+              {isHoveringVolume && (
+                <motion.div
+                  initial={{ y: 150, opacity: 0 }}
+                  animate={{
+                    y: 15,
+                    opacity: 1,
+                    transition: { duration: 0.5, ease: "easeInOut" },
+                  }}
+                  exit={{ y: 150, opacity: 0, scale: 0 }}
+                  className={`absolute z-100 flex-col left-[-50px] top-100 rounded-lg p-4
                 ${
                   dark
                     ? "dark-text volume-slider-dark "
                     : "text-black volume-slider-light border-neutral-400"
                 }
                 `}
-                onMouseEnter={() => setIsHoveringVolume(true)}
-                onMouseLeave={() => setIsHoveringVolume(false)}
-              >
-                <div className="flex flex-row items-center justify-center w-full gap-2 ">
-                  <label className="text-sm font-normal tracking-wide">0</label>
-                  <input
-                    type="range"
-                    id="volume-slider"
-                    min={0}
-                    max={100}
-                    value={parseInt(volume * 100)}
-                    onChange={() => handleVolumeSliderChange(event)}
-                    className={`appearance-none w-[50px] h-[2px] rounded-full  ${
-                      dark ? "bg-neutral-700" : "bg-neutral-400"
-                    }`}
-                  />
-                  <label className="text-sm font-normal tracking-wide">
-                    100
-                  </label>
-                </div>
-                <div className="flex flex-col mt-2 gap-1 ">
-                  {musicData.map((type, index) => (
-                    <motion.div
-                      whileTap={{ scale: 0.8 }}
-                      className={`flex w-full flex-row items-center rounded-lg pt-1 pb-1 pl-4 pr-4 cursor-pointer ${
-                        dark ? "hover:bg-neutral-700" : "hover:bg-neutral-300"
-                      } ${
-                        music == type.type
-                          ? dark
-                            ? "text-dark-pink bg-neutral-700"
-                            : "text-light-pink bg-neutral-300"
-                          : ""
-                      } `}
-                      key={index}
-                      onClick={() => changeMusic(type.type, dispatch)}
-                    >
-                      <p className="text-sm tracking-widest font-normal">
-                        {" "}
-                        {type.type}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )}
+                  onMouseEnter={() => setIsHoveringVolume(true)}
+                  onMouseLeave={() => setIsHoveringVolume(false)}
+                >
+                  <div className="flex flex-row items-center justify-center w-full gap-2 ">
+                    <label className="text-sm font-normal tracking-wide">
+                      0
+                    </label>
+                    <input
+                      type="range"
+                      id="volume-slider"
+                      min={0}
+                      max={100}
+                      value={parseInt(volume * 100)}
+                      onChange={() => handleVolumeSliderChange(event)}
+                      className={`appearance-none w-[50px] h-[2px] rounded-full  ${
+                        dark ? "bg-neutral-700" : "bg-neutral-400"
+                      }`}
+                    />
+                    <label className="text-sm font-normal tracking-wide">
+                      100
+                    </label>
+                  </div>
+                  <div className="flex flex-col mt-2 gap-1 ">
+                    {musicData.map((type, index) => (
+                      <motion.div
+                        whileTap={{ scale: 0.8 }}
+                        className={`flex w-full flex-row items-center rounded-lg pt-1 pb-1 pl-4 pr-4 cursor-pointer ${
+                          dark ? "hover:bg-neutral-700" : "hover:bg-neutral-300"
+                        } ${
+                          music == type.type
+                            ? dark
+                              ? "text-dark-pink bg-neutral-700"
+                              : "text-light-pink bg-neutral-300"
+                            : ""
+                        } `}
+                        key={index}
+                        onClick={() => changeMusic(type.type, dispatch)}
+                      >
+                        <p className="text-sm tracking-widest font-normal">
+                          {" "}
+                          {type.type}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
 
           {/* LIGHT / DARK MODE */}
@@ -200,19 +205,20 @@ const Navbar = () => {
               y: 0,
               transition: { duration: 0.5, ease: "easeInOut" },
             }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.8 }}
+            whileTap={{
+              scale: 0.9,
+            }}
             onMouseEnter={() => setIsHoveringToggle(true)}
             onMouseLeave={() => setIsHoveringToggle(false)}
             onClick={() => toggle(dark, dispatch, musicVolume)}
-            className={`z-100 flex items-center justify-center relative text-2xl cursor-pointer mr-4 rounded-full transition duration-500 ${
-              dark ? "dark-mode" : "light-mode"
-            } `}
+            className={`z-100 flex items-center justify-center relative text-2xl cursor-pointer mr-4 rounded-full transition duration-500  `}
           >
             <SpinningBorderButton
               content={dark ? <LuSunDim /> : <GoMoon />}
-              background={`icon-shadow ${
-                dark ? "bg-[#1e1e21]" : "bg-[#F7F7FA]"
+              background={`icon-shadow transition duration-300 hover:transition hover:duration-300 ${
+                dark
+                  ? "bg-[#1e1e21] hover:bg-[#F7F7FA] hover:text-[#1e1e21] "
+                  : "bg-[#F7F7FA] hover:bg-[#1e1e21] hover:text-[#f7f7fa] "
               }`}
               textStyle={`text-xl font-bold ${
                 dark ? "text-neutral-300" : "text-[#1e1e21]"

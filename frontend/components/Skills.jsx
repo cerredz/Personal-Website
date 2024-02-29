@@ -57,7 +57,7 @@ const Skills = () => {
           backgroundText={"<My Skills />"}
           dark={dark}
           color={`${dark ? "bg-sky-600" : "bg-sky-400"}`}
-          translateX="-translate-x-60"
+          translateX="-translate-x-[18.5rem]"
           translateY={"-translate-y-2"}
         />
       </div>
