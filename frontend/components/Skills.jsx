@@ -59,6 +59,8 @@ const Skills = () => {
           color={`${dark ? "bg-sky-600" : "bg-sky-400"}`}
           translateX="-translate-x-[18.5rem]"
           translateY={"-translate-y-2"}
+          beforeGradient={"skills-before-gradient"}
+          afterGradient={"skills-after-gradient"}
         />
       </div>
 

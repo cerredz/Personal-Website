@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+
 import "../styles/title.css";
 const Title = ({
   text,

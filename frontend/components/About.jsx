@@ -13,7 +13,7 @@ import { IoTerminal } from "react-icons/io5";
 import { FaGit } from "react-icons/fa";
 import { SiVisualstudiocode } from "react-icons/si";
 import Mouse from "@/Widgets/Mouse";
-
+import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { aboutMeFacts } from "@/data";
 import Facts from "@/Widgets/Facts";
 
@@ -55,6 +55,7 @@ const About = () => {
           afterGradient={`about-me-after-title-gradient`}
         />
       </div>
+
       <div className="relative w-11/12 xl:w-8/12 mx-auto flex flex-col xl:flex-row justify-center items-center gap-20">
         {/* PHONE IN THE CENTER OF THE SCREEN */}
         <motion.div
@@ -64,7 +65,7 @@ const About = () => {
             opacity: inView ? "1" : "0",
             transition: "all .4s ease-in-out .8s",
           }}
-          className={`phone relative flex flex-col p-2 m-0 rounded-2xl px-10 py-4  justify-center items-center origin-top z-10 ${
+          className={`overflow-hidden phone relative flex flex-col p-2 m-0 rounded-2xl px-10 py-4  justify-center items-center origin-top z-10 ${
             dark ? "dark-shadow" : "light-shadow"
           } ${primaryTextColor}`}
         >

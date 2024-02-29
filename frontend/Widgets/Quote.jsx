@@ -2,7 +2,7 @@ import Image from "next/image";
 import "../styles/Quotes.css";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useInView } from "framer-motion";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 
@@ -18,6 +18,27 @@ const Quote = ({
   const dark = useSelector((state) => state.auth.dark);
   const ref = useRef(null);
   const inView = useInView(ref);
+  let quoteArray = quote.split(" ");
+  const [audio, setAudio] = useState(new Audio("/sounds/typing.mp3"));
+
+  // handle background typing audio
+  useEffect(() => {
+    if (inView) {
+      audio.volume = 0.5;
+      // synce the audio with the typing animation
+      setTimeout(() => {
+        audio.play();
+      }, [500]);
+      setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+      }, [quoteArray.length * 1000 * 0.15 + 1000]);
+    } else {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }, [inView]);
+
   return (
     <div
       className={`${
@@ -31,7 +52,7 @@ const Quote = ({
         ref={ref}
         style={{
           opacity: inView ? 1 : 0,
-          transition: "all .5s ease-in-out .7s",
+          transition: "all .5s ease-in-out .3s",
         }}
         className={`absolute transform ${translateXOpen} ${translateYOpen}`}
       >
@@ -45,7 +66,7 @@ const Quote = ({
         ref={ref}
         style={{
           opacity: inView ? 1 : 0,
-          transition: "all .5s ease-in-out .7s",
+          transition: "all .5s ease-in-out .3s",
         }}
         className={`absolute transform ${translateXClose} ${translateYClose}`}
       >
@@ -57,26 +78,41 @@ const Quote = ({
       </motion.div>
 
       {/* TEXT */}
+      <div
+        className={`flex flex-row flex-wrap gap-1 justify-center items-center z-10 max-w-xl tracking-wider font-normal text-center text-md ${
+          dark ? "text-neutral-700" : "text-neutral-400"
+        }`}
+      >
+        {quoteArray.map((word, index) => (
+          <p
+            key={index}
+            ref={ref}
+            style={{
+              opacity: inView ? 1 : 0,
+              transition: `.4s ease-in-out ${index * 0.15 + 0.5}s`,
+            }}
+          >
+            {word + " "}{" "}
+          </p>
+        ))}
+      </div>
+      {/* 
       <motion.h3
         ref={ref}
-        style={{
-          y: inView ? "0" : "50px",
-          opacity: inView ? 1 : 0,
-          transition: "all .4s ease-in-out .5s",
-        }}
         className={`z-10 max-w-xl tracking-wider font-normal text-center text-md ${
           dark ? "text-neutral-700" : "text-neutral-400"
         }`}
       >
         {quote}
       </motion.h3>
+      */}
 
       <motion.p
         ref={ref}
         style={{
-          y: inView ? "0" : "50px",
+          y: inView ? "0" : "20px",
           opacity: inView ? 1 : 0,
-          transition: "all .4s ease-in-out .5s",
+          transition: `all .8s ease-in-out ${quoteArray.length * 0.15 + 0.5}s`,
         }}
         className={`z-10 tracking-wider text-center text-lg ${
           dark ? "text-neutral-200" : "text-neutral-700"

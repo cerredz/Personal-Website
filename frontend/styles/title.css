@@ -29,3 +29,33 @@
 .about-me-after-title-gradient::after {
   background: linear-gradient(to right, #0ea5e9, #1d4ed8, #0ea5e9);
 }
+
+.skills-before-gradient::before {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #9333ea,
+    #5b21b6,
+    #9333ea,
+    transparent
+  );
+}
+
+.skills-before-gradient::after {
+  background: linear-gradient(to right, #9333ea, #5b21b6, #9333ea);
+}
+
+.projects-before-gradient::before {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #e879f9,
+    #c026d3,
+    #e879f9,
+    transparent
+  );
+}
+
+.projects-before-gradient::after {
+  background: linear-gradient(to right, #e879f9, #c026d3, #e879f9);
+}

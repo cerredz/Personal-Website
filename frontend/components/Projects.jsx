@@ -58,6 +58,8 @@ const Projects = () => {
           color={`${dark ? "bg-fuchsia-600" : "bg-fuchsia-400"}`}
           translateX="-translate-x-[28rem]"
           translateY={"-translate-y-2"}
+          beforeGradient={"projects-before-gradient"}
+          afterGradient={"projects-after-gradient"}
         />
       </div>
       {/* FILTERS */}
@@ -331,6 +333,7 @@ const ProjectCard = ({ key, project, dark, index, activeIndex, onClick }) => {
           </AnimatePresence>
         </div>
       </div>
+      <script></script>
     </motion.div>
   );
 };
