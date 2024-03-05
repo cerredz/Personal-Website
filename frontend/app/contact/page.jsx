@@ -11,10 +11,13 @@ import { FaGithub } from "react-icons/fa";
 import { SiDevpost } from "react-icons/si";
 import { GiStarsStack } from "react-icons/gi";
 import { BackgroundBeams } from "@/AceternityUi/background-beams";
+import { motion, AnimatePresence } from "framer-motion";
+import { slidesData } from "./data";
 
 const page = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [step, setStep] = useState(1);
+  const [slides, setSlides] = useState(slidesData);
   return (
     <main
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen relative bg-primary-dark flex flex-col xl:flex-row gap-20 items-center justify-center `}
@@ -31,19 +34,34 @@ const page = () => {
 
       {/* CONTACT FORM CONTAINER */}
       <div className="flex flex-col w-1/2 xl:w-2/5 h-[500px] contact-form-container relative backdrop-blur-xl py-6 px-6 lg:px-12 rounded-xl">
-        {step === 1 ? (
-          <>
-            <StepOne></StepOne>
-          </>
-        ) : (
-          <></>
-        )}
+        {/* INFO STEP */}
+        <AnimatePresence>
+          {step == 1 && <StepOne onClick={() => setStep((prev) => prev + 1)} />}
+        </AnimatePresence>
+
+        {/* INFORMATION THE USER WILL HAVE TO FILL OUT */}
+        {slides.map((slide, index) => (
+          <AnimatePresence key={index}>
+            {step == index + 2 && (
+              <Slide
+                index={index}
+                length={slides.length}
+                question={slide.question}
+                required={slide.required}
+                placeholders={slide.placeholders}
+                expanded_text_field={slide.expanded_text_field}
+                nextClick={() => setStep((prev) => prev + 1)}
+                previousClick={() => setStep((prev) => prev - 1)}
+              />
+            )}
+          </AnimatePresence>
+        ))}
       </div>
     </main>
   );
 };
 
-const StepOne = () => {
+const StepOne = ({ onClick }) => {
   const socialIcons = [
     {
       title: "linkedin",
@@ -82,14 +100,14 @@ const StepOne = () => {
       {/* PHONE NUMBER, EMAIL ADDRESS, LOCATION */}
       <div className="w-10/12 flex flex-col justify-center lg:flex-row flex-wrap lg:flex-nowrap lg:justify-between items-center gap-2 mt-4">
         <div className="relative flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container">
-          <FaPhone className="z-10 flex items-center justify-center p-0 m-0 text-sky-500" />
+          <FaPhone className="z-10 flex items-center justify-center p-0 m-0 text-blue-600" />
           <p className="z-10 tracking-widest text-sm font-medium text-neutral-600 whitespce-nowrap">
             (732)-673-1556
           </p>
           <span className="border-bottom"></span>
         </div>
         <div className="relative  flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container">
-          <MdOutlineEmail className="flex items-center justify-center p-0 m-0 text-sky-500" />
+          <MdOutlineEmail className="flex items-center justify-center p-0 m-0 text-blue-600" />
           <p className="tracking-widest text-sm font-medium text-neutral-600">
             retto12345678@gmail.com
           </p>
@@ -97,7 +115,7 @@ const StepOne = () => {
         </div>
       </div>
       <div className="relative w-10/12  mx-auto flex flex-row justify-start items-center bg-[rgba(0,0,0,.2)] gap-2 rounded-xl px-4 py-2 personal-info-container">
-        <FaLocationPin className="flex items-center justify-center p-0 m-0 text-sky-500" />
+        <FaLocationPin className="flex items-center justify-center p-0 m-0 text-blue-600 " />
         <p className="tracking-widest text-sm font-medium text-neutral-600">
           New Jersey United States (EST)
         </p>
@@ -121,11 +139,71 @@ const StepOne = () => {
         ))}
       </div>
       {/* GET STARTED BUTTON */}
-      <div className="cursor-pointer flex mt-4 flex-row gap-2 justify-center items-center get-started-btn bg-gradient-to-br from-sky-500 via-blue-500 to-sky-500 opacity-90 px-4 py-2 rounded-lg">
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={onClick}
+        className="cursor-pointer flex mt-4 flex-row gap-2 justify-center items-center get-started-btn bg-gradient-to-br from-sky-500 via-blue-500 to-sky-500 opacity-90 px-4 py-2 rounded-lg"
+      >
         <p className="font-bold tracking-widest italic text-lg text-neutral-300">
           Get Started
         </p>
         <GiStarsStack className="font-bold text-xl text-neutral-300" />
+      </motion.div>
+    </div>
+  );
+};
+
+const Slide = ({
+  index,
+  length,
+  question,
+  required,
+  placeholders,
+  expanded_text_field,
+  nextClick,
+  previousClick,
+}) => {
+  return (
+    <div className="relative flex flex-col h-full w-full justify-between items-between gap-4 ">
+      {/* QUESTION */}
+      <div className="w-full flex flex-row justify-between items-center justify-center">
+        <h1>{question}</h1>
+        <p>
+          {index + 1} / {length}
+        </p>
+      </div>
+      {/* PROGRESS BAR */}
+      <div className="relative rounded-xl h-2 w-full progress-bar bg-red-400"></div>
+
+      {/* TEXT FIELDS */}
+      <div className="w-full flex flex-row items-center justify-center gap-6">
+        {expanded_text_field === true ? (
+          <textarea
+            placeholder={placeholders[0]}
+            className="w-full bg-red-400"
+            rows={12}
+          ></textarea>
+        ) : (
+          <>
+            {placeholders.map((placeholder, index) => (
+              <input placeholder={placeholder} className="my-20 w-full"></input>
+            ))}
+          </>
+        )}
+      </div>
+
+      {/* NEXT / PREVIOUS BUTTONS */}
+      <div className="rounded-xl h-2 w-full progress-bar bg-red-400"></div>
+      <div className="w-full flex-flex-row justify-between items-center">
+        <button>Previous</button>
+        {index == length - 1 ? (
+          <button>Submit</button>
+        ) : (
+          <button onClick={nextClick} className="ml-5 bg-blue-500">
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

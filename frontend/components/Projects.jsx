@@ -11,7 +11,7 @@ import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { useInView } from "framer-motion";
 import { FaGithub } from "react-icons/fa6";
 import { BackgroundBeams } from "@/AceternityUi/background-beams";
-import { CardItem, CardContainer } from "@/AceternityUi/3dcard";
+import { CardItem, CardContainer } from "@/AceternityUi/3dCard";
 
 const Projects = () => {
   const dark = useSelector((state) => state.auth.dark);
