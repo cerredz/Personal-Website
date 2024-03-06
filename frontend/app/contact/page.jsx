@@ -33,7 +33,7 @@ const page = () => {
       ></Image>
 
       {/* CONTACT FORM CONTAINER */}
-      <div className="flex flex-col w-1/2 xl:w-2/5 h-[500px] contact-form-container relative backdrop-blur-xl py-6 px-6 lg:px-12 rounded-xl">
+      <div className="flex flex-col w-11/12 sm:w-1/2 xl:w-2/5 h-fit md:h-[500px] contact-form-container relative backdrop-blur-xl py-6 px-6 lg:px-12 rounded-xl">
         {/* INFO STEP */}
         <AnimatePresence>
           {step == 1 && <StepOne onClick={() => setStep((prev) => prev + 1)} />}
@@ -89,7 +89,7 @@ const StepOne = ({ onClick }) => {
     <div className="relative flex flex-col h-full w-full justify-center items-center gap-4">
       {/* TITLE TEXT */}
       <div className="flex flex-col justify-center items-center w-full gap-2">
-        <h1 className="text-2xl md:text-4xl lg:text-6xl tracking-widest font-bold text-sky-500 text-center">
+        <h1 className="text-2xl xl:text-4xl  tracking-widest font-bold text-sky-500 text-center">
           Contact Me 📝
         </h1>
         <p className="text-center w-10/12 mx-auto font-medium tracking-wider text-sm text-neutral-600">
@@ -98,15 +98,15 @@ const StepOne = ({ onClick }) => {
         </p>
       </div>
       {/* PHONE NUMBER, EMAIL ADDRESS, LOCATION */}
-      <div className="w-10/12 flex flex-col justify-center lg:flex-row flex-wrap lg:flex-nowrap lg:justify-between items-center gap-2 mt-4">
-        <div className="relative flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container">
+      <div className="w-full xl:w-10/12 flex flex-col justify-center xl:flex-row flex-wrap xl:flex-nowrap xl:justify-between items-center gap-2 mt-4">
+        <div className="relative flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-fit">
           <FaPhone className="z-10 flex items-center justify-center p-0 m-0 text-blue-600" />
           <p className="z-10 tracking-widest text-sm font-medium text-neutral-600 whitespce-nowrap">
             (732)-673-1556
           </p>
           <span className="border-bottom"></span>
         </div>
-        <div className="relative  flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container">
+        <div className="relative  flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-fit">
           <MdOutlineEmail className="flex items-center justify-center p-0 m-0 text-blue-600" />
           <p className="tracking-widest text-sm font-medium text-neutral-600">
             retto12345678@gmail.com
@@ -114,7 +114,8 @@ const StepOne = ({ onClick }) => {
           <span className="border-bottom"></span>
         </div>
       </div>
-      <div className="relative w-10/12  mx-auto flex flex-row justify-start items-center bg-[rgba(0,0,0,.2)] gap-2 rounded-xl px-4 py-2 personal-info-container">
+
+      <div className="relative mx-auto flex flex-row justify-center xl:justify-start items-center bg-[rgba(0,0,0,.2)] gap-2 rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-10/12">
         <FaLocationPin className="flex items-center justify-center p-0 m-0 text-blue-600 " />
         <p className="tracking-widest text-sm font-medium text-neutral-600">
           New Jersey United States (EST)
@@ -122,7 +123,7 @@ const StepOne = ({ onClick }) => {
         <span className="border-bottom"></span>
       </div>
       {/* SOCIALS */}
-      <div className="flex flex-row gap-6 justify-center items-center mt-2">
+      <div className="flex flex-row gap-6 justify-center items-center mt-2 flex-wrap ">
         {socialIcons.map((icon, index) => (
           <div
             key={index}
@@ -167,14 +168,25 @@ const Slide = ({
   return (
     <div className="relative flex flex-col h-full w-full justify-between items-between gap-4 ">
       {/* QUESTION */}
-      <div className="w-full flex flex-row justify-between items-center justify-center">
-        <h1>{question}</h1>
-        <p>
+      <div className="w-full flex flex-row justify-between items-center ">
+        <h1 className="tracking-widest font-bold text-neutral-300 text-lg sm:text-xl lg:text-2xl pt-4">
+          {question}
+        </h1>
+        <p className="tracking-widest font-bold text-neutral-600 text-lg sm:text-xl lg:text-3xl pt-4 whitespace-nowrap">
           {index + 1} / {length}
         </p>
       </div>
       {/* PROGRESS BAR */}
-      <div className="relative rounded-xl h-2 w-full progress-bar bg-red-400"></div>
+      <div className="relative rounded-xl h-2 w-full progress-bar overflow-hidden">
+        <motion.span
+          initial={{ width: `${(index / length) * 100}%` }}
+          animate={{
+            width: `${((index + 1) / length) * 100}%`,
+            transition: { duration: 0.4, ease: "easeInOut" },
+          }}
+          className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500"
+        ></motion.span>
+      </div>
 
       {/* TEXT FIELDS */}
       <div className="w-full flex flex-row items-center justify-center gap-6">
@@ -182,21 +194,24 @@ const Slide = ({
           <textarea
             placeholder={placeholders[0]}
             className="w-full bg-red-400"
-            rows={12}
+            rows={10}
           ></textarea>
         ) : (
           <>
             {placeholders.map((placeholder, index) => (
-              <input placeholder={placeholder} className="my-20 w-full"></input>
+              <input
+                placeholder={placeholder}
+                className="my-[7rem] w-full"
+              ></input>
             ))}
           </>
         )}
       </div>
 
       {/* NEXT / PREVIOUS BUTTONS */}
-      <div className="rounded-xl h-2 w-full progress-bar bg-red-400"></div>
+      <div className="rounded-xl h-2 w-full progress-bar bg-red-400 relative overflow-hidden"></div>
       <div className="w-full flex-flex-row justify-between items-center">
-        <button>Previous</button>
+        <button onClick={previousClick}>Previous</button>
         {index == length - 1 ? (
           <button>Submit</button>
         ) : (
