@@ -13,6 +13,7 @@ import { GiStarsStack } from "react-icons/gi";
 import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { motion, AnimatePresence } from "framer-motion";
 import { slidesData } from "./data";
+import { BsFillMoonStarsFill, BsDownload } from "react-icons/bs";
 
 const page = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -86,9 +87,16 @@ const StepOne = ({ onClick }) => {
   ];
 
   return (
-    <div className="relative flex flex-col h-full w-full justify-center items-center gap-4">
+    <motion.div
+      exit={{ x: -100, opacity: 0 }}
+      className="relative flex flex-col h-full w-full justify-center items-center gap-4"
+    >
       {/* TITLE TEXT */}
-      <div className="flex flex-col justify-center items-center w-full gap-2">
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1, transition: { delay: 0.2 } }}
+        className="flex flex-col justify-center items-center w-full gap-2"
+      >
         <h1 className="text-2xl xl:text-4xl  tracking-widest font-bold text-sky-500 text-center">
           Contact Me 📝
         </h1>
@@ -96,36 +104,69 @@ const StepOne = ({ onClick }) => {
           Lets Get In Touch, if there are any questions you want to ask me feel
           free to either email me or give me a call.
         </p>
-      </div>
+      </motion.div>
       {/* PHONE NUMBER, EMAIL ADDRESS, LOCATION */}
       <div className="w-full xl:w-10/12 flex flex-col justify-center xl:flex-row flex-wrap xl:flex-nowrap xl:justify-between items-center gap-2 mt-4">
-        <div className="relative flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-fit">
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: { duration: 0.4, delay: 0.3 },
+          }}
+          className="relative flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-fit"
+        >
           <FaPhone className="z-10 flex items-center justify-center p-0 m-0 text-blue-600" />
           <p className="z-10 tracking-widest text-sm font-medium text-neutral-600 whitespce-nowrap">
             (732)-673-1556
           </p>
           <span className="border-bottom"></span>
-        </div>
-        <div className="relative  flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-fit">
+        </motion.div>
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: { duration: 0.4, delay: 0.3 },
+          }}
+          className="relative  flex flex-row items-center justify-center gap-2 bg-[rgba(0,0,0,.2)] rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-fit"
+        >
           <MdOutlineEmail className="flex items-center justify-center p-0 m-0 text-blue-600" />
           <p className="tracking-widest text-sm font-medium text-neutral-600">
             retto12345678@gmail.com
           </p>
           <span className="border-bottom"></span>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="relative mx-auto flex flex-row justify-center xl:justify-start items-center bg-[rgba(0,0,0,.2)] gap-2 rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-10/12">
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          transition: { duration: 0.4, delay: 0.4 },
+        }}
+        className="relative mx-auto flex flex-row justify-center xl:justify-start items-center bg-[rgba(0,0,0,.2)] gap-2 rounded-xl px-4 py-2 personal-info-container w-full md:w-3/4 xl:w-10/12"
+      >
         <FaLocationPin className="flex items-center justify-center p-0 m-0 text-blue-600 " />
         <p className="tracking-widest text-sm font-medium text-neutral-600">
           New Jersey United States (EST)
         </p>
         <span className="border-bottom"></span>
-      </div>
+      </motion.div>
       {/* SOCIALS */}
       <div className="flex flex-row gap-6 justify-center items-center mt-2 flex-wrap ">
         {socialIcons.map((icon, index) => (
-          <div
+          <motion.div
+            initial={{ y: 25, opacity: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: {
+                duration: 0.25,
+                delay: `${(index + 1) * 0.2 + 0.4}`,
+              },
+            }}
             key={index}
             className={`cursor-pointer text-lg rounded-full social-icon p-6 relative text-neutral-600 flex items-center justify-center transition duration-500 ${icon.title}-icon`}
           >
@@ -136,11 +177,13 @@ const StepOne = ({ onClick }) => {
             >
               {icon.icon}
             </a>
-          </div>
+          </motion.div>
         ))}
       </div>
       {/* GET STARTED BUTTON */}
       <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0, transition: { delay: 1 } }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={onClick}
@@ -151,7 +194,7 @@ const StepOne = ({ onClick }) => {
         </p>
         <GiStarsStack className="font-bold text-xl text-neutral-300" />
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -165,62 +208,131 @@ const Slide = ({
   nextClick,
   previousClick,
 }) => {
+  const containerExitAnimation =
+    index === 0
+      ? { display: "none" }
+      : { opacity: 0, transition: { duration: 0.3 } };
+
   return (
-    <div className="relative flex flex-col h-full w-full justify-between items-between gap-4 ">
+    <motion.div
+      initial={{ display: "none" }}
+      animate={{ display: "flex", transition: { delay: 0.6 } }}
+      exit={containerExitAnimation}
+      className="relative flex flex-col h-full w-full justify-between items-between gap-4 "
+    >
       {/* QUESTION */}
-      <div className="w-full flex flex-row justify-between items-center ">
+      <motion.div
+        initial={{ y: 50, opacity: 0 }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          transition: { duration: 0.4, delay: 0.8 },
+        }}
+        exit={{ y: -50, opacity: 0, transition: { duration: 0.3 } }}
+        className="w-full flex flex-row justify-between items-center "
+      >
         <h1 className="tracking-widest font-bold text-neutral-300 text-lg sm:text-xl lg:text-2xl pt-4">
           {question}
         </h1>
-        <p className="tracking-widest font-bold text-neutral-600 text-lg sm:text-xl lg:text-3xl pt-4 whitespace-nowrap">
+        <p className="tracking-widest font-bold text-neutral-600 text-lg sm:text-xl lg:text-2xl pt-4 whitespace-nowrap">
           {index + 1} / {length}
         </p>
-      </div>
+      </motion.div>
       {/* PROGRESS BAR */}
-      <div className="relative rounded-xl h-2 w-full progress-bar overflow-hidden">
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1, transition: { duration: 0.3, delay: 0.9 } }}
+        className="relative rounded-xl h-2 w-full progress-bar overflow-hidden origin-left"
+      >
         <motion.span
           initial={{ width: `${(index / length) * 100}%` }}
           animate={{
             width: `${((index + 1) / length) * 100}%`,
-            transition: { duration: 0.4, ease: "easeInOut" },
+            transition: { duration: 0.4, ease: "easeInOut", delay: 1 },
           }}
           className="absolute top-0 left-0 bottom-0 bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500"
         ></motion.span>
-      </div>
+      </motion.div>
 
       {/* TEXT FIELDS */}
-      <div className="w-full flex flex-row items-center justify-center gap-6">
+      <div className="w-full flex flex-row items-center justify-between gap-6 ">
         {expanded_text_field === true ? (
-          <textarea
-            placeholder={placeholders[0]}
-            className="w-full bg-red-400"
-            rows={10}
-          ></textarea>
+          <span className="contact-input-background relative overflow-hidden w-full rounded-xl px-6 py-3 z-0">
+            <textarea
+              placeholder={placeholders[0]}
+              className="contact-input relative z-10 w-full text-neutral-300"
+              rows={10}
+            ></textarea>
+          </span>
         ) : (
           <>
             {placeholders.map((placeholder, index) => (
-              <input
-                placeholder={placeholder}
-                className="my-[7rem] w-full"
-              ></input>
+              <motion.span
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                  transition: { duration: 0.4, delay: 1.1 },
+                }}
+                className="contact-input-background relative overflow-hidden my-[6rem] w-full rounded-xl px-6 py-3 z-0 "
+              >
+                <input
+                  placeholder={placeholder}
+                  className="relative z-10 contact-input text-neutral-300 w-full "
+                ></input>
+              </motion.span>
             ))}
           </>
         )}
       </div>
 
       {/* NEXT / PREVIOUS BUTTONS */}
-      <div className="rounded-xl h-2 w-full progress-bar bg-red-400 relative overflow-hidden"></div>
-      <div className="w-full flex-flex-row justify-between items-center">
-        <button onClick={previousClick}>Previous</button>
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1, transition: { duration: 0.3, delay: 0.9 } }}
+        className="rounded-xl h-2 w-full progress-bar bg-red-400 relative overflow-hidden"
+      ></motion.div>
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        animate={{
+          y: 0,
+          opacity: 1,
+          transition: { duration: 0.4, delay: 0.8 },
+        }}
+        exit={{ y: 50, opacity: 0, transition: { duration: 0.3 } }}
+        className="w-full flex flex-row justify-between items-center"
+      >
+        <motion.button
+          whileTap={{ scale: 0.9 }}
+          onClick={previousClick}
+          className="relative py-2 px-4 rounded-xl border-2 border-solid border-neutral-300 text-neutral-300 tracking-widest text-lg font-bold previous-btn transiton duration-200 overflow-hidden z-10"
+        >
+          Previous
+        </motion.button>
         {index == length - 1 ? (
-          <button>Submit</button>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={nextClick}
+            className="cursor-pointer flex flex-row items-center justify-center gap-2 text-neutral-300 next-btn bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500  py-2 px-4 rounded-xl text-lg tracking-widest font-bold"
+          >
+            <p className="p-0 m-0">Submit</p>
+            <BsDownload className="p-0 m-0 font-bold" />
+          </motion.div>
         ) : (
-          <button onClick={nextClick} className="ml-5 bg-blue-500">
-            Next
-          </button>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={nextClick}
+            className="cursor-pointer flex flex-row items-center justify-center gap-2 text-neutral-300 next-btn bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500  py-2 px-4 rounded-xl text-lg tracking-widest font-bold"
+          >
+            <p className="p-0 m-0">Next</p>
+            <BsFillMoonStarsFill className="p-0 m-0" />
+          </motion.div>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
+
 export default page;

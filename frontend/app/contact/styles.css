@@ -62,3 +62,50 @@
   background: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.5);
 }
+
+.contact-input:focus {
+  outline: none;
+}
+
+.contact-input {
+  background: transparent;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+.contact-input-background::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 2rem rgba(255, 255, 255, 0.1);
+}
+
+input::placeholder,
+textarea::placeholder {
+  letter-spacing: 2px;
+  font-weight: 500;
+  color: #525252;
+}
+
+.previous-btn::before {
+  position: absolute;
+  content: "";
+  inset: 100%;
+  background: #d4d4d4;
+  border-radius: inherit;
+  transition: 0.2s ease-in-out;
+  z-index: -1;
+}
+
+.previous-btn:hover::before {
+  inset: -2px;
+}
+
+.previous-btn:hover {
+  color: #262626;
+}
+
+.next-btn {
+  box-shadow: inset 0 0 1rem rgba(255, 255, 255, 0.5);
+}
