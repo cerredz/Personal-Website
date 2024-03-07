@@ -2,7 +2,7 @@
 import "../../styles/globals.css";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import { FaPhone } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
@@ -14,11 +14,27 @@ import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { motion, AnimatePresence } from "framer-motion";
 import { slidesData } from "./data";
 import { BsFillMoonStarsFill, BsDownload } from "react-icons/bs";
+import { updateFormData, checkUserInput } from "./utils";
 
 const page = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [step, setStep] = useState(1);
   const [slides, setSlides] = useState(slidesData);
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    company: "",
+    message: "",
+  });
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    console.log(formData);
+  }, [formData]);
+
   return (
     <main
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen relative bg-primary-dark flex flex-col xl:flex-row gap-20 items-center justify-center `}
@@ -45,13 +61,29 @@ const page = () => {
           <AnimatePresence key={index}>
             {step == index + 2 && (
               <Slide
+                key={index}
                 index={index}
+                error={error}
                 length={slides.length}
                 question={slide.question}
                 required={slide.required}
                 placeholders={slide.placeholders}
                 expanded_text_field={slide.expanded_text_field}
-                nextClick={() => setStep((prev) => prev + 1)}
+                formName={slide.formName}
+                formData={formData}
+                setFormData={setFormData}
+                nextClick={
+                  slide.required
+                    ? () =>
+                        checkUserInput(
+                          formData,
+                          setFormData,
+                          slide.formName,
+                          setError,
+                          setStep
+                        )
+                    : () => setStep((prev) => prev + 1)
+                }
                 previousClick={() => setStep((prev) => prev - 1)}
               />
             )}
@@ -200,11 +232,15 @@ const StepOne = ({ onClick }) => {
 
 const Slide = ({
   index,
+  error,
   length,
   question,
   required,
   placeholders,
   expanded_text_field,
+  formName,
+  formData,
+  setFormData,
   nextClick,
   previousClick,
 }) => {
@@ -212,7 +248,6 @@ const Slide = ({
     index === 0
       ? { display: "none" }
       : { opacity: 0, transition: { duration: 0.3 } };
-
   return (
     <motion.div
       initial={{ display: "none" }}
@@ -255,31 +290,62 @@ const Slide = ({
       </motion.div>
 
       {/* TEXT FIELDS */}
-      <div className="w-full flex flex-row items-center justify-between gap-6 ">
+      <div className="w-full flex flex-row items-center justify-between gap-6 relative ">
         {expanded_text_field === true ? (
-          <span className="contact-input-background relative overflow-hidden w-full rounded-xl px-6 py-3 z-0">
+          <motion.span
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+              transition: { duration: 0.4, delay: 1.1 },
+            }}
+            className="contact-input-background relative overflow-hidden w-full rounded-xl px-6 py-3 z-0"
+          >
             <textarea
               placeholder={placeholders[0]}
               className="contact-input relative z-10 w-full text-neutral-300"
               rows={10}
+              onKeyDown={(event) =>
+                updateFormData(
+                  event.target.value,
+                  formData,
+                  setFormData,
+                  formName
+                )
+              }
             ></textarea>
-          </span>
+          </motion.span>
         ) : (
           <>
             {placeholders.map((placeholder, index) => (
               <motion.span
+                key={index}
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{
                   scale: 1,
                   opacity: 1,
                   transition: { duration: 0.4, delay: 1.1 },
                 }}
-                className="contact-input-background relative overflow-hidden my-[6rem] w-full rounded-xl px-6 py-3 z-0 "
+                className="contact-input-background relative my-[6rem] w-full rounded-xl px-6 py-3 z-0 "
               >
                 <input
                   placeholder={placeholder}
                   className="relative z-10 contact-input text-neutral-300 w-full "
+                  onKeyDown={(event) =>
+                    updateFormData(
+                      event.target.value,
+                      formData,
+                      setFormData,
+                      formName,
+                      index
+                    )
+                  }
                 ></input>
+                {!required && (
+                  <label className="absolute top-[-25px] text-neutral-600 italic font-medium left-0 text-sm">
+                    * optional *
+                  </label>
+                )}
               </motion.span>
             ))}
           </>
