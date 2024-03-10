@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/utils/Sanity.js
 /.pnp
 .pnp.js
 .yarn/install-state.gz
@@ -14,6 +15,7 @@
 /.next/
 /out/
 /public/sounds
+/public/images
 
 # production
 /build

@@ -1,0 +1,61 @@
+.title::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  height: 2px;
+  left: 0;
+  right: 0;
+}
+
+.title::after {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  height: 2px;
+  left: 20%;
+  right: 20%;
+  filter: blur(10px);
+}
+.about-me-before-title-gradient::before {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #0ea5e9,
+    #1d4ed8,
+    #0ea5e9,
+    transparent
+  );
+}
+.about-me-after-title-gradient::after {
+  background: linear-gradient(to right, #0ea5e9, #1d4ed8, #0ea5e9);
+}
+
+.skills-before-gradient::before {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #9333ea,
+    #5b21b6,
+    #9333ea,
+    transparent
+  );
+}
+
+.skills-before-gradient::after {
+  background: linear-gradient(to right, #9333ea, #5b21b6, #9333ea);
+}
+
+.projects-before-gradient::before {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #e879f9,
+    #c026d3,
+    #e879f9,
+    transparent
+  );
+}
+
+.projects-before-gradient::after {
+  background: linear-gradient(to right, #e879f9, #c026d3, #e879f9);
+}

@@ -1,3 +1,4 @@
+"use client";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const volume = JSON.parse(localStorage.getItem("cerreto-volume"));

@@ -1,0 +1,32 @@
+.quotes-container::before,
+.quotes-light-container::before,
+.quotes-container::after,
+.quotes-light-container::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 125px;
+  border-radius: 50%;
+}
+
+.quotes-container::before,
+.quotes-container::after {
+  background: #1e1e21;
+}
+.quotes-light-container::before,
+.quotes-light-container::after {
+  background: #f8f9fa;
+}
+
+.quotes-light-container::after,
+.quotes-container::after {
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+}
+.quotes-container::before,
+.quotes-light-container::before {
+  bottom: 0;
+  left: 0;
+  transform: translateY(50%);
+}

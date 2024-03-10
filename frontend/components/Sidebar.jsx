@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div
       className={`text-3xl justify-between bottom-0 w-full 
         items-center sm:text-4xl lg:text-5xl fixed md:top-0 md:h-full
-        md:right-0 z-10 gap-6 md:justify-center flex md:flex-col gap-5 p-3 sm:p-5 md:p-7 lg:p-9 md:w-min 
+        md:right-0 z-50 md:z-10 gap-6 md:justify-center flex md:flex-col gap-5 p-3 sm:p-5 md:p-7 lg:p-9 md:w-min 
         md:bg-opacity-0 
         ${
           dark
@@ -51,19 +51,19 @@ const Sidebar = () => {
           }}
         >
           {link.social === "LinkedIn" && (
-            <FaLinkedinIn className="transition-all duration-600 hover:text-socials-linkedin" />
+            <FaLinkedinIn className="transition-all duration-600 hover:text-socials-linkedin z-1" />
           )}
           {link.social === "Github" && (
-            <FaGithub className="transition-all duration-600 hover:text-socials-github" />
+            <FaGithub className="transition-all duration-600 hover:text-socials-github z-1" />
           )}
           {link.social === "Twitter" && (
-            <AiFillTwitterCircle className="transition-all duration-600 hover:text-socials-twitter" />
+            <AiFillTwitterCircle className="transition-all duration-600 hover:text-socials-twitter z-1" />
           )}
           {link.social === "Discord" && (
-            <FaDiscord className="transition-all duration-600 hover:text-socials-discord" />
+            <FaDiscord className="transition-all duration-600 hover:text-socials-discord z-1" />
           )}
           {link.social === "Devpost" && (
-            <SiDevpost className="transition-all duration-600 hover:text-socials-devpost" />
+            <SiDevpost className="transition-all duration-600 hover:text-socials-devpost z-1" />
           )}
         </motion.a>
       ))}

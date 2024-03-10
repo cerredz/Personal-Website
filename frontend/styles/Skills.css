@@ -1,0 +1,283 @@
+.dark-icon-bg {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.light-icon-bg {
+  background: rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.read-more {
+  z-index: 100;
+}
+
+.read-more h1 {
+  z-index: 101;
+  color: red;
+}
+
+.blue-bg,
+.pink-bg {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.blue-bg {
+  background-image: url("../public/images/read-more-blue-bg.png");
+}
+
+.pink-bg {
+  background-image: url("../public/images/read-more-pink-bg.png");
+}
+
+.bg-image {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.bg-image-index-0 {
+  left: -20%;
+  top: -30%;
+  border-radius: 50%;
+  padding: 20px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+.bg-image-index-1 {
+  right: -20%;
+  top: -40%;
+  border-radius: 20px;
+  padding: 14px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+}
+.bg-image-index-2 {
+  right: -40%;
+  top: 35%;
+  border-radius: 40%;
+  padding: 17px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 12px rgba(255, 255, 255, 0.3);
+}
+.bg-image-index-3 {
+  left: -50%;
+  top: 55%;
+  border-radius: 30%;
+  padding: 15px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 15px rgba(255, 255, 255, 0.28);
+}
+.bg-image-index-4 {
+  left: -25%;
+  bottom: -35%;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 20px rgba(255, 255, 255, 0.24);
+}
+.bg-image-index-5 {
+  right: 5%;
+  bottom: -40%;
+  border-radius: 50%;
+  padding: 19px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 10px rgba(255, 255, 255, 0.32);
+}
+.bg-image-index-6 {
+  top: -55%;
+  left: 55%;
+  border-radius: 15%;
+  padding: 16px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3),
+    inset 0 0 16px rgba(255, 255, 255, 0.32);
+}
+
+.light-other-skills {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.025),
+    rgba(0, 0, 0, 0.05)
+  );
+  transition: 0.4s ease-in-out;
+}
+
+.other-skills-container {
+  width: min(75%, 300px);
+  backdrop-filter: blur(10px);
+}
+
+.dark-skills-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.025),
+    transparent,
+    rgba(255, 255, 255, 0.025)
+  );
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1),
+    inset 0 0 3px rgba(255, 255, 255, 0.2);
+}
+.light-skills-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.025),
+    transparent,
+    rgba(0, 0, 0, 0.025)
+  );
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.05),
+    inset 0 0 3px rgba(255, 255, 255, 0.2);
+}
+.read-more-text::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 5px;
+  height: 5px;
+  width: 0;
+  transition: 0.4s ease-in-out;
+}
+
+.read-more-text:hover::before {
+  width: 100%;
+  transition: 0.4s ease-in-out;
+}
+
+.brain-text {
+  color: #ec4899;
+}
+.brain::before {
+  background: #ec4899;
+}
+.brain-icon,
+.brain-span {
+  background: #ec4899;
+}
+.brain-span {
+  box-shadow: 0 0 35px #ec4899;
+}
+
+.backend-text {
+  color: #7e22ce;
+}
+.backend::before {
+  background: #7e22ce;
+}
+.backend-icon,
+.backend-span {
+  background: #7e22ce;
+}
+.backend-span {
+  box-shadow: 0 0 35px #7e22ce;
+}
+
+.database-text {
+  color: #a855f7;
+}
+.database::before {
+  background: #a855f7;
+}
+.database-icon,
+.database-span {
+  background: #a855f7;
+}
+.database-span {
+  box-shadow: 0 0 35px #a855f7;
+}
+
+.algorithmns-text {
+  color: #1d4ed8;
+}
+.algorithmns::before {
+  background: #1d4ed8;
+}
+.algorithmns-icon,
+.algorithmns-span {
+  background: #1d4ed8;
+}
+.algorithmns-span {
+  box-shadow: 0 0 35px #1d4ed8;
+}
+
+.web-text {
+  color: #0ea5e9;
+}
+.web::before {
+  background: #0ea5e9;
+}
+.web-icon,
+.web-span {
+  background: #0ea5e9;
+}
+.web-span {
+  box-shadow: 0 0 35px #0ea5e9;
+}
+
+.teamwork-text {
+  color: #67e8f9;
+}
+.teamwork::before {
+  background: #67e8f9;
+}
+.teamwork-icon,
+.teamwork-span {
+  background: #67e8f9;
+}
+.teamwork-span {
+  box-shadow: 0 0 35px #67e8f9;
+}
+
+.other-skills-container:hover::after {
+  width: 90%;
+}
+
+.dark-other-skills {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.025),
+    rgba(255, 255, 255, 0.0125),
+    rgba(255, 255, 255, 0.025)
+  );
+}
+
+.light-other-skills {
+  background: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.025),
+    rgba(0, 0, 0, 0.0125),
+    rgba(0, 0, 0, 0.025)
+  );
+}
+
+.dark-other-skills::after {
+  background: rgba(255, 255, 255, 0.2);
+  transition: 0.4s ease-in-out;
+}
+
+.light-other-skills::after {
+  background: rgba(0, 0, 0, 0.2);
+  transition: 0.4s ease-in-out;
+}
+
+.text-dark-bg {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+.text-light-bg {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+
+.container-inset-shadow {
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3),
+    inset 0 0 1rem rgba(255, 255, 255, 0.25), 5px 5px 10px rgba(0, 0, 0, 0.2);
+}

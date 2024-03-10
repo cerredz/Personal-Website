@@ -5,6 +5,7 @@ import {
   setMusic,
 } from "@/app/Redux/store";
 import { toggleSound } from "./Sound";
+import { clickSound } from "./Sound";
 // toggle between light and dark mode
 const toggle = async (isDarkMode, dispatch, volume) => {
   try {
@@ -39,6 +40,7 @@ const adjustVolume = async (event, dispatch) => {
 const changeMusic = async (music, dispatch) => {
   try {
     const newMusic = music;
+    clickSound(0.5);
     dispatch(setMusic({ music: newMusic }));
     localStorage.setItem("cerreto-music", newMusic);
   } catch {

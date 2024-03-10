@@ -28,30 +28,16 @@
   color: #171717;
 }
 
-.portfolio-label {
-  padding: 6px 15px;
-  overflow: hidden;
-}
-
-.portfolio-label::after {
-  position: absolute;
-  content: "";
-  inset: 0;
-  filter: blur(20px);
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    transparent,
-    transparent,
-    #2563eb
-  );
-}
-
 .contact-btn {
-  padding: 5px 15px;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
-.landing {
+.resume-btn {
+  padding-top: calc(0.5rem - 1px);
+  padding-bottom: calc(0.5rem - 1px);
+}
+
+.laning {
   background-image: url("../public/images/homebg.png");
   background-position: center;
   background-repeat: no-repeat;

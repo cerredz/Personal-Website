@@ -4,8 +4,170 @@
 
 .dark-shadow {
   background: rgba(255, 255, 255, 0.01);
+  box-shadow: inset 0 4px 5px rgba(255, 255, 255, 0.05),
+    inset 0 4px 25px rgba(255, 255, 255, 0.025);
 }
 
 .light-shadow {
   background: rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 4px 3px rgba(0, 0, 0, 0.1),
+    inset 0 4px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Phone Icons Generic Css Styles */
+
+.phone-icon-container {
+  overflow: hidden;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+}
+.phone-icon-container:hover {
+  transition: 0.4s ease-in-out;
+}
+
+.phone-icon-container img {
+  transition: 0.4s ease-in-out;
+}
+.phone-icon-container:hover img {
+  transform: scale(1.1);
+  transition: 0.4s ease-in-out;
+}
+
+.phone-icon-container::before,
+.phone-icon::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  transition: 0.4s ease-in-out;
+}
+.phone-icon-container::before {
+  filter: blur(1px);
+}
+
+.phone-icon-container::after {
+  position: absolute;
+  content: "";
+  bottom: -10px;
+  height: 15px;
+  border-radius: 50%;
+  left: 37.5%;
+  width: 25%;
+  filter: blur(10px);
+}
+
+/* Specify the colors for each icon */
+.gmail::before {
+  box-shadow: inset 0 0 3px rgb(230, 5, 5);
+}
+
+.gmail:hover::before {
+  box-shadow: inset 0 0 3px rgb(230, 5, 5), 0 3px 10px rgb(230, 5, 5);
+}
+
+.gmail::after {
+  background: rgb(230, 5, 5);
+}
+
+.timezone::before {
+  box-shadow: inset 0 0 3px #d04547;
+}
+.timezone:hover::before {
+  box-shadow: inset 0 0 3px #d04547, 0 3px 10px #d04547;
+}
+
+.timezone::after {
+  background: #d04547;
+}
+
+.phone::before {
+  box-shadow: inset 0 0 3px #3ebe57;
+}
+.phone:hover::before {
+  box-shadow: inset 0 0 3px #3ebe57, 0 3px 10px #3ebe57;
+}
+
+.phone::after {
+  background: #3ebe57;
+}
+
+.location::before {
+  box-shadow: inset 0 0 3px #feaf1a;
+}
+.location:hover::before {
+  box-shadow: inset 0 0 3px #feaf1a, 0 3px 10px #feaf1a;
+}
+
+.location::after {
+  background: #feaf1a;
+}
+
+.awards::before {
+  box-shadow: inset 0 0 3px #e9bd53;
+}
+.awards:hover::before {
+  box-shadow: inset 0 0 3px #e9bd53, 0 3px 10px #e9bd53;
+}
+
+.awards::after {
+  background: #e9bd53;
+}
+
+.twitter::before {
+  box-shadow: inset 0 0 3px #0aa0e5;
+}
+.twitter:hover::before {
+  box-shadow: inset 0 0 3px #0aa0e5, 0 3px 10px #0aa0e5;
+}
+
+.twitter::after {
+  background: #0aa0e5;
+}
+
+.linkedin::before {
+  box-shadow: inset 0 0 3px #0072ae;
+}
+.linkedin:hover::before {
+  box-shadow: inset 0 0 3px #0072ae, 0 3px 10px #0072ae;
+}
+
+.linkedin::after {
+  background: #0072ae;
+}
+
+.github::before {
+  box-shadow: inset 0 0 3px #134d76;
+}
+.github:hover::before {
+  box-shadow: inset 0 0 3px #134d76, 0 3px 10px #134d76;
+}
+
+.github::after {
+  background: #134d76;
+}
+
+.instagram::before {
+  box-shadow: inset 0 0 3px #7b22bb;
+}
+.instagram:hover::before {
+  box-shadow: inset 0 0 3px #7b22bb, 0 3px 10px #7b22bb;
+}
+
+.instagram::after {
+  background: #7b22bb;
+}
+
+.hovering-text {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+.fact-text {
+  max-width: 550px;
+}
+
+.bg-dark-text {
+  color: rgba(255, 255, 255, 0.05);
 }
