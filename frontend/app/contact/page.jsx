@@ -31,10 +31,6 @@ const page = () => {
   });
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
-
   return (
     <main
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen relative bg-primary-dark flex flex-col xl:flex-row gap-20 items-center justify-center `}
