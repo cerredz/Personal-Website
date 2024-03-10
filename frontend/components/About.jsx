@@ -92,7 +92,7 @@ const About = () => {
         {/* PHONE ICONS */}
 
         {icons != null ? (
-          <div className="grid grid-cols-3 gap-5 mt-2 w-full">
+          <div className="grid grid-cols-3 gap-2 mt-2 w-full">
             {icons.map((icon, index) => (
               <div key={index} className="cursor-pointer">
                 <Image
