@@ -14,7 +14,8 @@ import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { motion, AnimatePresence } from "framer-motion";
 import { slidesData } from "./data";
 import { BsFillMoonStarsFill, BsDownload } from "react-icons/bs";
-import { updateFormData, checkUserInput } from "./utils";
+import { updateFormData, checkUserInput, send } from "./utils";
+import Axios from "axios";
 
 const page = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -80,6 +81,20 @@ const page = () => {
                         )
                     : () => setStep((prev) => prev + 1)
                 }
+                submitClick={async () => {
+                  try {
+                    checkUserInput(
+                      formData,
+                      setFormData,
+                      slide.formName,
+                      setError,
+                      setStep
+                    );
+                    await send(formData);
+                  } catch (error) {
+                    console.error("Error sending data:", error);
+                  }
+                }}
                 previousClick={() => setStep((prev) => prev - 1)}
               />
             )}
@@ -238,6 +253,7 @@ const Slide = ({
   formData,
   setFormData,
   nextClick,
+  submitClick,
   previousClick,
 }) => {
   const containerExitAnimation =
@@ -253,13 +269,13 @@ const Slide = ({
     >
       {/* QUESTION */}
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
+        initial={{ y: 10, opacity: 0 }}
         animate={{
           y: 0,
           opacity: 1,
           transition: { duration: 0.4, delay: 0.8 },
         }}
-        exit={{ y: -50, opacity: 0, transition: { duration: 0.3 } }}
+        exit={{ y: -10, opacity: 0, zIndex: -1, transition: { duration: 0.3 } }}
         className="w-full flex flex-row justify-between items-center "
       >
         <h1 className="tracking-widest font-bold text-neutral-300 text-lg sm:text-xl lg:text-2xl pt-4">
@@ -355,13 +371,13 @@ const Slide = ({
         className="rounded-xl h-2 w-full progress-bar bg-red-400 relative overflow-hidden"
       ></motion.div>
       <motion.div
-        initial={{ y: -50, opacity: 0 }}
+        initial={{ y: -10, opacity: 0 }}
         animate={{
           y: 0,
           opacity: 1,
           transition: { duration: 0.4, delay: 0.8 },
         }}
-        exit={{ y: 50, opacity: 0, transition: { duration: 0.3 } }}
+        exit={{ y: 10, opacity: 0, zIndex: -1, transition: { duration: 0.3 } }}
         className="w-full flex flex-row justify-between items-center"
       >
         <motion.button
@@ -375,7 +391,7 @@ const Slide = ({
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={nextClick}
+            onClick={submitClick}
             className="cursor-pointer flex flex-row items-center justify-center gap-2 text-neutral-300 next-btn bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500  py-2 px-4 rounded-xl text-lg tracking-widest font-bold"
           >
             <p className="p-0 m-0">Submit</p>
