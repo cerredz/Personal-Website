@@ -1,14 +1,10 @@
 import { createTransporter } from "../../utils";
 // a user wants to contact me, given some of their information, send myself an email
 export async function POST(req) {
-  const body = await req.json();
-  console.log(body);
-
-  const { firstName, lastName, email, phoneNumber, company, message } = body;
-
-  console.log("Entered Backend");
-
   try {
+    const body = await req.json();
+    const { firstName, lastName, email, phoneNumber, company, message } = body;
+
     const transporter = createTransporter();
     const htmlContent = `
     <p><bold>Name: </bold> ${firstName} ${lastName}</p>
