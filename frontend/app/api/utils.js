@@ -15,8 +15,6 @@ export function createTransporter() {
 // create a function to connect to the mongodb database that stores all of the emails sent to me
 export async function connectToDatabase() {
   let connectionString = `${process.env.MONGODB_CONNECTION_STRING}`;
-  console.log(connectionString);
-
   const client = await MongoClient.connect(connectionString);
   return client;
 }

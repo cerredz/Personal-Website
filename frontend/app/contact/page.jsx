@@ -15,6 +15,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { slidesData } from "./data";
 import { BsFillMoonStarsFill, BsDownload } from "react-icons/bs";
 import { updateFormData, checkUserInput, send, store } from "./utils";
+import { AiFillHome } from "react-icons/ai";
+import Link from "next/link";
+
 import Axios from "axios";
 
 const page = () => {
@@ -90,7 +93,8 @@ const page = () => {
                         )
                     : () => setStep((prev) => prev + 1)
                 }
-                submitClick={async () => {
+                submitClick={async (e) => {
+                  e.preventDefault();
                   try {
                     const isErrors = await checkUserInput(
                       formData,
@@ -113,6 +117,9 @@ const page = () => {
             )}
           </AnimatePresence>
         ))}
+
+        {/* SUCCESS SLIDE */}
+        <AnimatePresence>{step == 7 && <SuccessSlide />}</AnimatePresence>
       </div>
     </main>
   );
@@ -330,7 +337,7 @@ const Slide = ({
               placeholder={placeholders[0]}
               className="contact-input relative z-10 w-full text-neutral-300"
               rows={10}
-              onKeyDown={(event) =>
+              onChange={(event) =>
                 updateFormData(
                   event.target.value,
                   formData,
@@ -356,7 +363,7 @@ const Slide = ({
                 <input
                   placeholder={placeholder}
                   className="relative z-10 contact-input text-neutral-300 w-full "
-                  onKeyDown={(event) =>
+                  onChange={(event) =>
                     updateFormData(
                       event.target.value,
                       formData,
@@ -422,6 +429,68 @@ const Slide = ({
           </motion.div>
         )}
       </motion.div>
+    </motion.div>
+  );
+};
+
+const SuccessSlide = ({}) => {
+  return (
+    <motion.div
+      initial={{ display: "none" }}
+      animate={{ display: "flex", transition: { delay: 0.6 } }}
+      exit={{ opacity: 0, transition: { duration: 0.3 } }}
+      className="relative flex flex-col h-full w-full justify-center items-center w-10/12 md:w-3/4 lg:w-7/12 mx-auto gap-4 overflow-hidden py-6 px-6 lg:px-12 rounded-xl text-center"
+    >
+      {/* SUCCESS ICON */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 0.5 } }}
+      >
+        <Image
+          alt=""
+          src={"/images/successIcon.png"}
+          width={200}
+          height={200}
+        />
+      </motion.span>
+
+      {/* TEXT */}
+      <motion.h1
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0, transition: { delay: 0.6 } }}
+        className="text-neutral-300 font-bold text-3xl tracking-widest"
+      >
+        Success
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 25 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.4, delay: 0.7 },
+        }}
+        className="text-neutral-600 font-medium tracking-wider text-sm mx-auto"
+      >
+        Your Message Was Sent Successfully. I will make sure to get back to you
+        as soon as I can.
+      </motion.p>
+      {/* RETURN HOME BUTTON */}
+      <Link href={"/"}>
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.4, delay: 0.9 },
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="cursor-pointer py-2 px-4 rounded-xl flex flex-row gap-4 items-center justify-center bg-gradient-to-br from-sky-500 via-blue-500 to-sky-500 text-neutral-300 font-bold tracking-widest text-md"
+        >
+          <p className="p-0 m-0">Home</p>
+          <AiFillHome className="p-0 m-0 flex items-center justify-center text-lg" />
+        </motion.div>
+      </Link>
     </motion.div>
   );
 };
