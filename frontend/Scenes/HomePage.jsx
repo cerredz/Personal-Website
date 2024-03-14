@@ -73,6 +73,14 @@ const HomePage = () => {
             translateXClose="translate-x-80"
           />
           <Projects />
+          <Quote
+            quote="The beauty of software engineering lies not only in the creation of solutions but also in the art of problem-solving itself"
+            name="Donald Knuth"
+            translateYOpen="-translate-y-10"
+            translateXOpen="-translate-x-80"
+            translateYClose="-translate-y-10"
+            translateXClose="translate-x-80"
+          />
         </Suspense>
       </section>
     </main>
