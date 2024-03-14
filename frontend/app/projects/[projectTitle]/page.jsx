@@ -16,7 +16,6 @@ import { IoCodeSlash } from "react-icons/io5";
 import { FaNode } from "react-icons/fa";
 import { FaPython } from "react-icons/fa6";
 import { BackgroundBeams } from "@/AceternityUi/background-beams";
-
 import "./styles.css";
 
 export default function Page() {
@@ -43,18 +42,12 @@ export default function Page() {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    console.log(projectData);
-  }, [projectData]);
-
   return (
     <div className="overflow-hidden">
       {projectData !== null ? (
         <>
           <div
-            className={`overflow-hidden font-primary p-0 m-0 min-h-screen ${
-              dark ? "bg-primary-dark" : "bg-primary-light"
-            } flex flex-col xl:flex-row gap-20 items-center justify-center px-20 xl:px-36 mx-auto pt-32 pb-20 `}
+            className={`overflow-hidden font-primary p-0 m-0 min-h-screen bg-primary-dark flex flex-col xl:flex-row gap-20 items-center justify-center px-20 xl:px-36 mx-auto pt-32 pb-20 `}
           >
             {/* BACKGOUND ICONS */}
             <BackgroundIcons />
@@ -62,15 +55,11 @@ export default function Page() {
             <Image
               quality={100}
               priority={true}
-              src={`${
-                dark
-                  ? "/images/projects/readMoreBackgroundDark.png"
-                  : "/images/projects/readMoreBackgroundLight.png"
-              }`}
+              src="/images/projects/readMoreBackground.png"
               alt=""
               width={1920}
               height={1080}
-              className="absolute z-1 top-0 left-0 w-full h-[105%] background-img hidden xl:block"
+              className="absolute z-1 top-0 left-0 w-full h-full background-img hidden xl:block blur-3xl"
             />
             {/* IMAGE CONTAINER */}
             <motion.div
@@ -126,9 +115,7 @@ export default function Page() {
                   WebkitBackgroundClip: "text",
                   color: "transparent",
                 }}
-                className={`relative font-bold text-5xl tracking-widest text-center w-full rounded-xl py-2 ${
-                  dark ? "text-dark-container" : "text-light-container"
-                }`}
+                className={`relative font-bold text-5xl tracking-widest text-center w-full rounded-xl py-2 text-dark-container`}
               >
                 {projectData.title}
               </motion.h1>
@@ -140,22 +127,16 @@ export default function Page() {
                   opacity: 1,
                   transition: { duration: 0.4, delay: 0.3 },
                 }}
-                className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
-                  dark ? "text-dark-container" : "text-light-container"
-                }  `}
+                className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full text-dark-container`}
               >
                 <h1
-                  className={` text-lg tracking-widest font-medium ${
-                    dark ? "text-neutral-300" : "text-neutral-800"
-                  }`}
+                  className={` text-lg tracking-widest font-medium text-neutral-300`}
                 >
                   Overview
                 </h1>
 
                 <p
-                  className={`text-sm tracking-wide font-medium ${
-                    dark ? "text-neutral-600" : "text-neutral-400"
-                  }`}
+                  className={`text-sm tracking-wide font-medium text-neutral-500`}
                 >
                   {projectData.paragraphs.overview}
                 </p>
@@ -170,21 +151,15 @@ export default function Page() {
                     opacity: 1,
                     transition: { duration: 0.3, delay: 0.4 },
                   }}
-                  className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
-                    dark ? "text-dark-container" : "text-light-container"
-                  }`}
+                  className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full text-dark-container`}
                 >
                   <h1
-                    className={` text-lg tracking-widest font-medium ${
-                      dark ? "text-neutral-300" : "text-neutral-800"
-                    }`}
+                    className={` text-lg tracking-widest font-medium text-neutral-300`}
                   >
                     Technologies Used
                   </h1>
                   <p
-                    className={`text-sm tracking-wide font-medium ${
-                      dark ? "text-neutral-600" : "text-neutral-400"
-                    }`}
+                    className={`text-sm tracking-wide font-medium text-neutral-500`}
                   >
                     {projectData.paragraphs.technologies}
                   </p>
@@ -199,14 +174,10 @@ export default function Page() {
                   opacity: 1,
                   transition: { duration: 0.35, delay: 0.5 },
                 }}
-                className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full ${
-                  dark ? "text-dark-container" : "text-light-container"
-                } `}
+                className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start py-3 px-6 rounded-xl w-full text-dark-container `}
               >
                 <h1
-                  className={` text-lg tracking-widest font-medium ${
-                    dark ? "text-neutral-300 " : "text-neutral-800 "
-                  }`}
+                  className={` text-lg tracking-widest font-medium text-neutral-300`}
                 >
                   Features
                 </h1>
@@ -214,9 +185,7 @@ export default function Page() {
                   {projectData.paragraphs.features.map((feature, index) => (
                     <li
                       key={index}
-                      className={`text-sm tracking-wide font-medium ${
-                        dark ? "text-neutral-600" : "text-neutral-400"
-                      }`}
+                      className={`text-sm tracking-wide font-medium text-neutral-500`}
                     >
                       {" "}
                       - {feature}
@@ -234,21 +203,15 @@ export default function Page() {
                     opacity: 1,
                     transition: { duration: 0.4, delay: 0.55 },
                   }}
-                  className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start w-full py-3 px-6 rounded-xl ${
-                    dark ? "text-dark-container" : "text-light-container"
-                  }`}
+                  className={`overflow-hidden relative flex flex-col gap-2 items-start justify-start w-full py-3 px-6 rounded-xl text-dark-container`}
                 >
                   <h1
-                    className={` text-lg tracking-widest font-medium ${
-                      dark ? "text-neutral-300" : "text-neutral-800"
-                    }`}
+                    className={` text-lg tracking-widest font-medium text-neutral-300`}
                   >
                     Awards Won
                   </h1>
                   <p
-                    className={`text-sm tracking-wide font-medium ${
-                      dark ? "text-neutral-600" : "text-neutral-400"
-                    }`}
+                    className={`text-sm tracking-wide font-medium text-neutral-500`}
                   >
                     {projectData.paragraphs.award.text}
                   </p>
@@ -263,11 +226,7 @@ export default function Page() {
                     opacity: 1,
                     transition: { duration: 0.4, delay: 0.6 },
                   }}
-                  className={`text-sm tracking-wide font-medium w-full rounded-xl py-3 px-6 ${
-                    dark
-                      ? "text-neutral-600 text-dark-container"
-                      : "text-neutral-400 text-light-container"
-                  }`}
+                  className={`text-sm tracking-wide font-medium w-full rounded-xl py-3 px-6 text-neutral-500 text-dark-container `}
                 >
                   To to view the devpost
                   <a
