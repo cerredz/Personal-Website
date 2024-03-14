@@ -59,3 +59,18 @@
 .projects-before-gradient::after {
   background: linear-gradient(to right, #e879f9, #c026d3, #e879f9);
 }
+
+.awards-before-gradient::before {
+  background: linear-gradient(
+    to right,
+    transparent,
+    #0284c7,
+    #1e40af,
+    #0284c7,
+    transparent
+  );
+}
+
+.awards-before-gradient::after {
+  background: linear-gradient(to right, #0284c7, #1e40af, #0284c7);
+}

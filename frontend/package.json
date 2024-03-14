@@ -26,6 +26,7 @@
     "react-icons": "^4.12.0",
     "react-intersection-observer": "^9.5.3",
     "react-redux": "^9.0.4",
+    "sanity": "^3.34.0",
     "styled-components": "^6.1.6",
     "tailwind-merge": "^2.2.1",
     "three": "^0.160.0",

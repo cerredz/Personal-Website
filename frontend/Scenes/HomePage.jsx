@@ -15,6 +15,7 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import { useSearchParams } from "next/navigation";
 import { ThreeDCardDemo } from "@/AceternityUi/3dCard";
+import Awards from "@/components/Awards";
 
 const HomePage = () => {
   const searchParams = useSearchParams();
@@ -81,6 +82,7 @@ const HomePage = () => {
             translateYClose="-translate-y-10"
             translateXClose="translate-x-80"
           />
+          <Awards />
         </Suspense>
       </section>
     </main>
