@@ -49,7 +49,7 @@ const Awards = () => {
       />
 
       {/* AWARDS CONTAINER */}
-      <div className="relative w-10/12 lg:w-3/4 xl:w-7/12 mx-auto flex flex-col items-center justify-center mt-10 gap-6 lg:gap-0">
+      <div className="relative w-10/12 lg:w-3/4 xl:w-7/12 mx-auto flex flex-col items-center justify-center mt-10 gap-20 lg:gap-0">
         {awards.map((award, index) => (
           <Award key={index} index={index} award={award} dark={dark} />
         ))}
@@ -98,7 +98,7 @@ const Award = ({ key, index, award, dark }) => {
           />
 
           {/* LEFT HAND TEXT */}
-          <div className="hidden lg:flex absolute left-0 top-0 h-full flex-col items-center justify-center -translate-x-1/2 gap-2">
+          <div className="flex absolute left-0 top-0 h-full flex-col items-center justify-center -translate-x-1/2 gap-2">
             {/* TITLE */}
             <AwardText award={award} index={index} dark={dark} />
           </div>
@@ -177,7 +177,7 @@ const AwardText = ({ index, award, dark }) => {
     <div
       className={`${
         dark ? "text-neutral-300" : "text-neutral-800"
-      } font-bold tracking-widest text-4xl text-center `}
+      } font-bold tracking-widest text-2xl lg:text-4xl text-center `}
     >
       <h1
         ref={titleRefOne}
@@ -209,7 +209,7 @@ const AwardText = ({ index, award, dark }) => {
         }}
         className={`${
           dark ? "text-neutral-600" : "text-neutral-500"
-        } tracking-widest font-bold text-xl italic`}
+        } tracking-widest font-bold text-lg lg:text-xl italic`}
       >
         {award.event}
       </h3>
@@ -223,7 +223,7 @@ const AwardText = ({ index, award, dark }) => {
         }}
         className={`${
           dark ? "text-neutral-300" : "text-neutral-800"
-        } font-bold tracking-widest text-6xl text-center `}
+        } font-bold tracking-widest text-4xl lg:text-6xl text-center `}
       >
         0{index + 1}
       </h1>
