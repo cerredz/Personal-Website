@@ -9,3 +9,14 @@
 .award-icon {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
+
+.expand-btn {
+  box-shadow: inset 0 0 1rem rgba(255, 255, 255, 0.2),
+    5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.preview-text {
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  box-shadow: inset 0 0 1rem rgba(255, 255, 255, 0.2);
+}
