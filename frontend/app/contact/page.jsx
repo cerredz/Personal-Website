@@ -17,6 +17,7 @@ import { BsFillMoonStarsFill, BsDownload } from "react-icons/bs";
 import { updateFormData, checkUserInput, send, store } from "./utils";
 import { AiFillHome } from "react-icons/ai";
 import Link from "next/link";
+import Axios from "axios";
 
 const page = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -34,10 +35,6 @@ const page = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
-
   return (
     <main
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen relative bg-primary-dark flex flex-col xl:flex-row gap-20 items-center justify-center `}
@@ -53,7 +50,16 @@ const page = () => {
       ></Image>
 
       {/* CONTACT FORM CONTAINER */}
-      <div className="flex flex-col w-11/12 sm:w-1/2 xl:w-2/5 h-fit md:h-[500px] contact-form-container relative backdrop-blur-xl py-6 px-6 lg:px-12 rounded-xl">
+      <div className="flex flex-col w-11/12 sm:w-1/2 xl:w-2/5 h-fit md:h-[500px] contact-form-container relative backdrop-blur-xl rounded-xl">
+        {/* BACKGROUND IMAGE */}
+        <Image
+          alt=""
+          src={"/images/contactMeInnerBG.png"}
+          quality={100}
+          layout="fill"
+          className="absolute top-0 left-0 h-full w-full blur-3xl z-0 opacity-50 rounded-xl"
+        />
+
         {/* INFO STEP */}
         <AnimatePresence>
           {step == 1 && <StepOne onClick={() => setStep((prev) => prev + 1)} />}
@@ -113,6 +119,9 @@ const page = () => {
             )}
           </AnimatePresence>
         ))}
+
+        {/* SUCCESS SLIDE */}
+        <AnimatePresence>{step == 7 && <SuccessSlide />}</AnimatePresence>
       </div>
     </main>
   );
@@ -145,13 +154,13 @@ const StepOne = ({ onClick }) => {
   return (
     <motion.div
       exit={{ x: -100, opacity: 0 }}
-      className="relative flex flex-col h-full w-full justify-center items-center gap-4"
+      className="relative flex flex-col h-full w-full justify-center items-center gap-4 py-6 px-6 lg:px-12 rounded-xl"
     >
       {/* TITLE TEXT */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1, transition: { delay: 0.2 } }}
-        className="flex flex-col justify-center items-center w-full gap-2"
+        className="flex flex-col justify-center items-center w-full gap-2 "
       >
         <h1 className="text-2xl xl:text-4xl  tracking-widest font-bold text-sky-500 text-center">
           Contact Me 📝
@@ -211,7 +220,7 @@ const StepOne = ({ onClick }) => {
         <span className="border-bottom"></span>
       </motion.div>
       {/* SOCIALS */}
-      <div className="flex flex-row gap-6 justify-center items-center mt-2 flex-wrap ">
+      <div className="flex flex-row gap-6 justify-center items-center mt-2 flex-wrap z-10 ">
         {socialIcons.map((icon, index) => (
           <motion.div
             initial={{ y: 25, opacity: 0 }}
@@ -224,7 +233,7 @@ const StepOne = ({ onClick }) => {
               },
             }}
             key={index}
-            className={`cursor-pointer text-lg rounded-full social-icon p-6 relative text-neutral-600 flex items-center justify-center transition duration-500 ${icon.title}-icon`}
+            className={`cursor-pointer text-lg rounded-full social-icon p-6 relative text-neutral-600 flex items-center justify-center transition duration-500 ${icon.title}-icon z-10`}
           >
             <a
               className="z-10 absolute text-2xl "
@@ -243,7 +252,7 @@ const StepOne = ({ onClick }) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={onClick}
-        className="cursor-pointer flex mt-4 flex-row gap-2 justify-center items-center get-started-btn bg-gradient-to-br from-sky-500 via-blue-500 to-sky-500 opacity-90 px-4 py-2 rounded-lg"
+        className="cursor-pointer flex mt-4 flex-row gap-2 justify-center items-center get-started-btn bg-gradient-to-br from-sky-500 via-blue-500 to-sky-500 opacity-90 px-4 py-2 rounded-lg z-10"
       >
         <p className="font-bold tracking-widest italic text-lg text-neutral-300">
           Get Started
@@ -279,17 +288,17 @@ const Slide = ({
       initial={{ display: "none" }}
       animate={{ display: "flex", transition: { delay: 0.6 } }}
       exit={containerExitAnimation}
-      className="relative flex flex-col h-full w-full justify-between items-between gap-4 "
+      className="relative flex flex-col h-full w-full justify-between items-between gap-4 overflow-hidden py-6 px-6 lg:px-12 rounded-xl"
     >
       {/* QUESTION */}
       <motion.div
-        initial={{ y: 50, opacity: 0 }}
+        initial={{ y: 10, opacity: 0 }}
         animate={{
           y: 0,
           opacity: 1,
           transition: { duration: 0.4, delay: 0.8 },
         }}
-        exit={{ y: -50, opacity: 0, transition: { duration: 0.3 } }}
+        exit={{ y: -10, opacity: 0, zIndex: -1, transition: { duration: 0.3 } }}
         className="w-full flex flex-row justify-between items-center "
       >
         <h1 className="tracking-widest font-bold text-neutral-300 text-lg sm:text-xl lg:text-2xl pt-4">
@@ -333,7 +342,7 @@ const Slide = ({
                 error && "error-text-area"
               } text-neutral-300`}
               rows={10}
-              onKeyDown={(event) =>
+              onChange={(event) =>
                 updateFormData(
                   event.target.value,
                   formData,
@@ -359,7 +368,7 @@ const Slide = ({
                 <input
                   placeholder={placeholder}
                   className="relative z-10 contact-input text-neutral-300 w-full "
-                  onKeyDown={(event) =>
+                  onChange={(event) =>
                     updateFormData(
                       event.target.value,
                       formData,
@@ -399,13 +408,13 @@ const Slide = ({
         className="rounded-xl h-2 w-full progress-bar bg-red-400 relative overflow-hidden"
       ></motion.div>
       <motion.div
-        initial={{ y: -50, opacity: 0 }}
+        initial={{ y: -10, opacity: 0 }}
         animate={{
           y: 0,
           opacity: 1,
           transition: { duration: 0.4, delay: 0.8 },
         }}
-        exit={{ y: 50, opacity: 0, transition: { duration: 0.3 } }}
+        exit={{ y: 10, opacity: 0, zIndex: -1, transition: { duration: 0.3 } }}
         className="w-full flex flex-row justify-between items-center"
       >
         <motion.button
@@ -419,8 +428,8 @@ const Slide = ({
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={nextClick}
-            className="cursor-pointer flex flex-row items-center justify-center gap-2 text-neutral-300 next-btn bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500  py-2 px-4 rounded-xl text-lg tracking-widest font-bold"
+            onClick={submitClick}
+            className="cursor-pointer flex flex-row items-center justify-center gap-2 text-neutral-300 next-btn bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500 z-10 py-2 px-4 rounded-xl text-lg tracking-widest font-bold"
           >
             <p className="p-0 m-0">Submit</p>
             <BsDownload className="p-0 m-0 font-bold" />
@@ -430,7 +439,7 @@ const Slide = ({
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={nextClick}
-            className="cursor-pointer flex flex-row items-center justify-center gap-2 text-neutral-300 next-btn bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500  py-2 px-4 rounded-xl text-lg tracking-widest font-bold"
+            className="z-10 cursor-pointer flex flex-row items-center justify-center gap-2 text-neutral-300 next-btn bg-gradient-to-br from-cyan-500 via-sky-500 to-blue-500  py-2 px-4 rounded-xl text-lg tracking-widest font-bold"
           >
             <p className="p-0 m-0">Next</p>
             <BsFillMoonStarsFill className="p-0 m-0" />

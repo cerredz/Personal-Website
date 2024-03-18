@@ -227,8 +227,6 @@ const About = () => {
   );
 };
 
-export default About;
-
 /* CODE FOR SINGULAR PHONE ICON, Seperated for better Readability */
 const PhoneIcon = ({
   className,
@@ -303,3 +301,5 @@ const PhoneIcon = ({
     </motion.div>
   );
 };
+
+export default About;
