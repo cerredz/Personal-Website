@@ -40,12 +40,11 @@ export const updateFormData = (
 };
 
 // make sure the user filled out the required fields
-export const checkUserInput = (
+export const checkUserInput = async (
   formData,
   setFormData,
   formName,
   setError,
-
   setStep,
   index
 ) => {
@@ -62,8 +61,53 @@ export const checkUserInput = (
     setTimeout(() => {
       setError(false);
     }, [3000]);
+    return true;
   } else {
     // no errors
     setStep((prev) => prev + 1);
+    return false;
+  }
+};
+
+// make the request to the backend to send the email to me
+export const send = async (formData) => {
+  try {
+    const response = await fetch("/api/contact/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      console.log("🟢: Email Sent Successfully");
+    } else {
+      throw new Error(`Failed to send email: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error("Error Making The Send Email Backend Request", error);
+  }
+};
+
+// make a request to the backend to store all emails sent to me into a database
+export const store = async (formData) => {
+  try {
+    const response = await fetch(`/api/contact/store`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      console.log("🟢: Email Stored to Database Successfully");
+    } else {
+      throw new Error(`Failed to send email: ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error(
+      "Error Making the Backend Request to store the email: ",
+      error
+    );
   }
 };

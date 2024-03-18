@@ -89,6 +89,10 @@ textarea::placeholder {
   color: #525252;
 }
 
+.error-text-area::placeholder {
+  color: #dc2626;
+}
+
 .previous-btn::before {
   position: absolute;
   content: "";

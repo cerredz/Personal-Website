@@ -14,7 +14,9 @@ import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { motion, AnimatePresence } from "framer-motion";
 import { slidesData } from "./data";
 import { BsFillMoonStarsFill, BsDownload } from "react-icons/bs";
-import { updateFormData, checkUserInput } from "./utils";
+import { updateFormData, checkUserInput, send, store } from "./utils";
+import { AiFillHome } from "react-icons/ai";
+import Link from "next/link";
 
 const page = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -30,6 +32,7 @@ const page = () => {
     message: "",
   });
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     console.log(formData);
@@ -64,6 +67,7 @@ const page = () => {
                 key={index}
                 index={index}
                 error={error}
+                errorMessage={errorMessage}
                 length={slides.length}
                 question={slide.question}
                 required={slide.required}
@@ -80,10 +84,30 @@ const page = () => {
                           setFormData,
                           slide.formName,
                           setError,
+                          setErrorMessage,
                           setStep
                         )
                     : () => setStep((prev) => prev + 1)
                 }
+                submitClick={async (e) => {
+                  e.preventDefault();
+                  try {
+                    const isErrors = await checkUserInput(
+                      formData,
+                      setFormData,
+                      slide.formName,
+                      setError,
+                      setStep
+                    );
+
+                    if (!isErrors) {
+                      await send(formData);
+                      await store(formData);
+                    }
+                  } catch (error) {
+                    console.error("Error sending data:", error);
+                  }
+                }}
                 previousClick={() => setStep((prev) => prev - 1)}
               />
             )}
@@ -233,6 +257,7 @@ const StepOne = ({ onClick }) => {
 const Slide = ({
   index,
   error,
+  errorMessage,
   length,
   question,
   required,
@@ -242,6 +267,7 @@ const Slide = ({
   formData,
   setFormData,
   nextClick,
+  submitClick,
   previousClick,
 }) => {
   const containerExitAnimation =
@@ -290,7 +316,7 @@ const Slide = ({
       </motion.div>
 
       {/* TEXT FIELDS */}
-      <div className="w-full flex flex-row items-center justify-between gap-6 relative ">
+      <div className="w-full flex flex-row items-center justify-between gap-6 relative">
         {expanded_text_field === true ? (
           <motion.span
             initial={{ scale: 0, opacity: 0 }}
@@ -302,8 +328,10 @@ const Slide = ({
             className="contact-input-background relative overflow-hidden w-full rounded-xl px-6 py-3 z-0"
           >
             <textarea
-              placeholder={placeholders[0]}
-              className="contact-input relative z-10 w-full text-neutral-300"
+              placeholder={error ? errorMessage : placeholders[0]}
+              className={`contact-input relative z-10 w-full  ${
+                error && "error-text-area"
+              } text-neutral-300`}
               rows={10}
               onKeyDown={(event) =>
                 updateFormData(
@@ -348,6 +376,18 @@ const Slide = ({
                 )}
               </motion.span>
             ))}
+            <AnimatePresence>
+              {error && (
+                <motion.label
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 50 }}
+                  className="absolute top-0 text-red-600 font-medium left-0 text-sm tracking-widest"
+                >
+                  {errorMessage}
+                </motion.label>
+              )}
+            </AnimatePresence>
           </>
         )}
       </div>
@@ -397,6 +437,68 @@ const Slide = ({
           </motion.div>
         )}
       </motion.div>
+    </motion.div>
+  );
+};
+
+const SuccessSlide = ({}) => {
+  return (
+    <motion.div
+      initial={{ display: "none" }}
+      animate={{ display: "flex", transition: { delay: 0.6 } }}
+      exit={{ opacity: 0, transition: { duration: 0.3 } }}
+      className="relative flex flex-col h-full w-full justify-center items-center w-10/12 md:w-3/4 lg:w-7/12 mx-auto gap-4 overflow-hidden py-6 px-6 lg:px-12 rounded-xl text-center"
+    >
+      {/* SUCCESS ICON */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, transition: { delay: 0.5 } }}
+      >
+        <Image
+          alt=""
+          src={"/images/successIcon.png"}
+          width={200}
+          height={200}
+        />
+      </motion.span>
+
+      {/* TEXT */}
+      <motion.h1
+        initial={{ opacity: 0, y: 25 }}
+        animate={{ opacity: 1, y: 0, transition: { delay: 0.6 } }}
+        className="text-neutral-300 font-bold text-3xl tracking-widest"
+      >
+        Success
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 25 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.4, delay: 0.7 },
+        }}
+        className="text-neutral-600 font-medium tracking-wider text-sm mx-auto"
+      >
+        Your Message Was Sent Successfully. I will make sure to get back to you
+        as soon as I can.
+      </motion.p>
+      {/* RETURN HOME BUTTON */}
+      <Link href={"/"}>
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.4, delay: 0.9 },
+          }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="cursor-pointer py-2 px-4 rounded-xl flex flex-row gap-4 items-center justify-center bg-gradient-to-br from-sky-500 via-blue-500 to-sky-500 text-neutral-300 font-bold tracking-widest text-md"
+        >
+          <p className="p-0 m-0">Home</p>
+          <AiFillHome className="p-0 m-0 flex items-center justify-center text-lg" />
+        </motion.div>
+      </Link>
     </motion.div>
   );
 };
