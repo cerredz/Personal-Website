@@ -15,7 +15,7 @@ export default function Page() {
     const fetchData = async () => {
       // extract the award Title from the url, then find it in sanity
       const awardTitle = pathname.split("/").pop().replace(/-/g, " ");
-      const query = `*[_type == "awards" && title == "${awardTitle}"][0]`;
+      const query = `*[_type == "awards" && award == "${awardTitle}"][0]`;
       const result = await client.fetch(query);
 
       if (!result) {
