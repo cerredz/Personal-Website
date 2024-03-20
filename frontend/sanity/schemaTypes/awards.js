@@ -29,6 +29,11 @@ export default {
       type: 'image',
     },
     {
+      name: 'readMoreImage',
+      title: 'Read More Image',
+      type: 'image',
+    },
+    {
       name: 'github',
       title: 'Github Link',
       type: 'url',
@@ -41,6 +46,17 @@ export default {
     {
       name: 'preview',
       title: 'Preview text',
+      type: 'string',
+    },
+    {
+      name: 'technologies',
+      title: 'Technologies',
+      type: 'array',
+      of: [{type: 'string'}],
+    },
+    {
+      name: 'overview',
+      title: 'Overview',
       type: 'string',
     },
   ],

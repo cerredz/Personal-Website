@@ -54,3 +54,7 @@
     #d946ef
   );
 }
+
+.award::after {
+  background: linear-gradient(to bottom, transparent, #fde047);
+}
