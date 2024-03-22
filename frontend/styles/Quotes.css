@@ -11,7 +11,7 @@
 
 .quotes-container::before,
 .quotes-container::after {
-  background: #1e1e21;
+  background: #18181a;
 }
 .quotes-light-container::before,
 .quotes-light-container::after {

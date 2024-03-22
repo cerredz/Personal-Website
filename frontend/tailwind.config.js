@@ -33,7 +33,7 @@ module.exports = {
       fuchsia: colors.fuchsia,
       primary: {
         light: `#F9FAFB`,
-        dark: `#1E1E21`,
+        dark: `#18181A`,
         purple: "#9260BE",
       },
       dark: {

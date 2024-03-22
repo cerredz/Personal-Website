@@ -20,14 +20,16 @@ const Quote = ({
   const inView = useInView(ref);
   let quoteArray = quote.split(" ");
   const [audio, setAudio] = useState(new Audio("/sounds/typing.mp3"));
+  const [audioPlayed, setAudioPlayed] = useState(false);
 
   // handle background typing audio
   useEffect(() => {
-    if (inView) {
+    if (inView && !audioPlayed) {
       audio.volume = 0.5;
       // synce the audio with the typing animation
       setTimeout(() => {
         audio.play();
+        setAudioPlayed(true);
       }, [500]);
       setTimeout(() => {
         audio.pause();
@@ -43,7 +45,7 @@ const Quote = ({
     <div
       className={`${
         dark
-          ? "quotes-container bg-[#18181A]"
+          ? "quotes-container bg-[#1e1e21]"
           : "quotes-light-container bg-[#c6c6c6]"
       } relative flex flex-col items-center justify-center w-full h-auto py-24 hidden md:flex`}
     >
