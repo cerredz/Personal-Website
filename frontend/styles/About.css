@@ -82,26 +82,26 @@
   background: #d04547;
 }
 
-.phone::before {
-  box-shadow: inset 0 0 3px #3ebe57;
-}
-.phone:hover::before {
-  box-shadow: inset 0 0 3px #3ebe57, 0 3px 10px #3ebe57;
-}
-
-.phone::after {
-  background: #3ebe57;
-}
-
 .location::before {
-  box-shadow: inset 0 0 3px #feaf1a;
+  box-shadow: inset 0 0 3px #e111e8;
 }
 .location:hover::before {
-  box-shadow: inset 0 0 3px #feaf1a, 0 3px 10px #feaf1a;
+  box-shadow: inset 0 0 3px #e111e8, 0 3px 10px #e111e8;
 }
 
 .location::after {
-  background: #feaf1a;
+  background: #e111e8;
+}
+
+.phone::before {
+  box-shadow: inset 0 0 3px #b60bea;
+}
+.phone:hover::before {
+  box-shadow: inset 0 0 3px #b60bea, 0 3px 10px #b60bea;
+}
+
+.phone::after {
+  background: #b60bea;
 }
 
 .awards::before {
@@ -185,4 +185,38 @@
   opacity: 0.8;
   box-shadow: inset 0 0 2rem rgba(255, 255, 255, 0.2);
   border-radius: inherit;
+  z-index: 0;
+}
+
+.start-title,
+.start-subtitle {
+  text-shadow: 0 0 20px rgb(35, 35, 35);
+}
+
+.about-generic-card-dark {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.about-generic-card-light {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+.about-generic-card-dark::before,
+.about-generic-card-light::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  border-radius: inherit;
+}
+/*
+.about-generic-card-dark::before {
+  box-shadow: inset 0 -20px 40px rgba(255, 255, 255, 0.1);
+}
+.about-generic-card-light::before {
+  box-shadow: inset 0 -20px 40px rgba(0, 0, 0, 0.1);
+}
+*/
+
+.goal-img {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
