@@ -86,6 +86,18 @@ const About = () => {
             />
           )}
         </AnimatePresence>
+
+        <AnimatePresence>
+          {currentTabIndex == 1 && (
+            <FirstLanguages
+              dark={dark}
+              titleColor={titleColor}
+              titleStyle={titleStyle}
+              subtitleColor={subtitleColor}
+              subtitleStyle={subtitleStyle}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
@@ -290,6 +302,33 @@ const Start = ({
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
+
+const FirstLanguages = ({
+  dark,
+  titleStyle,
+  titleColor,
+  subtitleColor,
+  subtitleStyle,
+}) => {
+  return (
+    <div className="w-full flex flex-row items-center justify-between gap-4">
+      {/* LEFT CONTAINER DIV */}
+      <div className="basis-1/3 h-[70vh] bg-blue-400 flex flex-col items-start justify-start"></div>
+      {/* MIDDLE CONTAINER DIV */}
+      <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between gap-4">
+        <div className="basis-1/4 w-full bg-red-400"></div>
+        <div className="basis-1/4 w-full bg-pink-400"></div>
+        <div className="basis-1/2 w-full bg-cyan-400"></div>
+      </div>
+
+      {/* LEFT CONTAINER DIV */}
+      <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between gap-4">
+        <div className="basis-2/3 w-full bg-purple-500"></div>
+        <div className="basis-1/3 w-full bg-fuchsia-500"></div>
       </div>
     </div>
   );
