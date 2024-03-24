@@ -20,7 +20,7 @@ const About = () => {
     dark ? "text-neutral-500" : "text-neutral-400"
   );
   const titleStyle = "z-10 tracking-wider font-bold";
-  const subtitleStyle = "z-10 font-normal  tracking-wide";
+  const subtitleStyle = "z-10 font-normal tracking-wide";
 
   useEffect(() => {
     if (dark) {
@@ -59,7 +59,7 @@ const About = () => {
               dark
                 ? `${
                     currentTabIndex == index
-                      ? "text-neutral-30 bg-[rgba(255,255,255,.2)]"
+                      ? "text-neutral-300 bg-[rgba(255,255,255,.2)]"
                       : "text-neutral-600 hover:bg-[rgba(255,255,255,.1)]"
                   }`
                 : `${
@@ -137,10 +137,14 @@ const Start = ({
       <div className="w-full flex flex-row justify-between items-center gap-10">
         {/* MAIN CARD */}
         <div className="basis-2/3 start-main h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-start relative">
-          <h1 className="z-10 w-full text-start start-title font-bold text-neutral-300 text-2xl tracking-wider">
+          <h1
+            className={`w-full text-start start-title text-2xl ${titleColor} ${titleStyle}`}
+          >
             The Beginning of my Journey
           </h1>
-          <p className="z-10 w-9/12 text-start start-subtitle font-normal text-neutral-400 text-sm tracking-wide">
+          <p
+            className={`w-9/12 text-start  text-sm ${subtitleStyle} ${subtitleColor} `}
+          >
             I am Michael Cerreto, and my journey into coding began at the age of
             17 during my senior year of High School. Let me take you through my
             journey.
@@ -148,12 +152,16 @@ const Start = ({
         </div>
         {/* GENERAL INFO CARD */}
         <div
-          className={`basis-1/3 h-[40vh] relative ${cardBackground} p-8 rounded-xl flex flex-col items-start justify-between`}
+          className={`basis-1/3 h-[40vh] relative p-8 rounded-xl flex flex-col overflow-hidden items-start justify-between ${
+            dark
+              ? "slanted-bg-dark dark-border"
+              : "slanted-bg-light light-border"
+          }`}
         >
           <div className="flex flex-col items-start justify-center ">
             <div
-              className={`p-2 rounded-full flex items-center justify-center ${
-                dark ? "bg-[rgba(255,255,255,.05)]" : "bg-[rgba(0,0,0,.05)]"
+              className={`p-2 rounded-full flex items-center justify-center relative z-10 ${
+                dark ? "headshot-dark " : "headshot-light "
               }`}
             >
               <Image
@@ -161,16 +169,21 @@ const Start = ({
                 alt="headshot"
                 width={75}
                 height={75}
+                className="z-10 "
               />
             </div>
-            <h1 className="z-10 w-full text-start start-title font-bold text-neutral-300 text-2xl tracking-widest mt-2">
+            <h1
+              className={`w-full text-start text-2xl mt-2  ${titleColor} ${titleStyle}`}
+            >
               General Info
             </h1>
-            <p className="z-10 w-9/12 text-start start-subtitle font-normal text-neutral-400 text-sm tracking-wide ">
+            <p
+              className={` w-9/12 text-start  text-sm ${subtitleStyle} ${subtitleColor} `}
+            >
               Take a look at some more generic information about myself
             </p>
           </div>
-          <div className="relative z-1 grid grid-cols-3 gap-y-2 gap-x-6 mt-2 w-full ">
+          <div className="relative z-10 grid grid-cols-3 gap-y-2 gap-x-6 mt-2 w-full ">
             {phoneIconData.map((icon, index) => (
               <PhoneIcon
                 key={index}
@@ -191,22 +204,24 @@ const Start = ({
       <div className="w-full flex flex-row justify-between items-center gap-8">
         {/* SECOND ROW LEFT CARD */}
         <div
-          className={`basis-1/3 flex relative flex-col items-center justify-start pt-8 rounded-xl  h-[300px]`}
+          className={`basis-1/3 flex relative goal-bg-img flex-col items-center justify-start pt-8 rounded-xl overflow-hidden h-[300px] goal `}
         >
           <Image
             src={"/images/aboutme/goalbg.jpg"}
             alt="neural network background"
             layout="fill"
             objectFit="cover"
-            className="rounded-xl goal-bg-img opacity-50 "
+            className="rounded-xl  opacity-10 "
           />
           <div className="w-full flex flex-col items-start justify-start px-8">
             <h1
-              className={`z-10 w-full text-start start-title font-bold text-neutral-300 text-2xl tracking-widest `}
+              className={`w-full text-start text-2xl ${titleColor} ${titleStyle} `}
             >
               Goal
             </h1>
-            <p className="z-10 w-[11/12] text-start start-subtitle font-normal text-neutral-400 text-xs tracking-wide ">
+            <p
+              className={`w-[11/12] text-start text-xs ${subtitleStyle} ${subtitleColor}  `}
+            >
               Strive to become the most skillful, talented, and masterful
               Software Engineer that I am capable of becoming.
             </p>
@@ -224,13 +239,21 @@ const Start = ({
           </Link>
         </div>
         <div
-          className={`basis-1/3 h-[300px] flex flex-col items-center justify-center p-8 rounded-xl ${cardBackground}`}
+          className={`basis-1/3 h-[300px] flex flex-col relative items-center justify-center p-8 rounded-xl overflow-hidden ${
+            dark
+              ? "slanted-bg-dark dark-border"
+              : "slanted-bg-light light-border"
+          } `}
         >
           <div className="flex flex-col items-start justify-start w-full">
-            <p className="z-10 w-9/12 text-start start-subtitle font-bold text-neutral-400 text-sm tracking-widest ">
+            <p
+              className={` w-9/12 text-start  text-sm  ${subtitleStyle} ${subtitleColor} `}
+            >
               Education:
             </p>
-            <h1 className="z-10 w-full text-start start-title font-bold text-neutral-300 text-2xl tracking-widest ">
+            <h1
+              className={`w-full text-start  text-2xl  ${titleColor} ${titleStyle}`}
+            >
               Rutgers
             </h1>
           </div>
@@ -242,7 +265,9 @@ const Start = ({
           />
         </div>
         <div
-          className={`basis-1/3 flex flex-col items-start justify-between p-8 rounded-xl ${cardBackground} h-[300px]`}
+          className={`basis-1/3 flex flex-col items-start justify-between p-8 rounded-xl  h-[300px] relative freedom overflow-hidden ${
+            dark ? "freedom-dark" : "freedom-light"
+          }`}
         >
           <Image
             src={"/images/aboutme/freedomIcon.png"}
@@ -252,10 +277,14 @@ const Start = ({
             className="mx-auto"
           />
           <div className="w-full flex flex-col justify-start items-start">
-            <h1 className="z-10 w-full text-start start-title font-bold text-neutral-300 text-xl tracking-widest ">
+            <h1
+              className={` w-full text-start text-xl  ${titleColor} ${titleStyle}  `}
+            >
               Freedom & Intuition
             </h1>
-            <p className="z-10 w-[11/12] text-start start-subtitle font-normal text-neutral-400 text-xs tracking-wide ">
+            <p
+              className={` w-9/12 text-start text-xs  ${subtitleStyle} ${subtitleColor} `}
+            >
               Since writing my first program, I've been captivated by the
               freedom and intuition inherent in programming.
             </p>

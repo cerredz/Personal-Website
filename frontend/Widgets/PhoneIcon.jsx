@@ -27,7 +27,7 @@ export const PhoneIcon = ({
       onMouseEnter={() => setHoveringIcon(className)}
       onMouseLeave={() => setHoveringIcon(null)}
       onClick={() => (clickEvent ? window.open(redirect, "_blank") : "")}
-      className="relative overflow-visible cursor-pointer "
+      className="relative overflow-visible cursor-pointer z-10 "
       whileTap={{ scale: 0.9 }}
     >
       <div
@@ -58,7 +58,7 @@ export const PhoneIcon = ({
               opacity: 0,
               transition: { duration: 0.3, ease: "easeInOut" },
             }}
-            className={`shadow-md absolute bottom-[-40px] left-0 overflow-visible z-50  whitespace-nowrap`}
+            className={`shadow-md absolute bottom-[-25px] left-[-15px] overflow-visible z-50  whitespace-nowrap`}
           >
             <div className="relative z-50 flex flex-col">
               <p

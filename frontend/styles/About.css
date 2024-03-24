@@ -215,8 +215,119 @@
 }
 */
 
-.goal-img {
+.goal-bg-img {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
+}
+
+.headshot-dark,
+.headshot-light {
+  background: linear-gradient(to right, #d04547, #b60bea, #7b22bb);
+}
+
+.headshot-dark::before,
+.headshot-light::before {
+  position: absolute;
+  content: "";
+  inset: 2px;
+  border-radius: inherit;
+}
+.headshot-dark::before {
+  background: #232325;
+}
+
+.headshot-light::before {
+  background: #d5d6d7;
+}
+
+.slanted-bg-dark::before,
+.slanted-bg-light::before,
+.slanted-bg-dark::after,
+.slanted-bg-light::after {
+  position: absolute;
+  content: "";
+  border-radius: inherit;
+}
+
+.slanted-bg-dark::before,
+.slanted-bg-light::before {
+  transform: skew(-45deg);
+  top: 0;
+  left: -50%;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.slanted-bg-dark::after,
+.slanted-bg-light::after {
+  z-index: 2;
+}
+
+.slanted-bg-dark::before,
+.slanted-bg-light::before {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.01)
+  );
+}
+.slanted-bg-dark::after,
+.slanted-bg-light::after {
+  background: linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.05),
+    rgba(0, 0, 0, 0.025)
+  );
+  inset: 0;
+}
+
+.dark-border {
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.2),
+    5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.light-border {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.2), 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.freedom {
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 0;
+}
+
+.freedom::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  filter: blur(3rem);
+  background: linear-gradient(45deg, #cc0a39, #8862ef);
+  z-index: 1;
+}
+
+.freedom-dark {
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1),
+    5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.freedom-light {
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.1), 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.goal::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  right: 0;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  filter: blur(4rem);
+  opacity: 0.8;
+  background: linear-gradient(45deg, #e111e8, #8862ef);
+  z-index: 1;
 }
