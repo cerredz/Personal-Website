@@ -134,11 +134,11 @@ const Start = ({
   return (
     <div className="w-full flex flex-col items-center justify-center gap-6">
       {/* FIRST ROW */}
-      <div className="w-full flex flex-row justify-between items-center gap-10">
+      <div className="w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10">
         {/* MAIN CARD */}
         <div className="basis-2/3 start-main h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-start relative">
           <h1
-            className={`w-full text-start start-title text-2xl ${titleColor} ${titleStyle}`}
+            className={`w-3/4 lg:w-full text-start start-title text-2xl ${titleColor} ${titleStyle}`}
           >
             The Beginning of my Journey
           </h1>
@@ -152,7 +152,7 @@ const Start = ({
         </div>
         {/* GENERAL INFO CARD */}
         <div
-          className={`basis-1/3 h-[40vh] relative p-8 rounded-xl flex flex-col overflow-hidden items-start justify-between ${
+          className={`basis-1/3 h-auto w-[300px] lg:w-auto lg:h-[40vh] relative p-8 rounded-xl flex flex-col overflow-hidden items-start justify-between ${
             dark
               ? "slanted-bg-dark dark-border"
               : "slanted-bg-light light-border"
@@ -201,10 +201,10 @@ const Start = ({
       </div>
 
       {/* SECOND ROW */}
-      <div className="w-full flex flex-row justify-between items-center gap-8">
+      <div className="w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-8">
         {/* SECOND ROW LEFT CARD */}
         <div
-          className={`basis-1/3 flex relative goal-bg-img flex-col items-center justify-start pt-8 rounded-xl overflow-hidden h-[300px] goal `}
+          className={`w-[300px] lg:w-auto lg:basis-1/3 flex relative goal-bg-img flex-col items-center justify-start pt-8 rounded-xl overflow-hidden h-[300px] goal `}
         >
           <Image
             src={"/images/aboutme/goalbg.jpg"}
@@ -239,7 +239,7 @@ const Start = ({
           </Link>
         </div>
         <div
-          className={`basis-1/3 h-[300px] flex flex-col relative items-center justify-center p-8 rounded-xl overflow-hidden ${
+          className={`w-[300px] lg:w-auto lg:basis-1/3 h-[300px] flex flex-col relative items-center justify-center p-8 rounded-xl overflow-hidden ${
             dark
               ? "slanted-bg-dark dark-border"
               : "slanted-bg-light light-border"
@@ -265,7 +265,7 @@ const Start = ({
           />
         </div>
         <div
-          className={`basis-1/3 flex flex-col items-start justify-between p-8 rounded-xl  h-[300px] relative freedom overflow-hidden ${
+          className={`w-[300px] lg:w-auto lg:basis-1/3 flex flex-col items-start justify-between p-8 rounded-xl  h-[300px] relative freedom overflow-hidden ${
             dark ? "freedom-dark" : "freedom-light"
           }`}
         >
