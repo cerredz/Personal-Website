@@ -7,6 +7,8 @@ import "../styles/About.css";
 import Image from "next/image";
 import { PhoneIcon } from "@/Widgets/PhoneIcon";
 import Link from "next/link";
+import { FaRegLightbulb } from "react-icons/fa";
+import { TbBrandVscode } from "react-icons/tb";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -150,12 +152,12 @@ const Start = ({
         {/* MAIN CARD */}
         <div className="basis-2/3 start-main h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-start relative">
           <h1
-            className={`w-3/4 lg:w-full text-start start-title text-2xl ${titleColor} ${titleStyle}`}
+            className={`w-3/4 lg:w-full text-start start-title text-2xl ${titleColor} ${titleStyle} `}
           >
             The Beginning of my Journey
           </h1>
           <p
-            className={`w-9/12 text-start  text-sm ${subtitleStyle} ${subtitleColor} `}
+            className={`w-9/12 text-start  text-sm ${subtitleStyle}  text-neutral-400`}
           >
             I am Michael Cerreto, and my journey into coding began at the age of
             17 during my senior year of High School. Let me take you through my
@@ -314,21 +316,105 @@ const FirstLanguages = ({
   subtitleColor,
   subtitleStyle,
 }) => {
+  const iconURLS = [
+    "/images/skills/java.png",
+    "/images/skills/c++.png",
+    "/images/skills/python.png",
+  ];
   return (
     <div className="w-full flex flex-row items-center justify-between gap-4">
       {/* LEFT CONTAINER DIV */}
-      <div className="basis-1/3 h-[70vh] bg-blue-400 flex flex-col items-start justify-start"></div>
+      <div
+        className={`basis-1/3 h-[70vh] p-8 rounded-xl flex flex-col items-start justify-between relative intro intro-card ${
+          dark ? "intro-dark" : "intro-light"
+        } bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700 overflow-hidden`}
+      >
+        <div className="flex flex-col items-start justify-start">
+          <div
+            className={`rounded-3xl py-3 px-8 intro relative bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700 ${
+              dark ? "intro-dark" : "intro-light"
+            } flex items-center justify-center`}
+          >
+            <p
+              style={{
+                backgroundImage:
+                  "linear-gradient(-45deg, #06b6d4, #0284c7, #1d4ed8)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+              className="absolute text-xs font-bold tracking-widest z-10"
+            >
+              2021+
+            </p>{" "}
+          </div>
+          <h1 className={`${titleColor} ${titleStyle} mt-2 text-2xl`}>
+            Intro To Comp Sci
+          </h1>
+          <p className={`${subtitleStyle} ${subtitleColor}`}>
+            The first languages I ended up learning were Java, then C++, and
+            then Python.
+          </p>
+        </div>
+
+        <div className="w-full h-full relative flex items-end justify-center">
+          <Image
+            src={"/images/aboutme/firstLanguages.png"}
+            alt="first langugaes logo"
+            width={400}
+            height={400}
+            quality={100}
+            priority={true}
+          />
+        </div>
+      </div>
       {/* MIDDLE CONTAINER DIV */}
       <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between gap-4">
-        <div className="basis-1/4 w-full bg-red-400"></div>
-        <div className="basis-1/4 w-full bg-pink-400"></div>
+        {/* FIRST LANGUAGES DIV */}
+        <div className="basis-1/4 w-full flex bg-[rgba(255,255,255,.01)] flex-col items-start justify-between p-6 rounded-xl ">
+          <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
+            First Languages
+          </h1>
+          <div className="w-1/2 flex flex-row items-center justify-between">
+            {iconURLS.map((icon, index) => (
+              <Image key={index} src={icon} width={40} height={40} />
+            ))}
+          </div>
+        </div>
+        {/* LINEAR GRADIENT BACKGROUND DIV */}
+        <div className="basis-1/4 w-full flex flex-row gap-4 items-center justify-between px-6 py-3 rounded-xl bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700">
+          <div className="p-3 rounded-full bg-neutral-100">
+            <FaRegLightbulb className="text-4xl text-sky-500" />
+          </div>
+          <p
+            className={`${subtitleStyle} text-neutral-300 text-sm tracking-widest font-bold `}
+          >
+            It here at this stage where I started to learn about data stuctures
+            and complex algorithmns
+          </p>
+        </div>
         <div className="basis-1/2 w-full bg-cyan-400"></div>
       </div>
 
       {/* LEFT CONTAINER DIV */}
       <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between gap-4">
-        <div className="basis-2/3 w-full bg-purple-500"></div>
-        <div className="basis-1/3 w-full bg-fuchsia-500"></div>
+        <div className="basis-2/3 w-full  flex flex-col items-center justify-between p-8 rounded-xl">
+          <div className="w-full flex flex-col items-start justify-start">
+            <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
+              Web Development
+            </h1>
+            <p className={`${subtitleStyle} ${subtitleColor} text-sm `}>
+              I then dove into web development, learning basis HTML, CSS, and
+              Javascript
+            </p>
+          </div>
+          <Image
+            src={"/images/aboutme/webdev.png"}
+            alt="web dev background image"
+            width={250}
+            height={250}
+          />
+        </div>
+        <div className="basis-1/3 w-full bg-fuchsia-500 flex flex-col"></div>
       </div>
     </div>
   );

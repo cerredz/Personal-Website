@@ -331,3 +331,32 @@
   background: linear-gradient(45deg, #e111e8, #8862ef);
   z-index: 1;
 }
+
+.intro::before {
+  position: absolute;
+  content: "";
+  inset: 2px;
+  border-radius: inherit;
+}
+
+.intro-dark::before {
+  background: #131315;
+}
+
+.intro-light::before {
+  background: #c7c8c9;
+}
+
+.intro-card::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  background: linear-gradient(to right, #0aa0e5, #0821df);
+  transform: translateX(-50%) translateY(50%);
+  filter: blur(4rem);
+  opacity: 0.6;
+}
