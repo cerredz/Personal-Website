@@ -103,6 +103,17 @@ const About = () => {
             />
           )}
         </AnimatePresence>
+        <AnimatePresence>
+          {currentTabIndex == 2 && (
+            <Projects
+              dark={dark}
+              titleColor={titleColor}
+              titleStyle={titleStyle}
+              subtitleColor={subtitleColor}
+              subtitleStyle={subtitleStyle}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
@@ -153,7 +164,7 @@ const Start = ({
       {/* FIRST ROW */}
       <div className="w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10">
         {/* MAIN CARD */}
-        <div className="basis-2/3 start-main h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-between relative">
+        <div className="basis-2/3 start-main h-[60vh] lg:h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-between relative">
           <div className="w-full z-10">
             <h1
               className={`w-3/4 lg:w-full text-start start-title text-2xl ${titleColor} ${titleStyle} `}
@@ -161,7 +172,7 @@ const Start = ({
               The Beginning of my Journey
             </h1>
             <p
-              className={`w-9/12 text-start  text-sm ${subtitleStyle}  text-neutral-400`}
+              className={`w-full lg:w-9/12 text-start  text-sm ${subtitleStyle}  text-neutral-400`}
             >
               I am Michael Cerreto, and my journey into coding began at the age
               of 17 during my senior year of High School. Let me take you
@@ -352,7 +363,7 @@ const FirstLanguages = ({
   }, [index]);
 
   return (
-    <div className="w-full flex flex-row items-center justify-between gap-4">
+    <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-4">
       {/* LEFT CONTAINER DIV */}
       <div
         className={`basis-1/3 h-[70vh] p-8 rounded-xl flex flex-col items-start justify-between relative intro intro-card ${
@@ -560,6 +571,18 @@ const FirstLanguages = ({
         </div>
       </div>
     </div>
+  );
+};
+
+const Projects = ({
+  dark,
+  titleColor,
+  titleStyle,
+  subtitleColor,
+  subtitleStyle,
+}) => {
+  return (
+    <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-4"></div>
   );
 };
 
