@@ -11,6 +11,7 @@ import { FaRegLightbulb } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { motion } from "framer-motion";
+import { languages } from "@/data";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -340,6 +341,7 @@ const FirstLanguages = ({
     { type: "Medium", amount: "216" },
     { type: "Hard", amount: "14" },
   ];
+
   const [leetcodeProblemType, setLeetcodeProblemType] = useState("Easy");
   const [leetcodeProblemAmount, setLeetcodeProblemAmount] = useState("140");
   const [index, setIndex] = useState(0);
@@ -397,9 +399,9 @@ const FirstLanguages = ({
         </div>
       </div>
       {/* MIDDLE CONTAINER DIV */}
-      <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between gap-4">
+      <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between ">
         {/* FIRST LANGUAGES DIV */}
-        <div className="basis-1/4 w-full flex bg-[rgba(255,255,255,.01)] flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ">
+        <div className="basis-1/4 mb-4 w-full flex bg-[rgba(255,255,255,.01)] flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ">
           <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
             First Languages
           </h1>
@@ -410,7 +412,7 @@ const FirstLanguages = ({
           </div>
         </div>
         {/* LINEAR GRADIENT BACKGROUND DIV */}
-        <div className="basis-1/4 w-full flex flex-row gap-4 items-center justify-between px-6 py-3 rounded-xl bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700">
+        <div className="basis-1/4 mb-4 w-full flex flex-row gap-4 items-center justify-between px-6 py-3 rounded-xl bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700">
           <div className="p-3 rounded-full bg-neutral-100">
             <FaRegLightbulb className="text-4xl text-sky-500" />
           </div>
@@ -421,7 +423,39 @@ const FirstLanguages = ({
             and complex algorithmns
           </p>
         </div>
-        <div className="basis-1/2 w-full bg-cyan-400"></div>
+        {/* FULL STACK CONTAINER */}
+        <div
+          className={`basis-1/2 w-full rounded-xl p-8 ${
+            dark ? "dark-border" : "light-border"
+          } fullstack relative overflow-hidden`}
+        >
+          {/* HEADING */}
+          <div className="w-full flex flex-col items-start justify-start">
+            <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
+              Fullstack
+            </h1>
+            <p className={`${subtitleColor} ${subtitleStyle} text-xs`}>
+              My passion for web development grew, leading me to complete an
+              online course covering the following:
+            </p>
+
+            <div className="grid grid-cols-2 gap-3 mx-auto mt-4">
+              {languages.map((languages, index) => (
+                <div
+                  key={index}
+                  className={`py-1 px-3 rounded-3xl flex flex-row items-center justify-start gap-2 backdrop-blur-md fullstack-btn`}
+                >
+                  <div className="text-sky-500">{languages.img}</div>
+                  <p className="text-neutral-300 text-sm tracking-wider font-normal">
+                    {languages.name}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        {/* LANGUAGES */}
+        <div></div>
       </div>
 
       {/* LEFT CONTAINER DIV */}
@@ -458,7 +492,9 @@ const FirstLanguages = ({
           }`}
         >
           <h1
-            className={`${subtitleColor} font-bold tracking-widest text-lg w-full text-left `}
+            className={`${
+              dark ? "text-neutral-600" : "text-neutral-800"
+            } font-bold tracking-widest text-lg w-full text-left `}
           >
             Leetcode Problems
           </h1>

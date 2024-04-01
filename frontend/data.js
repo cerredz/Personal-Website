@@ -1,9 +1,9 @@
-import { FaBrain } from "react-icons/fa6";
-import { FaDatabase } from "react-icons/fa6";
+import { FaBrain, FaPeopleGroup, FaDatabase } from "react-icons/fa6";
 import { GoTerminal } from "react-icons/go";
-import { FaLaptopCode } from "react-icons/fa";
-import { FaPeopleGroup } from "react-icons/fa6";
+import { FaLaptopCode, FaGithub, FaReact, FaNode } from "react-icons/fa";
 import { GiFamilyTree } from "react-icons/gi";
+import { PiFileSql } from "react-icons/pi";
+import { SiMongodb, SiPostman, SiExpress, SiFlask } from "react-icons/si";
 
 import "./styles/Skills.css";
 
@@ -149,6 +149,17 @@ export const aboutMeFacts = [
   "Java and C++ were the first coding languages in which I gained significant experience. Within these languages, I first encountered data structures and tackled challenging computer science problems (leetcode). As my proficiency in Java and C++ grew, I then delved into the the world of web development, learning basic HTML, CSS, and Javascript. My passion for web development grew, leading me to complete an online course covering React, RESTful APIs, SQL, MongoDB and more.",
   "After Completing the online Web Developement course, I started to create full-stack projects, translating my knowledge into real-world applications. As time went on, I started to learn many software engineering tools, techniques, and frameworks (Next.js, Express.js, Flask, Firebase, etc).  Each project became an opportunity to apply new tools, refine techniques, and deepen my understanding of software engineering principles. ",
   "Today, now knowing over 15+ languages / frameworks, I continually try to become the best software engineer I can be everyday. I regularly work on improving my algorithmic thinking abilities, completing unique full-stack projects, exposing my self to as many different languages / frameworks / practices as I can, and also watch software engineering related videos to learn off of what other people do. ",
+];
+
+export const languages = [
+  { name: "SQL", img: <PiFileSql /> },
+  { name: "Node.js", img: <FaNode /> },
+  { name: "React.js", img: <FaReact /> },
+  { name: "MongoDB", img: <SiMongodb /> },
+  { name: "Git", img: <FaGithub /> },
+  { name: "RESTful APIs", img: <SiPostman /> },
+  { name: "Express.js", img: <SiExpress /> },
+  { name: "Flask", img: <SiFlask /> },
 ];
 
 export const skillsIconData = [

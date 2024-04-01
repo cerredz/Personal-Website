@@ -452,7 +452,7 @@
 
 .leetcode-Hard::before {
   background: linear-gradient(-45deg, #ef4444, #b91c1c, #ef4444);
-  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.6), 0 10px 30px #b91c1c;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.6), 0 10px 30px #b91c1c;
 }
 
 .leetcode-Hard {
@@ -467,4 +467,35 @@
 .leet-arrow {
   box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.2),
     5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.fullstack::after,
+.fullstack::before {
+  position: absolute;
+  content: "";
+}
+.fullstack::before {
+  top: 10%;
+  right: 0;
+  width: 110px;
+  height: 110px;
+  border-radius: 40%;
+  background: #0aa0e5;
+  transform: translateX(35%) translateY(-50%);
+  filter: blur(5rem);
+}
+
+.fullstack::after {
+  left: 10%;
+  bottom: 20%;
+  width: 125px;
+  height: 125px;
+  border-radius: 35%;
+  background: #0821df;
+  filter: blur(6rem);
+}
+
+.fullstack-btn {
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.1),
+    5px 5px 5px rgba(0, 0, 0, 0.2);
 }
