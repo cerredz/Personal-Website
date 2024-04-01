@@ -582,7 +582,22 @@ const Projects = ({
   subtitleStyle,
 }) => {
   return (
-    <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-4"></div>
+    <div className="flex flex-col xl:flex-row items-center justify-between w-full gap-4">
+      {/* LEFT COLUMN CONTAINER */}
+      <div className="flex flex-col items-between justify-center h-[70vh] gap-4 w-full basis-2/3">
+        <div className="basis-2/5 flex flex-row items-center justify-between gap-4 w-full">
+          <div className="basis-1/2 bg-red-400 h-full"></div>
+          <div className="basis-1/2 bg-orange-400 h-full"></div>
+        </div>
+        {/* LSR KICKS CONTAINER */}
+        <div className="basis-3/5 w-full bg-cyan-400"></div>
+      </div>
+      {/* RIGHT COLUMN CONTAINER */}
+      <div className="basis-1/3 flex flex-col items-between justify-center gap-4 h-[70vh]">
+        <div className="basis-3/5 w-full bg-purple-400"></div>
+        <div className="basis-2/5 w-full bg-fuchsia-400"></div>
+      </div>
+    </div>
   );
 };
 
