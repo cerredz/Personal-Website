@@ -9,6 +9,8 @@ import { PhoneIcon } from "@/Widgets/PhoneIcon";
 import Link from "next/link";
 import { FaRegLightbulb } from "react-icons/fa";
 import { TbBrandVscode } from "react-icons/tb";
+import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
+import { motion } from "framer-motion";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -150,19 +152,30 @@ const Start = ({
       {/* FIRST ROW */}
       <div className="w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10">
         {/* MAIN CARD */}
-        <div className="basis-2/3 start-main h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-start relative">
-          <h1
-            className={`w-3/4 lg:w-full text-start start-title text-2xl ${titleColor} ${titleStyle} `}
-          >
-            The Beginning of my Journey
-          </h1>
-          <p
-            className={`w-9/12 text-start  text-sm ${subtitleStyle}  text-neutral-400`}
-          >
-            I am Michael Cerreto, and my journey into coding began at the age of
-            17 during my senior year of High School. Let me take you through my
-            journey.
-          </p>
+        <div className="basis-2/3 start-main h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-between relative">
+          <div className="w-full z-10">
+            <h1
+              className={`w-3/4 lg:w-full text-start start-title text-2xl ${titleColor} ${titleStyle} `}
+            >
+              The Beginning of my Journey
+            </h1>
+            <p
+              className={`w-9/12 text-start  text-sm ${subtitleStyle}  text-neutral-400`}
+            >
+              I am Michael Cerreto, and my journey into coding began at the age
+              of 17 during my senior year of High School. Let me take you
+              through my journey.
+            </p>
+          </div>
+          <Image
+            src={"/images/aboutme/codesnippet1.png"}
+            alt="start main pic"
+            width={700}
+            height={450}
+            quality={100}
+            priority={true}
+            className="mx-auto z-10 main-pic"
+          />
         </div>
         {/* GENERAL INFO CARD */}
         <div
@@ -321,6 +334,21 @@ const FirstLanguages = ({
     "/images/skills/c++.png",
     "/images/skills/python.png",
   ];
+
+  const leetcodeProblems = [
+    { type: "Easy", amount: "140" },
+    { type: "Medium", amount: "216" },
+    { type: "Hard", amount: "14" },
+  ];
+  const [leetcodeProblemType, setLeetcodeProblemType] = useState("Easy");
+  const [leetcodeProblemAmount, setLeetcodeProblemAmount] = useState("140");
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    setLeetcodeProblemType(leetcodeProblems[index].type);
+    setLeetcodeProblemAmount(leetcodeProblems[index].amount);
+  }, [index]);
+
   return (
     <div className="w-full flex flex-row items-center justify-between gap-4">
       {/* LEFT CONTAINER DIV */}
@@ -364,13 +392,14 @@ const FirstLanguages = ({
             height={400}
             quality={100}
             priority={true}
+            className="z-10"
           />
         </div>
       </div>
       {/* MIDDLE CONTAINER DIV */}
       <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between gap-4">
         {/* FIRST LANGUAGES DIV */}
-        <div className="basis-1/4 w-full flex bg-[rgba(255,255,255,.01)] flex-col items-start justify-between p-6 rounded-xl ">
+        <div className="basis-1/4 w-full flex bg-[rgba(255,255,255,.01)] flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ">
           <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
             First Languages
           </h1>
@@ -397,7 +426,13 @@ const FirstLanguages = ({
 
       {/* LEFT CONTAINER DIV */}
       <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between gap-4">
-        <div className="basis-2/3 w-full  flex flex-col items-center justify-between p-8 rounded-xl">
+        <div
+          className={`basis-7/12 w-full  flex flex-col items-center justify-between p-8 rounded-xl relative overflow-hidden ${
+            dark
+              ? "slanted-bg-dark dark-border"
+              : "slanted-bg-light light-border"
+          }`}
+        >
           <div className="w-full flex flex-col items-start justify-start">
             <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
               Web Development
@@ -412,9 +447,81 @@ const FirstLanguages = ({
             alt="web dev background image"
             width={250}
             height={250}
+            quality={100}
+            priority={true}
           />
         </div>
-        <div className="basis-1/3 w-full bg-fuchsia-500 flex flex-col"></div>
+        {/* LEETCODE PROBLEMS DIV */}
+        <div
+          className={`basis-5/12 w-full flex flex-col items-center justify-between rounded-xl p-6 bg-[rgba(0,0,0,.3)]  ${
+            dark ? "dark-border" : "light-border"
+          }`}
+        >
+          <h1
+            className={`${subtitleColor} font-bold tracking-widest text-lg w-full text-left `}
+          >
+            Leetcode Problems
+          </h1>
+          <div className="flex flex-col justify-center items-center gap-4">
+            {/* LEETCODE CIRCLE */}
+            <div className="flex flex-row justify-center items-center gap-6">
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="cursor-pointer p-3 text-neutral-600 rounded-full leet-arrow hover:text-neutral-300 hover:transition hover:duration-500 transition duration-500"
+              >
+                <BiSolidLeftArrow
+                  onClick={() =>
+                    setIndex((prev) => (prev > 0 ? prev - 1 : prev))
+                  }
+                />
+              </motion.div>
+              <div
+                className={`rounded-full p-16 relative leetcode-big-circle leetcode-${leetcodeProblemType} bg-[#ffffff] flex flex-col items-center justify-center z-10`}
+              >
+                <p
+                  className={`absolute ${subtitleColor} italic text-xs font-medium -translate-y-6`}
+                >
+                  {leetcodeProblemType}
+                </p>
+                <h1
+                  className={`absolute text-3xl  ${titleStyle} ${titleColor}`}
+                >
+                  {leetcodeProblemAmount}
+                </h1>
+              </div>
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="cursor-pointer p-3 text-neutral-600 rounded-full leet-arrow hover:text-neutral-300 hover:transition hover:duration-500 transition duration-500"
+              >
+                <BiSolidRightArrow
+                  onClick={() =>
+                    setIndex((prev) => (prev < 2 ? prev + 1 : prev))
+                  }
+                />
+              </motion.div>
+            </div>
+            {/* LEETCODE SMALL CIRCLES */}
+            <div className="flex flex-row w-1/2 items-center justify-between">
+              <span
+                className={`h-2 w-2 rounded-full ${
+                  index == 0 ? "active-circle-easy" : "leet-circle"
+                }`}
+              ></span>
+              <span
+                className={`h-2 w-2 rounded-full ${
+                  index == 1 ? "active-circle-medium" : "leet-circle"
+                }`}
+              ></span>
+              <span
+                className={`h-2 w-2 rounded-full  ${
+                  index == 2 ? "active-circle-hard" : "leet-circle"
+                }`}
+              ></span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
