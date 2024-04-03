@@ -12,6 +12,7 @@ import { TbBrandVscode } from "react-icons/tb";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { languages } from "@/data";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -586,16 +587,164 @@ const Projects = ({
       {/* LEFT COLUMN CONTAINER */}
       <div className="flex flex-col items-between justify-center h-[70vh] gap-4 w-full basis-2/3">
         <div className="basis-2/5 flex flex-row items-center justify-between gap-4 w-full">
-          <div className="basis-1/2 bg-red-400 h-full"></div>
+          {/* PROJECTS CARD */}
+          <div
+            className={`basis-1/2 h-full rounded-xl p-8 flex flex-col items-start justify-start gap-6 ${
+              dark ? "dark-border" : "light-border"
+            } projects relative overflow-hidden`}
+          >
+            <div
+              className={`rounded-3xl py-3 px-12 intro relative bg-gradient-to-br from-purple-600 via-purple-800 to-purple-600 w-fit ${
+                dark ? "intro-dark" : "intro-light"
+              } flex items-center justify-center`}
+            >
+              <p
+                style={{
+                  backgroundImage:
+                    "linear-gradient(-45deg, #9333ea, #6b21a8, #9333ea)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+                className="absolute text-xs font-bold tracking-widest z-10 w-fit"
+              >
+                Projects
+              </p>
+            </div>
+            <h1 className="z-10 text-xl text-neutral-600 font-normal tracking-wider">
+              I then started to create full-stack projects, translating my
+              knowledge into{" "}
+              <span
+                className={`${dark ? "text-neutral-300" : "text-neutral-800"}`}
+              >
+                {" "}
+                real-world applications{" "}
+              </span>
+            </h1>
+          </div>
           <div className="basis-1/2 bg-orange-400 h-full"></div>
         </div>
         {/* LSR KICKS CONTAINER */}
-        <div className="basis-3/5 w-full bg-cyan-400"></div>
+        <div className="basis-3/5 w-full bg-gradient-to-br from-purple-500 via-purple-800 to-fuchsia-800 rounded-xl flex flex-col overflow-hidden ">
+          <div className="basis-2/3 w-full flex items-start justify-end">
+            <Image
+              src={"/images/aboutme/lsrkicks.png"}
+              alt="lsr kicks code"
+              width={670}
+              height={425}
+              quality={100}
+              priority={true}
+              className="lsr-code"
+            />
+          </div>
+          <div className="flex flex-col w-full basis-1/3 pt-2 pb-4 justify-between px-6 gap-1">
+            <h1 className={`${titleStyle} ${titleColor} text-3xl start-title`}>
+              LSR Kicks
+            </h1>
+            <div className="w-full flex flex-row items-center justify-between px-5">
+              <p
+                className={`text-2xl font-bold tracking-wider start-title w-[125px] tenk ${
+                  dark ? "text-neutral-300" : "text-neutral-800"
+                }`}
+              >
+                MERN{" "}
+                <span className="text-sm text-neutral-500 tracking-wide font-medium">
+                  stack
+                </span>
+              </p>
+              <p
+                className={`text-2xl font-bold tracking-wider start-title w-[125px] tenk ${
+                  dark ? "text-neutral-300" : "text-neutral-800"
+                }`}
+              >
+                10k+{" "}
+                <span className="text-sm text-neutral-500 tracking-wide font-medium">
+                  lines of code written
+                </span>
+              </p>
+              <p className="text-md text-gray-500 tracking-wider font-medium ">
+                Check it out{" "}
+                <motion.a
+                  whileHover={{ y: -5 }}
+                  className="text-2xl text-sky-500 cursor-pointer font-bold here relative"
+                  href="https://lsrkicks.com/"
+                  target="_blank"
+                >
+                  here
+                </motion.a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
       {/* RIGHT COLUMN CONTAINER */}
       <div className="basis-1/3 flex flex-col items-between justify-center gap-4 h-[70vh]">
-        <div className="basis-3/5 w-full bg-purple-400"></div>
-        <div className="basis-2/5 w-full bg-fuchsia-400"></div>
+        {/* REFINED AI CONTAINER */}
+        <div
+          className={`refined-container relative overflow-hidden basis-7/12 w-full flex rounded-xl flex-col items-center justify-center p-[10px] bg-[rgba(0,0,0,.2)] gap-2 ${
+            dark ? "dark-border" : "light-border"
+          }`}
+        >
+          <div className="basis-1/2 w-full flex items-center justify-center ">
+            <Image
+              src={"/images/aboutme/refinedai.png"}
+              alt="refined ai pic"
+              width={400}
+              height={190}
+              quality={100}
+              priority={true}
+              className="rounded-xl z-10"
+            />
+          </div>
+          <div className="basis-1/2 flex flex-col items-center justify-between w-full px-2 pb-2 gap-1">
+            <div className="w-full flex flex-col items-start justify-start">
+              <h1
+                className={`w-full text-start ${titleColor} ${titleStyle} text-2xl`}
+              >
+                RefinedAI
+              </h1>
+              <p className={`${subtitleColor} ${subtitleStyle} text-xs`}>
+                {" "}
+                Full-Stack application designed to provide customers with
+                upscaling services through artificial intelligence (AI)
+                technology.
+              </p>
+            </div>
+            <Link
+              href="https://github.com/cerredz/RefinedAi"
+              target="_blank"
+              className="bg-gradient-to-br from-purple-600 via-fuchsia-700 to-purple-700 cursor-pointer w-full py-1 rounded-lg flex items-center justify-center refined-view "
+            >
+              <p className="text-lg text-neutral-300 tracking-widest font-bold">
+                View
+              </p>
+            </Link>
+          </div>
+        </div>
+        {/* TECHNIQUES CONTAINER */}
+        <div
+          className={`relative overflow-hidden basis-5/12 w-full rounded-xl p-8 flex flex-col items-start justify-center gap-2 ${
+            dark ? "dark-border" : "light-border"
+          }`}
+        >
+          <h1 className={`${titleColor} ${titleStyle} text-2xl`}>Techniques</h1>
+          <p
+            className={`${subtitleColor} ${subtitleStyle} text-xs font-medium tracking-widest`}
+          >
+            As time went on, I started to learn many software engineering tools,
+            techniques, and frameworks (Next.js, Tailwind.css, Firebase, etc).
+            Each project became an opportunity to apply new tools, refine
+            techniques, and deepen my understanding of software engineering
+            principles.
+          </p>
+          <Image
+            src={"/images/aboutme/techniques.jpg"}
+            alt="bg-img"
+            layout="fill"
+            quality={100}
+            priority={true}
+            className="opacity-50"
+          />
+        </div>
       </div>
     </div>
   );
