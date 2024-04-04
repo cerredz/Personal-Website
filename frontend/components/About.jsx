@@ -115,6 +115,17 @@ const About = () => {
             />
           )}
         </AnimatePresence>
+        <AnimatePresence>
+          {currentTabIndex == 3 && (
+            <Today
+              dark={dark}
+              titleColor={titleColor}
+              titleStyle={titleStyle}
+              subtitleColor={subtitleColor}
+              subtitleStyle={subtitleStyle}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
@@ -623,7 +634,7 @@ const Projects = ({
           </div>
           {/* HACKATHONS CONTAINER */}
           <div
-            className={`basis-1/2 bg-gradient-to-br p-8 rounded-xl from-purple-600 via-fuchsia-700 to-purple-600 h-full intro relative ${
+            className={`basis-1/2 bg-gradient-to-br px-6 rounded-xl from-purple-600 via-fuchsia-700 to-purple-600 h-full intro relative ${
               dark ? "intro-dark" : "intro-light"
             } flex flex-col items-center justify-center gap-6 overflow-hidden`}
           >
@@ -782,6 +793,64 @@ const Projects = ({
             className="opacity-50"
           />
         </div>
+      </div>
+    </div>
+  );
+};
+
+const Today = ({
+  dark,
+  titleStyle,
+  titleColor,
+  subtitleColor,
+  subtitleStyle,
+}) => {
+  return (
+    <div
+      className={`flex flex-col xl:flex-row items-center justify-between w-full gap-10 h-[70vh] ${
+        dark ? "dark-border" : "light-border"
+      } rounded-xl overflow-hidden relative p-20`}
+    >
+      {/* BACKGROUND IMAGE */}
+      <Image
+        src={"/images/aboutme/todaybg.png"}
+        alt="bg img"
+        layout="fill"
+        quality={100}
+        priority={true}
+        className="blur-3xl"
+      />
+
+      {/* TEXT CONTAINER */}
+      <div className="basis-2/5 h-full p-8 flex flex-col items-start justify-between rounded-xl backdrop-blur-lg today-text">
+        <h1 className={`${titleColor} ${titleStyle} text-6xl start-title`}>
+          Today 🏆
+        </h1>
+        <p className={`${subtitleColor} ${subtitleStyle} text-sm `}>
+          Today, now knowing over 20+ languages / frameworks, I continually try
+          to become the best software engineer I can be everyday.
+        </p>
+        <p className={`${subtitleColor} ${subtitleStyle} text-sm `}>
+          I regularly work on improving my algorithmic thinking abilities,
+          completing unique full-stack projects, exposing my self to as many
+          different languages / frameworks / practices as I can, and also watch
+          software engineering related videos to learn off of what other people
+          do.
+        </p>
+        <p className={`${subtitleColor} ${subtitleStyle} text-sm `}>
+          Software Engineering is a passion of mine and I dont plan on slowing
+          down anytime soon.
+        </p>
+      </div>
+
+      <div className="basis-3/5 rounded-xl relative h-full flex items-center justify-center ">
+        <Image
+          src={"/images/aboutme/todayphone.png"}
+          alt="phone img"
+          layout="fill"
+          quality={100}
+          className="border-2 border-blue-600 rounded-xl today-img"
+        />
       </div>
     </div>
   );
