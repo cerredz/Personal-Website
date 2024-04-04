@@ -621,7 +621,45 @@ const Projects = ({
               </span>
             </h1>
           </div>
-          <div className="basis-1/2 bg-orange-400 h-full"></div>
+          {/* HACKATHONS CONTAINER */}
+          <div
+            className={`basis-1/2 bg-gradient-to-br p-8 rounded-xl from-purple-600 via-fuchsia-700 to-purple-600 h-full intro relative ${
+              dark ? "intro-dark" : "intro-light"
+            } flex flex-col items-center justify-center gap-6 overflow-hidden`}
+          >
+            <span className="hackathon-glow-1"></span>
+
+            <div className="z-10 w-full flex flex-col items-center justify-center">
+              <h1
+                className={`w-full text-start ${titleColor} ${titleStyle} text-2xl `}
+              >
+                Hackathons
+              </h1>
+              <p
+                className={`${subtitleColor} ${subtitleStyle} w-full text-start text-sm`}
+              >
+                I actually ended up winning the 2023 TCNJ Hackathon, to check it
+                out click{" "}
+                <Link
+                  href={"https://devpost.com/software/artificial-tjs5mf"}
+                  target="_blank"
+                  className="text-sky-500"
+                >
+                  here
+                </Link>
+              </p>
+            </div>
+
+            <Image
+              src={"/images/aboutme/trophy.png"}
+              alt="trophy"
+              width={125}
+              height={125}
+              quality={100}
+              priority={true}
+              className="z-10"
+            />
+          </div>
         </div>
         {/* LSR KICKS CONTAINER */}
         <div className="basis-3/5 w-full bg-gradient-to-br from-purple-500 via-purple-800 to-fuchsia-800 rounded-xl flex flex-col overflow-hidden ">
@@ -688,14 +726,14 @@ const Projects = ({
             <Image
               src={"/images/aboutme/refinedai.png"}
               alt="refined ai pic"
-              width={400}
+              width={365}
               height={190}
               quality={100}
               priority={true}
               className="rounded-xl z-10"
             />
           </div>
-          <div className="basis-1/2 flex flex-col items-center justify-between w-full px-2 pb-2 gap-1">
+          <div className="basis-1/2 flex flex-col items-center justify-between w-full px-3 pb-2 gap-1">
             <div className="w-full flex flex-col items-start justify-start">
               <h1
                 className={`w-full text-start ${titleColor} ${titleStyle} text-2xl`}
@@ -705,8 +743,7 @@ const Projects = ({
               <p className={`${subtitleColor} ${subtitleStyle} text-xs`}>
                 {" "}
                 Full-Stack application designed to provide customers with
-                upscaling services through artificial intelligence (AI)
-                technology.
+                upscaling services through artificial intelligence (AI).
               </p>
             </div>
             <Link

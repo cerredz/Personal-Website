@@ -594,3 +594,14 @@
   background: #8b0bcb;
   filter: blur(4.5rem);
 }
+
+.hackathon-glow-1 {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  height: 100px;
+  width: 100px;
+  border-radius: 30%;
+  background: linear-gradient(to right, #7b22bb, #b30aeb);
+  filter: blur(4rem);
+}
