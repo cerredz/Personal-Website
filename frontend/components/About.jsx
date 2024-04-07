@@ -18,6 +18,8 @@ import { useInView } from "framer-motion";
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
+  const [prevTabIndex, setPrevTabIndex] = useState(0);
+
   const tabs = ["Start & Overview", "First Languages", "Projects", "Today"];
 
   const [titleColor, setTitleColor] = useState(
@@ -38,6 +40,11 @@ const About = () => {
       setSubtitleColor("text-neutral-400");
     }
   }, [dark]);
+
+  const handleTabClick = (index) => {
+    setPrevTabIndex(currentTabIndex);
+    setCurrentTabIndex(index);
+  };
 
   return (
     <section id="about" className="my-20 relative gap-10 min-h-screen">
@@ -61,7 +68,7 @@ const About = () => {
         {tabs.map((tab, index) => (
           <li
             key={index}
-            onClick={() => setCurrentTabIndex(index)}
+            onClick={() => handleTabClick(index)}
             className={`cursor-pointer rounded-md px-3 py-1 text-medium tracking-widest font-medium hover:transition transition duration-500 hover:duration-500  ${
               dark
                 ? `${
@@ -83,30 +90,25 @@ const About = () => {
       {/* ABOUT ME CONTENT CONTAINER */}
       <div className="w-10/12 max-w-7xl p-8 relative mt-12 mx-auto">
         <AnimatePresence>
-          {currentTabIndex == 0 && (
+          {currentTabIndex === 0 ? (
             <Start
+              key={0}
               dark={dark}
               titleColor={titleColor}
               titleStyle={titleStyle}
               subtitleColor={subtitleColor}
               subtitleStyle={subtitleStyle}
             />
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {currentTabIndex == 1 && (
+          ) : currentTabIndex === 1 ? (
             <FirstLanguages
+              key={1}
               dark={dark}
               titleColor={titleColor}
               titleStyle={titleStyle}
               subtitleColor={subtitleColor}
               subtitleStyle={subtitleStyle}
             />
-          )}
-        </AnimatePresence>
-        <AnimatePresence>
-          {currentTabIndex == 2 && (
+          ) : currentTabIndex == 2 ? (
             <Projects
               dark={dark}
               titleColor={titleColor}
@@ -114,17 +116,16 @@ const About = () => {
               subtitleColor={subtitleColor}
               subtitleStyle={subtitleStyle}
             />
-          )}
-        </AnimatePresence>
-        <AnimatePresence>
-          {currentTabIndex == 3 && (
-            <Today
-              dark={dark}
-              titleColor={titleColor}
-              titleStyle={titleStyle}
-              subtitleColor={subtitleColor}
-              subtitleStyle={subtitleStyle}
-            />
+          ) : (
+            currentTabIndex == 3 && (
+              <Today
+                dark={dark}
+                titleColor={titleColor}
+                titleStyle={titleStyle}
+                subtitleColor={subtitleColor}
+                subtitleStyle={subtitleStyle}
+              />
+            )
           )}
         </AnimatePresence>
       </div>
@@ -220,7 +221,12 @@ const Start = ({
   ];
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
+      exit={{ opacity: 0, position: "absolute" }}
+      className="w-full flex flex-col items-center justify-center gap-6"
+    >
       {/* FIRST ROW */}
       <div className="w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-10">
         {/* MAIN CARD */}
@@ -475,7 +481,7 @@ const Start = ({
           </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -508,7 +514,12 @@ const FirstLanguages = ({
   }, [index]);
 
   return (
-    <div className="w-full flex flex-col xl:flex-row items-center justify-between gap-4">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
+      exit={{ opacity: 0, position: "absolute" }}
+      className="w-full flex flex-col xl:flex-row items-center justify-between gap-4"
+    >
       {/* LEFT CONTAINER DIV */}
       <div
         className={`basis-1/3 h-[70vh] p-8 rounded-xl flex flex-col items-start justify-between relative intro intro-card ${
@@ -715,7 +726,7 @@ const FirstLanguages = ({
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -727,7 +738,12 @@ const Projects = ({
   subtitleStyle,
 }) => {
   return (
-    <div className="flex flex-col xl:flex-row items-center justify-between w-full gap-4">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
+      exit={{ opacity: 0, position: "absolute" }}
+      className="flex flex-col xl:flex-row items-center justify-between w-full gap-4"
+    >
       {/* LEFT COLUMN CONTAINER */}
       <div className="flex flex-col items-between justify-center h-[70vh] gap-4 w-full basis-2/3">
         <div className="basis-2/5 flex flex-row items-center justify-between gap-4 w-full">
@@ -927,7 +943,7 @@ const Projects = ({
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -939,7 +955,10 @@ const Today = ({
   subtitleStyle,
 }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
+      exit={{ opacity: 0, position: "absolute" }}
       className={`flex flex-col xl:flex-row items-center justify-between w-full gap-10 h-[70vh] ${
         dark ? "dark-border" : "light-border"
       } rounded-xl overflow-hidden relative p-20`}
@@ -985,7 +1004,7 @@ const Today = ({
           className="border-2 border-blue-600 rounded-xl today-img"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
