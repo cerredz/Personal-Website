@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import Title from "@/Widgets/Title";
 import { AnimatePresence } from "framer-motion";
@@ -13,6 +13,7 @@ import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
 import { motion } from "framer-motion";
 import { languages } from "@/data";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { useInView } from "framer-motion";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -171,6 +172,53 @@ const Start = ({
     );
   }, [dark]);
 
+  const beginningTitle = useRef(null);
+  const beginningSubtitle = useRef(null);
+  const generalTitle = useRef(null);
+  const generalSubtitle = useRef(null);
+  const mainPicture = useRef(null);
+  const profilePicture = useRef(null);
+  const phoneIcons = useRef(null);
+  const githubLink = useRef(null);
+  const goalTitle = useRef(null);
+  const goalSubTitle = useRef(null);
+  const rutgersText = useRef(null);
+  const rutgersImg = useRef(null);
+  const freedomIcon = useRef(null);
+  const freedomText = useRef(null);
+
+  const [
+    titleInView,
+    subtitleInView,
+    generalTitleInView,
+    generalSubtitleInView,
+    mainPictureInView,
+    profilePictureInView,
+    phoneIconsInView,
+    githubLinkInView,
+    goalTitleInView,
+    goalSubTitleInView,
+    rutgersTextInView,
+    rutgersImgInView,
+    freedomIconInView,
+    freedomTextInView,
+  ] = [
+    useInView(beginningTitle),
+    useInView(beginningSubtitle),
+    useInView(generalTitle),
+    useInView(generalSubtitle),
+    useInView(mainPicture),
+    useInView(profilePicture),
+    useInView(phoneIcons),
+    useInView(githubLink),
+    useInView(goalTitle),
+    useInView(goalSubTitle),
+    useInView(rutgersText),
+    useInView(rutgersImg),
+    useInView(freedomIcon),
+    useInView(freedomText),
+  ];
+
   return (
     <div className="w-full flex flex-col items-center justify-center gap-6">
       {/* FIRST ROW */}
@@ -178,20 +226,33 @@ const Start = ({
         {/* MAIN CARD */}
         <div className="basis-2/3 start-main h-[60vh] lg:h-[40vh] rounded-xl px-10 pt-6 flex flex-col justify-between relative">
           <div className="w-full z-10">
-            <h1
+            <motion.h1
+              ref={beginningTitle}
+              style={{
+                opacity: titleInView ? 1 : 0,
+                y: titleInView ? "0" : "10px",
+                transition: `all .6s ease-in-out `,
+              }}
               className={`w-3/4 lg:w-full text-start start-title text-2xl ${titleColor} ${titleStyle} `}
             >
               The Beginning of my Journey
-            </h1>
-            <p
+            </motion.h1>
+            <motion.p
+              ref={beginningSubtitle}
+              style={{
+                opacity: subtitleInView ? 1 : 0,
+                y: subtitleInView ? "0" : "10px",
+                transition: `all .7s ease-in-out .1s`,
+              }}
               className={`w-full lg:w-9/12 text-start  text-sm ${subtitleStyle}  text-neutral-400`}
             >
               I am Michael Cerreto, and my journey into coding began at the age
               of 17 during my senior year of High School. Let me take you
               through my journey.
-            </p>
+            </motion.p>
           </div>
           <Image
+            ref={mainPicture}
             src={"/images/aboutme/codesnippet1.png"}
             alt="start main pic"
             width={700}
@@ -199,6 +260,10 @@ const Start = ({
             quality={100}
             priority={true}
             className="mx-auto z-10 main-pic"
+            style={{
+              opacity: mainPictureInView ? 1 : 0,
+              transition: `.6s ease-in-out .7s`,
+            }}
           />
         </div>
         {/* GENERAL INFO CARD */}
@@ -216,25 +281,48 @@ const Start = ({
               }`}
             >
               <Image
+                ref={profilePicture}
                 src={"/images/aboutme/headshot.png"}
                 alt="headshot"
                 width={75}
                 height={75}
                 className="z-10 "
+                style={{
+                  opacity: profilePictureInView ? 1 : 0,
+                  transition: ".6s ease-in-out",
+                }}
               />
             </div>
-            <h1
+            <motion.h1
+              ref={generalTitle}
+              style={{
+                x: generalTitleInView ? 0 : 25,
+                transition: ".6s ease-in-out .3s",
+              }}
               className={`w-full text-start text-2xl mt-2  ${titleColor} ${titleStyle}`}
             >
               General Info
-            </h1>
-            <p
+            </motion.h1>
+            <motion.p
+              ref={generalSubtitle}
+              style={{
+                x: generalSubtitleInView ? 0 : 25,
+                transition: ".7s ease-in-out .4s",
+              }}
               className={` w-9/12 text-start  text-sm ${subtitleStyle} ${subtitleColor} `}
             >
               Take a look at some more generic information about myself
-            </p>
+            </motion.p>
           </div>
-          <div className="relative z-10 grid grid-cols-3 gap-y-2 gap-x-6 mt-2 w-full ">
+          <motion.div
+            ref={phoneIcons}
+            style={{
+              opacity: phoneIconsInView ? 1 : 0,
+              y: phoneIconsInView ? "0" : "30px",
+              transition: `.6s ease-in-out .5s`,
+            }}
+            className="relative z-10 grid grid-cols-3 gap-y-2 gap-x-6 mt-2 w-full "
+          >
             {phoneIconData.map((icon, index) => (
               <PhoneIcon
                 key={index}
@@ -247,7 +335,7 @@ const Start = ({
                 redirect={icon.clickEvent ? icon.redirect : ""}
               />
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -265,19 +353,36 @@ const Start = ({
             className="rounded-xl  opacity-10 "
           />
           <div className="w-full flex flex-col items-start justify-start px-8">
-            <h1
+            <motion.h1
+              ref={goalTitle}
+              style={{
+                y: goalTitleInView ? "0" : "30px",
+                opacity: goalTitleInView ? 1 : 0,
+                transition: ".6s ease-in-out .5s",
+              }}
               className={`w-full text-start text-2xl ${titleColor} ${titleStyle} `}
             >
               Goal
-            </h1>
-            <p
+            </motion.h1>
+            <motion.p
+              ref={goalSubTitle}
+              style={{
+                y: goalSubTitleInView ? "0" : "30px",
+                opacity: goalSubTitleInView ? 1 : 0,
+                transition: ".6s ease-in-out .65s",
+              }}
               className={`w-[11/12] text-start text-xs ${subtitleStyle} ${subtitleColor}  `}
             >
               Strive to become the most skillful, talented, and masterful
               Software Engineer that I am capable of becoming.
-            </p>
+            </motion.p>
           </div>
           <Link
+            ref={githubLink}
+            style={{
+              opacity: githubLinkInView ? 1 : 0,
+              transition: ".6s ease-in-out .8s",
+            }}
             className={`w-full text-center py-2 z-10 cursor-pointer tracking-wider mt-12 ${
               dark
                 ? "bg-[rgba(255,255,255,.05)] text-neutral-300 "
@@ -296,7 +401,15 @@ const Start = ({
               : "slanted-bg-light light-border"
           } `}
         >
-          <div className="flex flex-col items-start justify-start w-full">
+          <motion.div
+            ref={rutgersText}
+            style={{
+              opacity: rutgersTextInView ? 1 : 0,
+              scale: rutgersTextInView ? 1 : 0,
+              transition: ".6s ease-in-out .6s",
+            }}
+            className="flex flex-col items-start justify-start w-full"
+          >
             <p
               className={` w-9/12 text-start  text-sm  ${subtitleStyle} ${subtitleColor} `}
             >
@@ -307,8 +420,14 @@ const Start = ({
             >
               Rutgers
             </h1>
-          </div>
+          </motion.div>
           <Image
+            ref={rutgersImg}
+            style={{
+              opacity: rutgersImgInView ? 1 : 0,
+              scale: rutgersImgInView ? 1 : 0,
+              transition: ".6s ease-in-out .7s",
+            }}
             src={"/images/aboutme/rutgers.png"}
             alt="rutgers logo"
             width={200}
@@ -321,13 +440,27 @@ const Start = ({
           }`}
         >
           <Image
+            ref={freedomIcon}
+            style={{
+              opacity: freedomIconInView ? 1 : 0,
+              scale: freedomIconInView ? 1 : 0,
+              transition: ".6s ease-in-out .7s",
+            }}
             src={"/images/aboutme/freedomIcon.png"}
             alt="freedom logo"
             width={100}
             height={100}
             className="mx-auto"
           />
-          <div className="w-full flex flex-col justify-start items-start">
+          <motion.div
+            ref={freedomText}
+            style={{
+              opacity: freedomTextInView ? 1 : 0,
+              y: freedomTextInView ? 0 : "10px",
+              transition: ".6s ease-in-out .8s",
+            }}
+            className="w-full flex flex-col justify-start items-start"
+          >
             <h1
               className={` w-full text-start text-xl  ${titleColor} ${titleStyle}  `}
             >
@@ -339,7 +472,7 @@ const Start = ({
               Since writing my first program, I've been captivated by the
               freedom and intuition inherent in programming.
             </p>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
