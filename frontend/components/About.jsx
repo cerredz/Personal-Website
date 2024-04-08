@@ -527,12 +527,18 @@ const FirstLanguages = ({
         } bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700 overflow-hidden`}
       >
         <div className="flex flex-col items-start justify-start">
-          <div
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.4 },
+            }}
             className={`rounded-3xl py-3 px-8 intro relative bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700 ${
               dark ? "intro-dark" : "intro-light"
             } flex items-center justify-center`}
           >
-            <p
+            <motion.p
               style={{
                 backgroundImage:
                   "linear-gradient(-45deg, #06b6d4, #0284c7, #1d4ed8)",
@@ -542,18 +548,42 @@ const FirstLanguages = ({
               className="absolute text-xs font-bold tracking-widest z-10"
             >
               2021+
-            </p>{" "}
-          </div>
-          <h1 className={`${titleColor} ${titleStyle} mt-2 text-2xl`}>
+            </motion.p>{" "}
+          </motion.div>
+          <motion.h1
+            initial={{ y: 15, opacity: 0 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, delay: 0.5 },
+            }}
+            className={`${titleColor} ${titleStyle} mt-2 text-2xl`}
+          >
             Intro To Comp Sci
-          </h1>
-          <p className={`${subtitleStyle} ${subtitleColor}`}>
+          </motion.h1>
+          <motion.p
+            initial={{ y: 25, opacity: 0 }}
+            animate={{
+              transition: { duration: 0.6, delay: 0.6 },
+              y: 0,
+              opacity: 1,
+            }}
+            className={`${subtitleStyle} ${subtitleColor}`}
+          >
             The first languages I ended up learning were Java, then C++, and
             then Python.
-          </p>
+          </motion.p>
         </div>
 
-        <div className="w-full h-full relative flex items-end justify-center">
+        <motion.div
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{
+            transition: { duration: 0.6, delay: 0.9 },
+            scale: 1,
+            opacity: 1,
+          }}
+          className="w-full h-full relative flex items-end justify-center"
+        >
           <Image
             src={"/images/aboutme/firstLanguages.png"}
             alt="first langugaes logo"
@@ -563,32 +593,62 @@ const FirstLanguages = ({
             priority={true}
             className="z-10"
           />
-        </div>
+        </motion.div>
       </div>
       {/* MIDDLE CONTAINER DIV */}
       <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between ">
         {/* FIRST LANGUAGES DIV */}
         <div className="basis-1/4 mb-4 w-full flex bg-[rgba(255,255,255,.01)] flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ">
-          <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
+          <motion.h1
+            initial={{ x: 30, opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.5 },
+              x: 0,
+            }}
+            className={`${titleStyle} ${titleColor} text-2xl`}
+          >
             First Languages
-          </h1>
-          <div className="w-1/2 flex flex-row items-center justify-between">
+          </motion.h1>
+          <motion.div
+            initial={{ y: 25, opacity: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.65 },
+            }}
+            className="w-1/2 flex flex-row items-center justify-between"
+          >
             {iconURLS.map((icon, index) => (
               <Image key={index} src={icon} width={40} height={40} />
             ))}
-          </div>
+          </motion.div>
         </div>
         {/* LINEAR GRADIENT BACKGROUND DIV */}
         <div className="basis-1/4 mb-4 w-full flex flex-row gap-4 items-center justify-between px-6 py-3 rounded-xl bg-gradient-to-br from-cyan-500 via-sky-600 to-blue-700">
-          <div className="p-3 rounded-full bg-neutral-100">
+          <motion.div
+            initial={{ x: -15, opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.5 },
+              x: 0,
+            }}
+            className="p-3 rounded-full bg-neutral-100"
+          >
             <FaRegLightbulb className="text-4xl text-sky-500" />
-          </div>
-          <p
+          </motion.div>
+          <motion.p
+            initial={{ x: 15, opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.5 },
+              x: 0,
+            }}
             className={`${subtitleStyle} text-neutral-300 text-sm tracking-widest font-bold `}
           >
             It here at this stage where I started to learn about data stuctures
             and complex algorithmns
-          </p>
+          </motion.p>
         </div>
         {/* FULL STACK CONTAINER */}
         <div
@@ -598,25 +658,48 @@ const FirstLanguages = ({
         >
           {/* HEADING */}
           <div className="w-full flex flex-col items-start justify-start">
-            <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
+            <motion.h1
+              initial={{ opacity: 0, y: 25 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 0.55 },
+              }}
+              className={`${titleStyle} ${titleColor} text-2xl`}
+            >
               Fullstack
-            </h1>
-            <p className={`${subtitleColor} ${subtitleStyle} text-xs`}>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 25 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 0.7 },
+              }}
+              className={`${subtitleColor} ${subtitleStyle} text-xs`}
+            >
               My passion for web development grew, leading me to complete an
               online course covering the following:
-            </p>
+            </motion.p>
 
             <div className="grid grid-cols-2 gap-3 mx-auto mt-4">
               {languages.map((languages, index) => (
-                <div
+                <motion.div
+                  initial={{ y: 25, opacity: 0, scale: 0 }}
+                  animate={{
+                    y: 0,
+                    opacity: 1,
+                    scale: 1,
+                    transition: { duration: 0.6, delay: 0.8 + index * 0.2 },
+                  }}
                   key={index}
-                  className={`py-1 px-3 rounded-3xl flex flex-row items-center justify-start gap-2 backdrop-blur-md fullstack-btn`}
+                  className={`origin-center py-1 px-3 rounded-3xl flex flex-row items-center justify-start gap-2 backdrop-blur-md fullstack-btn`}
                 >
                   <div className="text-sky-500">{languages.img}</div>
                   <p className="text-neutral-300 text-sm tracking-wider font-normal">
                     {languages.name}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -635,22 +718,49 @@ const FirstLanguages = ({
           }`}
         >
           <div className="w-full flex flex-col items-start justify-start">
-            <h1 className={`${titleStyle} ${titleColor} text-2xl`}>
+            <motion.h1
+              initial={{ y: 25, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.5, delay: 0.4 },
+              }}
+              className={`${titleStyle} ${titleColor} text-2xl`}
+            >
               Web Development
-            </h1>
-            <p className={`${subtitleStyle} ${subtitleColor} text-sm `}>
+            </motion.h1>
+            <motion.p
+              initial={{ y: 25, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.5, delay: 0.55 },
+              }}
+              className={`${subtitleStyle} ${subtitleColor} text-sm `}
+            >
               I then dove into web development, learning basis HTML, CSS, and
               Javascript
-            </p>
+            </motion.p>
           </div>
-          <Image
-            src={"/images/aboutme/webdev.png"}
-            alt="web dev background image"
-            width={250}
-            height={250}
-            quality={100}
-            priority={true}
-          />
+          <motion.span
+            initial={{ y: 50, opacity: 0, scale: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              transition: { duration: 0.4, delay: 0.8 },
+            }}
+            className="origin-bottom"
+          >
+            <Image
+              src={"/images/aboutme/webdev.png"}
+              alt="web dev background image"
+              width={250}
+              height={250}
+              quality={100}
+              priority={true}
+            />
+          </motion.span>
         </div>
         {/* LEETCODE PROBLEMS DIV */}
         <div
@@ -658,16 +768,30 @@ const FirstLanguages = ({
             dark ? "dark-border" : "light-border"
           }`}
         >
-          <h1
+          <motion.h1
+            initial={{ x: 25, opacity: 0 }}
+            animate={{
+              x: 0,
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.6 },
+            }}
             className={`${
               dark ? "text-neutral-600" : "text-neutral-800"
             } font-bold tracking-widest text-lg w-full text-left `}
           >
             Leetcode Problems
-          </h1>
+          </motion.h1>
           <div className="flex flex-col justify-center items-center gap-4">
             {/* LEETCODE CIRCLE */}
-            <div className="flex flex-row justify-center items-center gap-6">
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                transition: { duration: 0.6, delay: 0.75 },
+              }}
+              className=" origin-center flex flex-row justify-center items-center gap-6"
+            >
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
@@ -704,9 +828,17 @@ const FirstLanguages = ({
                   }
                 />
               </motion.div>
-            </div>
+            </motion.div>
             {/* LEETCODE SMALL CIRCLES */}
-            <div className="flex flex-row w-1/2 items-center justify-between">
+            <motion.div
+              initial={{ y: 35, opacity: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.6, delay: 0.9 },
+              }}
+              className="flex flex-row w-1/2 items-center justify-between"
+            >
               <span
                 className={`h-2 w-2 rounded-full ${
                   index == 0 ? "active-circle-easy" : "leet-circle"
@@ -722,7 +854,7 @@ const FirstLanguages = ({
                   index == 2 ? "active-circle-hard" : "leet-circle"
                 }`}
               ></span>
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
