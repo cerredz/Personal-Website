@@ -1237,27 +1237,67 @@ const Today = ({
 
       {/* TEXT CONTAINER */}
       <div className="basis-2/5 h-full p-8 flex flex-col items-start justify-between rounded-xl backdrop-blur-lg today-text">
-        <h1 className={`${titleColor} ${titleStyle} text-6xl start-title`}>
+        <motion.h1
+          initial={{ x: 50, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: { duration: 0.6, delay: 0.5 },
+          }}
+          className={`${titleColor} ${titleStyle} text-6xl start-title`}
+        >
           Today 🏆
-        </h1>
-        <p className={`${subtitleColor} ${subtitleStyle} text-sm `}>
+        </motion.h1>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.6, delay: 0.7 },
+          }}
+          className={`${subtitleColor} ${subtitleStyle} text-sm `}
+        >
           Today, now knowing over 20+ languages / frameworks, I continually try
           to become the best software engineer I can be everyday.
-        </p>
-        <p className={`${subtitleColor} ${subtitleStyle} text-sm `}>
+        </motion.p>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.6, delay: 1.1 },
+          }}
+          className={`${subtitleColor} ${subtitleStyle} text-sm `}
+        >
           I regularly work on improving my algorithmic thinking abilities,
           completing unique full-stack projects, exposing my self to as many
           different languages / frameworks / practices as I can, and also watch
           software engineering related videos to learn off of what other people
           do.
-        </p>
-        <p className={`${subtitleColor} ${subtitleStyle} text-sm `}>
+        </motion.p>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.6, delay: 1.5 },
+          }}
+          className={`${subtitleColor} ${subtitleStyle} text-sm `}
+        >
           Software Engineering is a passion of mine and I dont plan on slowing
           down anytime soon.
-        </p>
+        </motion.p>
       </div>
 
-      <div className="basis-3/5 rounded-xl relative h-full flex items-center justify-center ">
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          transition: { duration: 0.4, delay: 0.4 },
+        }}
+        className="origin-center basis-3/5 rounded-xl relative h-full flex items-center justify-center "
+      >
         <Image
           src={"/images/aboutme/todayphone.png"}
           alt="phone img"
@@ -1265,7 +1305,7 @@ const Today = ({
           quality={100}
           className="border-2 border-blue-600 rounded-xl today-img"
         />
-      </div>
+      </motion.div>
     </motion.div>
   );
 };
