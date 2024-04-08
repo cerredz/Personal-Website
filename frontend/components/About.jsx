@@ -878,7 +878,7 @@ const Projects = ({
     >
       {/* LEFT COLUMN CONTAINER */}
       <div className="flex flex-col items-between justify-center h-[70vh] gap-4 w-full basis-2/3">
-        <div className="basis-2/5 flex flex-row items-center justify-between gap-4 w-full">
+        <div className="basis-2/5 flex flex-col lg:flex-row items-center justify-between gap-4 w-full">
           {/* PROJECTS CARD */}
           <div
             className={`basis-1/2 h-full rounded-xl p-8 flex flex-col items-start justify-start gap-6 ${
@@ -930,7 +930,7 @@ const Projects = ({
           </div>
           {/* HACKATHONS CONTAINER */}
           <div
-            className={`basis-1/2 bg-gradient-to-br px-6 rounded-xl from-purple-600 via-fuchsia-700 to-purple-600 h-full intro relative ${
+            className={`basis-1/2 bg-gradient-to-br p-6 w-full rounded-xl from-purple-600 via-fuchsia-700 to-purple-600 h-full intro relative ${
               dark ? "intro-dark" : "intro-light"
             } flex flex-col items-center justify-center gap-6 overflow-hidden`}
           >
@@ -1016,10 +1016,10 @@ const Projects = ({
               height={425}
               quality={100}
               priority={true}
-              className="lsr-code"
+              className="lsr-code hidden lg:block"
             />
           </motion.div>
-          <div className="flex flex-col w-full basis-1/3 pt-2 pb-4 justify-between px-6 gap-1">
+          <div className="flex flex-col w-full basis-1/3 pt-2 pb-4 justify-between px-6 gap-6 items-start lg:gap-1">
             <motion.h1
               initial={{ x: 20, opacity: 0 }}
               animate={{
@@ -1031,7 +1031,7 @@ const Projects = ({
             >
               LSR Kicks
             </motion.h1>
-            <div className="w-full flex flex-row items-center justify-between px-5">
+            <div className="w-full flex flex-row items-center justify-center lg:justify-between px-5 py-4 lg:py-0 flex-wrap lg:flex-nowrap gap-3 lg:gap-0">
               <motion.p
                 initial={{ y: 20, opacity: 0 }}
                 animate={{
@@ -1221,9 +1221,9 @@ const Today = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
       exit={{ opacity: 0, position: "absolute" }}
-      className={`flex flex-col xl:flex-row items-center justify-between w-full gap-10 h-[70vh] ${
+      className={`flex flex-col lg:flex-row items-center justify-between w-full gap-10  lg:h-[70vh] ${
         dark ? "dark-border" : "light-border"
-      } rounded-xl overflow-hidden relative p-20`}
+      } rounded-xl overflow-hidden relative  p-4 lg:p-20`}
     >
       {/* BACKGROUND IMAGE */}
       <Image
@@ -1236,7 +1236,7 @@ const Today = ({
       />
 
       {/* TEXT CONTAINER */}
-      <div className="basis-2/5 h-full p-8 flex flex-col items-start justify-between rounded-xl backdrop-blur-lg today-text">
+      <div className="basis-2/5 h-full p-8 flex flex-col items-start justify-between rounded-xl backdrop-blur-lg today-text overflow-y-auto gap-2">
         <motion.h1
           initial={{ x: 50, opacity: 0 }}
           animate={{
@@ -1244,7 +1244,7 @@ const Today = ({
             opacity: 1,
             transition: { duration: 0.6, delay: 0.5 },
           }}
-          className={`${titleColor} ${titleStyle} text-6xl start-title`}
+          className={`${titleColor} ${titleStyle} text-2xl lg:text-4xl xl:text-5xl start-title`}
         >
           Today 🏆
         </motion.h1>
@@ -1255,7 +1255,7 @@ const Today = ({
             opacity: 1,
             transition: { duration: 0.6, delay: 0.7 },
           }}
-          className={`${subtitleColor} ${subtitleStyle} text-sm `}
+          className={`${subtitleColor} ${subtitleStyle} text-sm mt-4`}
         >
           Today, now knowing over 20+ languages / frameworks, I continually try
           to become the best software engineer I can be everyday.
@@ -1296,7 +1296,7 @@ const Today = ({
           opacity: 1,
           transition: { duration: 0.4, delay: 0.4 },
         }}
-        className="origin-center basis-3/5 rounded-xl relative h-full flex items-center justify-center "
+        className="origin-center lg:basis-3/5 rounded-xl relative lg:h-3/4 xl:h-full  flex items-center justify-center hidden lg:flex "
       >
         <Image
           src={"/images/aboutme/todayphone.png"}
