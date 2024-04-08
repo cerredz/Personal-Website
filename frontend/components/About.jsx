@@ -885,8 +885,14 @@ const Projects = ({
               dark ? "dark-border" : "light-border"
             } projects relative overflow-hidden`}
           >
-            <div
-              className={`rounded-3xl py-3 px-12 intro relative bg-gradient-to-br from-purple-600 via-purple-800 to-purple-600 w-fit ${
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                transition: { duration: 0.6, delay: 0.4 },
+              }}
+              className={`origin-center rounded-3xl py-3 px-12 intro relative bg-gradient-to-br from-purple-600 via-purple-800 to-purple-600 w-fit ${
                 dark ? "intro-dark" : "intro-light"
               } flex items-center justify-center`}
             >
@@ -901,8 +907,17 @@ const Projects = ({
               >
                 Projects
               </p>
-            </div>
-            <h1 className="z-10 text-xl text-neutral-600 font-normal tracking-wider">
+            </motion.div>
+            <motion.h1
+              initial={{ y: 25, scale: 0, opacity: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 0.5 },
+              }}
+              className="origin-center z-10 text-xl text-neutral-600 font-normal tracking-wider"
+            >
               I then started to create full-stack projects, translating my
               knowledge into{" "}
               <span
@@ -911,7 +926,7 @@ const Projects = ({
                 {" "}
                 real-world applications{" "}
               </span>
-            </h1>
+            </motion.h1>
           </div>
           {/* HACKATHONS CONTAINER */}
           <div
@@ -919,15 +934,35 @@ const Projects = ({
               dark ? "intro-dark" : "intro-light"
             } flex flex-col items-center justify-center gap-6 overflow-hidden`}
           >
-            <span className="hackathon-glow-1"></span>
+            <motion.span
+              initial={{ x: 30, opacity: 0 }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: { duration: 0.8, delay: 0.6 },
+              }}
+              className="hackathon-glow-1"
+            ></motion.span>
 
             <div className="z-10 w-full flex flex-col items-center justify-center">
-              <h1
+              <motion.h1
+                initial={{ x: 30, opacity: 0 }}
+                animate={{
+                  x: 0,
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 0.5 },
+                }}
                 className={`w-full text-start ${titleColor} ${titleStyle} text-2xl `}
               >
                 Hackathons
-              </h1>
-              <p
+              </motion.h1>
+              <motion.p
+                initial={{ y: 30, opacity: 0 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 0.65 },
+                }}
                 className={`${subtitleColor} ${subtitleStyle} w-full text-start text-sm`}
               >
                 I actually ended up winning the 2023 TCNJ Hackathon, to check it
@@ -939,23 +974,41 @@ const Projects = ({
                 >
                   here
                 </Link>
-              </p>
+              </motion.p>
             </div>
-
-            <Image
-              src={"/images/aboutme/trophy.png"}
-              alt="trophy"
-              width={125}
-              height={125}
-              quality={100}
-              priority={true}
-              className="z-10"
-            />
+            <motion.span
+              initial={{ y: 25, opacity: 0, scale: 0 }}
+              animate={{
+                y: 0,
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 0.6, delay: 0.7 },
+              }}
+              className="origin-center z-10"
+            >
+              <Image
+                src={"/images/aboutme/trophy.png"}
+                alt="trophy"
+                width={125}
+                height={125}
+                quality={100}
+                priority={true}
+                className="z-10 "
+              />
+            </motion.span>
           </div>
         </div>
         {/* LSR KICKS CONTAINER */}
         <div className="basis-3/5 w-full bg-gradient-to-br from-purple-500 via-purple-800 to-fuchsia-800 rounded-xl flex flex-col overflow-hidden ">
-          <div className="basis-2/3 w-full flex items-start justify-end">
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+              transition: { duration: 0.5, delay: 0.45 },
+            }}
+            className="origin-right basis-2/3 w-full flex items-start justify-end"
+          >
             <Image
               src={"/images/aboutme/lsrkicks.png"}
               alt="lsr kicks code"
@@ -965,13 +1018,27 @@ const Projects = ({
               priority={true}
               className="lsr-code"
             />
-          </div>
+          </motion.div>
           <div className="flex flex-col w-full basis-1/3 pt-2 pb-4 justify-between px-6 gap-1">
-            <h1 className={`${titleStyle} ${titleColor} text-3xl start-title`}>
+            <motion.h1
+              initial={{ x: 20, opacity: 0 }}
+              animate={{
+                x: 0,
+                opacity: 1,
+                transition: { duration: 0.6, delay: 0.7 },
+              }}
+              className={`${titleStyle} ${titleColor} text-3xl start-title`}
+            >
               LSR Kicks
-            </h1>
+            </motion.h1>
             <div className="w-full flex flex-row items-center justify-between px-5">
-              <p
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 0.85 },
+                }}
                 className={`text-2xl font-bold tracking-wider start-title w-[125px] tenk ${
                   dark ? "text-neutral-300" : "text-neutral-800"
                 }`}
@@ -980,8 +1047,14 @@ const Projects = ({
                 <span className="text-sm text-neutral-500 tracking-wide font-medium">
                   stack
                 </span>
-              </p>
-              <p
+              </motion.p>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 1 },
+                }}
                 className={`text-2xl font-bold tracking-wider start-title w-[125px] tenk ${
                   dark ? "text-neutral-300" : "text-neutral-800"
                 }`}
@@ -990,8 +1063,16 @@ const Projects = ({
                 <span className="text-sm text-neutral-500 tracking-wide font-medium">
                   lines of code written
                 </span>
-              </p>
-              <p className="text-md text-gray-500 tracking-wider font-medium ">
+              </motion.p>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.6, delay: 1.15 },
+                }}
+                className="text-md text-gray-500 tracking-wider font-medium "
+              >
                 Check it out{" "}
                 <motion.a
                   whileHover={{ y: -5 }}
@@ -1001,7 +1082,7 @@ const Projects = ({
                 >
                   here
                 </motion.a>
-              </p>
+              </motion.p>
             </div>
           </div>
         </div>
@@ -1014,7 +1095,16 @@ const Projects = ({
             dark ? "dark-border" : "light-border"
           }`}
         >
-          <div className="basis-1/2 w-full flex items-center justify-center ">
+          <motion.div
+            initial={{ scale: 0, opacity: 0, y: 25 }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.6, delay: 0.5 },
+            }}
+            className="origin-bottom basis-1/2 w-full flex items-center justify-center "
+          >
             <Image
               src={"/images/aboutme/refinedai.png"}
               alt="refined ai pic"
@@ -1024,29 +1114,53 @@ const Projects = ({
               priority={true}
               className="rounded-xl z-10"
             />
-          </div>
+          </motion.div>
           <div className="basis-1/2 flex flex-col items-center justify-between w-full px-3 pb-2 gap-1">
             <div className="w-full flex flex-col items-start justify-start">
-              <h1
+              <motion.h1
+                initial={{ opacity: 0, y: 25 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, delay: 0.65 },
+                }}
                 className={`w-full text-start ${titleColor} ${titleStyle} text-2xl`}
               >
                 RefinedAI
-              </h1>
-              <p className={`${subtitleColor} ${subtitleStyle} text-xs`}>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 25 }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.6, delay: 0.8 },
+                }}
+                className={`${subtitleColor} ${subtitleStyle} text-xs`}
+              >
                 {" "}
                 Full-Stack application designed to provide customers with
                 upscaling services through artificial intelligence (AI).
-              </p>
+              </motion.p>
             </div>
-            <Link
-              href="https://github.com/cerredz/RefinedAi"
-              target="_blank"
-              className="bg-gradient-to-br from-purple-600 via-fuchsia-700 to-purple-700 cursor-pointer w-full py-1 rounded-lg flex items-center justify-center refined-view "
+            <motion.span
+              initial={{ opacity: 0, y: 25 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.6, delay: 1 },
+              }}
+              className="w-full"
             >
-              <p className="text-lg text-neutral-300 tracking-widest font-bold">
-                View
-              </p>
-            </Link>
+              <Link
+                href="https://github.com/cerredz/RefinedAi"
+                target="_blank"
+                className="bg-gradient-to-br from-purple-600 via-fuchsia-700 to-purple-700 cursor-pointer w-full py-1 rounded-lg flex items-center justify-center refined-view "
+              >
+                <p className="text-lg text-neutral-300 tracking-widest font-bold">
+                  View
+                </p>
+              </Link>
+            </motion.span>
           </div>
         </div>
         {/* TECHNIQUES CONTAINER */}
@@ -1055,8 +1169,24 @@ const Projects = ({
             dark ? "dark-border" : "light-border"
           }`}
         >
-          <h1 className={`${titleColor} ${titleStyle} text-2xl`}>Techniques</h1>
-          <p
+          <motion.h1
+            initial={{ x: 20, opacity: 0 }}
+            animate={{
+              x: 0,
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.6 },
+            }}
+            className={`${titleColor} ${titleStyle} text-2xl`}
+          >
+            Techniques
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.6, delay: 0.75 },
+            }}
             className={`${subtitleColor} ${subtitleStyle} text-xs font-medium tracking-widest`}
           >
             As time went on, I started to learn many software engineering tools,
@@ -1064,7 +1194,7 @@ const Projects = ({
             Each project became an opportunity to apply new tools, refine
             techniques, and deepen my understanding of software engineering
             principles.
-          </p>
+          </motion.p>
           <Image
             src={"/images/aboutme/techniques.jpg"}
             alt="bg-img"
