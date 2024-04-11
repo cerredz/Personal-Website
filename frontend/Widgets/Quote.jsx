@@ -48,15 +48,10 @@ const Quote = ({
         dark
           ? "quotes-container bg-[#18181a]"
           : "quotes-light-container bg-[#c6c6c6]"
-      } relative flex flex-col items-center justify-center w-full h-auto py-24 hidden md:flex `}
+      } relative flex flex-col items-center justify-center w-full h-auto py-24  hidden md:flex z-10 overflow-hidden ${
+        landing && "landing-shift pt-12"
+      }`}
     >
-      {/* SPECIAL CASE FOR TOP HAlf circle right below the landing page */}
-      {landing && (
-        <>
-          <span className="left-glow"></span>
-          <span className="right-glow"></span>
-        </>
-      )}
       {/* QUOTATION MARK ICONS */}
       <motion.div
         ref={ref}

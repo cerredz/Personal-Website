@@ -31,3 +31,7 @@
   left: 0;
   transform: translateY(50%);
 }
+
+.landing-shift::after {
+  display: none;
+}
