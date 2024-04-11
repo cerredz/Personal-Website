@@ -11,6 +11,7 @@ import { SlArrowDown } from "react-icons/sl";
 import Label from "@/Widgets/Label";
 import { TypewriterEffect } from "@/AceternityUi/typewriter-effect";
 import { FaChevronDown } from "react-icons/fa";
+import { Meteors } from "@/AceternityUi/meteors";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -20,15 +21,21 @@ const Landing = () => {
       id="Home"
       className="relative h-screen items-center justify-between landing"
     >
-      <Image
-        src={"/images/homebg.png"}
-        alt=""
-        layout="fill"
-        className="absolute top-0 left-0 h-full width-full z-10"
-      />
+      {/* BACKGROUND IMAGE */}
+      <motion.span className="absolute top-0 left-0 w-full h-full ">
+        <Image
+          src={`${dark ? "/images/herobgdark.png" : "/images/herobglight.png"}`}
+          alt="background image"
+          layout="fill"
+          quality={100}
+          priority
+          className="z-1"
+        />
+      </motion.span>
+      <Meteors number={20} />
       <div className="lg:left lg:gap-10 h-full w-10/12 mt-10 lg:mt-0 items-center flex-col m-auto justify-center flex md:flex-row md:justify-center md:w-4/5 xl:w-3/4">
         {/* LEFT */}
-        <div className="mt-16 md:mt-0 flex flex-col gap-2 justify-center ">
+        <div className="mt-16 md:mt-0 flex flex-col gap-2 justify-center left-container backdrop-blur-lg p-8 rounded-xl">
           <LeftContainer dark={dark} />
         </div>
         {/* Right */}
@@ -94,43 +101,15 @@ const LeftContainer = ({ dark }) => {
         }}
         className={` text-xl lg:text-2xl tracking-wide font-medium ${
           dark ? "dark-landing-text" : "light-landing-text"
-        } `}
+        } z-50`}
       >
         Hi 👋, my name is
       </motion.p>
-      <div className="w-full flex justify-center items-center flex-col">
+      <div className="w-full flex justify-center items-start flex-col z-10">
         <TypewriterEffect words={word1} />
         <TypewriterEffect words={word2} />
       </div>
 
-      {/* 
-      <motion.h1
-        initial={{ x: -50, opacity: 0 }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          transition: { duration: 0.4, ease: "easeInOut", delay: 0.4 },
-        }}
-        className={`origin-left text-6xl lg:text-8xl tracking-wide font-bold ${
-          dark ? "dark-text-gradient" : "light-text-gradient"
-        }`}
-      >
-        Michael
-      </motion.h1>
-      <motion.h1
-        initial={{ x: -50, opacity: 0 }}
-        animate={{
-          x: 0,
-          opacity: 1,
-          transition: { duration: 0.4, ease: "easeInOut", delay: 0.4 },
-        }}
-        className={`origin-left text-6xl lg:text-8xl tracking-wide font-bold ${
-          dark ? "dark-text-gradient" : "light-text-gradient"
-        }`}
-      >
-        Cerreto
-      </motion.h1>
-      */}
       <motion.p
         initial={{ x: -50, opacity: 0 }}
         animate={{
@@ -140,7 +119,7 @@ const LeftContainer = ({ dark }) => {
         }}
         className={`max-w-sm ${
           dark ? "dark-landing-text" : "light-landing-text"
-        } `}
+        } z-10`}
       >
         I'm an Aspiring Full-Stack Software Engineer with a passion for coding,
         problem-solving, and software developement. Have Any questions?

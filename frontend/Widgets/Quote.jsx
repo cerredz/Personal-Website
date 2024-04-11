@@ -14,6 +14,7 @@ const Quote = ({
   translateYOpen,
   translateXClose,
   translateYClose,
+  landing,
 }) => {
   const dark = useSelector((state) => state.auth.dark);
   const ref = useRef(null);
@@ -45,10 +46,17 @@ const Quote = ({
     <div
       className={`${
         dark
-          ? "quotes-container bg-[#1e1e21]"
+          ? "quotes-container bg-[#18181a]"
           : "quotes-light-container bg-[#c6c6c6]"
-      } relative flex flex-col items-center justify-center w-full h-auto py-24 hidden md:flex`}
+      } relative flex flex-col items-center justify-center w-full h-auto py-24 hidden md:flex `}
     >
+      {/* SPECIAL CASE FOR TOP HAlf circle right below the landing page */}
+      {landing && (
+        <>
+          <span className="left-glow"></span>
+          <span className="right-glow"></span>
+        </>
+      )}
       {/* QUOTATION MARK ICONS */}
       <motion.div
         ref={ref}
@@ -98,16 +106,6 @@ const Quote = ({
           </p>
         ))}
       </div>
-      {/* 
-      <motion.h3
-        ref={ref}
-        className={`z-10 max-w-xl tracking-wider font-normal text-center text-md ${
-          dark ? "text-neutral-700" : "text-neutral-400"
-        }`}
-      >
-        {quote}
-      </motion.h3>
-      */}
 
       <motion.p
         ref={ref}

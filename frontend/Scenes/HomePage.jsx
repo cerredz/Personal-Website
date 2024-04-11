@@ -54,6 +54,7 @@ const HomePage = () => {
             translateXOpen="-translate-x-80"
             translateYClose="-translate-y-10"
             translateXClose="translate-x-80"
+            landing={true}
           />
           <About />
           <Quote

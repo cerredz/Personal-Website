@@ -83,7 +83,15 @@ const Navbar = () => {
     >
       <div className="w-full flex flex-row justify-between align-center p-3 sm:p-5 md:p-7 lg:p-9">
         <div className="flex p-6 sm:p-0 gap-4 w-full align-center justify-start">
-          <Image src="/logo.png" width={45} height={100} alt="logo"></Image>
+          <motion.span className="logo relative ">
+            <Image
+              src={"/images/mclogo.png"}
+              alt="logo"
+              width={90}
+              height={70}
+              className="z-10"
+            />
+          </motion.span>
 
           {/* NAVBAR LINKS */}
           <div

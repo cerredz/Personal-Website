@@ -7,11 +7,12 @@
   width: 100%;
   height: 125px;
   border-radius: 50%;
+  z-index: 1;
 }
 
 .quotes-container::before,
 .quotes-container::after {
-  background: #18181a;
+  background: #0d0d0d;
 }
 .quotes-light-container::before,
 .quotes-light-container::after {

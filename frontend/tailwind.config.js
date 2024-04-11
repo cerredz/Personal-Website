@@ -39,7 +39,7 @@ module.exports = {
       fuchsia: colors.fuchsia,
       primary: {
         light: `#F9FAFB`,
-        dark: `#18181A`,
+        dark: `#0D0D0D`,
         purple: "#9260BE",
       },
       dark: {
@@ -69,6 +69,7 @@ module.exports = {
       },
       animation: {
         shimmer: "shimmer 2s linear infinite",
+        meteorEffect: "meteor 5s linear infinite",
       },
       keyframes: {
         shimmer: {
@@ -77,6 +78,14 @@ module.exports = {
           },
           to: {
             backgroundPosition: "-200% 0",
+          },
+        },
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
           },
         },
       },

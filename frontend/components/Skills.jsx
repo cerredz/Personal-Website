@@ -15,8 +15,6 @@ import { PiMoonStarsFill } from "react-icons/pi";
 import { shortenedDescription } from "@/utils/Skills";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { ReadMore } from "./ReadMore";
-import { BackgroundBeams } from "@/AceternityUi/background-beams";
-import { GlowingStarsBackgroundCard } from "@/AceternityUi/glowing-stars";
 
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -94,6 +92,7 @@ const Skills = () => {
                     description={skill.description}
                     src={skill.src}
                     words={skill.words}
+                    hoverBackground={skill.hover}
                     clickEvent={() => setReadMore(index)}
                   />
                   <AnimatePresence>
@@ -229,6 +228,7 @@ const Skill = ({
   words,
   clickEvent,
   icon,
+  hoverBackground,
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref);

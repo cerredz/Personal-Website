@@ -279,7 +279,8 @@ export const compSciSkillsData = [
     className: "brain",
     words: 13,
     //textColor:"bg-gradient-to-br from-fuchsia-400 via-fuchsia-500 to-fuchsia-400",
-    textColor: "linear-gradient(135deg, #e879f9,#d946ef , #e879f9)",
+    hover:
+      "hover:bg-gradient-to-br from-fuchsia-400 via-purple-500 to-fuchsia-400 hover:transition hover:duration-500",
     background: "pink",
     images: [
       { src: "/images/readmore/roadmap.png" },
@@ -295,8 +296,8 @@ export const compSciSkillsData = [
     icon: <GiFamilyTree />,
     className: "backend",
     words: 13,
-    //textColor:"bg-gradient-to-br from-fuchsia-400 via-fuchsia-500 to-fuchsia-400",
-    textColor: "linear-gradient(135deg, #7e22ce, #581c87 , #7e22ce)",
+    hover:
+      "hover:bg-gradient-to-br from-purple-500 via-purple-800 to-purple-500 hover:transition hover:duration-500",
     background: "pink",
     images: [
       { src: "/images/readmore/c++.png" },
@@ -315,8 +316,8 @@ export const compSciSkillsData = [
     icon: <FaDatabase />,
     className: "database",
     words: 13,
-    //textColor: "bg-gradient-to-br from-purple-600 via-purple-700 to-purple-600",
-    textColor: "linear-gradient(135deg, #a855f7,#7e22ce , #a855f7)",
+    hover:
+      "hover:bg-gradient-to-br from-purple-900 via-blue-700 to-purple-900 hover:transition hover:duration-500",
     background: "pink",
     images: [
       { src: "/images/readmore/c++.png" },
@@ -335,8 +336,8 @@ export const compSciSkillsData = [
     icon: <GoTerminal />,
     className: "algorithmns",
     words: 12,
-    //textColor: "bg-gradient-to-br from-blue-600 via-blue-700 to-blue-600",
-    textColor: "linear-gradient(135deg, #3b82f6,#1d4ed8 , #3b82f6)",
+    hover:
+      "hover:bg-gradient-to-br from-blue-600 via-blue-800 to-blue-600 hover:transition hover:duration-500",
     background: "blue",
     images: [
       { src: "/images/readmore/binary.png" },
@@ -356,8 +357,8 @@ export const compSciSkillsData = [
     icon: <FaLaptopCode />,
     className: "web",
     words: 11,
-    //textColor: "bg-gradient-to-br from-blue-400 via-blue-500 to-blue-400",
-    textColor: "linear-gradient(135deg, #0ea5e9,#2563eb , #0ea5e9)",
+    hover:
+      "hover:bg-gradient-to-br from-sky-500 via-blue-600 to-sky-500 hover:transition hover:duration-500",
     background: "blue",
     images: [
       { src: "/images/readmore/react.png" },
@@ -377,8 +378,8 @@ export const compSciSkillsData = [
     icon: <FaPeopleGroup />,
     className: "teamwork",
     words: 13,
-    //textColor: "bg-gradient-to-br from-cyan-400 via-cyan-500 to-cyan-400",
-    textColor: "linear-gradient(135deg, #22d3ee,#0ea5e9 , #22d3ee)",
+    hover:
+      "hover:bg-gradient-to-br from-cyan-400 via-sky-500 to-cyan-400 hover:transition hover:duration-500",
     background: "blue",
     images: [
       { src: "/images/readmore/devpost.png" },
