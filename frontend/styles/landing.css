@@ -1,11 +1,3 @@
-.left {
-  flex-basis: 1;
-}
-
-.right {
-  flex-basis: 2;
-}
-
 .light-text-gradient,
 .dark-text-gradient {
   background-clip: text;
@@ -44,7 +36,7 @@
   background-size: cover;
 }
 
-.left-container {
+.glassmorphism-background {
   background: linear-gradient(
     -45deg,
     rgba(8, 105, 213, 0.05),

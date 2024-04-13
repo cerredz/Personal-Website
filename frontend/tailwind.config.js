@@ -69,7 +69,7 @@ module.exports = {
       },
       animation: {
         shimmer: "shimmer 2s linear infinite",
-        meteorEffect: "meteor 5s linear infinite",
+        "meteor-effect": "meteor 5s linear infinite",
       },
       keyframes: {
         shimmer: {

@@ -17,10 +17,7 @@ const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
 
   return (
-    <section
-      id="Home"
-      className="relative h-screen items-center justify-between landing"
-    >
+    <section id="Home" className="relative h-screen ">
       {/* BACKGROUND IMAGE */}
       <motion.span className="absolute top-0 left-0 w-full h-full ">
         <Image
@@ -32,30 +29,32 @@ const Landing = () => {
           className="z-1"
         />
       </motion.span>
-      <Meteors number={20} />
-      <div className="lg:left lg:gap-10 h-full w-10/12 mt-10 lg:mt-0 items-center flex-col m-auto justify-center flex md:flex-row md:justify-center md:w-4/5 xl:w-3/4">
+      {/* <Meteors number={20} /> */}
+
+      <div className="lg:basis-2/5 lg:gap-10 h-full w-11/12 mt-10 lg:mt-0 items-center flex-col m-auto justify-center flex xl:flex-row xl:justify-center xl:w-10/12">
         {/* LEFT */}
-        <div className="mt-16 md:mt-0 flex flex-col gap-2 justify-center left-container backdrop-blur-lg p-8 rounded-xl">
+        <div className="mt-16 md:mt-0 flex flex-col gap-2 justify-center left-container backdrop-blur-lg p-8 rounded-xl h-full">
           <LeftContainer dark={dark} />
         </div>
         {/* Right */}
-        <motion.div className="lg:right lg:flex-grow flex items-center justify-center md:relative h-full w-full md:h-4/5 max-w-lg lg:max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            animate={{
-              x: 0,
-              opacity: 1,
-              transition: { delay: 0.7, duration: 0.4, ease: "easeInOut" },
-            }}
-            className="relative flex justify-center items-center w-full h-full"
-          >
-            <Image
-              src={"/images/bg5.png"}
-              height={1000}
-              width={1000}
-              className="absolute z-10"
-            />
-          </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 100, scale: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            transition: { delay: 0.7, duration: 0.8, ease: "easeInOut" },
+          }}
+          className="lg:basis-3/5 flex items-end justify-center md:relative h-full w-full xl:h-9/12"
+        >
+          <Image
+            src={"/images/rightimg.png"}
+            width={625}
+            height={700}
+            quality={100}
+            priority
+            className="flex items-center justify-center right-img"
+          />
         </motion.div>
       </div>
     </section>

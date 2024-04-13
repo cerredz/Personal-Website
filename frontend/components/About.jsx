@@ -60,6 +60,7 @@ const About = () => {
       />
 
       {/* TABS */}
+
       <ul
         className={`w-fit flex flex-row items-center justify-center gap-2 p-1 rounded-md mx-auto mt-10 ${
           dark ? "bg-[rgba(255,255,255,.025)]" : "bg-[rgba(0,0,0,.025)]"
