@@ -13,6 +13,7 @@ import { TypewriterEffect } from "@/AceternityUi/typewriter-effect";
 import { FaChevronDown } from "react-icons/fa";
 import { Meteors } from "@/AceternityUi/meteors";
 import { LuArrowDownToLine } from "react-icons/lu";
+import { Nextjs } from "@/icons/Nextjs";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -183,6 +184,24 @@ const LeftContainer = ({ dark }) => {
           <p>Resume</p>
           <FaChevronDown className="flex items-center justify-center p-0 m-0" />
         </motion.button>
+        {/* ARROW */}
+        <Image
+          src={"/images/arrow.png"}
+          alt="arrow"
+          width={75}
+          height={75}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{
+            opacity: 1,
+            scale: [0.8, 1.3, 0.8],
+            transition: { duration: 2, repeat: Infinity },
+          }}
+          className="absolute bottom-[-30px] left-[50px] z-10 arrow"
+        />
+        {/* NEXTJS ICON */}
+        <div className="absolute bottom-[-100px] right-0 scale-50 rotate-12 ">
+          <Nextjs />
+        </div>
       </div>
     </>
   );
