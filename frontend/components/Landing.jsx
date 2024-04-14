@@ -12,6 +12,7 @@ import Label from "@/Widgets/Label";
 import { TypewriterEffect } from "@/AceternityUi/typewriter-effect";
 import { FaChevronDown } from "react-icons/fa";
 import { Meteors } from "@/AceternityUi/meteors";
+import { LuArrowDownToLine } from "react-icons/lu";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -33,7 +34,7 @@ const Landing = () => {
 
       <div className="lg:basis-2/5 lg:gap-10 h-full w-11/12 mt-10 lg:mt-0 items-center flex-col m-auto justify-center flex xl:flex-row xl:justify-center xl:w-10/12">
         {/* LEFT */}
-        <div className="mt-16 md:mt-0 flex flex-col gap-2 justify-center left-container backdrop-blur-lg p-8 rounded-xl h-full">
+        <div className="mt-16 md:mt-0 flex flex-col gap-2 justify-center left-container backdrop-blur-lg p-8 rounded-xl ">
           <LeftContainer dark={dark} />
         </div>
         {/* Right */}
@@ -47,14 +48,33 @@ const Landing = () => {
           }}
           className="lg:basis-3/5 flex items-end justify-center md:relative h-full w-full xl:h-9/12"
         >
-          <Image
-            src={"/images/rightimg.png"}
-            width={625}
-            height={700}
-            quality={100}
-            priority
-            className="flex items-center justify-center right-img"
-          />
+          <motion.span className="relative">
+            <Image
+              src={"/images/rightimg.png"}
+              width={625}
+              height={700}
+              quality={100}
+              priority
+              className="flex items-center justify-center right-img"
+            />
+            {/* RESUME BUTTON */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              className="hidden xl:flex absolute top-[20%] right-[5%] flex flex-col items-center justify-center p-3 z-10 cursor-pointer"
+            >
+              <LuArrowDownToLine className="z-10 text-4xl text-neutral-300" />
+              <p className="text-neutral-300 font-bold text-md italic tracking-wider z-10">
+                Resume
+              </p>
+              <motion.span className="absolute h-24 w-24 rounded-full bg-blue-500 resume-circle "></motion.span>
+            </motion.div>
+          </motion.span>
         </motion.div>
       </div>
     </section>
@@ -154,7 +174,7 @@ const LeftContainer = ({ dark }) => {
             transition: { duration: 0.4, ease: "easeInOut", delay: 0.8 },
           }}
           whileHover={{ scale: 1.1 }}
-          className={`z-50 relative overflow-hidden gap-4 inline-flex tracking-widest font-bold h-12 animate-shimmer items-center justify-center rounded-3xl border border-2 border-sky-500 bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer ${
+          className={`inline-flex xl:hidden z-50 relative overflow-hidden gap-4 inline-flex tracking-widest font-bold h-12 animate-shimmer items-center justify-center rounded-3xl border border-2 border-sky-500 bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cursor-pointer ${
             dark
               ? "text-neutral-300 bg-[linear-gradient(110deg,#1e1e21,45%,#1e2631,55%,#1e1e21)] "
               : "text-neutral-800 bg-[transparent]"
