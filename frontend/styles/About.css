@@ -241,6 +241,12 @@
   background: #d5d6d7;
 }
 
+.slanted-bg-dark {
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.5),
+    inset 0 0 2rem rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
 .slanted-bg-dark::before,
 .slanted-bg-light::before,
 .slanted-bg-dark::after,
@@ -261,25 +267,25 @@
 }
 .slanted-bg-dark::after,
 .slanted-bg-light::after {
-  z-index: 2;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.slanted-bg-dark::before,
-.slanted-bg-light::before {
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.01)
-  );
+.slanted-bg-dark::before {
+  background: linear-gradient(to right, #2d2d2d, #1a1a1a);
 }
-.slanted-bg-dark::after,
+
+.slanted-bg-light::before {
+  background: linear-gradient(to right, #c1c1c1, #989898);
+}
+.slanted-bg-dark::after {
+  background: linear-gradient(-45deg, #0d0d0d, #171717);
+}
 .slanted-bg-light::after {
-  background: linear-gradient(
-    -45deg,
-    rgba(0, 0, 0, 0.05),
-    rgba(0, 0, 0, 0.025)
-  );
-  inset: 0;
+  background: linear-gradient(-45deg, #757474, #515151);
 }
 
 .dark-border {
@@ -292,8 +298,8 @@
 }
 
 .freedom {
-  background: rgba(0, 0, 0, 0.2);
   z-index: 0;
+  box-sizing: inset 0 0 2rem rgba(255, 255, 255, 0.05);
 }
 
 .freedom::before {

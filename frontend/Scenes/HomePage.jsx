@@ -47,15 +47,18 @@ const HomePage = () => {
       <section className="relative" id="home">
         <Suspense fallback={<Loading />}>
           <Landing />
-          <Quote
-            quote="The most important single aspect of software development is to be clear about what you are trying to build"
-            name="Bjarne Stroustrup"
-            translateYOpen="-translate-y-10"
-            translateXOpen="-translate-x-80"
-            translateYClose="-translate-y-10"
-            translateXClose="translate-x-80"
-            landing={true}
-          />
+          <div className="absolute w-full">
+            <Quote
+              quote="The most important single aspect of software development is to be clear about what you are trying to build"
+              name="Bjarne Stroustrup"
+              translateYOpen="-translate-y-10"
+              translateXOpen="-translate-x-80"
+              translateYClose="-translate-y-10"
+              translateXClose="translate-x-80"
+              landing={true}
+            />
+          </div>
+
           <About />
           <Quote
             quote="The art of programming is the art of organizing complexity, of mastering multitude, and avoiding its bastard chaos as effectively as possible."

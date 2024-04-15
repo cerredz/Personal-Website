@@ -37,7 +37,7 @@ const Title = ({
         </motion.h3>
         {/* GRAY BACKGROUND TEXT */}
         <div
-          className={`absolute whitespace-nowrap hidden lg:block text-8xl transform ${translateY} ${translateX}`}
+          className={`absolute whitespace-nowrap hidden lg:block text-8xl transform ${translateY} ${translateX} z-10`}
         >
           <motion.h1
             ref={h1Ref}

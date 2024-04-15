@@ -49,7 +49,7 @@ const Quote = ({
           ? "quotes-container bg-[#18181a]"
           : "quotes-light-container bg-[#c6c6c6]"
       } relative flex flex-col items-center justify-center w-full h-auto py-24  hidden md:flex z-10 overflow-hidden ${
-        landing && "landing-shift pt-12"
+        landing && "landing-shift py-8 bg-[#0d0d0d]"
       }`}
     >
       {/* QUOTATION MARK ICONS */}

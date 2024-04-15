@@ -198,10 +198,6 @@ const LeftContainer = ({ dark }) => {
           }}
           className="absolute bottom-[-30px] left-[50px] z-10 arrow"
         />
-        {/* NEXTJS ICON */}
-        <div className="absolute bottom-[-100px] right-0 scale-50 rotate-12 ">
-          <Nextjs />
-        </div>
       </div>
     </>
   );

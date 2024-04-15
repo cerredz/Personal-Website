@@ -22,9 +22,7 @@ const About = () => {
 
   const tabs = ["Start & Overview", "First Languages", "Projects", "Today"];
 
-  const [titleColor, setTitleColor] = useState(
-    dark ? "text-neutral-300" : "text-neutral-800"
-  );
+  const [titleColor, setTitleColor] = useState("text-neutral-300");
   const [subtitleColor, setSubtitleColor] = useState(
     dark ? "text-neutral-500" : "text-neutral-400"
   );
@@ -36,8 +34,8 @@ const About = () => {
       setTitleColor("text-neutral-300");
       setSubtitleColor("text-neutral-500");
     } else {
-      setTitleColor("text-neutral-800");
-      setSubtitleColor("text-neutral-400");
+      setTitleColor("text-neutral-200");
+      setSubtitleColor("text-neutral-700");
     }
   }, [dark]);
 
@@ -47,7 +45,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="my-20 relative gap-10 min-h-screen">
+    <section id="about" className="pt-64 pb-20 relative gap-10 min-h-screen">
       <Title
         text={"About"}
         backgroundText={"<About Me />"}
@@ -58,19 +56,19 @@ const About = () => {
         beforeGradient={`about-me-before-title-gradient`}
         afterGradient={`about-me-after-title-gradient`}
       />
+      <BackgroundImage index={currentTabIndex} dark={dark} />
 
       {/* TABS */}
-
       <ul
         className={`w-fit flex flex-row items-center justify-center gap-2 p-1 rounded-md mx-auto mt-10 ${
           dark ? "bg-[rgba(255,255,255,.025)]" : "bg-[rgba(0,0,0,.025)]"
-        }`}
+        } z-10`}
       >
         {tabs.map((tab, index) => (
           <li
             key={index}
             onClick={() => handleTabClick(index)}
-            className={`cursor-pointer rounded-md px-3 py-1 text-medium tracking-widest font-medium hover:transition transition duration-500 hover:duration-500  ${
+            className={`cursor-pointer rounded-md px-3 py-1 text-medium tracking-widest font-medium hover:transition transition duration-500 hover:duration-500 z-10 ${
               dark
                 ? `${
                     currentTabIndex == index
@@ -275,7 +273,7 @@ const Start = ({
         </div>
         {/* GENERAL INFO CARD */}
         <div
-          className={`basis-1/3 h-auto w-[300px] lg:w-auto lg:h-[40vh] relative p-8 rounded-xl flex flex-col overflow-hidden items-start justify-between ${
+          className={`z-10 basis-1/3 h-auto w-[300px] lg:w-auto lg:h-[40vh] relative p-8 rounded-xl flex flex-col overflow-hidden items-start justify-between ${
             dark
               ? "slanted-bg-dark dark-border"
               : "slanted-bg-light light-border"
@@ -350,14 +348,14 @@ const Start = ({
       <div className="w-full flex flex-col lg:flex-row justify-center lg:justify-between items-center gap-8">
         {/* SECOND ROW LEFT CARD */}
         <div
-          className={`w-[300px] lg:w-auto lg:basis-1/3 flex relative goal-bg-img flex-col items-center justify-start pt-8 rounded-xl overflow-hidden h-[300px] goal `}
+          className={`w-[300px] lg:w-auto lg:basis-1/3 flex relative goal-bg-img flex-col items-center justify-start pt-8 rounded-xl overflow-hidden h-[300px] `}
         >
           <Image
             src={"/images/aboutme/goalbg.jpg"}
             alt="neural network background"
             layout="fill"
             objectFit="cover"
-            className="rounded-xl  opacity-10 "
+            className="rounded-xl "
           />
           <div className="w-full flex flex-col items-start justify-start px-8">
             <motion.h1
@@ -378,7 +376,7 @@ const Start = ({
                 opacity: goalSubTitleInView ? 1 : 0,
                 transition: ".6s ease-in-out .65s",
               }}
-              className={`w-[11/12] text-start text-xs ${subtitleStyle} ${subtitleColor}  `}
+              className={`w-[11/12] text-start text-xs ${subtitleStyle} text-neutral-400 backdrop-blur-md  `}
             >
               Strive to become the most skillful, talented, and masterful
               Software Engineer that I am capable of becoming.
@@ -390,11 +388,7 @@ const Start = ({
               opacity: githubLinkInView ? 1 : 0,
               transition: ".6s ease-in-out .8s",
             }}
-            className={`w-full text-center py-2 z-10 cursor-pointer tracking-wider mt-12 ${
-              dark
-                ? "bg-[rgba(255,255,255,.05)] text-neutral-300 "
-                : "bg-[rgba(0,0,0,.05)] text-neutral-800"
-            }`}
+            className={`w-full text-center py-2 z-10 cursor-pointer tracking-wider mt-12 text-neutral-300 bg-[rgba(255,255,255,.1)] `}
             href={"https://github.com/cerredz"}
             target="_blank"
           >
@@ -439,11 +433,12 @@ const Start = ({
             alt="rutgers logo"
             width={200}
             height={200}
+            className="z-10"
           />
         </div>
         <div
-          className={`w-[300px] lg:w-auto lg:basis-1/3 flex flex-col items-start justify-between p-8 rounded-xl  h-[300px] relative freedom overflow-hidden ${
-            dark ? "freedom-dark" : "freedom-light"
+          className={`w-[300px] lg:w-auto lg:basis-1/3 flex flex-col items-start justify-between p-8 rounded-xl  h-[300px] relative overflow-hidden   ${
+            dark ? "dark-border bg-[#0d0d0d]" : "light-border bg-[#6C6B6B]"
           }`}
         >
           <Image
@@ -1307,6 +1302,30 @@ const Today = ({
           className="border-2 border-blue-600 rounded-xl today-img"
         />
       </motion.div>
+    </motion.div>
+  );
+};
+
+const BackgroundImage = ({ dark, index }) => {
+  return (
+    <motion.div className="absolute top-0 left-0 w-full h-full">
+      <AnimatePresence>
+        {index == 0 ? (
+          <Image
+            src={`${
+              dark
+                ? "/images/aboutme/startbgdark.png"
+                : "/images/aboutme/startbglight.png"
+            }`}
+            alt=""
+            layout="fill"
+            quality={100}
+            priority
+          ></Image>
+        ) : (
+          <></>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

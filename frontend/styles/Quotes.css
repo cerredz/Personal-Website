@@ -32,6 +32,7 @@
   transform: translateY(50%);
 }
 
-.landing-shift::after {
+.landing-shift::after,
+.landing-shift::before {
   display: none;
 }
