@@ -594,7 +594,11 @@ const FirstLanguages = ({
       {/* MIDDLE CONTAINER DIV */}
       <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between ">
         {/* FIRST LANGUAGES DIV */}
-        <div className="basis-1/4 mb-4 w-full flex bg-[#0d0d0d] flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ">
+        <div
+          className={`basis-1/4 mb-4 w-full flex  flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ${
+            dark ? "bg-[#0d0d0d]" : "bg-[#c7c7c7]"
+          } `}
+        >
           <motion.h1
             initial={{ x: 30, opacity: 0 }}
             animate={{
@@ -661,7 +665,9 @@ const FirstLanguages = ({
                 y: 0,
                 transition: { duration: 0.6, delay: 0.55 },
               }}
-              className={`${titleStyle} ${titleColor} text-2xl`}
+              className={`${titleStyle} ${
+                dark ? "text-neutral-300" : "text-neutral-800"
+              } text-2xl`}
             >
               Fullstack
             </motion.h1>
@@ -760,8 +766,8 @@ const FirstLanguages = ({
         </div>
         {/* LEETCODE PROBLEMS DIV */}
         <div
-          className={`basis-5/12 w-full flex flex-col items-center justify-between rounded-xl p-6 bg-[#000000]  ${
-            dark ? "dark-border" : "light-border"
+          className={`basis-5/12 w-full flex flex-col items-center justify-between rounded-xl p-6   ${
+            dark ? "dark-border bg-[#000000]" : "light-border bg-[#c7c7c7]"
           }`}
         >
           <motion.h1
@@ -878,8 +884,8 @@ const Projects = ({
           {/* PROJECTS CARD */}
           <div
             className={`basis-1/2 h-full rounded-xl p-8 flex flex-col items-start justify-start gap-6 ${
-              dark ? "dark-border" : "light-border"
-            } projects relative overflow-hidden`}
+              dark ? "dark-border bg-[#0d0d0d]" : "light-border"
+            } projects relative overflow-hidden `}
           >
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
@@ -1308,32 +1314,71 @@ const Today = ({
 
 const BackgroundImage = ({ dark, index }) => {
   return (
-    <motion.div className="absolute top-0 left-0 w-full h-full">
+    <motion.div className="hidden xl:block absolute top-0 left-0 w-full h-full">
       <AnimatePresence>
         {index == 0 ? (
-          <Image
-            src={`${
-              dark
-                ? "/images/aboutme/startbgdark.png"
-                : "/images/aboutme/startbglight.png"
-            }`}
-            alt=""
-            layout="fill"
-            quality={100}
-            priority
-          ></Image>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.8, ease: "easeInOut" },
+            }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          >
+            <Image
+              src={`${
+                dark
+                  ? "/images/aboutme/startbgdark.png"
+                  : "/images/aboutme/startbglight.png"
+              }`}
+              alt=""
+              layout="fill"
+              quality={100}
+              priority
+            ></Image>
+          </motion.span>
         ) : index == 1 ? (
-          <Image
-            src={`${
-              dark
-                ? "/images/aboutme/firstdark.png"
-                : "/images/aboutme/firstlight.png"
-            }`}
-            alt=""
-            layout="fill"
-            quality={100}
-            priority
-          ></Image>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.8, ease: "easeInOut" },
+            }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          >
+            <Image
+              src={`${
+                dark
+                  ? "/images/aboutme/firstdark.png"
+                  : "/images/aboutme/firstlight.png"
+              }`}
+              alt=""
+              layout="fill"
+              quality={100}
+              priority
+            ></Image>
+          </motion.span>
+        ) : index == 2 ? (
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.8, ease: "easeInOut" },
+            }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          >
+            <Image
+              src={`${
+                dark
+                  ? "/images/aboutme/projectsdark.png"
+                  : "/images/aboutme/projectslight.png"
+              }`}
+              alt=""
+              layout="fill"
+              quality={100}
+              priority
+            ></Image>
+          </motion.span>
         ) : (
           <></>
         )}

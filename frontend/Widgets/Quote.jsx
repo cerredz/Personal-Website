@@ -46,9 +46,7 @@ const Quote = ({
     <div
       className={`${
         dark ? " bg-[#0d0d0d] quote-dark" : " bg-[#c6c6c6] quote-light"
-      } relative flex flex-col items-center justify-center w-full h-auto py-24  hidden md:flex z-10 overflow-hidden ${
-        landing && "landing-shift py-8 "
-      }`}
+      } relative flex flex-col items-center justify-center w-full h-auto py-8 hidden md:flex z-10 overflow-hidden `}
     >
       {/* QUOTATION MARK ICONS */}
       <motion.div
