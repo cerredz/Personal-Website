@@ -45,11 +45,9 @@ const Quote = ({
   return (
     <div
       className={`${
-        dark
-          ? "quotes-container bg-[#18181a]"
-          : "quotes-light-container bg-[#c6c6c6]"
+        dark ? " bg-[#0d0d0d] quote-dark" : " bg-[#c6c6c6] quote-light"
       } relative flex flex-col items-center justify-center w-full h-auto py-24  hidden md:flex z-10 overflow-hidden ${
-        landing && "landing-shift py-8 bg-[#0d0d0d]"
+        landing && "landing-shift py-8 "
       }`}
     >
       {/* QUOTATION MARK ICONS */}

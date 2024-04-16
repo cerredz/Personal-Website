@@ -45,7 +45,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="pt-64 pb-20 relative gap-10 min-h-screen">
+    <section id="about" className="py-20 relative gap-10 min-h-screen">
       <Title
         text={"About"}
         backgroundText={"<About Me />"}
@@ -60,7 +60,7 @@ const About = () => {
 
       {/* TABS */}
       <ul
-        className={`w-fit flex flex-row items-center justify-center gap-2 p-1 rounded-md mx-auto mt-10 ${
+        className={`w-fit flex flex-row items-center justify-center gap-2 p-1 rounded-md mx-auto mt-10 backdrop-blur-md ${
           dark ? "bg-[rgba(255,255,255,.025)]" : "bg-[rgba(0,0,0,.025)]"
         } z-10`}
       >
@@ -594,7 +594,7 @@ const FirstLanguages = ({
       {/* MIDDLE CONTAINER DIV */}
       <div className="basis-1/3 h-[70vh] flex flex-col items-center justify-between ">
         {/* FIRST LANGUAGES DIV */}
-        <div className="basis-1/4 mb-4 w-full flex bg-[rgba(255,255,255,.01)] flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ">
+        <div className="basis-1/4 mb-4 w-full flex bg-[#0d0d0d] flex-col items-start justify-between p-6 rounded-xl first-languages relative overflow-hidden ">
           <motion.h1
             initial={{ x: 30, opacity: 0 }}
             animate={{
@@ -760,7 +760,7 @@ const FirstLanguages = ({
         </div>
         {/* LEETCODE PROBLEMS DIV */}
         <div
-          className={`basis-5/12 w-full flex flex-col items-center justify-between rounded-xl p-6 bg-[rgba(0,0,0,.3)]  ${
+          className={`basis-5/12 w-full flex flex-col items-center justify-between rounded-xl p-6 bg-[#000000]  ${
             dark ? "dark-border" : "light-border"
           }`}
         >
@@ -1316,6 +1316,18 @@ const BackgroundImage = ({ dark, index }) => {
               dark
                 ? "/images/aboutme/startbgdark.png"
                 : "/images/aboutme/startbglight.png"
+            }`}
+            alt=""
+            layout="fill"
+            quality={100}
+            priority
+          ></Image>
+        ) : index == 1 ? (
+          <Image
+            src={`${
+              dark
+                ? "/images/aboutme/firstdark.png"
+                : "/images/aboutme/firstlight.png"
             }`}
             alt=""
             layout="fill"

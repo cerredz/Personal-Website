@@ -379,10 +379,6 @@
     0 0 1rem rgba(0, 0, 0, 0.6);
 }
 
-.first-languages {
-  background: rgba(0, 0, 0, 0.3);
-}
-
 .first-languages::before,
 .first-languages::after {
   position: absolute;
