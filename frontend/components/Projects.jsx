@@ -47,8 +47,11 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0 mb-12 pb-8"
+      className="relative flex flex-col items-center justify-center py-16 overflow-hidden"
     >
+      <span className="glow glow1"></span>
+      <span className="glow glow2"></span>
+      <span className="glow glow3"></span>
       <div className="flex items-center justify-center mb-16">
         <Title
           text={"Projects"}
@@ -134,7 +137,7 @@ const Projects = () => {
           ref={ref}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="cursor-pointer p-6 rounded-full left-project-btn hover:scale-110 flex items-center justify-center border border-2 border-sky-500 z-10"
+          className="cursor-pointer p-6 rounded-full left-project-btn hover:scale-110 flex items-center justify-center border border-2 border-fuchsia-500 z-10"
           style={{
             x: inView ? 0 : -300,
             opacity: inView ? 1 : 0,
@@ -144,7 +147,7 @@ const Projects = () => {
           onClick={() => setActiveCardIndex((prev) => Math.max(prev - 1, 0))}
         >
           <FaLongArrowAltLeft
-            className={` text-2xl font-bold z-10 absolute text-sky-500  `}
+            className={` text-2xl font-bold z-10 absolute text-fuchsia-500  `}
           />
         </motion.div>
 
@@ -152,7 +155,7 @@ const Projects = () => {
           ref={ref}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="cursor-pointer p-6 rounded-full right-project-btn flex items-center justify-center border border-2 border-fuchsia-500 z-10 "
+          className="cursor-pointer p-6 rounded-full right-project-btn flex items-center justify-center border border-2 border-sky-500  z-10 "
           style={{
             x: inView ? 0 : 300,
             opacity: inView ? 1 : 0,
@@ -166,7 +169,7 @@ const Projects = () => {
           }
         >
           <FaLongArrowAltRight
-            className={`text-2xl font-bold z-10 absolute text-fuchsia-500 `}
+            className={`text-2xl font-bold z-10 absolute text-sky-500 `}
           />
         </motion.div>
       </div>

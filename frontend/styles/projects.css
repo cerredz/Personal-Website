@@ -10,7 +10,7 @@
   border-radius: inherit;
   background: linear-gradient(-45deg, #3b82f6, #7c3aed, #d946ef);
   z-index: 1;
-  filter: blur(3rem);
+  filter: blur(4rem);
 }
 
 .filter-text::before {
@@ -176,10 +176,10 @@ CUSTOM COLOR BOX SHADOW FADING IN FOR THE SELECTED FILTER
   box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.1);
 }
 .left-project-btn:hover {
-  box-shadow: 0 0 3rem #0ea5e9;
+  box-shadow: 0 0 3rem #d946ef;
 }
 .right-project-btn:hover {
-  box-shadow: 0 0 3rem #d946ef;
+  box-shadow: 0 0 3rem #0ea5e9;
 }
 
 .github-btn::before {
@@ -208,4 +208,31 @@ CUSTOM COLOR BOX SHADOW FADING IN FOR THE SELECTED FILTER
 
 .project-card:hover {
   transform: translateZ(12) scale(1.5);
+}
+
+/* BACKGROUND GLOWS STYLES */
+.glow {
+  position: absolute;
+}
+
+.glow1 {
+  top: 0;
+  left: 5%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: linear-gradient(to right, #d946ef, #b004b0);
+  filter: blur(9rem);
+}
+
+.glow3 {
+  bottom: 0;
+  right: 15%;
+  width: 300px;
+  height: 100px;
+  border-radius: 20%;
+  transform: translateY(50%);
+  background: linear-gradient(to right, #3b82f6, #0d06e7);
+  filter: blur(7rem);
 }
