@@ -28,6 +28,8 @@ const About = () => {
   );
   const titleStyle = "z-10 tracking-wider font-bold";
   const subtitleStyle = "z-10 font-normal tracking-wide";
+  const tabsRef = useRef(null);
+  const tabsInView = useInView(tabsRef);
 
   useEffect(() => {
     if (dark) {
@@ -60,6 +62,12 @@ const About = () => {
 
       {/* TABS */}
       <ul
+        ref={tabsRef}
+        style={{
+          transform: tabsInView ? `` : `translateX(200px)`,
+          opacity: tabsInView ? "1" : "0",
+          transition: "all .6s ease-in-out .2s",
+        }}
         className={`w-fit flex flex-row items-center justify-center gap-2 p-1 rounded-md mx-auto mt-10 backdrop-blur-md ${
           dark ? "bg-[rgba(255,255,255,.025)]" : "bg-[rgba(0,0,0,.025)]"
         } z-10`}
@@ -67,6 +75,14 @@ const About = () => {
         {tabs.map((tab, index) => (
           <li
             key={index}
+            ref={tabsRef}
+            style={{
+              transform: tabsInView ? `` : `translateY(5px)`,
+              opacity: tabsInView ? "1" : "0",
+              transition: `transform .4s ease-in-out ${
+                index * 0.2 + 0.7
+              }s, opacity .4s ease-in-out ${index * 0.2 + 0.7}s`,
+            }}
             onClick={() => handleTabClick(index)}
             className={`cursor-pointer rounded-md px-3 py-1 text-medium tracking-widest font-medium hover:transition transition duration-500 hover:duration-500 z-10 ${
               dark

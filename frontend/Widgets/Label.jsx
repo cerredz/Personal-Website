@@ -5,7 +5,6 @@ import { useInView } from "framer-motion";
 import "../styles/Label.css";
 
 const Label = ({
-  style,
   icon,
   text,
   fontStyle,
@@ -15,10 +14,16 @@ const Label = ({
   borderColor,
 }) => {
   const dark = useSelector((state) => state.auth.dark);
+  const ref = useRef(null);
+  const isInView = useInView(ref);
 
   return (
     <motion.div
-      style={style}
+      ref={ref}
+      style={{
+        opacity: isInView ? "1" : 0,
+        transition: "all .6s ease-in-out .3s",
+      }}
       className={`overflow-hidden flex flex-row items-center justify-between w-min gap-3 label rounded-2xl relative border border-solid  py-1 px-4 ${bgClassName} ${borderColor}`}
     >
       {icon}

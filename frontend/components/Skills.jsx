@@ -242,6 +242,7 @@ const Skill = ({
   clickEvent,
   icon,
   hoverBackground,
+  index,
 }) => {
   const ref = useRef(null);
   const inView = useInView(ref);
@@ -253,8 +254,18 @@ const Skill = ({
     <>
       <motion.div
         ref={ref}
-        whileHover={{ y: -5 }}
-        className={`flex flex-col gap-2 items-center justify-center p-4 rounded-2xl other-skills-container ${
+        style={{
+          opacity: inView ? 1 : 0,
+          transform: inView ? `` : `translate(200px)`,
+          scale: inView ? 1 : 0,
+          transition: `opacity .6s ease-in-out ${
+            index * 0.3 + 0.6
+          }s, transform .6s ease-in-out ${
+            index * 0.3 + 0.6
+          }s, scale .6s ease-in-out ${index * 0.3 + 0.6}s`,
+        }}
+        whileHover={{ y: -5, transition: { duration: 0.4, delay: 0 } }}
+        className={`origin-center flex flex-col gap-2 items-center justify-center p-4 rounded-2xl other-skills-container ${
           dark ? "dark-skills-bg" : "light-skills-bg"
         } `}
       >
@@ -277,9 +288,7 @@ const Skill = ({
             {title}
           </h1>
           <p
-            className={`text-center ${
-              dark ? "text-neutral-700" : "text-neutral-400"
-            }`}
+            className={`text-center tracking-wider font-medium text-neutral-500`}
           >
             {newDesc}
           </p>

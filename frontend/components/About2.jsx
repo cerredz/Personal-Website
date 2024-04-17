@@ -17,7 +17,6 @@ import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { aboutMeFacts } from "@/data";
 import Facts from "@/Widgets/Facts";
 
-
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
   let primaryTextColor = dark ? "text-neutral-300" : "text-neutral-700";
@@ -26,6 +25,9 @@ const About = () => {
   const [icons, setIcons] = useState(null);
   const ref = useRef(null);
   const inView = useInView(ref);
+
+  const tabs = useRef(null);
+  const tabsInView = useInView(tabs);
 
   // render in icons upon load
   useEffect(() => {
@@ -302,6 +304,5 @@ const PhoneIcon = ({
     </motion.div>
   );
 };
-
 
 export default About;
