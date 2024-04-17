@@ -1223,20 +1223,8 @@ const Today = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
       exit={{ opacity: 0, position: "absolute" }}
-      className={`flex flex-col lg:flex-row items-center justify-between w-full gap-10  lg:h-[70vh] ${
-        dark ? "dark-border" : "light-border"
-      } rounded-xl overflow-hidden relative  p-4 lg:p-20`}
+      className={`flex flex-col lg:flex-row items-center justify-between w-full gap-10  lg:h-[70vh]  rounded-xl overflow-hidden relative  p-4 lg:p-20`}
     >
-      {/* BACKGROUND IMAGE */}
-      <Image
-        src={"/images/aboutme/todaybg.png"}
-        alt="bg img"
-        layout="fill"
-        quality={100}
-        priority={true}
-        className="blur-3xl"
-      />
-
       {/* TEXT CONTAINER */}
       <div className="basis-2/5 h-full p-8 flex flex-col items-start justify-between rounded-xl backdrop-blur-lg today-text overflow-y-auto gap-2">
         <motion.h1
@@ -1380,7 +1368,26 @@ const BackgroundImage = ({ dark, index }) => {
             ></Image>
           </motion.span>
         ) : (
-          <></>
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.8, ease: "easeInOut" },
+            }}
+            exit={{ opacity: 0, transition: { duration: 0.5 } }}
+          >
+            <Image
+              src={`${
+                dark
+                  ? "/images/aboutme/todaydark.png"
+                  : "/images/aboutme/todaylight.png"
+              }`}
+              alt=""
+              layout="fill"
+              quality={100}
+              priority
+            ></Image>
+          </motion.span>
         )}
       </AnimatePresence>
     </motion.div>

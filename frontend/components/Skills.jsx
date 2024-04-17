@@ -47,8 +47,19 @@ const Skills = () => {
   return (
     <section
       id="skills"
-      className="min-h-screen relative flex flex-col items-center justify-center mt-24 pt-10 md:pt-0 "
+      className="min-h-screen relative flex flex-col items-center justify-center py-20 "
     >
+      <Image
+        src={`${
+          dark
+            ? "/images/skills/skillsbgdark.png"
+            : "/images/skills/skillsbglight.png"
+        }`}
+        alt=""
+        layout="fill"
+        quality={100}
+        className="absolute top-0 left-0 w-full h-full "
+      />
       <div className="flex items-center justify-center mb-16">
         <Title
           text={"Skills"}
@@ -63,7 +74,9 @@ const Skills = () => {
       </div>
 
       <div className="w-9/12 mx-auto flex flex-col justify-center items-center  gap-10 lg:gap-20 ">
-        <div className="flex flex-col justify-center items-center gap-8">
+        <div className="flex flex-col justify-center items-center gap-8 relative">
+          {/* BACKGROUND IMAGE */}
+
           <Label
             text={"Concepts / Practices"}
             icon={
