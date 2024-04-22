@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import authReducer from "./Redux/store";
 import { Providers } from "./Redux/Provider";
 import "../styles/navbar.css";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
         <Providers>
           <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

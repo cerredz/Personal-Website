@@ -46,7 +46,7 @@ const Skills = () => {
 
   return (
     <section
-      id="skills"
+      id="Skills"
       className="min-h-screen relative flex flex-col items-center justify-center py-20 "
     >
       <Image

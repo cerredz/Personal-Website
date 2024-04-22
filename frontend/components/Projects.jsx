@@ -46,7 +46,7 @@ const Projects = () => {
 
   return (
     <section
-      id="projects"
+      id="Projects"
       className="relative flex flex-col items-center justify-center py-16 overflow-hidden"
     >
       <span className="glow glow1"></span>

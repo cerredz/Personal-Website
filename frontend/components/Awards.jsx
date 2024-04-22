@@ -33,7 +33,7 @@ const Awards = () => {
 
   return (
     <section
-      id="awards"
+      id="Awards"
       className="relative flex flex-col items-center justify-center py-20"
     >
       <Title

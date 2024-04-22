@@ -47,7 +47,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-20 relative gap-10 min-h-screen">
+    <section id="About" className="py-20 relative gap-10 min-h-screen">
       <Title
         text={"About"}
         backgroundText={"<About Me />"}
