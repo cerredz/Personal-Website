@@ -5,13 +5,14 @@ import "../styles/footer.css";
 import { FaLocationDot } from "react-icons/fa6";
 import { sidebarLinks } from "@/data";
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa6";
 import { SiDevpost } from "react-icons/si";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa6";
 import { scroll } from "../utils/Footer";
+import "../styles/Globals.css";
 
 export default function Footer({ children }) {
   const dark = useSelector((state) => state.auth.dark);
@@ -21,6 +22,7 @@ export default function Footer({ children }) {
   }, []);
 
   const sections = ["Home", "About", "Skills", "Projects", "Awards"];
+  const [showScreenSwipe, setShowScreenSwipe] = useState(false);
 
   return (
     <section
@@ -31,6 +33,10 @@ export default function Footer({ children }) {
           : "bg-gray-200 footer-light-border"
       } footer-container`}
     >
+      {/* SCREEN SWIPE ANIMTION WHEN A LINK IS CLICKED ON THE FOOTER */}
+      <AnimatePresence>
+        {showScreenSwipe && <ScreenSwipe></ScreenSwipe>}
+      </AnimatePresence>
       {/* ACTUAL FOOTER CONTENT */}
       <div
         className={`w-full flex flex-col gap-4 p-8 rounded-sm footer-content-container my-12 ${
@@ -57,6 +63,13 @@ export default function Footer({ children }) {
         <div className="flex flex-row items-center justify-between">
           {/* SECTIONS OF THE WEBSITE */}
           <div className="flex flex-col items-start justify-start gap-2">
+            <p
+              className={`text-md tracking-wider font-medium ${
+                dark ? "text-neutral-300" : "text-neutral-800"
+              }`}
+            >
+              Sections
+            </p>
             {sections.map((section, index) => (
               <p
                 className={`cursor-pointer text-sm tracking-wider font-medium transition duration-500 hover:transition hover:duration-500 ${
@@ -64,7 +77,7 @@ export default function Footer({ children }) {
                     ? "text-neutral-600 hover:text-neutral-300 "
                     : "text-neutral-500 hover:text-neutral-800"
                 }`}
-                onClick={() => scroll(section)}
+                onClick={() => scroll(section, setShowScreenSwipe)}
               >
                 {section}
               </p>
@@ -144,5 +157,16 @@ export default function Footer({ children }) {
         </div>
       </div>
     </section>
+  );
+}
+
+export function ScreenSwipe({ children }) {
+  return (
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: `100%` }}
+      exit={{ left: `100%` }}
+      className="fixed  top-0 left-0 bottom-0 z-100 bg-gradient-to-r from-sky-500 via-purple-500 to-fuchsia-500"
+    ></motion.div>
   );
 }
