@@ -28,7 +28,7 @@ export default function Page() {
       const result = await client.fetch(query);
 
       if (!result) {
-        console.log("Error Getting the Award Data for", awardTitle);
+        console.log("Error Getting the Award Data for ", awardTitle);
         console.log(result);
         return;
       }

@@ -5,6 +5,13 @@ const clickSound = (volume) => {
   audio.play();
 };
 
+//plays the woosh sound effect
+const whooshSound = () => {
+  const audio = new Audio("/sounds/whoosh.mp3");
+  audio.volume = 0.5;
+  audio.play();
+};
+
 // plays the sound when switching to dark mode
 const toggleSound = (volume) => {
   const audio = new Audio("/sounds/toggle-whoosh.mp3");
@@ -25,4 +32,4 @@ const playSong = async (category, volume) => {
   }
 };
 
-export { clickSound, toggleSound, playSong };
+export { clickSound, toggleSound, playSong, whooshSound };

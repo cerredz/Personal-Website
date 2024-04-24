@@ -278,10 +278,10 @@ export const compSciSkillsData = [
     icon: <FaBrain />,
     className: "brain",
     words: 13,
-    //textColor:"bg-gradient-to-br from-fuchsia-400 via-fuchsia-500 to-fuchsia-400",
+    textColor: "text-fuchsia-500",
     hover:
       "hover:bg-gradient-to-br from-fuchsia-400 via-purple-500 to-fuchsia-400 hover:transition hover:duration-500",
-    background: "pink",
+    background: "pink ",
     images: [
       { src: "/images/readmore/roadmap.png" },
       { src: "/images/readmore/creative.png" },
@@ -296,6 +296,7 @@ export const compSciSkillsData = [
     icon: <GiFamilyTree />,
     className: "backend",
     words: 13,
+    textColor: "text-purple-500",
     hover:
       "hover:bg-gradient-to-br from-purple-500 via-purple-800 to-purple-500 hover:transition hover:duration-500",
     background: "pink",
@@ -316,6 +317,7 @@ export const compSciSkillsData = [
     icon: <FaDatabase />,
     className: "database",
     words: 13,
+    textColor: "text-purple-900",
     hover:
       "hover:bg-gradient-to-br from-purple-900 via-blue-700 to-purple-900 hover:transition hover:duration-500",
     background: "pink",
@@ -336,6 +338,7 @@ export const compSciSkillsData = [
     icon: <GoTerminal />,
     className: "algorithmns",
     words: 12,
+    textColor: "text-blue-700",
     hover:
       "hover:bg-gradient-to-br from-blue-600 via-blue-800 to-blue-600 hover:transition hover:duration-500",
     background: "blue",
@@ -357,6 +360,7 @@ export const compSciSkillsData = [
     icon: <FaLaptopCode />,
     className: "web",
     words: 11,
+    textColor: "text-sky-600",
     hover:
       "hover:bg-gradient-to-br from-sky-500 via-blue-600 to-sky-500 hover:transition hover:duration-500",
     background: "blue",
@@ -378,6 +382,7 @@ export const compSciSkillsData = [
     icon: <FaPeopleGroup />,
     className: "teamwork",
     words: 13,
+    textColor: "text-cyan-500",
     hover:
       "hover:bg-gradient-to-br from-cyan-400 via-sky-500 to-cyan-400 hover:transition hover:duration-500",
     background: "blue",

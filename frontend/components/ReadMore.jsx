@@ -138,16 +138,7 @@ export const ReadMore = ({
             <h1
               className={` text-3xl font-bold tracking-widest lg:text-5xl ${
                 className === "teamwork" && "text-xl lg:text-3xl"
-              }`}
-              style={{
-                backgroundImage: textColor,
-                backgroundClip: "text",
-                WebkitBackgroundClip: "text",
-                color: "transparent",
-                textShadow: `${
-                  dark ? "1px 1px 60px #000" : "1px 1px 60px #000"
-                }`,
-              }}
+              } ${textColor} `}
             >
               {title}
             </h1>
