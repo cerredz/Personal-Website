@@ -190,11 +190,12 @@ const LeftContainer = ({ dark }) => {
           alt="arrow"
           width={75}
           height={75}
-          initial={{ opacity: 0, scale: 0 }}
+          initial={{ width: 0, height: 0, opacity: 0 }}
           animate={{
+            width: 75,
+            height: 75,
             opacity: 1,
-            scale: [0.8, 1.3, 0.8],
-            transition: { duration: 2, repeat: Infinity },
+            transition: { delay: 1, duration: 2 },
           }}
           className="absolute bottom-[-30px] left-[50px] z-10 arrow"
         />

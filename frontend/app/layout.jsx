@@ -6,6 +6,8 @@ import authReducer from "./Redux/store";
 import { Providers } from "./Redux/Provider";
 import "../styles/navbar.css";
 import Footer from "@/components/Footer";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +16,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.className} font-primary`}>
         <Providers>
-          <Navbar />
-          {children}
-          <Footer />
+          <Suspense fallback={<Loading />}>
+            <Navbar />
+            {children}
+            <Footer />
+          </Suspense>
         </Providers>
       </body>
     </html>

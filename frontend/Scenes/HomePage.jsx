@@ -45,48 +45,46 @@ const HomePage = () => {
       <Sidebar />
 
       <section className="relative" id="home">
-        <Suspense fallback={<Loading />}>
-          <Landing />
+        <Landing />
 
-          <Quote
-            quote="The most important single aspect of software development is to be clear about what you are trying to build"
-            name="Bjarne Stroustrup"
-            translateYOpen="-translate-y-10"
-            translateXOpen="-translate-x-80"
-            translateYClose="-translate-y-10"
-            translateXClose="translate-x-80"
-            landing={true}
-          />
+        <Quote
+          quote="The most important single aspect of software development is to be clear about what you are trying to build"
+          name="Bjarne Stroustrup"
+          translateYOpen="-translate-y-10"
+          translateXOpen="-translate-x-80"
+          translateYClose="-translate-y-10"
+          translateXClose="translate-x-80"
+          landing={true}
+        />
 
-          <About />
-          <Quote
-            quote="The art of programming is the art of organizing complexity, of mastering multitude, and avoiding its bastard chaos as effectively as possible."
-            name="Edsger Dijkstra"
-            translateYOpen="-translate-y-10"
-            translateXOpen="-translate-x-80"
-            translateYClose="-translate-y-10"
-            translateXClose="translate-x-80"
-          />
-          <Skills />
-          <Quote
-            quote="Programming is a skill best acquired by practice and example rather than from books"
-            name="Alan Turing"
-            translateYOpen="-translate-y-10"
-            translateXOpen="-translate-x-80"
-            translateYClose="-translate-y-10"
-            translateXClose="translate-x-80"
-          />
-          <Projects />
-          <Quote
-            quote="The beauty of software engineering lies not only in the creation of solutions but also in the art of problem-solving itself"
-            name="Donald Knuth"
-            translateYOpen="-translate-y-10"
-            translateXOpen="-translate-x-80"
-            translateYClose="-translate-y-10"
-            translateXClose="translate-x-80"
-          />
-          <Awards />
-        </Suspense>
+        <About />
+        <Quote
+          quote="The art of programming is the art of organizing complexity, of mastering multitude, and avoiding its bastard chaos as effectively as possible."
+          name="Edsger Dijkstra"
+          translateYOpen="-translate-y-10"
+          translateXOpen="-translate-x-80"
+          translateYClose="-translate-y-10"
+          translateXClose="translate-x-80"
+        />
+        <Skills />
+        <Quote
+          quote="Programming is a skill best acquired by practice and example rather than from books"
+          name="Alan Turing"
+          translateYOpen="-translate-y-10"
+          translateXOpen="-translate-x-80"
+          translateYClose="-translate-y-10"
+          translateXClose="translate-x-80"
+        />
+        <Projects />
+        <Quote
+          quote="The beauty of software engineering lies not only in the creation of solutions but also in the art of problem-solving itself"
+          name="Donald Knuth"
+          translateYOpen="-translate-y-10"
+          translateXOpen="-translate-x-80"
+          translateYClose="-translate-y-10"
+          translateXClose="translate-x-80"
+        />
+        <Awards />
       </section>
     </main>
   );

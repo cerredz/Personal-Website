@@ -23,25 +23,6 @@ const Quote = ({
   const [audio, setAudio] = useState(new Audio("/sounds/typing.mp3"));
   const [audioPlayed, setAudioPlayed] = useState(false);
 
-  // handle background typing audio
-  useEffect(() => {
-    if (inView && !audioPlayed) {
-      audio.volume = 0.5;
-      // synce the audio with the typing animation
-      setTimeout(() => {
-        audio.play();
-        setAudioPlayed(true);
-      }, [500]);
-      setTimeout(() => {
-        audio.pause();
-        audio.currentTime = 0;
-      }, [quoteArray.length * 1000 * 0.15 + 1000]);
-    } else {
-      audio.pause();
-      audio.currentTime = 0;
-    }
-  }, [inView]);
-
   return (
     <div
       className={`${

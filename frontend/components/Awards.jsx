@@ -34,7 +34,7 @@ const Awards = () => {
   return (
     <section
       id="Awards"
-      className="relative flex flex-col items-center justify-center py-20"
+      className="relative flex flex-col items-center justify-center py-20 overflow-hidden"
     >
       <Title
         text={"Awards"}
@@ -47,6 +47,9 @@ const Awards = () => {
         beforeGradient={"awards-before-gradient"}
         afterGradient={"awards-after-gradient"}
       />
+      {/* BACKGROUND GLOWS */}
+      <span className="glow glow-1"></span>
+      <span className="glow hidden xl:block glow-3"></span>
 
       {/* AWARDS CONTAINER */}
       <div className="relative w-10/12 lg:w-3/4 xl:w-7/12 mx-auto flex flex-col items-center justify-center mt-10 gap-20 lg:gap-0">
@@ -74,7 +77,7 @@ const Award = ({ key, index, award, dark }) => {
           index % 2 == 0
             ? "lg:justify-start lg:mr-auto"
             : "lg:justify-end lg:ml-auto"
-        } ${index == 1 && "lg:second-award"} `}
+        } ${index == 1 && "lg:-translate-y-1/4"} `}
       >
         {/* IMAGE CONTAINER */}
         <div
@@ -87,6 +90,7 @@ const Award = ({ key, index, award, dark }) => {
           }}
           className="relative flex justify-center items-center"
         >
+          {index == 1 && <span className="glow hidden xl:block glow-2"></span>}
           <Image
             src={urlFor(award.img).url()}
             alt={award.title}
@@ -125,7 +129,11 @@ const Award = ({ key, index, award, dark }) => {
                 transition:
                   "opacity .5s ease-in-out 1.2s, scale .5s ease-in-out 1.2s",
               }}
-              className="cursor-pointer absolute bottom-[-50px] w-fit right-0 py-2 px-4 rounded-xl expand-btn bg-gradient-to-br from-fuchsia-600 via-purple-500 to-fuchsia-600 opacity-80 hover:opacity-100 transition duration-500 hover:transition hover:duration-500"
+              className={`cursor-pointer absolute bottom-[-50px] w-fit right-0 py-2 px-4 rounded-xl expand-btn bg-gradient-to-br ${
+                index == 0 && "from-fuchsia-600 via-purple-500 to-fuchsia-600"
+              } ${
+                index == 1 && "from-sky-600 via-blue-500 to-sky-600"
+              }  opacity-80 hover:opacity-100 transition duration-500 hover:transition hover:duration-500`}
             >
               <FaArrowUpRightFromSquare className="text-2xl text-neutral-300" />
             </motion.div>
