@@ -16,8 +16,8 @@ export const getProjectData = (projectTitle, projects) => {
 
 /* USER WANTS TO VIEW MORE PROJECTS, REDIRECT THEM TO THE PROJECTS ON THE HOMEPAGE */
 export const viewMoreProjects = () => {
-  window.location.href = "/?section=projects";
-  const projectsSection = document.getElementById("projects");
+  window.location.href = "/?section=Projects";
+  const projectsSection = document.getElementById("Projects");
   if (projectsSection) {
     projectsSection.scrollIntoView({ behavior: "smooth" });
   }

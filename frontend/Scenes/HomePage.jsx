@@ -46,7 +46,6 @@ const HomePage = () => {
 
       <section className="relative" id="home">
         <Landing />
-
         <Quote
           quote="The most important single aspect of software development is to be clear about what you are trying to build"
           name="Bjarne Stroustrup"

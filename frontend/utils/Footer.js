@@ -19,7 +19,6 @@ export const scroll = (section, setShowScreenSwipe) => {
         } else {
           element.scrollIntoView(element);
         }
-        //
       } else {
         console.error(`Section "${section}" not found.`);
       }

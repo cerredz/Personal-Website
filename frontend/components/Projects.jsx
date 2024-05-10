@@ -12,6 +12,7 @@ import { useInView } from "framer-motion";
 import { FaGithub } from "react-icons/fa6";
 import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { CardItem, CardContainer } from "@/AceternityUi/3dCard";
+import Link from "next/link";
 
 const Projects = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -302,11 +303,12 @@ const ProjectCard = ({ key, project, dark, index, activeIndex, onClick }) => {
                     target="_blank"
                     className="bg-[#171515] rounded-xl px-4 h-[40px] github-btn relative overflow-hidden flex items-center justify-center"
                   >
-                    <FaGithub className=" text-neutral-300 text-2xl  " />
+                    <FaGithub className=" text-neutral-300 text-2xl" />
                   </motion.a>
 
                   {/* READ MORE BUTTON */}
-                  <motion.a
+
+                  <motion.span
                     initial={{ translateX: 25, opacity: 0 }}
                     animate={{
                       translateX: 0,
@@ -325,11 +327,18 @@ const ProjectCard = ({ key, project, dark, index, activeIndex, onClick }) => {
                         ease: "easeInOut",
                       },
                     }}
-                    href={`/projects/${project.redirect}`}
                     className="flex items-center justify-center read-more-project-btn w-full relative rounded-xl px-4 h-[40px] text-lg font-bold tracking-widest text-neutral-300 bg-[rgba(255,255,255,.1)] hover:bg-[rgba(255,255,255,.2)]"
                   >
-                    {project.live ? "View" : "Read More"}
-                  </motion.a>
+                    <Link
+                      href={`${
+                        project.live
+                          ? `${project.redirect}`
+                          : `/projects/${project.redirect}`
+                      }`}
+                    >
+                      {project.live ? "View" : "Read More"}
+                    </Link>
+                  </motion.span>
                 </div>
               </motion.div>
             )}

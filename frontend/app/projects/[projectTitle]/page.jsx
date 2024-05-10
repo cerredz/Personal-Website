@@ -43,7 +43,7 @@ export default function Page() {
   }, []);
 
   return (
-    <div className="overflow-hidden">
+    <main className="overflow-hidden">
       {projectData !== null ? (
         <>
           <div
@@ -245,7 +245,7 @@ export default function Page() {
       ) : (
         <Loading></Loading>
       )}
-    </div>
+    </main>
   );
 }
 
