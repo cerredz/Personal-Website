@@ -1,9 +1,9 @@
 "use client";
-import "../../styles/globals.css";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import "./styles.css";
+import "../../styles/globals.css";
 import { FaPhone } from "react-icons/fa6";
 import { MdOutlineEmail } from "react-icons/md";
 import { FaLinkedinIn, FaLocationPin, FaDiscord } from "react-icons/fa6";
@@ -39,27 +39,18 @@ const page = () => {
     <main
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen relative bg-primary-dark flex flex-col xl:flex-row gap-20 items-center justify-center `}
     >
-      {/* BACKGROUND IMAGE */}
-      <Image
-        priority={true}
-        quality={100}
-        src={"/images/contactmeBG.png"}
-        alt=""
-        layout="fill"
-        className="absolute top-0 left-0 h-full w-full opacity-10 hidden lg:block"
-      ></Image>
+      {/* BACKGROUND VIDEO */}
+      <video
+        className="absolute top-0 left-0 h-full w-full object-cover opacity-25"
+        autoPlay
+        loop
+        muted
+      >
+        <source src={"/videos/contactbg.mp4"} />
+      </video>
 
       {/* CONTACT FORM CONTAINER */}
-      <div className="flex flex-col w-11/12 sm:w-1/2 xl:w-2/5 h-fit md:h-[500px] contact-form-container relative backdrop-blur-xl rounded-xl">
-        {/* BACKGROUND IMAGE */}
-        <Image
-          alt=""
-          src={"/images/contactMeInnerBG.png"}
-          quality={100}
-          layout="fill"
-          className="absolute top-0 left-0 h-full w-full blur-3xl z-0 opacity-50 rounded-xl"
-        />
-
+      <div className="flex flex-col w-11/12 sm:w-1/2 xl:w-2/5 h-fit md:h-[500px] contact-form-container relative backdrop-blur-2xl rounded-xl">
         {/* INFO STEP */}
         <AnimatePresence>
           {step == 1 && <StepOne onClick={() => setStep((prev) => prev + 1)} />}

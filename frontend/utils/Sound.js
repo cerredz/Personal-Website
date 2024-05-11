@@ -32,25 +32,4 @@ const playSong = async (category, volume) => {
   }
 };
 
-// plays the sound effect when you click a navbar link
-const navLinkClick = () => {
-  const audio = new Audio("/sounds/navLinkClick.mp3");
-  audio.volume = 0.5;
-  audio.play();
-};
-
-//plays the sound effect when you hover a navbar link
-const navLinkHover = () => {
-  const audio = new Audio("/sounds/navLinkHover.mp3");
-  audio.volume = 0.5;
-  audio.play();
-};
-
-export {
-  clickSound,
-  toggleSound,
-  playSong,
-  whooshSound,
-  navLinkClick,
-  navLinkHover,
-};
+export { clickSound, toggleSound, playSong, whooshSound };

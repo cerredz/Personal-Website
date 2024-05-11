@@ -4,7 +4,7 @@ import {
   setVolume,
   setMusic,
 } from "@/app/Redux/store";
-import { clickSound, navLinkClick, toggleSound } from "./Sound";
+import { clickSound, toggleSound } from "./Sound";
 import { useState } from "react";
 import { scroll } from "./Footer";
 
@@ -77,7 +77,6 @@ const navbarLinkOnChange = async (
   pathname
 ) => {
   try {
-    navLinkClick();
     if (redirect) {
       // must change routes
       if (value === "Home" && activeLink !== "Home") {
