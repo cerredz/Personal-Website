@@ -90,7 +90,7 @@ const Skills = () => {
           />
 
           <div
-            className={` flex flex-row gap-10 items-center justify-center relative flex-wrap `}
+            className={`flex flex-row gap-10 items-center justify-center relative flex-wrap `}
           >
             {computerScienceSkills !== null ? (
               computerScienceSkills.map((skill, index) => (

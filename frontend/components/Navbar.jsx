@@ -6,7 +6,11 @@ import { useSelector } from "react-redux";
 import "../styles/navbar.css";
 import { TfiAlignJustify } from "react-icons/tfi";
 import { GoMoon } from "react-icons/go";
-import { toggle } from "@/utils/Navbar";
+import {
+  toggle,
+  navbarLinkOnChange,
+  navbarLinkSetActive,
+} from "@/utils/Navbar";
 import { useDispatch } from "react-redux";
 import { LuSunDim } from "react-icons/lu";
 import { BsVolumeUpFill, BsVolumeOffFill } from "react-icons/bs";
@@ -21,9 +25,11 @@ import { AiOutlineClose } from "react-icons/ai";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { playSong } from "@/utils/Sound";
 import SpinningBorderButton from "@/Widgets/SpinningBorderButton";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
+  const [activeLink, setActiveLink] = useState(null);
   const [musicData, setMusicData] = useState([]);
   const [musicVolume, setMusicVolume] = useState(0);
   const [showMobileLinks, setShowMobileLinks] = useState(false);
@@ -34,12 +40,17 @@ const Navbar = () => {
   const volume = useSelector((state) => state.auth.volume);
   const music = useSelector((state) => state.auth.music);
   const [audioTags, setAudioTags] = useState([]);
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const section = searchParams.get("section");
 
   // load the links / music data upon render
   useEffect(() => {
     setLinks(NavbarLinks);
     setMusicData(musicTypes);
     setMusicVolume(volume);
+    navbarLinkSetActive(router, pathname, section, activeLink, setActiveLink);
   }, []);
 
   // set up the background music
@@ -100,8 +111,18 @@ const Navbar = () => {
             {links.map((link, index) => (
               <p
                 key={index}
-                className={`z-10 h-full flex items-center cursor-pointer relative tracking-wider font-bold  text-sm sm:text-base md:text-lg lg:text-xl ${
-                  dark && "dark-text"
+                className={`z-10 h-full flex items-center cursor-pointer relative tracking-widest font-medium text-sm sm:text-base md:text-lg lg:text-xl  ${
+                  dark
+                    ? `${
+                        activeLink == link.title
+                          ? "text-neutral-300"
+                          : "text-neutral-500"
+                      }`
+                    : `${
+                        activeLink == link.title
+                          ? "text-neutral-800"
+                          : "text-neutral-600"
+                      }`
                 }`}
               >
                 {link.title}

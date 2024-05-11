@@ -102,16 +102,14 @@ const Projects = () => {
           <>
             {/* 'ALL' IS SELECTECD, APPLY NO FILTERS */}
             {projects.map((project, index) => (
-              <>
-                <ProjectCard
-                  key={index}
-                  project={project}
-                  dark={dark}
-                  index={index}
-                  activeIndex={activeCardIndex}
-                  onClick={() => setActiveCardIndex(index)}
-                />
-              </>
+              <ProjectCard
+                key={index}
+                project={project}
+                dark={dark}
+                index={index}
+                activeIndex={activeCardIndex}
+                onClick={() => setActiveCardIndex(index)}
+              />
             ))}
           </>
         ) : (
@@ -178,7 +176,7 @@ const Projects = () => {
   );
 };
 
-const ProjectCard = ({ key, project, dark, index, activeIndex, onClick }) => {
+const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
   const containerRef = useRef(null);
   const inView = useInView(containerRef);
   const [isHoveringExpand, setIsHoveringExpand] = useState(false);

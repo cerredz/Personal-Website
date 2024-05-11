@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import "../../../styles/navbar.css";
-import "../../../styles/globals.css";
 import "./styles.css";
 import Image from "next/image";
 import Label from "@/Widgets/Label";

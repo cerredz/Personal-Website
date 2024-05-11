@@ -11,22 +11,27 @@ export const NavbarLinks = () => [
   {
     title: "Home",
     link: "/",
+    redirect: true,
   },
   {
     title: "About",
-    section: "about",
+    section: "About",
+    redirect: false,
   },
   {
     title: "Projects",
-    section: "projects",
+    section: "Projects",
+    redirect: false,
   },
   {
     title: "Contact",
     link: "/contact",
+    redirect: true,
   },
   {
     title: "Awards",
-    link: "/awards",
+    section: "Awards",
+    redirect: false,
   },
 ];
 

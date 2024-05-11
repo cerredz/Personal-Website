@@ -6,6 +6,7 @@ import {
 } from "@/app/Redux/store";
 import { toggleSound } from "./Sound";
 import { clickSound } from "./Sound";
+import { useState } from "react";
 // toggle between light and dark mode
 const toggle = async (isDarkMode, dispatch, volume) => {
   try {
@@ -48,4 +49,36 @@ const changeMusic = async (music, dispatch) => {
   }
 };
 
-export { toggle, adjustVolume, changeMusic };
+// when the navbar loads, set the correct link to the active link
+const navbarLinkSetActive = (
+  router,
+  pathname,
+  section,
+  activeLink,
+  setActiveLink
+) => {
+  console.log(pathname);
+  console.log(section);
+  try {
+    if (section !== null) {
+      // on home page, direct to the section
+      setActiveLink(section);
+    } else if (pathname === "/contact") {
+      setActiveLink("Contact");
+    } else if (pathname === "/") {
+      setActiveLink("Home");
+    }
+  } catch (error) {
+    console.error("🔴: Error Setting the Initial Active Navbar Link", error);
+  }
+};
+
+// logic for when a navbar link is pressed
+const navbarLinkOnChange = (redirect) => {};
+export {
+  toggle,
+  adjustVolume,
+  changeMusic,
+  navbarLinkOnChange,
+  navbarLinkSetActive,
+};

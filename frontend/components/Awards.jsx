@@ -61,7 +61,7 @@ const Awards = () => {
   );
 };
 
-const Award = ({ key, index, award, dark }) => {
+const Award = ({ index, award, dark }) => {
   const imgRef = useRef(null);
   const expandRef = useRef(null);
   const imgInView = useInView(imgRef);

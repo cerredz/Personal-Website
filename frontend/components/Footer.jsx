@@ -86,6 +86,7 @@ export default function Footer({ children }) {
             </p>
             {sections.map((section, index) => (
               <p
+                key={index}
                 className={`cursor-pointer text-sm tracking-wider font-medium transition duration-500 hover:transition hover:duration-500 ${
                   dark
                     ? "text-neutral-600 hover:text-neutral-300 "
@@ -173,7 +174,7 @@ export default function Footer({ children }) {
               Connect
             </p>
             {socials.map((social, index) => (
-              <Link href={social.redirect} target="_blank">
+              <Link key={index} href={social.redirect} target="_blank">
                 <p
                   className={`cursor-pointer text-sm tracking-wider font-medium transition duration-500 hover:transition hover:duration-500 ${
                     dark

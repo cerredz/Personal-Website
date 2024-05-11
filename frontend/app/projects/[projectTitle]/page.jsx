@@ -6,7 +6,6 @@ import { getProjectData } from "@/utils/Project";
 import Loading from "@/app/loading";
 import { useSelector } from "react-redux";
 import "../../../styles/navbar.css";
-import "../../../styles/globals.css";
 import Image from "next/image";
 import { client, urlFor } from "@/utils/Sanity";
 import { motion } from "framer-motion";
