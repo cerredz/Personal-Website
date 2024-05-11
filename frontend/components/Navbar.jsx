@@ -14,7 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { LuSunDim } from "react-icons/lu";
 import { BsVolumeUpFill, BsVolumeOffFill } from "react-icons/bs";
-import { clickSound } from "@/utils/Sound";
+import { clickSound, navLinkHover } from "@/utils/Sound";
 import BackgroundBlob from "@/Widgets/BackgroundBlob";
 import { AnimatePresence, easeInOut, motion } from "framer-motion";
 import { musicTypes } from "@/data";
@@ -26,10 +26,12 @@ import { MdOutlineArrowBackIosNew } from "react-icons/md";
 import { playSong } from "@/utils/Sound";
 import SpinningBorderButton from "@/Widgets/SpinningBorderButton";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { ScreenSwipe } from "./Footer";
 
 const Navbar = () => {
   const [links, setLinks] = useState([]);
   const [activeLink, setActiveLink] = useState(null);
+  const [showScreenSwipe, setShowScreenSwipe] = useState(false);
   const [musicData, setMusicData] = useState([]);
   const [musicVolume, setMusicVolume] = useState(0);
   const [showMobileLinks, setShowMobileLinks] = useState(false);
@@ -50,7 +52,7 @@ const Navbar = () => {
     setLinks(NavbarLinks);
     setMusicData(musicTypes);
     setMusicVolume(volume);
-    navbarLinkSetActive(router, pathname, section, activeLink, setActiveLink);
+    navbarLinkSetActive(pathname, section, setActiveLink);
   }, []);
 
   // set up the background music
@@ -92,6 +94,9 @@ const Navbar = () => {
         dark ? "dark-border " : "light-border"
       }`}
     >
+      <AnimatePresence>
+        {showScreenSwipe && <ScreenSwipe audio={false} />}
+      </AnimatePresence>
       <div className="w-full flex flex-row justify-between align-center p-3 sm:p-5 md:p-7 lg:p-9">
         <div className="flex p-6 sm:p-0 gap-4 w-full align-center justify-start">
           <motion.span className="logo relative ">
@@ -111,21 +116,39 @@ const Navbar = () => {
             {links.map((link, index) => (
               <p
                 key={index}
-                className={`z-10 h-full flex items-center cursor-pointer relative tracking-widest font-medium text-sm sm:text-base md:text-lg lg:text-xl  ${
+                className={`z-10 px-4 py-2 flex items-center justify-center cursor-pointer relative tracking-widest font-medium text-sm sm:text-base md:text-lg lg:text-xl transition duration-300 ${
                   dark
                     ? `${
                         activeLink == link.title
                           ? "text-neutral-300"
-                          : "text-neutral-500"
-                      }`
+                          : "text-neutral-500 nav-unactive-link nav-dark-link hover:text-neutral-400"
+                      } `
                     : `${
                         activeLink == link.title
                           ? "text-neutral-800"
-                          : "text-neutral-600"
-                      }`
+                          : "text-neutral-600 nav-unactive-link nav-light-link hover:text-neutral-700"
+                      } `
                 }`}
+                onClick={() =>
+                  navbarLinkOnChange(
+                    link.redirect,
+                    link.title,
+                    router,
+                    setShowScreenSwipe,
+                    activeLink,
+                    setActiveLink,
+                    pathname
+                  )
+                }
               >
                 {link.title}
+                <span
+                  className={`${
+                    activeLink === link.title
+                      ? "block absolute bottom-[-10px] w-2 h-2 rounded-full bg-blue-500"
+                      : "hidden"
+                  }`}
+                ></span>
               </p>
             ))}
           </div>

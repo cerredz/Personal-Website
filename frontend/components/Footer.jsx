@@ -49,7 +49,7 @@ export default function Footer({ children }) {
       <span className="bottom-glow"></span>
       {/* SCREEN SWIPE ANIMTION WHEN A LINK IS CLICKED ON THE FOOTER */}
       <AnimatePresence>
-        {showScreenSwipe && <ScreenSwipe></ScreenSwipe>}
+        {showScreenSwipe && <ScreenSwipe audio={true} />}
       </AnimatePresence>
       {/* ACTUAL FOOTER CONTENT */}
       <div
@@ -257,17 +257,15 @@ export default function Footer({ children }) {
   );
 }
 
-export function ScreenSwipe({ children }) {
-  useEffect(() => {
-    whooshSound();
-  }, []);
+export function ScreenSwipe(audio) {
+  whooshSound();
 
   return (
     <motion.div
       initial={{ width: 0 }}
       animate={{ width: `100%` }}
       exit={{ left: `100%` }}
-      className="fixed  top-0 left-0 bottom-0 z-100 bg-gradient-to-r from-sky-500 via-purple-500 to-fuchsia-500"
+      className="fixed top-0 left-0 h-[100vh] z-100 bg-gradient-to-r from-sky-500 via-purple-500 to-fuchsia-500"
     ></motion.div>
   );
 }

@@ -94,3 +94,40 @@ input[type="range"]::-webkit-slider-thumb {
   background: rgb(19, 158, 209);
   filter: blur(1rem);
 }
+
+.nav-unactive-link::before,
+.nav-unactive-link::after {
+  position: absolute;
+  content: "";
+  height: 100%;
+  width: 0;
+  top: 0;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-unactive-link::before {
+  right: 50%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.nav-unactive-link::after {
+  left: 50%;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.nav-unactive-link:hover::before,
+.nav-unactive-link:hover::after {
+  width: 50%;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-dark-link::before,
+.nav-dark-link::after {
+  background: rgba(255, 255, 255, 0.05);
+}
+.nav-light-link::before,
+.nav-light-link::after {
+  background: rgba(0, 0, 0, 0.05);
+}

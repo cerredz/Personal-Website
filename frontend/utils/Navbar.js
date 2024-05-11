@@ -4,9 +4,10 @@ import {
   setVolume,
   setMusic,
 } from "@/app/Redux/store";
-import { toggleSound } from "./Sound";
-import { clickSound } from "./Sound";
+import { clickSound, navLinkClick, toggleSound } from "./Sound";
 import { useState } from "react";
+import { scroll } from "./Footer";
+
 // toggle between light and dark mode
 const toggle = async (isDarkMode, dispatch, volume) => {
   try {
@@ -50,18 +51,10 @@ const changeMusic = async (music, dispatch) => {
 };
 
 // when the navbar loads, set the correct link to the active link
-const navbarLinkSetActive = (
-  router,
-  pathname,
-  section,
-  activeLink,
-  setActiveLink
-) => {
-  console.log(pathname);
-  console.log(section);
+const navbarLinkSetActive = (pathname, section, setActiveLink) => {
   try {
     if (section !== null) {
-      // on home page, direct to the section
+      // on home page, set the inputted section as the active link
       setActiveLink(section);
     } else if (pathname === "/contact") {
       setActiveLink("Contact");
@@ -73,8 +66,49 @@ const navbarLinkSetActive = (
   }
 };
 
-// logic for when a navbar link is pressed
-const navbarLinkOnChange = (redirect) => {};
+// logic for when a navbar link is pressed,
+const navbarLinkOnChange = async (
+  redirect,
+  value,
+  router,
+  setShowScreenSwipe,
+  activeLink,
+  setActiveLink,
+  pathname
+) => {
+  try {
+    navLinkClick();
+    if (redirect) {
+      // must change routes
+      if (value === "Home" && activeLink !== "Home") {
+        router.push("/");
+        setActiveLink("Home");
+      } else {
+        router.push(`/${value.toLowerCase()}`);
+        if (activeLink === "Home") {
+          // on home page and use clicks "home" link
+          scroll(value, setShowScreenSwipe);
+        }
+        setActiveLink(value);
+      }
+      return;
+    }
+
+    if (pathname !== "/" && !redirect) {
+      // not on home home trying to access homepage section
+      await router.push(`/?section=${value}`);
+      scroll(value, setShowScreenSwipe);
+      setActiveLink(value);
+      return;
+    }
+
+    // on home page with no redirect, all we need to do is scroll to the correct section
+    scroll(value, setShowScreenSwipe);
+    setActiveLink(value);
+  } catch (error) {
+    console.error("🔴: Error When Pressing Navbar Link", error);
+  }
+};
 export {
   toggle,
   adjustVolume,
