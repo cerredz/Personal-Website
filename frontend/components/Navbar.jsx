@@ -230,8 +230,8 @@ const Navbar = () => {
                         } ${
                           music == type.type
                             ? dark
-                              ? "text-dark-pink bg-neutral-700"
-                              : "text-light-pink bg-neutral-300"
+                              ? "text-fuchsia-500 bg-neutral-700"
+                              : "text-fuchsia-400 bg-neutral-300"
                             : ""
                         } `}
                         key={index}
@@ -290,6 +290,11 @@ const Navbar = () => {
               <MobileNavLinks
                 dark={dark}
                 links={links}
+                router={router}
+                setShowScreenSwipe={setShowScreenSwipe}
+                activeLink={activeLink}
+                setActiveLink={setActiveLink}
+                pathname={pathname}
                 toggle={() => setShowMobileLinks((prev) => !prev)}
               />
             )}
@@ -312,7 +317,16 @@ const Navbar = () => {
 export default Navbar;
 
 // accessing navbar links on mobile
-const MobileNavLinks = ({ dark, links, toggle }) => {
+const MobileNavLinks = ({
+  dark,
+  links,
+  toggle,
+  router,
+  setShowScreenSwipe,
+  activeLink,
+  setActiveLink,
+  pathname,
+}) => {
   const [isHoveringLink, setIsHoveringLink] = useState(null);
   const [animationComplete, setAnimationComplete] = useState(false);
   return (
@@ -398,6 +412,17 @@ const MobileNavLinks = ({ dark, links, toggle }) => {
                   className={`z-40 cursor-pointer relative tracking-widest font-bold  text-2xl w-full h-full hover:text-primary-dark hover:transition hover:duration-500${
                     dark ? "dark-text" : ""
                   }`}
+                  onClick={() =>
+                    navbarLinkOnChange(
+                      link.redirect,
+                      link.title,
+                      router,
+                      setShowScreenSwipe,
+                      activeLink,
+                      setActiveLink,
+                      pathname
+                    )
+                  }
                 >
                   {link.title}
                   {isHoveringLink == link.title && (

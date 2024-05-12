@@ -92,6 +92,8 @@ module.exports = {
     },
   },
   plugins: [
+    require("tailwind-scrollbar"),
+
     function ({ matchUtilities, theme }) {
       matchUtilities(
         {

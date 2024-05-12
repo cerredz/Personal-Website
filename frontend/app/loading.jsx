@@ -5,7 +5,7 @@ const Loading = () => {
   const dark = useSelector((state) => state.auth.dark);
   return (
     <div
-      className={`absolute top-0 left-0 w-[200vh] h-[100vh] p-0 m-0 ${
+      className={`absolute top-0 left-0 w-[100vw] h-[100vh] p-0 m-0 ${
         dark ? "bg-primary-dark" : "bg-primary-light"
       } z-100 flex items-center justify-center`}
     >

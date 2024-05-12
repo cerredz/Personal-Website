@@ -16,6 +16,7 @@ import Projects from "@/components/Projects";
 import { useSearchParams } from "next/navigation";
 import { ThreeDCardDemo } from "@/AceternityUi/3dCard";
 import Awards from "@/components/Awards";
+import "../styles/scrollbar.css";
 
 const HomePage = () => {
   const searchParams = useSearchParams();
@@ -40,7 +41,7 @@ const HomePage = () => {
     <main
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen ${
         dark ? "bg-primary-dark" : "bg-primary-light"
-      }`}
+      } scrollbar scrollbar-thumb-sky-700 scrollbar-track-sky-300`}
     >
       <Sidebar />
 

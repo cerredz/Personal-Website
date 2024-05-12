@@ -14,6 +14,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { Meteors } from "@/AceternityUi/meteors";
 import { LuArrowDownToLine } from "react-icons/lu";
 import { Nextjs } from "@/icons/Nextjs";
+import { useRouter } from "next/navigation";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -98,6 +99,7 @@ const LeftContainer = ({ dark }) => {
       className: `text-sky-500 text-6xl lg:text-8xl tracking-wide font-bold`,
     },
   ];
+  const router = useRouter();
   return (
     <>
       <Label
@@ -162,6 +164,7 @@ const LeftContainer = ({ dark }) => {
              ? "text-neutral-300 from-sky-500  to-blue-600"
              : "text-neutral-800 from-sky-400  to-blue-500"
          }`}
+          onClick={() => router.push("/contact")}
         >
           <BsStars className="" />
           <p className=""> Contact me</p>
