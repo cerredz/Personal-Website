@@ -1,7 +1,7 @@
-// plays the clicking sound
+// plays the general clicking sound
 const clickSound = (volume) => {
   const audio = new Audio("/sounds/click.mp3");
-  audio.volume = parseFloat(volume).toFixed(2);
+  audio.volume = 0.5;
   audio.play();
 };
 

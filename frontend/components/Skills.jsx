@@ -15,6 +15,7 @@ import { PiMoonStarsFill } from "react-icons/pi";
 import { shortenedDescription } from "@/utils/Skills";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { ReadMore } from "./ReadMore";
+import { clickSound } from "@/utils/Sound";
 
 const Skills = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -106,7 +107,10 @@ const Skills = () => {
                     src={skill.src}
                     words={skill.words}
                     hoverBackground={skill.hover}
-                    clickEvent={() => setReadMore(index)}
+                    clickEvent={() => {
+                      clickSound();
+                      setReadMore(index);
+                    }}
                   />
                   <AnimatePresence>
                     {readMore === index && (
@@ -119,7 +123,10 @@ const Skills = () => {
                         className={skill.className}
                         textColor={skill.textColor}
                         background={skill.background}
-                        clickEvent={() => setReadMore(null)}
+                        clickEvent={() => {
+                          clickSound();
+                          setReadMore(null);
+                        }}
                         images={skill.images}
                       />
                     )}
@@ -264,10 +271,9 @@ const Skill = ({
             index * 0.3 + 0.6
           }s, scale .6s ease-in-out ${index * 0.3 + 0.6}s`,
         }}
-        whileHover={{ y: -5, transition: { duration: 0.4, delay: 0 } }}
         className={`origin-center flex flex-col gap-2 items-center justify-center p-4 rounded-2xl other-skills-container ${
           dark ? "dark-skills-bg" : "light-skills-bg"
-        } `}
+        } hover:scale-110 hover:transition hover:duration-500`}
       >
         {/* IMAGE */}
         <div
@@ -302,7 +308,9 @@ const Skill = ({
             transition: { duration: 0.2, ease: "easeInOut" },
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
-          onMouseEnter={() => setIsHoveringReadMore(true)}
+          onMouseEnter={() => {
+            setIsHoveringReadMore(true);
+          }}
           onMouseLeave={() => setIsHoveringReadMore(false)}
           className={`relative z-10 read-more-text cursor-pointer my-3  flex flex-row justify-center gap-4 items-center ${
             dark ? "text-neutral-300" : "text-neutral-800"
