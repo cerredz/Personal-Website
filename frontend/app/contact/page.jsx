@@ -35,8 +35,14 @@ const page = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
+  useEffect(() => {
+    console.log(error);
+    console.log(errorMessage);
+  }, [error]);
+
   return (
     <main
+      id="Contact"
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen relative bg-primary-dark flex flex-col xl:flex-row gap-20 items-center justify-center `}
     >
       {/* BACKGROUND VIDEO */}
@@ -61,7 +67,6 @@ const page = () => {
           <AnimatePresence key={index}>
             {step == index + 2 && (
               <Slide
-                key={index}
                 index={index}
                 error={error}
                 errorMessage={errorMessage}
@@ -94,6 +99,7 @@ const page = () => {
                       setFormData,
                       slide.formName,
                       setError,
+                      setErrorMessage,
                       setStep
                     );
 

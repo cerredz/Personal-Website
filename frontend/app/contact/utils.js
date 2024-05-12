@@ -45,27 +45,38 @@ export const checkUserInput = async (
   setFormData,
   formName,
   setError,
-  setStep,
-  index
+  setErrorMessage,
+  setStep
 ) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  try {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (
-    (formName == "Name" &&
-      (formData.firstName == "" || formData.lastName == "")) ||
-    (formName == "Email" && !emailRegex.test(formData.email)) ||
-    (formName == "Message" && formData.message == "")
-  ) {
-    // dispay error for 3 seconds
-    setError(true);
-    setTimeout(() => {
-      setError(false);
-    }, [3000]);
-    return true;
-  } else {
-    // no errors
-    setStep((prev) => prev + 1);
-    return false;
+    if (
+      (formName == "Name" &&
+        (formData.firstName == "" || formData.lastName == "")) ||
+      (formName == "Email" && !emailRegex.test(formData.email)) ||
+      (formName == "Message" && formData.message == "")
+    ) {
+      // dispay error for 3 seconds
+      setError(true);
+      // set the error message
+      formName === "Name"
+        ? setErrorMessage("Enter Name")
+        : formName === "Email"
+        ? setErrorMessage("Enter Email")
+        : setErrorMessage("Enter Message");
+
+      setTimeout(() => {
+        setError(false);
+      }, [3000]);
+      return true;
+    } else {
+      // no errors
+      setStep((prev) => prev + 1);
+      return false;
+    }
+  } catch (error) {
+    console.error("Error Checking the User input on the contact form", error);
   }
 };
 

@@ -12,7 +12,6 @@ import { SiDevpost } from "react-icons/si";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa6";
 import { scroll } from "../utils/Footer";
-import "../styles/Globals.css";
 import { whooshSound } from "@/utils/Sound";
 import { getProjectData } from "@/utils/Global";
 import Link from "next/link";
