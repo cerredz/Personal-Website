@@ -111,12 +111,12 @@ const Navbar = () => {
 
           {/* NAVBAR LINKS */}
           <div
-            className={`p-0 m-0 z-1 relative flex sm:flex-row items-center gap-8 flex-wrap hidden md:flex`}
+            className={`p-0 m-0 z-1 relative sm:flex-row items-center gap-8 flex-wrap hidden lg:flex`}
           >
             {links.map((link, index) => (
               <p
                 key={index}
-                className={`z-10 px-4 py-2 flex items-center justify-center cursor-pointer relative tracking-widest font-medium text-sm sm:text-base md:text-lg lg:text-xl transition duration-300 ${
+                className={`z-10 px-4 py-2 flex items-center justify-center cursor-pointer relative tracking-widest font-medium text-sm sm:text-base md:text-md xl:text-xl transition duration-300 ${
                   dark
                     ? `${
                         activeLink == link.title
@@ -304,7 +304,7 @@ const Navbar = () => {
           </AnimatePresence>
 
           <div
-            className={`z-20 rounded-md text-bold cursor-pointer p-2 m-0 text-2xl block md:hidden  ${
+            className={`z-20 rounded-md text-bold cursor-pointer p-2 m-0 text-2xl block lg:hidden  ${
               dark ? "text-black bg-neutral-700 " : "bg-neutral-300 "
             }`}
             onClick={() => setShowMobileLinks((prev) => !prev)}
@@ -344,7 +344,7 @@ const MobileNavLinks = ({
         scaleY: 0,
         transition: { delay: 0.5, duration: 0.5, ease: "easeInOut" },
       }}
-      className={`md:hidden z-30 fixed top-0 left-0 w-full h-screen origin-top ${
+      className={`lg:hidden z-30 fixed top-0 left-0 w-full h-screen origin-top ${
         dark ? "bg-black" : "bg-neutral-200"
       } `}
     >

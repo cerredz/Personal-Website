@@ -1,3 +1,24 @@
 .resume-img {
   border-width: 16px;
 }
+
+.download-hover {
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.4);
+  transition: 0.4s ease-in-out;
+}
+.download-hover:hover {
+  box-shadow: inset 0 0 30px rgba(255, 255, 255, 0.6), 0 0 2rem royalblue;
+  transition: 0.4s ease-in-out;
+  scale: 1.02;
+}
+.close-btn {
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.1),
+    5px 5px 10px rgba(0, 0, 0, 0.4);
+  transition: 0.4s ease-in-out;
+}
+
+.close-btn:hover {
+  transition: 0.4s ease-in-out;
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.15),
+    5px 5px 10px rgba(0, 0, 0, 0.6);
+}
