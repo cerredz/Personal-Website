@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import "../../../styles/navbar.css";
 import "./styles.css";
+import "../../../styles/globals.css";
 import Image from "next/image";
 import Label from "@/Widgets/Label";
 import { FaAward } from "react-icons/fa";
@@ -47,12 +48,12 @@ export default function Page() {
         <>
           {/* BACKGROUND IMAGE */}
           <Image
-            src={dark ? "/images/awardDark.png" : "/images/awardLight.png"}
+            src={"/images/awardBG.png"}
             alt="award-bg"
             layout="fill"
             quality={100}
             priority={true}
-            className="fixed top-0 left-0 h-full w-full"
+            className="fixed top-0 left-0 h-full w-full blur-3xl"
           />
 
           {/* MAIN CONTENT CONTAINER */}

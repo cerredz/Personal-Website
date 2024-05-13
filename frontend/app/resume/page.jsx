@@ -9,7 +9,7 @@ import { HiOutlineNewspaper } from "react-icons/hi2";
 import "./styles.css";
 import { useState } from "react";
 import { FaExpandArrowsAlt } from "react-icons/fa";
-import { whooshSound } from "@/utils/Sound";
+import { clickSound, whooshSound } from "@/utils/Sound";
 import { expandResumeClick } from "./utils";
 import { IoCloseOutline } from "react-icons/io5";
 
@@ -108,7 +108,12 @@ export default function Page() {
           ))}
         </div>
         {/* DOWNLOAD RESUME BUTTON */}
-        <a className="z-10 " href="/resume.png" download>
+        <a
+          className="z-10 "
+          onClick={() => clickSound()}
+          href="/resume.png"
+          download
+        >
           <motion.div
             initial={{ y: 25, opacity: 0 }}
             animate={{
