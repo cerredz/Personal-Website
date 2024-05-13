@@ -14,7 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { LuSunDim } from "react-icons/lu";
 import { BsVolumeUpFill, BsVolumeOffFill } from "react-icons/bs";
-import { clickSound, navLinkHover } from "@/utils/Sound";
+import { clickSound, darkModeClickSound, navLinkHover } from "@/utils/Sound";
 import BackgroundBlob from "@/Widgets/BackgroundBlob";
 import { AnimatePresence, easeInOut, motion } from "framer-motion";
 import { musicTypes } from "@/data";
@@ -262,7 +262,10 @@ const Navbar = () => {
             }}
             onMouseEnter={() => setIsHoveringToggle(true)}
             onMouseLeave={() => setIsHoveringToggle(false)}
-            onClick={() => toggle(dark, dispatch, musicVolume)}
+            onClick={() => {
+              darkModeClickSound();
+              toggle(dark, dispatch, musicVolume, pathname);
+            }}
             className={`z-100 flex items-center justify-center relative text-2xl cursor-pointer mr-4 rounded-full transition duration-500  `}
           >
             <SpinningBorderButton

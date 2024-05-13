@@ -32,4 +32,44 @@ const playSong = async (category, volume) => {
   }
 };
 
-export { clickSound, toggleSound, playSong, whooshSound };
+// play the project tab click sound
+const projectTabClickSound = () => {
+  try {
+    const audio = new Audio("/sounds/projectTabClick.mp3");
+    audio.volume = 0.5;
+    audio.play();
+  } catch (error) {
+    console.error("Failed to play the project tab click sound: ", error);
+  }
+};
+
+// play the github icon click sound
+const githubIconClick = () => {
+  try {
+    const audio = new Audio("/sounds/githubClick.mp3");
+    audio.volume = 0.5;
+    audio.play();
+  } catch (error) {
+    console.error("Failed to play the github icon click sound: ", error);
+  }
+};
+// play the dark mode click sound
+const darkModeClickSound = () => {
+  try {
+    const audio = new Audio("/sounds/darkModeClick.mp3");
+    audio.volume = 0.5;
+    audio.play();
+  } catch (error) {
+    console.error("Failed to play the dark mode click sound: ", error);
+  }
+};
+
+export {
+  clickSound,
+  toggleSound,
+  playSong,
+  whooshSound,
+  projectTabClickSound,
+  githubIconClick,
+  darkModeClickSound,
+};

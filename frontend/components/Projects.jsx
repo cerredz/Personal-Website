@@ -13,6 +13,11 @@ import { FaGithub } from "react-icons/fa6";
 import { BackgroundBeams } from "@/AceternityUi/background-beams";
 import { CardItem, CardContainer } from "@/AceternityUi/3dCard";
 import Link from "next/link";
+import {
+  clickSound,
+  githubIconClick,
+  projectTabClickSound,
+} from "@/utils/Sound";
 
 const Projects = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -75,7 +80,10 @@ const Projects = () => {
             {filters.map((filter, index) => (
               <h1
                 key={index}
-                onClick={() => handleFilterClick(index, filter)}
+                onClick={() => {
+                  projectTabClickSound();
+                  handleFilterClick(index, filter);
+                }}
                 className={`relative cursor-pointer text-lg font-bold tracking-widest px-4 py-3 italic z-10 filter-text overflow-hidden hover:transition hover:duration-500 ${
                   activeFilterIndex == index ? `text-[#fff] ${filter} ` : ""
                 } ${
@@ -143,7 +151,10 @@ const Projects = () => {
             transition:
               "x .6s ease-in-out 1s, x .6s ease-in-out 1s, scale .2s ease-in-out, box-shadow .3s ease-in-out",
           }}
-          onClick={() => setActiveCardIndex((prev) => Math.max(prev - 1, 0))}
+          onClick={() => {
+            clickSound();
+            setActiveCardIndex((prev) => Math.max(prev - 1, 0));
+          }}
         >
           <FaLongArrowAltLeft
             className={` text-2xl font-bold z-10 absolute text-fuchsia-500  `}
@@ -161,11 +172,12 @@ const Projects = () => {
             transition:
               "x .6s ease-in-out 1s, x .6s ease-in-out 1s, scale .2s ease-in-out, box-shadow .3s ease-in-out",
           }}
-          onClick={() =>
+          onClick={() => {
+            clickSound();
             setActiveCardIndex((prev) =>
               Math.min(prev + 1, projects.length - 1)
-            )
-          }
+            );
+          }}
         >
           <FaLongArrowAltRight
             className={`text-2xl font-bold z-10 absolute text-sky-500 `}
@@ -299,6 +311,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                     }}
                     href={project.github}
                     target="_blank"
+                    onClick={() => githubIconClick()}
                     className="bg-[#171515] rounded-xl px-4 h-[40px] github-btn relative overflow-hidden flex items-center justify-center"
                   >
                     <FaGithub className=" text-neutral-300 text-2xl" />
@@ -333,6 +346,7 @@ const ProjectCard = ({ project, dark, index, activeIndex, onClick }) => {
                           ? `${project.redirect}`
                           : `/projects/${project.redirect}`
                       }`}
+                      onClick={() => clickSound()}
                     >
                       {project.live ? "View" : "Read More"}
                     </Link>

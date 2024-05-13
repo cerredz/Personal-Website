@@ -12,7 +12,7 @@ import { SiDevpost } from "react-icons/si";
 import { AiFillTwitterCircle } from "react-icons/ai";
 import { FaDiscord } from "react-icons/fa6";
 import { scroll } from "../utils/Footer";
-import { whooshSound } from "@/utils/Sound";
+import { clickSound, whooshSound } from "@/utils/Sound";
 import { getProjectData } from "@/utils/Global";
 import Link from "next/link";
 
@@ -91,7 +91,10 @@ export default function Footer({ children }) {
                     ? "text-neutral-600 hover:text-neutral-300 "
                     : "text-neutral-500 hover:text-neutral-800"
                 }`}
-                onClick={() => scroll(section, setShowScreenSwipe)}
+                onClick={() => {
+                  clickSound();
+                  scroll(section, setShowScreenSwipe);
+                }}
               >
                 {section}
               </p>
@@ -233,7 +236,11 @@ export default function Footer({ children }) {
               Still have any questions, feel free to click the button below to
               contact me
             </p>
-            <Link href={"/contact"} className="w-full">
+            <Link
+              href={"/contact"}
+              className="w-full"
+              onClick={() => clickSound()}
+            >
               <button className="w-full rounded-md text-lg font-bold text-neutral-300 footer-contact-btn bg-gradient-to-br from-sky-500 via-blue-500 to-sky-500 px-4 py-1 tracking-widest">
                 Contact
               </button>

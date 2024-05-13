@@ -18,6 +18,7 @@ import { updateFormData, checkUserInput, send, store } from "./utils";
 import { AiFillHome } from "react-icons/ai";
 import Link from "next/link";
 import Axios from "axios";
+import { clickSound, projectTabClickSound } from "@/utils/Sound";
 
 const page = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -59,7 +60,14 @@ const page = () => {
       <div className="flex flex-col w-11/12 sm:w-1/2 xl:w-2/5 h-fit md:h-[500px] contact-form-container relative backdrop-blur-2xl rounded-xl">
         {/* INFO STEP */}
         <AnimatePresence>
-          {step == 1 && <StepOne onClick={() => setStep((prev) => prev + 1)} />}
+          {step == 1 && (
+            <StepOne
+              onClick={() => {
+                projectTabClickSound();
+                setStep((prev) => prev + 1);
+              }}
+            />
+          )}
         </AnimatePresence>
 
         {/* INFORMATION THE USER WILL HAVE TO FILL OUT */}
@@ -111,7 +119,10 @@ const page = () => {
                     console.error("Error sending data:", error);
                   }
                 }}
-                previousClick={() => setStep((prev) => prev - 1)}
+                previousClick={() => {
+                  clickSound();
+                  setStep((prev) => prev - 1);
+                }}
               />
             )}
           </AnimatePresence>

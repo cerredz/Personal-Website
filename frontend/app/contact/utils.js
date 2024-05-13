@@ -1,3 +1,5 @@
+import { clickSound } from "@/utils/Sound";
+
 // update the contact form based on what question the user answers
 export const updateFormData = (
   newValue,
@@ -72,6 +74,7 @@ export const checkUserInput = async (
       return true;
     } else {
       // no errors
+      clickSound();
       setStep((prev) => prev + 1);
       return false;
     }

@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import { languages } from "@/data";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { useInView } from "framer-motion";
+import { clickSound } from "@/utils/Sound";
 
 const About = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -83,7 +84,10 @@ const About = () => {
                 index * 0.2 + 0.7
               }s, opacity .4s ease-in-out ${index * 0.2 + 0.7}s`,
             }}
-            onClick={() => handleTabClick(index)}
+            onClick={() => {
+              clickSound();
+              handleTabClick(index);
+            }}
             className={`cursor-pointer rounded-md px-3 py-1 text-medium tracking-widest font-medium hover:transition transition duration-500 hover:duration-500 z-10 ${
               dark
                 ? `${

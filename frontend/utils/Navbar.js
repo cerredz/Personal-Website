@@ -9,18 +9,21 @@ import { useState } from "react";
 import { scroll } from "./Footer";
 
 // toggle between light and dark mode
-const toggle = async (isDarkMode, dispatch, volume) => {
+const toggle = async (isDarkMode, dispatch, volume, pathname) => {
   try {
-    if (isDarkMode) {
-      await dispatch(setLightMode());
-      toggleSound(volume);
-      localStorage.setItem("dark-mode", false);
-      console.log("🟢 Successfully Toggled to Light Mode");
-    } else {
-      await dispatch(setDarkMode());
-      toggleSound(volume);
-      localStorage.setItem("dark-mode", true);
-      console.log("🟢 Successfully Toggled to Dark Mode");
+    if (!pathname.includes("/contact")) {
+      // contact page only has dark mode
+      if (isDarkMode) {
+        await dispatch(setLightMode());
+        toggleSound(volume);
+        localStorage.setItem("dark-mode", false);
+        console.log("🟢 Successfully Toggled to Light Mode");
+      } else {
+        await dispatch(setDarkMode());
+        toggleSound(volume);
+        localStorage.setItem("dark-mode", true);
+        console.log("🟢 Successfully Toggled to Dark Mode");
+      }
     }
   } catch {
     console.log("🔴: Error Toggling Dark / Light mode");

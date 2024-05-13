@@ -12,6 +12,7 @@ import { SiDevpost } from "react-icons/si";
 import Link from "next/link";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { motion } from "framer-motion";
+import { clickSound, githubIconClick } from "@/utils/Sound";
 
 const Awards = () => {
   const dark = useSelector((state) => state.auth.dark);
@@ -116,7 +117,10 @@ const Award = ({ index, award, dark }) => {
           </div>
 
           {/* READ MORE ARROW */}
-          <Link href={`/awards/${awardWithDashes}`}>
+          <Link
+            href={`/awards/${awardWithDashes}`}
+            onClick={() => clickSound()}
+          >
             <motion.div
               onMouseEnter={() => setReadMore(true)}
               onMouseLeave={() => setReadMore(false)}
@@ -248,7 +252,11 @@ const AwardIcons = ({ index, award, dark }) => {
     <>
       {/* GITHUB ICON */}
       {award.github && (
-        <Link href={`${award.github}`} target="_blank">
+        <Link
+          href={`${award.github}`}
+          target="_blank"
+          onClick={() => githubIconClick()}
+        >
           <motion.div
             whileHover={{ scale: 1.1, transition: { duration: 0.3, delay: 0 } }}
             whileTap={{ scale: 0.9 }}
@@ -268,7 +276,7 @@ const AwardIcons = ({ index, award, dark }) => {
 
       {/* DEVPOST ICON */}
       {award.devpost && (
-        <Link href={award.devpost} target="_blank">
+        <Link href={award.devpost} target="_blank" onClick={() => clickSound()}>
           <motion.div
             ref={dev}
             style={{
