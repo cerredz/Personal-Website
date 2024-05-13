@@ -18,6 +18,7 @@ import { useRouter } from "next/navigation";
 
 const Landing = () => {
   const dark = useSelector((state) => state.auth.dark);
+  const router = useRouter();
 
   return (
     <section id="Home" className="relative h-screen ">
@@ -69,6 +70,7 @@ const Landing = () => {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               className="hidden xl:flex absolute top-[20%] right-[5%] flex flex-col items-center justify-center p-3 z-10 cursor-pointer"
+              onClick={() => router.push("/resume")}
             >
               <LuArrowDownToLine className="z-10 text-4xl text-neutral-300" />
               <p className="text-neutral-300 font-bold text-md italic tracking-wider z-10">

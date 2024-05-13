@@ -58,3 +58,14 @@
 .award::after {
   background: linear-gradient(to bottom, transparent, #fde047);
 }
+
+.resum::after::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    transparent,
+    transparent,
+    #0795e1
+  );
+  z-index: 10;
+}

@@ -11,8 +11,8 @@ import { scroll } from "./Footer";
 // toggle between light and dark mode
 const toggle = async (isDarkMode, dispatch, volume, pathname) => {
   try {
-    if (!pathname.includes("/contact")) {
-      // contact page only has dark mode
+    if (!pathname.includes("/contact") && !pathname.includes("/resume")) {
+      // contact and resume page only has dark mode
       if (isDarkMode) {
         await dispatch(setLightMode());
         toggleSound(volume);

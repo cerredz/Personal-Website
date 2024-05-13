@@ -41,7 +41,7 @@ const HomePage = () => {
     <main
       className={`overflow-hidden font-primary p-0 m-0 min-h-screen ${
         dark ? "bg-primary-dark" : "bg-primary-light"
-      } scrollbar scrollbar-thumb-sky-700 scrollbar-track-sky-300`}
+      } `}
     >
       <Sidebar />
 
