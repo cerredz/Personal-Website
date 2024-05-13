@@ -90,9 +90,7 @@ const Skills = () => {
             bgClassName={`${dark ? "concepts-dark" : "concepts-light"}`}
           />
 
-          <div
-            className={`flex flex-row gap-10 items-center justify-center relative flex-wrap `}
-          >
+          <div className="flex flex-row items-center justify-center gap-6 flex-wrap xl:grid xl:grid-cols-3 xl:place-items-center xl:gap-y-12 relative">
             {computerScienceSkills !== null ? (
               computerScienceSkills.map((skill, index) => (
                 <>
@@ -273,7 +271,7 @@ const Skill = ({
         }}
         className={`origin-center flex flex-col gap-2 items-center justify-center p-4 rounded-2xl other-skills-container ${
           dark ? "dark-skills-bg" : "light-skills-bg"
-        } hover:scale-110 hover:transition hover:duration-500`}
+        } hover:scale-110 hover:transition hover:duration-500 min-w-[250px]`}
       >
         {/* IMAGE */}
         <div
