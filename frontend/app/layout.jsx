@@ -15,13 +15,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en "
-      className="scrollbar-thumb-sky-700 scrollbar-track-sky-300"
-    >
-      <body
-        className={`${inter.className} font-primary scrollbar-thumb-sky-700 scrollbar-track-sky-300`}
-      >
+    <html lang="en " className="">
+      <head>
+        <link rel="icon" href="/mcfavicon.ico" />
+      </head>
+      <body className={`${inter.className} font-primary `}>
         <Providers>
           <Suspense fallback={<Loading />}>
             <Navbar />

@@ -17,7 +17,7 @@ export async function POST(req) {
       company: company !== "" ? company : null,
       message: message,
     });
-
+    console.log(`🟢: ${email} successfully sent email to me`);
     return new Response({
       status: 200,
       message: "Successfully stored Email into the database",
