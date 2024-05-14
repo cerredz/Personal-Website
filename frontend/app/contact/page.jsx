@@ -36,11 +36,6 @@ const page = () => {
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    console.log(error);
-    console.log(errorMessage);
-  }, [error]);
-
   return (
     <main
       id="Contact"
@@ -346,7 +341,7 @@ const Slide = ({
           >
             <textarea
               placeholder={error ? errorMessage : placeholders[0]}
-              className={`contact-input relative z-10 w-full  ${
+              className={`contact-input relative z-10 w-full ${
                 error && "error-text-area"
               } text-neutral-300`}
               rows={10}
