@@ -110,10 +110,19 @@ export const ReadMore = ({
           opacity: 0,
           transition: { opacity: { delay: 0.9 } },
         }}
-        className={`${
-          background === "blue" ? "blue-bg" : "pink-bg"
-        } fixed top-0 left-0 w-screen h-screen backdrop-blur-lg flex justify-center items-center flex-col gap-8 overflow-hidden `}
+        className={`fixed top-0 left-0 w-screen h-screen backdrop-blur-lg flex justify-center items-center flex-col gap-8 overflow-hidden `}
       >
+        {/* BACKGROUND IMAGE */}
+        <Image
+          src={`${
+            background === "blue"
+              ? "/images/read-more-blue-bg.png"
+              : "/images/read-more-pink-bg.png"
+          }`}
+          alt="bg img"
+          layout="fill"
+          className="blur-2xl"
+        />
         <div
           className={`cursor-pointer absolute right-[25px] p-2 rounded-full top-[25px] transition duration-400 hover:transition hover:duration-400 ${
             dark
@@ -133,12 +142,12 @@ export const ReadMore = ({
         >
           {/* TITLE */}
           <div
-            className={`py-2 rounded-xl bg-[rgba(255,255,255,.05)] flex items-center justify-center text-center backdrop-blur-2xl w-full container-inset-shadow`}
+            className={`py-2 rounded-xl bg-[rgba(0,0,0,.05)] flex items-center justify-center text-center backdrop-blur-3xl w-full container-inset-shadow`}
           >
             <h1
               className={` text-3xl font-bold tracking-widest lg:text-5xl ${
                 className === "teamwork" && "text-xl lg:text-3xl"
-              } ${textColor} `}
+              } ${textColor} ${className}-text title-shadow `}
             >
               {title}
             </h1>
@@ -146,7 +155,7 @@ export const ReadMore = ({
 
           {/* DESCRIPTION */}
           <div
-            className={`rounded-xl flex bg-[rgba(255,255,255,.05)] items-center justify-center flex-col gap-4 text-center backdrop-blur-2xl w-full py-6 px-12 container-inset-shadow`}
+            className={`rounded-xl flex bg-[rgba(0,0,0,.05)] items-center justify-center flex-col gap-4 text-center backdrop-blur-3xl w-full py-6 px-12 container-inset-shadow`}
           >
             <p
               className={`z-10 text-sm font-medium lg:w-11/12 lg:mx-auto tracking-wider text-neutral-300`}
